@@ -10,7 +10,8 @@ void TestScene::Initialize() {
 	sprite_.LoadTexture("uvChecker.png");	// resources/texture直下のパスを指定する
 
 	minion_ = std::make_unique<Minion>();
-	minion_->Initialize();
+
+	player_ = std::make_unique<Player>();
 
 }
 
@@ -21,6 +22,7 @@ void TestScene::Update() {
 	}
 
 	minion_->Update();
+	player_->Update();
 
 	// エンジンの各クラスは大体ImGuiを呼び出す関数がある
 	ImGui::Begin("Test");

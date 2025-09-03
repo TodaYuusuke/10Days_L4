@@ -7,8 +7,12 @@ Minion::Minion()
     :   stateMap_{},
         currentState_(nullptr),
         statePattern_(),
-        spriteSystem_(nullptr)
+        spriteSystem_(nullptr),
+        positon_({0.0f,0.0f}),
+        radian_(0.0f),
+        hp_(0)
 {
+    Initialize();
 }
 
 Minion::~Minion()
@@ -25,10 +29,17 @@ void Minion::Initialize()
 
     spriteSystem_ = std::make_unique<MinionSpriteSystem>();
 
+
+    positon_ = { 660.0f,660.0f };
+    radian_ = 0.0f;
+    hp_ = 0;
+
 }
 
 void Minion::Update()
 {
+
+    statePattern_.request = MinionStateType::Idle;
 
     // ステータス
     statePattern_.Update();
@@ -37,7 +48,7 @@ void Minion::Update()
     }
 
     // スプライト
-    spriteSystem_->Update(statePattern_.GetCurrentBehavior(), {640.0f, 360.0f});
+    spriteSystem_->Update(statePattern_.GetCurrentBehavior(), positon_);
 
 }
 

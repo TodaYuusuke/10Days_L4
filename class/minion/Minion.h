@@ -57,5 +57,12 @@ private: // メンバ変数
 	// スプライトシステム
 	std::unique_ptr<MinionSpriteSystem> spriteSystem_;
 
+	// 位置
+	LWP::Math::Vector2 positon_;
+	// 回転 ラジアン角
+	float radian_;
+	// HP
+	int hp_;
+
 };
 
