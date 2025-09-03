@@ -2,6 +2,7 @@
 #include <Adapter.h>
 #include "MeetingPlace.h"
 #include "PlayerMouseOperation.h"
+#include "Drawing.h"
 
 /// <summary>
 /// プレイヤー
@@ -38,6 +39,9 @@ private:
 
 	// 集合場所
 	std::unique_ptr<MeetingPlace> meetingPlace_;
+
+	// 書き途中
+	std::unique_ptr<Drawing> drawing_;
 
 };
 

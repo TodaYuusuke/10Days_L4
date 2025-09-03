@@ -155,6 +155,7 @@
     <ClCompile Include="class\minion\state\MinionIdleState.cpp" />
     <ClCompile Include="class\minion\state\MinionMoveState.cpp" />
     <ClCompile Include="class\minion\state\MinionStateFactory.cpp" />
+    <ClCompile Include="class\player\Drawing.cpp" />
     <ClCompile Include="class\player\MeetingPlace.cpp" />
     <ClCompile Include="class\player\Player.cpp" />
     <ClCompile Include="class\player\PlayerMouseOperation.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="class\minion\state\MinionMoveState.h" />
     <ClInclude Include="class\minion\state\MinionStateFactory.h" />
     <ClInclude Include="class\minion\state\MinionStateType.h" />
+    <ClInclude Include="class\player\Drawing.h" />
     <ClInclude Include="class\player\MeetingPlace.h" />
     <ClInclude Include="class\player\Player.h" />
     <ClInclude Include="class\player\PlayerMouseOperation.h" />

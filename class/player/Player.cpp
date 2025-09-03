@@ -4,7 +4,8 @@ using namespace LWP::Input;
 
 Player::Player()
 	:	playerMouseOperation_(nullptr),
-		meetingPlace_(nullptr)
+		meetingPlace_(nullptr),
+		drawing_(nullptr)
 {
 	Initialize();
 }
@@ -20,6 +21,8 @@ void Player::Initialize()
 
 	meetingPlace_ = std::make_unique<MeetingPlace>();
 
+	drawing_ = std::make_unique<Drawing>();
+
 }
 
 void Player::Update()
@@ -31,5 +34,7 @@ void Player::Update()
 	}
 
 	meetingPlace_->Update();
+
+	drawing_->Update(playerMouseOperation_->GetIsDragging());
 
 }

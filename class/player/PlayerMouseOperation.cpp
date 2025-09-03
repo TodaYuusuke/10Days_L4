@@ -54,7 +54,7 @@ void PlayerMouseOperation::LeftButtonHeldDown()
 		// 推したときとの距離を確認
 		const float kDistance = (kNowPosition - pressedPosition_).Length();
 		// ドラッグ認定距離
-		const float DragCertifiedDistance = 5.0f;
+		const float DragCertifiedDistance = 10.0f;
 
 		if (DragCertifiedDistance < kDistance) {
 			//ドラッグ開始

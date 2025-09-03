@@ -32,7 +32,7 @@ public:
 public: // アクセッサ
 
 	void SetPosition(const LWP::Math::Vector2& position) { position_ = position; }
-	LWP::Math::Vector2 GetPosition() { return position_; }
+	LWP::Math::Vector2 GetPosition() const { return position_; }
 
 private:
 
