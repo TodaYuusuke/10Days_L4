@@ -1,5 +1,6 @@
 #pragma once
 #include "scene/IScene.h"
+#include "../minion/Minion.h"
 
 class TestScene final
 	: public IScene {
@@ -20,4 +21,7 @@ private: //*** これより先に必要な処理や変数を記述 ***//
 
 	LWP::Resource::RigidModel testModel_;
 	LWP::Primitive::NormalSprite sprite_;
+
+	std::unique_ptr<Minion> minion_;
+
 };
