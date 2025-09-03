@@ -49,6 +49,7 @@ void Drawing::Update(bool isDragging)
 			for (size_t i = 0; i < kSpriteNum_; ++i) {
 				sprites_[i].isActive = false;
 			}
+			lineLength_ = 0.0f;
 
 		}
 		
@@ -80,7 +81,7 @@ void Drawing::Update(bool isDragging)
 				// 線の長さ
 				lineLength_ += kLength;
 				// 線の長さ最大
-				const float kLengthMax = 1000.0f;
+				const float kLengthMax = 5000.0f;
 				// 差分
 				float difference = lineLength_ - kLengthMax;
 
