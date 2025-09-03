@@ -8,6 +8,13 @@
 class Drawing
 {
 
+public:
+
+	// スプライトの数
+	static const size_t kSpriteNum_ = 128;
+	// スプライトの大きさ
+	static const LWP::Math::Vector2 kSpriteSize_;
+
 public: // メンバ関数
 
 	/// <summary>
@@ -35,6 +42,11 @@ private: // メンバ変数
 
 	// 点
 	std::vector<LWP::Math::Vector2> points_;
+
+	// スプライト
+	std::array<LWP::Primitive::NormalSprite, kSpriteNum_> sprites_;
+
+	size_t sprieIndex_;
 
 	// 動いてる
 	bool isActive_;
