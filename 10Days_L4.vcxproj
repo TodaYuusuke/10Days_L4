@@ -149,13 +149,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="class\boss\BaseEnemySpriteSystem.cpp" />
+    <ClCompile Include="class\boss\normalBoss\NormalBoss.cpp" />
+    <ClCompile Include="class\boss\state\EnemyIdleState.cpp" />
+    <ClCompile Include="class\boss\state\EnemyMoveState.cpp" />
     <ClCompile Include="class\scene\TestScene.cpp" />
     <ClCompile Include="class\scene\Title.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="class\boss\normalBoss\NormalBossSpriteSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="class\boss\BaseEnemy.h" />
+    <ClInclude Include="class\boss\BaseEnemySpriteSystem.h" />
+    <ClInclude Include="class\boss\normalBoss\NormalBoss.h" />
+    <ClInclude Include="class\boss\normalBoss\NormalBossStateType.h" />
+    <ClInclude Include="class\boss\state\EnemyIdleState.h" />
+    <ClInclude Include="class\boss\state\EnemyMoveState.h" />
+    <ClInclude Include="class\boss\state\IEnemyState.h" />
     <ClInclude Include="class\scene\TestScene.h" />
     <ClInclude Include="class\scene\Title.h" />
+    <ClInclude Include="class\boss\normalBoss\NormalBossSpriteSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
