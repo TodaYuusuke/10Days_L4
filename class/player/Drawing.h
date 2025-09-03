@@ -3,7 +3,7 @@
 #include <Adapter.h>
 
 /// <summary>
-/// 書き途中
+/// 書き途中線
 /// </summary>
 class Drawing
 {
@@ -38,6 +38,20 @@ public: // メンバ関数
 	/// <param name="isDragging">ドラッグ中か</param>
 	void Update(bool isDragging);
 
+public: // アクセッサ
+
+	/// <summary>
+	/// 点取得
+	/// </summary>
+	/// <returns></returns>
+	std::vector<LWP::Math::Vector2>* GetPoints() { return &points_; }
+
+	/// <summary>
+	/// 壁作成フラグ取得
+	/// </summary>
+	/// <returns></returns>
+	bool GetWallCreation() const { return wallCreation_; }
+
 private: // メンバ関数
 	
 	/// <summary>
@@ -66,6 +80,9 @@ private: // メンバ変数
 
 	// 線の長さ
 	float lineLength_;
+
+	// 壁作成フラグ
+	bool wallCreation_;
 
 };
 

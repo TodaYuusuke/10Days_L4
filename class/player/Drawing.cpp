@@ -11,7 +11,8 @@ Drawing::Drawing()
 	:	points_{},
 		sprites_{},
 		isActive_(false),
-		recordingTimer_(0.0f)
+		recordingTimer_(0.0f),
+		wallCreation_(false)
 {
 	Initialize();
 }
@@ -34,6 +35,8 @@ void Drawing::Initialize()
 void Drawing::Update(bool isDragging)
 {
 
+	wallCreation_ = false;
+
 	// ドラッグしていない
 	if (!isDragging) {
 		// アクティブなら止める
@@ -44,12 +47,14 @@ void Drawing::Update(bool isDragging)
 
 			// 非アクティブ
 			isActive_ = false;
-			points_.clear();
 			sprieIndex_ = 0;
 			for (size_t i = 0; i < kSpriteNum_; ++i) {
 				sprites_[i].isActive = false;
 			}
 			lineLength_ = 0.0f;
+
+			// 壁作成フラグ
+			wallCreation_ = true;
 
 		}
 		
@@ -126,6 +131,7 @@ void Drawing::Update(bool isDragging)
 		}
 		// これから線を書く
 		else {
+			points_.clear();
 			// 現在の位置を保存
 			points_.push_back(Mouse::GetPosition());
 			// アクティブ

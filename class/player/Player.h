@@ -3,6 +3,7 @@
 #include "MeetingPlace.h"
 #include "PlayerMouseOperation.h"
 #include "Drawing.h"
+#include "wall/WallManager.h"
 
 /// <summary>
 /// プレイヤー
@@ -42,6 +43,9 @@ private:
 
 	// 書き途中
 	std::unique_ptr<Drawing> drawing_;
+
+	// 壁マネージャー
+	std::unique_ptr<WallManager> wallManager_;
 
 };
 
