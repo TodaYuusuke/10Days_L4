@@ -3,43 +3,43 @@
 #include <Adapter.h>
 
 /// <summary>
-/// ‘‚«“r’†
+/// æ›¸ãé€”ä¸­
 /// </summary>
 class Drawing
 {
 
-public: // ƒƒ“ƒoŠÖ”
+public: // ãƒ¡ãƒ³ãƒé–¢æ•°
 
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	Drawing(); 
 
 	/// <summary>
-	/// ƒfƒXƒgƒ‰ƒNƒ^
+	/// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	~Drawing();
 
 	/// <summary>
-	/// ‰Šú‰»
+	/// åˆæœŸåŒ–
 	/// </summary>
 	void Initialize();
 
 	/// <summary>
-	/// XV
+	/// æ›´æ–°
 	/// </summary>
-	/// <param name="isDragging">ƒhƒ‰ƒbƒO’†‚©</param>
+	/// <param name="isDragging">ãƒ‰ãƒ©ãƒƒã‚°ä¸­ã‹</param>
 	void Update(bool isDragging);
 
-private: // ƒƒ“ƒo•Ï”
+private: // ãƒ¡ãƒ³ãƒå¤‰æ•°
 
-	// “_
+	// ç‚¹
 	std::vector<LWP::Math::Vector2> points_;
 
-	// “®‚¢‚Ä‚é
+	// å‹•ã„ã¦ã‚‹
 	bool isActive_;
 
-	// ‹L˜^ƒ^ƒCƒ~ƒ“ƒOƒ^ƒCƒ}[
+	// è¨˜éŒ²ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã‚¿ã‚¤ãƒãƒ¼
 	float recordingTimer_;
 
 };

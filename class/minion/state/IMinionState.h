@@ -1,36 +1,36 @@
 #pragma once
 #include <Adapter.h>
 
-// ‘O•ûéŒ¾
+// å‰æ–¹å®£è¨€
 class Minion;
 
 /// <summary>
-/// è‰º‚Ìó‘ÔƒCƒ“ƒ^[ƒtƒF[ƒX
+/// æ‰‹ä¸‹ã®çŠ¶æ…‹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 /// </summary>
 class IMinionState
 {
 
-public: // ƒƒ“ƒoŠÖ”
+public: // ãƒ¡ãƒ³ãƒé–¢æ•°
 
 	/// <summary>
-	/// ƒfƒXƒgƒ‰ƒNƒ^
+	/// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	virtual ~IMinionState() = default;
 
 	/// <summary>
-	/// ‚±‚Ìó‘Ô‚É‚È‚é‚Ìˆ—
+	/// ã“ã®çŠ¶æ…‹ã«ãªã‚‹æ™‚ã®å‡¦ç†
 	/// </summary>
-	/// <param name="minion">è‰º‚Ìƒ|ƒCƒ“ƒ^</param>
+	/// <param name="minion">æ‰‹ä¸‹ã®ãƒã‚¤ãƒ³ã‚¿</param>
 	virtual void Enter(Minion* minion) = 0;
 
 	/// <summary>
-	/// XVˆ—
+	/// æ›´æ–°å‡¦ç†
 	/// </summary>
 	/// <param name="minion"></param>
 	virtual void Update(Minion* minion) = 0;
 
 	/// <summary>
-	/// ‚±‚Ìó‘Ô‚Å‚È‚­‚È‚é‚Ìˆ—
+	/// ã“ã®çŠ¶æ…‹ã§ãªããªã‚‹æ™‚ã®å‡¦ç†
 	/// </summary>
 	/// <param name="minion"></param>
 	virtual void Exit(Minion* minion) = 0;
@@ -39,7 +39,7 @@ public: // ƒƒ“ƒoŠÖ”
 
 
 /// <summary>
-/// IMinionState‚ğŒp³‚µ‚½ƒNƒ‰ƒX‚Ì‚İ‚ğ‘I‘ğ‚Å‚«‚éƒeƒ“ƒvƒŒ[ƒg
+/// IMinionStateã‚’ç¶™æ‰¿ã—ãŸã‚¯ãƒ©ã‚¹ã®ã¿ã‚’é¸æŠã§ãã‚‹ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ
 /// </summary>
 template<class MinionStateT>
 concept IsIMinionState = std::is_base_of<IMinionState, MinionStateT>::value;

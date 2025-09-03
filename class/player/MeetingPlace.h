@@ -2,7 +2,7 @@
 #include <Adapter.h>
 
 /// <summary>
-/// W‡êŠ
+/// é›†åˆå ´æ‰€
 /// </summary>
 class MeetingPlace
 {
@@ -10,42 +10,42 @@ class MeetingPlace
 public:
 
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	MeetingPlace();
 
 	/// <summary>
-	/// ƒfƒXƒgƒ‰ƒNƒ^
+	/// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	~MeetingPlace();
 
 	/// <summary>
-	/// ‰Šú‰»
+	/// åˆæœŸåŒ–
 	/// </summary>
 	void Initialize();
 
 	/// <summary>
-	/// XV
+	/// æ›´æ–°
 	/// </summary>
 	void Update();
 
-public: // ƒAƒNƒZƒbƒT
+public: // ã‚¢ã‚¯ã‚»ãƒƒã‚µ
 
 	void SetPosition(const LWP::Math::Vector2& position) { position_ = position; }
 	LWP::Math::Vector2 GetPosition() const { return position_; }
 
 private:
 
-	// ƒXƒvƒ‰ƒCƒg
+	// ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆ
 	LWP::Primitive::SequenceSprite sprite_;
 
-	// ˜A”Ô‚ÌindexX
+	// é€£ç•ªã®indexX
 	int indexX_;
 
-	// index•ÏX‚Ü‚Å‚ÌƒtƒŒ[ƒ€ƒJƒEƒ“ƒg
+	// indexå¤‰æ›´ã¾ã§ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã‚«ã‚¦ãƒ³ãƒˆ
 	int changeIndexFrameCount_;
 
-	// ˆÊ’u
+	// ä½ç½®
 	LWP::Math::Vector2 position_;
 
 };

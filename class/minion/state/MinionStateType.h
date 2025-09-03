@@ -1,13 +1,13 @@
 #pragma once
 
 /// <summary>
-/// è‰º‚Ìó‘Ôˆê——
+/// æ‰‹ä¸‹ã®çŠ¶æ…‹ä¸€è¦§
 /// </summary>
 enum class MinionStateType {
-	Idle,				// ’Êí
-	//Move,				// ˆÚ“®
-	//Attack,			// UŒ‚
-	//Down,				// ƒ_ƒEƒ“
-	//Absorb,			// ‹zû
-	StateTypeOfCount,	// ””‚¦‚é—p
+	Idle,				// é€šå¸¸
+	//Move,				// ç§»å‹•
+	//Attack,			// æ”»æ’ƒ
+	//Down,				// ãƒ€ã‚¦ãƒ³
+	//Absorb,			// å¸å
+	StateTypeOfCount,	// æ•°æ•°ãˆã‚‹ç”¨
 };

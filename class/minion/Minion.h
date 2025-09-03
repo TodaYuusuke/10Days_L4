@@ -7,59 +7,59 @@
 #include "MinionSpriteSystem.h"
 
 /// <summary>
-/// è‰ºƒNƒ‰ƒX
+/// æ‰‹ä¸‹ã‚¯ãƒ©ã‚¹
 /// </summary>
 class Minion final
 {
 
-public: // ƒƒ“ƒoŠÖ”
+public: // ãƒ¡ãƒ³ãƒé–¢æ•°
 
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	Minion();
 
 	/// <summary>
-	/// ƒfƒXƒgƒ‰ƒNƒ^
+	/// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	~Minion();
 
 	/// <summary>
-	/// ‰Šú‰»
+	/// åˆæœŸåŒ–
 	/// </summary>
 	void Initialize();
 	
 	/// <summary>
-	/// XV
+	/// æ›´æ–°
 	/// </summary>
 	void Update();
 
 	/// <summary>
-	/// ƒfƒoƒbƒO—pGUI
+	/// ãƒ‡ãƒãƒƒã‚°ç”¨GUI
 	/// </summary>
 	void DebugGUI();
 
 	/// <summary>
-	/// ƒXƒe[ƒ^ƒX•ÏX
+	/// ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å¤‰æ›´
 	/// </summary>
-	/// <param name="newStateType">V‚µ‚¢ó‘Ô</param>
+	/// <param name="newStateType">æ–°ã—ã„çŠ¶æ…‹</param>
 	void ChangeState(MinionStateType newStateType);
 
-private: // ƒƒ“ƒo•Ï”
+private: // ãƒ¡ãƒ³ãƒå¤‰æ•°
 
-	// ƒXƒe[ƒ^ƒX
+	// ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
 	std::unordered_map<MinionStateType, std::unique_ptr<IMinionState>> stateMap_;
-	// Œ»İ‚Ìó‘Ô
+	// ç¾åœ¨ã®çŠ¶æ…‹
 	IMinionState* currentState_ = nullptr;
-	// ƒXƒe[ƒgƒpƒ^[ƒ“
+	// ã‚¹ãƒ†ãƒ¼ãƒˆãƒ‘ã‚¿ãƒ¼ãƒ³
 	LWP::Utility::StatePattern<MinionStateType, static_cast<size_t>(MinionStateType::StateTypeOfCount)> statePattern_;
 
-	// ƒXƒvƒ‰ƒCƒgƒVƒXƒeƒ€
+	// ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã‚·ã‚¹ãƒ†ãƒ 
 	std::unique_ptr<MinionSpriteSystem> spriteSystem_;
 
-	// ˆÊ’u
+	// ä½ç½®
 	LWP::Math::Vector2 positon_;
-	// ‰ñ“] ƒ‰ƒWƒAƒ“Šp
+	// å›è»¢ ãƒ©ã‚¸ã‚¢ãƒ³è§’
 	float radian_;
 	// HP
 	int hp_;

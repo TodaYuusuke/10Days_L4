@@ -22,7 +22,7 @@ Minion::~Minion()
 void Minion::Initialize()
 {
 
-    // ƒXƒe[ƒ^ƒX
+    // ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
     stateMap_ = MinionStateFactory::CreateStates();
     ChangeState(MinionStateType::Idle);
     statePattern_.Init();
@@ -41,13 +41,13 @@ void Minion::Update()
 
     statePattern_.request = MinionStateType::Idle;
 
-    // ƒXƒe[ƒ^ƒX
+    // ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
     statePattern_.Update();
     if (currentState_) {
         currentState_->Update(this);
     }
 
-    // ƒXƒvƒ‰ƒCƒg
+    // ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆ
     spriteSystem_->Update(statePattern_.GetCurrentBehavior(), positon_);
 
 }
@@ -59,15 +59,15 @@ void Minion::DebugGUI()
 void Minion::ChangeState(MinionStateType newStateType)
 {
 
-    // ‘O‚ÌƒXƒe[ƒg‚ª‚ ‚ê‚ÎExitˆ—
+    // å‰ã®ã‚¹ãƒ†ãƒ¼ãƒˆãŒã‚ã‚Œã°Exitå‡¦ç†
     if (currentState_) {
         currentState_->Exit(this);
     }
 
-    // Ÿ‚ÌƒXƒe[ƒg‚ğŒ©‚Â‚¯‚é
+    // æ¬¡ã®ã‚¹ãƒ†ãƒ¼ãƒˆã‚’è¦‹ã¤ã‘ã‚‹
     auto it = stateMap_.find(newStateType);
 
-    // Ÿ‚ÌƒXƒe[ƒg‚É‚µ‚ÄEnterˆ—
+    // æ¬¡ã®ã‚¹ãƒ†ãƒ¼ãƒˆã«ã—ã¦Enterå‡¦ç†
     if (it != stateMap_.end()) {
         currentState_ = it->second.get();
         currentState_->Enter(this);

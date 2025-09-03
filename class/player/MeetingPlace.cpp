@@ -17,10 +17,10 @@ MeetingPlace::~MeetingPlace()
 void MeetingPlace::Initialize()
 {
 
-	// ƒeƒNƒXƒ`ƒƒ‚Ì–¼‘O
+	// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®åå‰
 	const std::string kTextureName = "MeetingPlace.png";
 	sprite_.LoadTexture(kTextureName);
-	// ƒeƒNƒXƒ`ƒƒƒTƒCƒY
+	// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚µã‚¤ã‚º
 	const Vector2& kSize = { 64.0f, 64.0f };
 	sprite_.SetSplitSize(kSize);
 
@@ -29,26 +29,26 @@ void MeetingPlace::Initialize()
 void MeetingPlace::Update()
 {
 
-	// indexX‚ÌÅ‘å’l
+	// indexXã®æœ€å¤§å€¤
 	const int kIndexMaxX = 6;
-	// ˜A”Ô‚ÌØ‚è‘Ö‚í‚èƒtƒŒ[ƒ€”
+	// é€£ç•ªã®åˆ‡ã‚Šæ›¿ã‚ã‚Šãƒ•ãƒ¬ãƒ¼ãƒ æ•°
 	const int kChangeIndexFrame = 4;
 
-	// ƒtƒŒ[ƒ€ƒJƒEƒ“ƒgƒ_ƒEƒ“
+	// ãƒ•ãƒ¬ãƒ¼ãƒ ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³
 	--changeIndexFrameCount_;
 	if (0 >= changeIndexFrameCount_) {
-		// x‚ğˆÚ“®‚³‚¹‚éˆ—
+		// xã‚’ç§»å‹•ã•ã›ã‚‹å‡¦ç†
 		indexX_ = (++indexX_) % kIndexMaxX;
-		// ƒtƒŒ[ƒ€ƒJƒEƒ“ƒg‚ğ–ß‚·
+		// ãƒ•ãƒ¬ãƒ¼ãƒ ã‚«ã‚¦ãƒ³ãƒˆã‚’æˆ»ã™
 		changeIndexFrameCount_ = kChangeIndexFrame;
 	}
 
-	// Œ»İ‚Ìindex‚ÌŠm’è
+	// ç¾åœ¨ã®indexã®ç¢ºå®š
 	sprite_.index = indexX_;
 
-	// ZÀ•Wi•`‰æ‡j
+	// Zåº§æ¨™ï¼ˆæç”»é †ï¼‰
 	const float kPositionZ = 0.0f;
-	// ˆÊ’u‚ÌˆÚ“®
+	// ä½ç½®ã®ç§»å‹•
 	sprite_.worldTF.translation = { position_.x, position_.y, kPositionZ };
 
 }

@@ -2,28 +2,28 @@
 #include "IMinionState.h"
 
 /// <summary>
-/// è‰º‚Ì‘Ò‹@ó‘Ô
+/// æ‰‹ä¸‹ã®å¾…æ©ŸçŠ¶æ…‹
 /// </summary>
 class MinionIdleState :
     public IMinionState
 {
 
-public: // ƒƒ“ƒoŠÖ”
+public: // ãƒ¡ãƒ³ãƒé–¢æ•°
     
     /// <summary>
-    /// ‚±‚Ìó‘Ô‚É‚È‚é‚Ìˆ—
+    /// ã“ã®çŠ¶æ…‹ã«ãªã‚‹æ™‚ã®å‡¦ç†
     /// </summary>
-    /// <param name="minion">è‰º‚Ìƒ|ƒCƒ“ƒ^</param>
+    /// <param name="minion">æ‰‹ä¸‹ã®ãƒã‚¤ãƒ³ã‚¿</param>
     void Enter(Minion* minion) override;
 
     /// <summary>
-    /// XVˆ—
+    /// æ›´æ–°å‡¦ç†
     /// </summary>
     /// <param name="minion"></param>
     void Update(Minion* minion) override;
 
     /// <summary>
-    /// ‚±‚Ìó‘Ô‚Å‚È‚­‚È‚é‚Ìˆ—
+    /// ã“ã®çŠ¶æ…‹ã§ãªããªã‚‹æ™‚ã®å‡¦ç†
     /// </summary>
     /// <param name="minion"></param>
     void Exit(Minion* minion) override;

@@ -3,47 +3,47 @@
 #include "state/MinionStateType.h"
 
 /// <summary>
-/// è‰º‚ÌƒXƒvƒ‰ƒCƒg‹@”\
+/// æ‰‹ä¸‹ã®ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆæ©Ÿèƒ½
 /// </summary>
 class MinionSpriteSystem
 {
 
-public:  // ƒƒ“ƒoŠÖ”
+public:  // ãƒ¡ãƒ³ãƒé–¢æ•°
 
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	MinionSpriteSystem();
 
 	/// <summary>
-	/// ƒfƒXƒgƒ‰ƒNƒ^
+	/// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	~MinionSpriteSystem();
 
 	/// <summary>
-	/// ‰Šú‰»
+	/// åˆæœŸåŒ–
 	/// </summary>
 	void Initialize();
 
 	/// <summary>
-	/// XVˆ—
+	/// æ›´æ–°å‡¦ç†
 	/// </summary>
-	/// <param name="type">ó‘Ô</param>
-	/// <param name="position">ˆÊ’u</param>
+	/// <param name="type">çŠ¶æ…‹</param>
+	/// <param name="position">ä½ç½®</param>
 	void Update(MinionStateType type, const LWP::Math::Vector2& position);
 
-private: // ƒƒ“ƒo•Ï”
+private: // ãƒ¡ãƒ³ãƒå¤‰æ•°
 
-	// ƒXƒvƒ‰ƒCƒg
+	// ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆ
 	LWP::Primitive::SequenceSprite sprite_;
 
-	// ˜A”Ô‚ÌindexX
+	// é€£ç•ªã®indexX
 	int indexX_;
 
-	// ‘O‚Ìó‘Ô
+	// å‰ã®çŠ¶æ…‹
 	MinionStateType preType_;
 
-	// index•ÏX‚Ü‚Å‚ÌƒtƒŒ[ƒ€ƒJƒEƒ“ƒg
+	// indexå¤‰æ›´ã¾ã§ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã‚«ã‚¦ãƒ³ãƒˆ
 	int changeIndexFrameCount_;
 
 };

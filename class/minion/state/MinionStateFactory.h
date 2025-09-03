@@ -5,17 +5,17 @@
 #include "IMinionState.h"
 
 /// <summary>
-/// è‰º‚Ìó‘Ô‚ÌFactory
+/// æ‰‹ä¸‹ã®çŠ¶æ…‹ã®Factory
 /// </summary>
 class MinionStateFactory
 {
 
-public: //ƒƒ“ƒoŠÖ”
+public: //ãƒ¡ãƒ³ãƒé–¢æ•°
 	
 	/// <summary>
-	/// ó‘Ôì¬ŠÖ”
+	/// çŠ¶æ…‹ä½œæˆé–¢æ•°
 	/// </summary>
-	/// <returns>ó‘Ôˆê——</returns>
+	/// <returns>çŠ¶æ…‹ä¸€è¦§</returns>
 	static std::unordered_map<MinionStateType, std::unique_ptr<IMinionState>> CreateStates();
 
 };

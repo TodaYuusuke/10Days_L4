@@ -5,7 +5,7 @@
 #include "Drawing.h"
 
 /// <summary>
-/// ƒvƒŒƒCƒ„[
+/// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
 /// </summary>
 class Player
 {
@@ -13,34 +13,34 @@ class Player
 public:
 
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	Player();
 
 	/// <summary>
-	/// ƒfƒXƒgƒ‰ƒNƒ^
+	/// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	~Player();
 
 	/// <summary>
-	/// ‰Šú‰»
+	/// åˆæœŸåŒ–
 	/// </summary>
 	void Initialize();
 
 	/// <summary>
-	/// XV
+	/// æ›´æ–°
 	/// </summary>
 	void Update();
 
 private:
 	
-	// ƒ}ƒEƒX‚Ì‘€ì
+	// ãƒã‚¦ã‚¹ã®æ“ä½œ
 	std::unique_ptr<PlayerMouseOperation> playerMouseOperation_;
 
-	// W‡êŠ
+	// é›†åˆå ´æ‰€
 	std::unique_ptr<MeetingPlace> meetingPlace_;
 
-	// ‘‚«“r’†
+	// æ›¸ãé€”ä¸­
 	std::unique_ptr<Drawing> drawing_;
 
 };

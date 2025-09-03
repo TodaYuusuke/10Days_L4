@@ -20,10 +20,10 @@ MinionSpriteSystem::~MinionSpriteSystem()
 void MinionSpriteSystem::Initialize()
 {
 
-	// ƒeƒNƒXƒ`ƒƒ‚Ì–¼‘O
+	// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®åå‰
 	const std::string kTextureName = "L4_10Days_Demo.png";
 	sprite_.LoadTexture(kTextureName);
-	// ƒeƒNƒXƒ`ƒƒƒTƒCƒY
+	// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚µã‚¤ã‚º
 	const Vector2& kSize = { 64.0f, 64.0f };
 	sprite_.SetSplitSize(kSize);
 
@@ -32,37 +32,37 @@ void MinionSpriteSystem::Initialize()
 void MinionSpriteSystem::Update(MinionStateType type, const LWP::Math::Vector2& position)
 {
 
-	// indexX‚ÌÅ‘å’l
+	// indexXã®æœ€å¤§å€¤
 	const int kIndexMaxX = 6;
-	// ˜A”Ô‚ÌØ‚è‘Ö‚í‚èƒtƒŒ[ƒ€”
+	// é€£ç•ªã®åˆ‡ã‚Šæ›¿ã‚ã‚Šãƒ•ãƒ¬ãƒ¼ãƒ æ•°
 	const int kChangeIndexFrame = 20;
 	
-	// ‘O‚Ìó‘Ô‚Ì‚Ü‚Ü‚È‚ç
+	// å‰ã®çŠ¶æ…‹ã®ã¾ã¾ãªã‚‰
 	if (preType_ == type) {
-		// ƒtƒŒ[ƒ€ƒJƒEƒ“ƒgƒ_ƒEƒ“
+		// ãƒ•ãƒ¬ãƒ¼ãƒ ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³
 		--changeIndexFrameCount_;
 		if (0 >= changeIndexFrameCount_) {
-			// x‚ğˆÚ“®‚³‚¹‚éˆ—
+			// xã‚’ç§»å‹•ã•ã›ã‚‹å‡¦ç†
 			indexX_ = (++indexX_) % kIndexMaxX;
-			// ƒtƒŒ[ƒ€ƒJƒEƒ“ƒg‚ğ–ß‚·
+			// ãƒ•ãƒ¬ãƒ¼ãƒ ã‚«ã‚¦ãƒ³ãƒˆã‚’æˆ»ã™
 			changeIndexFrameCount_ = kChangeIndexFrame;
 		}
 	}
 	else {
-		// x‚ğ‰Šú‰»‚·‚éˆ—
+		// xã‚’åˆæœŸåŒ–ã™ã‚‹å‡¦ç†
 		indexX_ = 0;
-		// ƒtƒŒ[ƒ€ƒJƒEƒ“ƒg‚ğ–ß‚·
+		// ãƒ•ãƒ¬ãƒ¼ãƒ ã‚«ã‚¦ãƒ³ãƒˆã‚’æˆ»ã™
 		changeIndexFrameCount_ = kChangeIndexFrame;
 	}
 
-	// Œ»İ‚Ìƒ^ƒCƒv‚©‚çy‚Ìindex‚ğŒˆ’è
+	// ç¾åœ¨ã®ã‚¿ã‚¤ãƒ—ã‹ã‚‰yã®indexã‚’æ±ºå®š
 	const int kIndexY = static_cast<int>(type);
-	// Œ»İ‚Ìindex‚ÌŠm’è
+	// ç¾åœ¨ã®indexã®ç¢ºå®š
 	sprite_.index = kIndexY * kIndexMaxX + indexX_;
 
-	// ZÀ•Wi•`‰æ‡j
+	// Zåº§æ¨™ï¼ˆæç”»é †ï¼‰
 	const float kPositionZ = 0.0f;
-	// ˆÊ’u‚ÌˆÚ“®
+	// ä½ç½®ã®ç§»å‹•
 	sprite_.worldTF.translation = { position.x, position.y, kPositionZ };
 
 }

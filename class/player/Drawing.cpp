@@ -22,39 +22,39 @@ void Drawing::Initialize()
 void Drawing::Update(bool isDragging)
 {
 
-	// ƒhƒ‰ƒbƒO‚µ‚Ä‚¢‚È‚¢
+	// ãƒ‰ãƒ©ãƒƒã‚°ã—ã¦ã„ãªã„
 	if (!isDragging) {
-		// ƒAƒNƒeƒBƒu‚È‚ç~‚ß‚é
+		// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªã‚‰æ­¢ã‚ã‚‹
 		if (isActive_) {
 
-			// ‰~‚©‚Ç‚¤‚©
-			// •Ç‚ğì‚é
+			// å††ã‹ã©ã†ã‹
+			// å£ã‚’ä½œã‚‹
 
-			// ”ñƒAƒNƒeƒBƒu
+			// éã‚¢ã‚¯ãƒ†ã‚£ãƒ–
 			isActive_ = false;
 			points_.clear();
 
 		}
 		
 	}
-	// ƒhƒ‰ƒbƒO‚µ‚Ä‚¢‚é
+	// ãƒ‰ãƒ©ãƒƒã‚°ã—ã¦ã„ã‚‹
 	else {
-		// ü‚ğ‘‚«“r’†
+		// ç·šã‚’æ›¸ãé€”ä¸­
 		if (isActive_) {
 			recordingTimer_ += LWP::Info::GetDeltaTime();
-			// ƒŒƒR[ƒfƒBƒ“ƒOŠÔ
+			// ãƒ¬ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°æ™‚é–“
 			const float kRecordingTime = 0.5f;
 			if (recordingTimer_ > kRecordingTime) {
-				// ‹L˜^
+				// è¨˜éŒ²
 				recordingTimer_ -= kRecordingTime;
 				points_.push_back(Mouse::GetPosition());
 			}
 		}
-		// ‚±‚ê‚©‚çü‚ğ‘‚­
+		// ã“ã‚Œã‹ã‚‰ç·šã‚’æ›¸ã
 		else {
-			// Œ»İ‚ÌˆÊ’u‚ğ•Û‘¶
+			// ç¾åœ¨ã®ä½ç½®ã‚’ä¿å­˜
 			points_.push_back(Mouse::GetPosition());
-			// ƒAƒNƒeƒBƒu
+			// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–
 			isActive_ = true;
 		}
 	}

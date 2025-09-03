@@ -39,7 +39,7 @@ void PlayerMouseOperation::Update()
 void PlayerMouseOperation::LeftButtonPressed()
 {
 
-	// ‰Ÿ‚³‚ê‚½ˆÊ’u‚ğ•Û‘¶
+	// æŠ¼ã•ã‚ŒãŸä½ç½®ã‚’ä¿å­˜
 	pressedPosition_ = Mouse::GetPosition();
 
 }
@@ -47,17 +47,17 @@ void PlayerMouseOperation::LeftButtonPressed()
 void PlayerMouseOperation::LeftButtonHeldDown()
 {
 
-	// ƒhƒ‰ƒbƒO‚¶‚á‚È‚¢
+	// ãƒ‰ãƒ©ãƒƒã‚°ã˜ã‚ƒãªã„
 	if (!isDragging_) {
-		// ƒ}ƒEƒX‚ª“®‚¢‚Ä‚¢‚È‚¢Šm”F
+		// ãƒã‚¦ã‚¹ãŒå‹•ã„ã¦ã„ãªã„ç¢ºèª
 		const Vector2 kNowPosition = Mouse::GetPosition();
-		// „‚µ‚½‚Æ‚«‚Æ‚Ì‹——£‚ğŠm”F
+		// æ¨ã—ãŸã¨ãã¨ã®è·é›¢ã‚’ç¢ºèª
 		const float kDistance = (kNowPosition - pressedPosition_).Length();
-		// ƒhƒ‰ƒbƒO”F’è‹——£
+		// ãƒ‰ãƒ©ãƒƒã‚°èªå®šè·é›¢
 		const float DragCertifiedDistance = 10.0f;
 
 		if (DragCertifiedDistance < kDistance) {
-			//ƒhƒ‰ƒbƒOŠJn
+			//ãƒ‰ãƒ©ãƒƒã‚°é–‹å§‹
 			isDragging_ = true;
 		}
 
@@ -68,13 +68,13 @@ void PlayerMouseOperation::LeftButtonHeldDown()
 void PlayerMouseOperation::LeftButtonReleased()
 {
 
-	// ƒhƒ‰ƒbƒO‚Å‚Í‚È‚¢
+	// ãƒ‰ãƒ©ãƒƒã‚°ã§ã¯ãªã„
 	if (!isDragging_) {
-		// ƒNƒŠƒbƒN‚³‚ê‚½
+		// ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸ
 		clicked_ = true;
 	}
 	else {
-		// ƒhƒ‰ƒbƒOI—¹
+		// ãƒ‰ãƒ©ãƒƒã‚°çµ‚äº†
 		isDragging_ = false;
 	}
 

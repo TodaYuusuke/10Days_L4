@@ -2,64 +2,64 @@
 #include <Adapter.h>
 
 /// <summary>
-/// ƒvƒŒƒCƒ„[‚Ìƒ}ƒEƒX‘€ì
+/// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ãƒã‚¦ã‚¹æ“ä½œ
 /// </summary>
 class PlayerMouseOperation
 {
 
-public: // ƒƒ“ƒoŠÖ”
+public: // ãƒ¡ãƒ³ãƒé–¢æ•°
 
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	PlayerMouseOperation();
 
 	/// <summary>
-	/// ƒfƒXƒgƒ‰ƒNƒ^
+	/// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	~PlayerMouseOperation();
 
 	/// <summary>
-	/// ‰Šú‰»
+	/// åˆæœŸåŒ–
 	/// </summary>
 	void Initialize();
 
 	/// <summary>
-	/// XV
+	/// æ›´æ–°
 	/// </summary>
 	void Update();
 
 private:
 
 	/// <summary>
-	/// ‰Ÿ‚³‚ê‚½
+	/// æŠ¼ã•ã‚ŒãŸ
 	/// </summary>
 	void LeftButtonPressed();
 
 	/// <summary>
-	/// ‰Ÿ‚³‚ê‘±‚¯‚Ä‚¢‚é
+	/// æŠ¼ã•ã‚Œç¶šã‘ã¦ã„ã‚‹
 	/// </summary>
 	void LeftButtonHeldDown();
 
 	/// <summary>
-	/// —£‚³‚ê‚½
+	/// é›¢ã•ã‚ŒãŸ
 	/// </summary>
 	void LeftButtonReleased();
 
-public: // ƒAƒNƒZƒbƒT
+public: // ã‚¢ã‚¯ã‚»ãƒƒã‚µ
 
 	bool GetIsDragging() const { return isDragging_; }
 	bool GetClicked() const { return clicked_; }
 
 private:
 
-	// ‰Ÿ‚³‚ê‚½ˆÊ’u
+	// æŠ¼ã•ã‚ŒãŸä½ç½®
 	LWP::Math::Vector2 pressedPosition_;
 
-	// ƒhƒ‰ƒbƒOó‘Ô‚©
+	// ãƒ‰ãƒ©ãƒƒã‚°çŠ¶æ…‹ã‹
 	bool isDragging_;
 
-	// ƒNƒŠƒbƒN‚³‚ê‚½
+	// ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸ
 	bool clicked_;
 
 
