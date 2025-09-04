@@ -82,8 +82,10 @@ void Drawing::Update(bool isDragging)
 				const Vector2 preMousePosition = points_[points_.size() - 1];
 				const float kLength = (mousePosition - preMousePosition).Length();
 
-				// 長さ10未満なのでリターン
-				if (kLength < 10.0f) {
+				// 長さ30未満なのでリターン
+				// ドラッグ認定距離
+				const float kDragCertifiedDistance = 30.0f;
+				if (kLength < kDragCertifiedDistance) {
 					return;
 				}
 
@@ -95,7 +97,7 @@ void Drawing::Update(bool isDragging)
 				// 線の長さ
 				lineLength_ += kLength;
 				// 線の長さ最大
-				const float kLengthMax = 5000.0f;
+				const float kLengthMax = 6000.0f;
 				// 差分
 				float difference = lineLength_ - kLengthMax;
 
