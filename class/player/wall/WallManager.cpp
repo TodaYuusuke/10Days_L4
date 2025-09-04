@@ -12,6 +12,12 @@ WallManager::WallManager()
 
 WallManager::~WallManager()
 {
+	// 削除
+	for (auto it = walls_.begin(); it != walls_.end();) {
+		Wall* wall = *it;
+		it = walls_.erase(it);
+		delete wall;
+	}
 }
 
 void WallManager::Initialize()

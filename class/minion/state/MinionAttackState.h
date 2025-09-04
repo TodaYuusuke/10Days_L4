@@ -4,37 +4,37 @@ class MinionAttackState :
     public IMinionState
 {
 
-public: // �����o�֐�
+public: // メンバ関数
 
     /// <summary>
-    /// �R���X�g���N�^
+    /// コンストラクタ
     /// </summary>
     MinionAttackState();
 
     /// <summary>
-    /// ���̏�ԂɂȂ鎞�̏���
+    /// この状態になる時の処理
     /// </summary>
-    /// <param name="minion">�艺�̃|�C���^</param>
+    /// <param name="minion">手下のポインタ</param>
     void Enter(Minion* minion) override;
 
     /// <summary>
-    /// �X�V����
+    /// 更新処理
     /// </summary>
     /// <param name="minion"></param>
     void Update(Minion* minion) override;
 
     /// <summary>
-    /// ���̏�ԂłȂ��Ȃ鎞�̏���
+    /// この状態でなくなる時の処理
     /// </summary>
     /// <param name="minion"></param>
     void Exit(Minion* minion) override;
 
 public:
 
-    // ���C�^�C��
+    // やる気タイム
     float motivationTime_;
 
-    // �΂𓊂���܂ł̎���
+    // 石を投げるまでの時間
     float attackCoolTime_;
 
 };

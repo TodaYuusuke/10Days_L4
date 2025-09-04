@@ -20,26 +20,28 @@ void MinionAttackState::Enter(Minion* minion)
 void MinionAttackState::Update(Minion* minion)
 {
 
-	motivationTime_ -= GetDeltaTime();
+	const float kDeltaTime = static_cast<float>(GetDeltaTime());
 
-	// UŒ‚‘¬“x
-	float attackSpeed = GetDeltaTime();
+	motivationTime_ -= kDeltaTime;
 
-	// ‚â‚é‹C‚ ‚è
+	// æ”»æ’ƒé€Ÿåº¦
+	float attackSpeed = kDeltaTime;
+
+	// ã‚„ã‚‹æ°—ã‚ã‚Š
 	if (motivationTime_ > 0.0f) {
-		motivationTime_ -= GetDeltaTime();
+		motivationTime_ -= kDeltaTime;
 		const float kMotivationMultiplier = 1.5f;
 		attackSpeed *= kMotivationMultiplier;
 	}
-	// ‚â‚é‹C‚È‚µ
+	// ã‚„ã‚‹æ°—ãªã—
 	else {
 		motivationTime_ = 0.0f;
 	}
 
-	// Î“Š‚°ˆ—
+	// çŸ³æŠ•ã’å‡¦ç†
 	attackCoolTime_ -= attackSpeed;
 	if (attackCoolTime_ <= 0.0f) {
-		// UŒ‚
+		// æ”»æ’ƒ
 
 		const float kAttackCoolTimeMax = 2.0f;
 		attackCoolTime_ = kAttackCoolTimeMax;
