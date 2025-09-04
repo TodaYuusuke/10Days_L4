@@ -47,3 +47,10 @@ void Player::Update()
 	wallManager_->Update();
 
 }
+
+void Player::SetMinionManagerForDrawing(MinionManager* minionManager)
+{
+
+	drawing_->SetMinionManager(minionManager);
+
+}

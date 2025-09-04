@@ -59,6 +59,7 @@ void Minion::Initialize()
 void Minion::Update()
 {
 
+#ifdef _DEBUG
     // デバッグ
     if(LWP::Input::Mouse::GetTrigger(1)) {
         if (requestStateType_ == MinionStateType::Attack) {
@@ -68,6 +69,7 @@ void Minion::Update()
             requestStateType_ = MinionStateType::Attack;
         }
     }
+#endif // _DEBUG
 
     // 状態 リクエストがあったら変更
     if (currentStateType_ != requestStateType_) {

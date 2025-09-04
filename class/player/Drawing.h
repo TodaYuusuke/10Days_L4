@@ -2,6 +2,9 @@
 #include <vector>
 #include <Adapter.h>
 
+// 前方宣言
+class MinionManager;
+
 /// <summary>
 /// 書き途中線
 /// </summary>
@@ -23,6 +26,12 @@ public: // メンバ関数
 	Drawing(); 
 
 	/// <summary>
+	/// コンストラクタ
+	/// </summary>
+	/// <param name="minionManager">手下のマネージャー</param>
+	Drawing(MinionManager* minionManager);
+
+	/// <summary>
 	/// デストラクタ
 	/// </summary>
 	~Drawing();
@@ -40,17 +49,10 @@ public: // メンバ関数
 
 public: // アクセッサ
 
-	/// <summary>
-	/// 点取得
-	/// </summary>
-	/// <returns></returns>
 	std::vector<LWP::Math::Vector2>* GetPoints() { return &points_; }
-
-	/// <summary>
-	/// 壁作成フラグ取得
-	/// </summary>
-	/// <returns></returns>
 	bool GetWallCreation() const { return wallCreation_; }
+
+	void SetMinionManager(MinionManager* minionManager) { minionManager_ = minionManager; }
 
 private: // メンバ関数
 	
@@ -61,28 +63,38 @@ private: // メンバ関数
 	/// <param name="point1">点1</param>
 	void SpriteActive(const LWP::Math::Vector2& point0, const LWP::Math::Vector2& point1);
 
+	/// <summary>
+	/// 円が作成されたか
+	/// </summary>
+	/// <returns>作成されたかどうか</returns>
+	bool IsCircleCreated();
+
+	/// <summary>
+	/// 囲まれた手下の更新
+	/// </summary>
+	void SurroundedMinionsUpdate();
+
 private: // メンバ変数
 
 	// 点
 	std::vector<LWP::Math::Vector2> points_;
-
 	// スプライト
 	std::array<LWP::Primitive::NormalSprite, kSpriteNum_> sprites_;
-
 	// スプライト番号
 	size_t sprieIndex_;
-
 	// 動いてる
 	bool isActive_;
-
 	// 記録タイミングタイマー
 	float recordingTimer_;
-
 	// 線の長さ
 	float lineLength_;
-
 	// 壁作成フラグ
 	bool wallCreation_;
+
+private: // ポインタ
+
+	// 手下のマネージャー
+	MinionManager* minionManager_;
 
 };
 

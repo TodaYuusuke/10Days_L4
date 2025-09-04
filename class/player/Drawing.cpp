@@ -12,7 +12,19 @@ Drawing::Drawing()
 		sprites_{},
 		isActive_(false),
 		recordingTimer_(0.0f),
-		wallCreation_(false)
+		wallCreation_(false),
+		minionManager_(nullptr)
+{
+	Initialize();
+}
+
+Drawing::Drawing(MinionManager* minionManager)
+	:	points_{},
+		sprites_{},
+		isActive_(false),
+		recordingTimer_(0.0f),
+		wallCreation_(false),
+		minionManager_(minionManager)
 {
 	Initialize();
 }
@@ -42,9 +54,6 @@ void Drawing::Update(bool isDragging)
 		// アクティブなら止める
 		if (isActive_) {
 
-			// 円かどうか
-			// 壁を作る
-
 			// 非アクティブ
 			isActive_ = false;
 			sprieIndex_ = 0;
@@ -63,7 +72,7 @@ void Drawing::Update(bool isDragging)
 	else {
 		// 線を書き途中
 		if (isActive_) {
-			recordingTimer_ += LWP::Info::GetDeltaTime();
+			recordingTimer_ += static_cast<float>(LWP::Info::GetDeltaTime());
 			// レコーディング時間
 			const float kRecordingTime = 0.01f;
 			if (recordingTimer_ > kRecordingTime) {
@@ -125,6 +134,12 @@ void Drawing::Update(bool isDragging)
 					}
 
 				}
+
+				// ここで線が生成され終わるのでおそらくここで円確認
+				if (IsCircleCreated()) {
+					// 囲まれた手下の更新
+					SurroundedMinionsUpdate();
+				}
 			
 			}
 
@@ -163,6 +178,21 @@ void Drawing::SpriteActive(const LWP::Math::Vector2& point0, const LWP::Math::Ve
 	if (sprieIndex_ == kSpriteNum_) {
 		sprieIndex_ = 0;
 		assert(0);
+	}
+
+}
+
+bool Drawing::IsCircleCreated()
+{
+	return false;
+}
+
+void Drawing::SurroundedMinionsUpdate()
+{
+	// 手下の管理クラスのポインタがあるか
+	if (!minionManager_) {
+		assert(0);
+		return;
 	}
 
 }

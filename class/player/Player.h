@@ -33,6 +33,12 @@ public:
 	/// </summary>
 	void Update();
 
+	/// <summary>
+	/// drawing_に手下のマネージャーを設定する
+	/// </summary>
+	/// <param name="minionManager"></param>
+	void SetMinionManagerForDrawing(MinionManager* minionManager);
+
 public: // アクセッサ
 
 	MeetingPlace* GetMeetingPlace() { return meetingPlace_.get(); }
