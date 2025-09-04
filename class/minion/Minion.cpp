@@ -9,7 +9,8 @@ int Minion::serialNumberCount_ = 0;
 Minion::Minion()
     :   stateMap_{},
         currentState_(nullptr),
-        statePattern_(),
+        currentStateType_(MinionStateType::Idle),
+        requestStateType_(MinionStateType::Idle),
         spriteSystem_(nullptr),
         positon_({0.0f,0.0f}),
         direction_({ 0.0f,1.0f }),
@@ -23,7 +24,8 @@ Minion::Minion()
 Minion::Minion(MinionManager* minionManager)
     :   stateMap_{},
         currentState_(nullptr),
-        statePattern_(),
+        currentStateType_(MinionStateType::Idle),
+        requestStateType_(MinionStateType::Idle),
         spriteSystem_(nullptr),
         positon_({ 0.0f,0.0f }),
         direction_({ 0.0f,1.0f }),
@@ -43,8 +45,7 @@ void Minion::Initialize()
 
     // ステータス
     stateMap_ = MinionStateFactory::CreateStates();
-    ChangeState(MinionStateType::Move);
-    statePattern_.Init();
+    ChangeState(requestStateType_);
 
     spriteSystem_ = std::make_unique<MinionSpriteSystem>();
 
@@ -57,10 +58,11 @@ void Minion::Initialize()
 void Minion::Update()
 {
 
-    //statePattern_.request = MinionStateType::Move;
+    // 状態 リクエストがあったら変更
+    if (currentStateType_ != requestStateType_) {
+        ChangeState(requestStateType_);
+    }
 
-    // ステータス
-    //statePattern_.Update();
     if (currentState_) {
         currentState_->Update(this);
     }

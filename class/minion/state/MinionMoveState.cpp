@@ -26,7 +26,7 @@ void MinionMoveState::Update(Minion* minion)
 	const int  kSerialNumber = minion->GetSerialNumber();
 	const float kDegreeInterval = 360.0f / minion->GetMinionManager()->kMinionNumMax_;
 	const float kTheta = std::numbers::pi / 180.0f * kSerialNumber * kDegreeInterval;
-	const float kRadius = 50.0f;
+	const float kRadius = 100.0f;
 	const Vector2 kAddPosition = { std::cosf(kTheta) * kRadius, std::sinf(kTheta) * kRadius };
 
 	const Vector2 kTargetPosition = kMeetingPlacePosition + kAddPosition;

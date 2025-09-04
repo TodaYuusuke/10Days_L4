@@ -65,6 +65,7 @@ public: // アクセッサ
 	int GetHp() const { return hp_; }
 	int GetSerialNumber() const { return serialNumber_; }
 
+	void SetRequestStateType(MinionStateType requestStateType) { requestStateType_ = requestStateType; }
 	void SetPositon(const LWP::Math::Vector2& positon) { positon_ = positon; }
 	void SetDirection(const LWP::Math::Vector2& direction) { direction_ = direction; }
 
@@ -76,8 +77,10 @@ private: // メンバ変数
 	std::unordered_map<MinionStateType, std::unique_ptr<IMinionState>> stateMap_;
 	// 現在の状態
 	IMinionState* currentState_ = nullptr;
-	// ステートパターン
-	LWP::Utility::StatePattern<MinionStateType, static_cast<size_t>(MinionStateType::StateTypeOfCount)> statePattern_;
+	// 現在の状態
+	MinionStateType currentStateType_;
+	// リクエストされた状態
+	MinionStateType requestStateType_;
 
 	// スプライトシステム
 	std::unique_ptr<MinionSpriteSystem> spriteSystem_;
