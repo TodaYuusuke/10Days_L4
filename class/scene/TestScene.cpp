@@ -9,9 +9,9 @@ void TestScene::Initialize() {
 	testModel_.LoadCube();				// 立方体と球はデフォルトで用意してある
 	sprite_.LoadTexture("uvChecker.png");	// resources/texture直下のパスを指定する
 
-	minion_ = std::make_unique<Minion>();
 
 	player_ = std::make_unique<Player>();
+	minionManager_ = std::make_unique<MinionManager>(player_->GetMeetingPlace());
 
 }
 
@@ -21,7 +21,7 @@ void TestScene::Update() {
 		nextSceneFunction = []() { return new Title(); };	// 次のシーンに行くための処理
 	}
 
-	minion_->Update();
+	minionManager_->Update();
 	player_->Update();
 
 	// エンジンの各クラスは大体ImGuiを呼び出す関数がある

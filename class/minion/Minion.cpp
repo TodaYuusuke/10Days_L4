@@ -3,14 +3,33 @@
 
 using namespace LWP;
 
+// シリアルナンバー生成用
+int Minion::serialNumberCount_ = 0;
+
 Minion::Minion()
     :   stateMap_{},
         currentState_(nullptr),
         statePattern_(),
         spriteSystem_(nullptr),
         positon_({0.0f,0.0f}),
-        radian_(0.0f),
-        hp_(0)
+        direction_({ 0.0f,1.0f }),
+        hp_(0),
+        serialNumber_(serialNumberCount_),
+        minionManager_(nullptr)
+{
+    Initialize();
+}
+
+Minion::Minion(MinionManager* minionManager)
+    :   stateMap_{},
+        currentState_(nullptr),
+        statePattern_(),
+        spriteSystem_(nullptr),
+        positon_({ 0.0f,0.0f }),
+        direction_({ 0.0f,1.0f }),
+        hp_(0),
+        serialNumber_(serialNumberCount_),
+        minionManager_(minionManager)
 {
     Initialize();
 }
@@ -24,31 +43,30 @@ void Minion::Initialize()
 
     // ステータス
     stateMap_ = MinionStateFactory::CreateStates();
-    ChangeState(MinionStateType::Idle);
+    ChangeState(MinionStateType::Move);
     statePattern_.Init();
 
     spriteSystem_ = std::make_unique<MinionSpriteSystem>();
 
-
     positon_ = { 660.0f,660.0f };
-    radian_ = 0.0f;
-    hp_ = 0;
+
+    ++serialNumberCount_;
 
 }
 
 void Minion::Update()
 {
 
-    statePattern_.request = MinionStateType::Idle;
+    //statePattern_.request = MinionStateType::Move;
 
     // ステータス
-    statePattern_.Update();
+    //statePattern_.Update();
     if (currentState_) {
         currentState_->Update(this);
     }
 
     // スプライト
-    spriteSystem_->Update(statePattern_.GetCurrentBehavior(), positon_);
+    spriteSystem_->Update(MinionStateType::Move, positon_, direction_);
 
 }
 

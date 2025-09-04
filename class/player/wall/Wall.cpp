@@ -1,7 +1,7 @@
 #include "Wall.h"
 using namespace LWP::Math;
 
-// ƒXƒvƒ‰ƒCƒg‚Ì‘å‚«‚³
+// ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã®å¤§ãã•
 const Vector2 Wall::kSpriteSize_ = { 100.0f, 100.0f };
 
 Wall::Wall()
@@ -36,16 +36,16 @@ void Wall::Initilaize()
 
 	sprite_.LoadTexture("Wall.png");
 
-	// ˆÊ’u
+	// ä½ç½®
 	const Vector2 spritePosition = (end_ + start_) / 2.0f;
-	// ZÀ•Wi•`‰æ‡j
+	// Zåº§æ¨™ï¼ˆæç”»é †ï¼‰
 	const float kPositionZ = 0.0f;
 	sprite_.worldTF.translation = { spritePosition.x, spritePosition.y, kPositionZ };
-	// ‰ñ“]
+	// å›è»¢
 	const Vector2 kDir2D = (end_ - start_).Normalize();
 	const Vector3 kDir3D = { kDir2D.x, kDir2D.y, 0.0f };
 	sprite_.worldTF.rotation = Quaternion::ConvertFromTo(Vector3{ 0.0f,1.0f,0.0f }, kDir3D);
-	// ‘å‚«‚³
+	// å¤§ãã•
 	const float kLength = (end_ - start_).Length();
 	sprite_.worldTF.scale.y = (kLength / kSpriteSize_.y) + 0.1f;
 
@@ -54,7 +54,7 @@ void Wall::Initilaize()
 void Wall::Update()
 {
 
-	//¶‘¶ŠÔ
+	//ç”Ÿå­˜æ™‚é–“
 	lifeTime_ -= LWP::Info::GetDeltaTime();
 
 	if (lifeTime_ <= 0.0f) {

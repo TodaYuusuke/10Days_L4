@@ -10,6 +10,12 @@ class MinionMoveState :
 
 public: // メンバ関数
 
+    
+    /// <summary>
+    /// コンストラクタ
+    /// </summary>
+    MinionMoveState();
+
     /// <summary>
     /// この状態になる時の処理
     /// </summary>
@@ -32,10 +38,6 @@ private:
 
     // 移動速度
     float speed_;
-
-    // 移動場所
-
-    // 
 
 };
 

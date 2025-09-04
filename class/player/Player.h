@@ -33,6 +33,10 @@ public:
 	/// </summary>
 	void Update();
 
+public: // アクセッサ
+
+	MeetingPlace* GetMeetingPlace() { return meetingPlace_.get(); }
+
 private:
 	
 	// マウスの操作

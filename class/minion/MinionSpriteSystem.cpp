@@ -21,7 +21,7 @@ void MinionSpriteSystem::Initialize()
 {
 
 	// テクスチャの名前
-	const std::string kTextureName = "L4_10Days_Demo.png";
+	const std::string kTextureName = "Minion.png";
 	sprite_.LoadTexture(kTextureName);
 	// テクスチャサイズ
 	const Vector2& kSize = { 64.0f, 64.0f };
@@ -29,13 +29,13 @@ void MinionSpriteSystem::Initialize()
 
 }
 
-void MinionSpriteSystem::Update(MinionStateType type, const LWP::Math::Vector2& position)
+void MinionSpriteSystem::Update(MinionStateType type, const LWP::Math::Vector2& position, const LWP::Math::Vector2& direction)
 {
 
 	// indexXの最大値
 	const int kIndexMaxX = 6;
 	// 連番の切り替わりフレーム数
-	const int kChangeIndexFrame = 20;
+	const int kChangeIndexFrame = 10;
 	
 	// 前の状態のままなら
 	if (preType_ == type) {
@@ -64,5 +64,12 @@ void MinionSpriteSystem::Update(MinionStateType type, const LWP::Math::Vector2& 
 	const float kPositionZ = 0.0f;
 	// 位置の移動
 	sprite_.worldTF.translation = { position.x, position.y, kPositionZ };
+
+	// 回転
+	const Vector3 kDir3D = { direction.x, direction.y, 0.0f };
+	sprite_.worldTF.rotation = Quaternion::ConvertFromTo(Vector3{ 0.0f,1.0f,0.0f }, kDir3D);
+
+	// 前状態を切り替え
+	preType_ = type;
 
 }

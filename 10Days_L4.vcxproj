@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="class\minion\Minion.cpp" />
+    <ClCompile Include="class\minion\MinionManager.cpp" />
     <ClCompile Include="class\minion\MinionSpriteSystem.cpp" />
     <ClCompile Include="class\minion\state\IMinionState.cpp" />
     <ClCompile Include="class\minion\state\MinionIdleState.cpp" />
@@ -167,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="class\minion\Minion.h" />
+    <ClInclude Include="class\minion\MinionManager.h" />
     <ClInclude Include="class\minion\MinionSpriteSystem.h" />
     <ClInclude Include="class\minion\state\IMinionState.h" />
     <ClInclude Include="class\minion\state\MinionIdleState.h" />

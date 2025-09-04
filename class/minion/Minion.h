@@ -6,11 +6,19 @@
 #include "state/MinionStateType.h"
 #include "MinionSpriteSystem.h"
 
+// 前方宣言
+class MinionManager;
+
 /// <summary>
 /// 手下クラス
 /// </summary>
 class Minion final
 {
+
+public: 
+
+	// シリアルナンバー生成用
+	static int serialNumberCount_;
 
 public: // メンバ関数
 
@@ -18,6 +26,12 @@ public: // メンバ関数
 	/// コンストラクタ
 	/// </summary>
 	Minion();
+
+	/// <summary>
+	/// コンストラクタ
+	/// </summary>
+	/// <param name="minionManager">ミニオンマネージャー</param>
+	Minion(MinionManager* minionManager);
 
 	/// <summary>
 	/// デストラクタ
@@ -45,6 +59,17 @@ public: // メンバ関数
 	/// <param name="newStateType">新しい状態</param>
 	void ChangeState(MinionStateType newStateType);
 
+public: // アクセッサ
+
+	LWP::Math::Vector2 GetPositon() const { return positon_; }
+	int GetHp() const { return hp_; }
+	int GetSerialNumber() const { return serialNumber_; }
+
+	void SetPositon(const LWP::Math::Vector2& positon) { positon_ = positon; }
+	void SetDirection(const LWP::Math::Vector2& direction) { direction_ = direction; }
+
+	MinionManager* GetMinionManager() { return minionManager_; }
+
 private: // メンバ変数
 
 	// ステータス
@@ -59,10 +84,17 @@ private: // メンバ変数
 
 	// 位置
 	LWP::Math::Vector2 positon_;
-	// 回転 ラジアン角
-	float radian_;
+	// 回転、方向 
+	LWP::Math::Vector2 direction_;
 	// HP
 	int hp_;
+	// 手下番号
+	int serialNumber_;
+
+private: // ポインタ
+
+	// マネージャー
+	MinionManager* minionManager_;
 
 };
 

@@ -30,7 +30,8 @@ public:  // メンバ関数
 	/// </summary>
 	/// <param name="type">状態</param>
 	/// <param name="position">位置</param>
-	void Update(MinionStateType type, const LWP::Math::Vector2& position);
+	/// <param name="direction">方向ベクトル</param>
+	void Update(MinionStateType type, const LWP::Math::Vector2& position, const LWP::Math::Vector2& direction);
 
 private: // メンバ変数
 

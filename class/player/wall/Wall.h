@@ -2,72 +2,72 @@
 #include <Adapter.h>
 
 /// <summary>
-/// •Ç
+/// å£
 /// </summary>
 class Wall
 {
 
 public:
 
-	// ƒXƒvƒ‰ƒCƒg‚Ì‘å‚«‚³
+	// ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã®å¤§ãã•
 	static const LWP::Math::Vector2 kSpriteSize_;
 
-public: // ƒƒ“ƒoŠÖ”
+public: // ãƒ¡ãƒ³ãƒé–¢æ•°
 
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	Wall();
 
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
-	/// <param name="start">ŠJn’n“_</param>
-	/// <param name="end">I—¹’n“_</param>
-	/// <param name="hp">‘Ì—Í</param>
-	/// <param name="lifeTime">¶‘¶ŠÔ</param>
+	/// <param name="start">é–‹å§‹åœ°ç‚¹</param>
+	/// <param name="end">çµ‚äº†åœ°ç‚¹</param>
+	/// <param name="hp">ä½“åŠ›</param>
+	/// <param name="lifeTime">ç”Ÿå­˜æ™‚é–“</param>
 	Wall(const LWP::Math::Vector2& start, const LWP::Math::Vector2 end, float hp, float lifeTime);
 
 	/// <summary>
-	/// ƒfƒXƒgƒ‰ƒNƒ^
+	/// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	~Wall();
 
 	/// <summary>
-	/// ‰Šú‰»
+	/// åˆæœŸåŒ–
 	/// </summary>
 	void Initilaize();
 
 	/// <summary>
-	/// XV
+	/// æ›´æ–°
 	/// </summary>
 	void Update();
 
 	/// <summary>
-	/// €‚ñ‚¾‚©
+	/// æ­»ã‚“ã ã‹
 	/// </summary>
 	/// <returns></returns>
 	bool IsDead() const { return isDead_; }
 
-private: // ƒƒ“ƒo•Ï”
+private: // ãƒ¡ãƒ³ãƒå¤‰æ•°
 
-	// ŠJn’n“_
+	// é–‹å§‹åœ°ç‚¹
 	LWP::Math::Vector2 start_;
-	// I—¹’n“_
+	// çµ‚äº†åœ°ç‚¹
 	LWP::Math::Vector2 end_;
 
-	// ‘Ì—Í
+	// ä½“åŠ›
 	int hp_;
-	// ¶‘¶ŠÔ
+	// ç”Ÿå­˜æ™‚é–“
 	float lifeTime_;
 	
-	// ƒRƒ‰ƒCƒ_[
+	// ã‚³ãƒ©ã‚¤ãƒ€ãƒ¼
 	//LWP::Object::Collider:: lineCollider;
 
-	// ƒXƒvƒ‰ƒCƒg
+	// ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆ
 	LWP::Primitive::NormalSprite sprite_;
 
-	// €‚ñ‚¾‚©
+	// æ­»ã‚“ã ã‹
 	bool isDead_;
 
 };

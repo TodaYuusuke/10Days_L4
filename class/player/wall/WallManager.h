@@ -3,7 +3,7 @@
 #include "Wall.h"
 
 /// <summary>
-/// •Ç‚ÌŠÇ—Ò
+/// å£ã®ç®¡ç†è€…
 /// </summary>
 class WallManager
 {
@@ -11,40 +11,40 @@ class WallManager
 public:
 
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	WallManager();
 
 	/// <summary>
-	/// ƒfƒXƒgƒ‰ƒNƒ^
+	/// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	~WallManager();
 
 	/// <summary>
-	/// ‰Šú‰»
+	/// åˆæœŸåŒ–
 	/// </summary>
 	void Initialize();
 
 	/// <summary>
-	/// XV
+	/// æ›´æ–°
 	/// </summary>
 	void Update();
 
 	/// <summary>
-	/// •Ç‚ğì¬
+	/// å£ã‚’ä½œæˆ
 	/// </summary>
-	/// <param name="points">“_</param>
+	/// <param name="points">ç‚¹</param>
 	void CreateWalls(const std::vector<LWP::Math::Vector2>* points);
 
 private:
 
-	// •Ç
+	// å£
 	std::list<Wall*> walls_;
 
-	// •Ç‚ÌHPÅ‘å’l
+	// å£ã®HPæœ€å¤§å€¤
 	int hpMax_;
 
-	// •Ç‚Ì¶‘¶ŠÔÅ‘å’l
+	// å£ã®ç”Ÿå­˜æ™‚é–“æœ€å¤§å€¤
 	float lifeTimeMax_;
 
 };

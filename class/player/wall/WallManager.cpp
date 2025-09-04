@@ -25,7 +25,7 @@ void WallManager::Initialize()
 void WallManager::Update()
 {
 	
-	// íœ
+	// å‰Šé™¤
 	for (auto it = walls_.begin(); it != walls_.end();) {
 		Wall* wall = *it;
 		if (wall->IsDead()) {
@@ -37,7 +37,7 @@ void WallManager::Update()
 		}
 	}
 
-	// XV
+	// æ›´æ–°
 	for (auto it = walls_.begin(); it != walls_.end(); ++it) {
 		Wall* wall = *it;
 		wall->Update();
@@ -48,7 +48,7 @@ void WallManager::Update()
 void WallManager::CreateWalls(const std::vector<LWP::Math::Vector2>* points)
 {
 
-	// ì¬A“o˜^
+	// ä½œæˆã€ç™»éŒ²
 	for (size_t i = 0; i < points->size() - 1; ++i) {
 		Wall* wall = new Wall((*points)[i], (*points)[i + 1], hpMax_, lifeTimeMax_);
 		walls_.push_back(wall);
