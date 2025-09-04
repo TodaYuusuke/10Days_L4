@@ -99,5 +99,7 @@ private: // ポインタ
 	// マネージャー
 	MinionManager* minionManager_;
 
+	// 石マネージャー(なげるため)
+
 };
 

@@ -58,5 +58,7 @@ private: // ポインタ
 	// 集合場所
 	MeetingPlace* meetingPlace_;
 
+	// 石マネージャー(なげるため)
+
 };
 
