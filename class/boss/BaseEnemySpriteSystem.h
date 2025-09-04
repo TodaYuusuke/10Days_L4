@@ -9,13 +9,13 @@ public:
 	virtual ~BaseEnemySpriteSystem() = default;
 
 	// 初期化処理
-	virtual void Initialize() {};
-	
+	virtual void Initialize() = 0;
+
 	/// <summary>
 	/// 更新処理
 	/// </summary>
 	/// <param name="centerPosition">描画用中心座標,いうなれば親</param>
-	virtual void Update(const LWP::Math::Vector2& centerPosition) {};
+	virtual void Update(const LWP::Math::Vector2& centerPosition) = 0;
 
 
 protected:

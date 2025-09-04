@@ -1,23 +1,21 @@
 ﻿#pragma once
-#include <Adapter.h>
-#include <vector>
+#include "IEnemyState.h"
 
-// 敵キャラクターの基底クラス
-class BaseEnemy{
+// 敵キャラクター移動stateクラス
+class EnemyIdleState : public IEnemyState {
 public:
-	BaseEnemy();
-	~BaseEnemy() = default;
+	EnemyIdleState();
+	~EnemyIdleState() = default;
 
 	// 初期化処理
-	virtual void Initialize();
+	void Enter(BaseEnemy* enemy) override;
 	// 更新処理
-	virtual void Update();
+	void Update(BaseEnemy* enemy) override;
+	// 終了処理
+	void Exit(BaseEnemy* enemy) override;
 
 
 private:
-	// スプライト用コンテナ。パーツのenumを別途作成しその数に合わせて生成する
-	std::vector<LWP::Primitive::SequenceSprite> sprites_;
-
 
 
 };

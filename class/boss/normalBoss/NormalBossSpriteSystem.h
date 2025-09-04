@@ -4,6 +4,7 @@
 // normalBoss用sprite管理クラス
 class NormalBossSpriteSystem : public BaseEnemySpriteSystem {
 public:
+	NormalBossSpriteSystem();
 	~NormalBossSpriteSystem() override = default;
 
 	void Initialize() override;

@@ -149,8 +149,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="class\boss\BaseEnemySpriteSystem.cpp" />
+    <ClCompile Include="class\boss\BaseEnemy.cpp" />
+    <ClCompile Include="class\boss\EnemyManager.cpp" />
     <ClCompile Include="class\boss\normalBoss\NormalBoss.cpp" />
+    <ClCompile Include="class\boss\normalBoss\NormalBossStateFactory.cpp" />
     <ClCompile Include="class\boss\state\EnemyIdleState.cpp" />
     <ClCompile Include="class\boss\state\EnemyMoveState.cpp" />
     <ClCompile Include="class\scene\TestScene.cpp" />
@@ -161,7 +163,9 @@
   <ItemGroup>
     <ClInclude Include="class\boss\BaseEnemy.h" />
     <ClInclude Include="class\boss\BaseEnemySpriteSystem.h" />
+    <ClInclude Include="class\boss\EnemyManager.h" />
     <ClInclude Include="class\boss\normalBoss\NormalBoss.h" />
+    <ClInclude Include="class\boss\normalBoss\NormalBossStateFactory.h" />
     <ClInclude Include="class\boss\normalBoss\NormalBossStateType.h" />
     <ClInclude Include="class\boss\state\EnemyIdleState.h" />
     <ClInclude Include="class\boss\state\EnemyMoveState.h" />
