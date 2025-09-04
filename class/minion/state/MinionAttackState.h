@@ -7,6 +7,11 @@ class MinionAttackState :
 public: // メンバ関数
 
     /// <summary>
+    /// コンストラクタ
+    /// </summary>
+    MinionAttackState();
+
+    /// <summary>
     /// この状態になる時の処理
     /// </summary>
     /// <param name="minion">手下のポインタ</param>

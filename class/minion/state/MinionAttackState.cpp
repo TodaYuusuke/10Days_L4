@@ -3,6 +3,12 @@
 
 using namespace LWP::Info;
 
+MinionAttackState::MinionAttackState()
+	:	motivationTime_(0.0f),
+		attackCoolTime_(0.0f)
+{
+}
+
 void MinionAttackState::Enter(Minion* minion)
 {
 
