@@ -26,6 +26,8 @@ void MinionSpriteSystem::Initialize()
 	// テクスチャサイズ
 	const Vector2& kSize = { 64.0f, 64.0f };
 	sprite_.SetSplitSize(kSize);
+	// スプライトの大きさ
+	sprite_.worldTF.scale = { 0.5f,0.5f,1.0f };
 
 }
 

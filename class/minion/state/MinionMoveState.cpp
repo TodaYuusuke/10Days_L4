@@ -24,11 +24,32 @@ void MinionMoveState::Update(Minion* minion)
 
 	// 番号から最終移動地点を変更
 	const int  kSerialNumber = minion->GetSerialNumber();
-	const float kDegreeInterval = 360.0f / minion->GetMinionManager()->kMinionNumMax_;
-	const float kTheta = std::numbers::pi / 180.0f * kSerialNumber * kDegreeInterval;
-	const float kRadius = 100.0f;
-	const Vector2 kAddPosition = { std::cosf(kTheta) * kRadius, std::sinf(kTheta) * kRadius };
 
+	float degreeInterval = 0.0f;
+	float theta = 0.0f;
+	float radius = 0.0f;
+	
+	int k = 1; // 円
+	int n = 4; // その縁の人数制限
+	int serialNumberOffset = 1;
+
+	if (kSerialNumber == 0) {
+		radius = 0.0f;
+	}
+	else {
+		while (kSerialNumber > n + serialNumberOffset - 1) {
+
+			serialNumberOffset += n;
+			n *= 2;
+			++k;
+		}
+
+		degreeInterval = 360.0f / n;
+		theta = std::numbers::pi / 180.0f * (kSerialNumber - serialNumberOffset) * degreeInterval;
+		radius = k * 30.0f;
+	}
+	
+	const Vector2 kAddPosition = { std::cosf(theta) * radius, std::sinf(theta) * radius };
 	const Vector2 kTargetPosition = kMeetingPlacePosition + kAddPosition;
 
 	// 移動方向
