@@ -5,7 +5,7 @@ void MinionIdleState::Enter(Minion* minion)
 {
 
 	// 確認のため移動状態をリクエスト
-	minion->SetRequestStateType(MinionStateType::Move);
+	minion->SetRequestStateType(MinionStateType::Attack);
 
 }
 

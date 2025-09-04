@@ -26,7 +26,7 @@ public: // メンバ関数
 	/// <param name="end">終了地点</param>
 	/// <param name="hp">体力</param>
 	/// <param name="lifeTime">生存時間</param>
-	Wall(const LWP::Math::Vector2& start, const LWP::Math::Vector2 end, float hp, float lifeTime);
+	Wall(const LWP::Math::Vector2& start, const LWP::Math::Vector2 end, int hp, float lifeTime);
 
 	/// <summary>
 	/// デストラクタ

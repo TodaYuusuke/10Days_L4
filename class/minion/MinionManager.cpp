@@ -3,17 +3,17 @@
 MinionManager::MinionManager()
 	:	minions_{},
 		minionNum_(kMinionNumMax_),
-		meetingPlace_(nullptr)
+		meetingPlace_(nullptr),
+		stoneManager_(nullptr)
 {
-
 	Initialize();
-
 }
 
-MinionManager::MinionManager(MeetingPlace* meetingPlace)
+MinionManager::MinionManager(MeetingPlace* meetingPlace, StoneManager* stoneManager)
 	:	minions_{},
 		minionNum_(kMinionNumMax_),
-		meetingPlace_(meetingPlace)
+		meetingPlace_(meetingPlace),
+		stoneManager_(stoneManager)
 {
 	Initialize();
 }

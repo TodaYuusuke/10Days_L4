@@ -5,9 +5,7 @@ WallManager::WallManager()
 		hpMax_(0),
 		lifeTimeMax_(0)
 {
-
 	Initialize();
-
 }
 
 WallManager::~WallManager()

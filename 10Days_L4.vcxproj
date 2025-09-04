@@ -166,6 +166,7 @@
     <ClCompile Include="class\scene\TestScene.cpp" />
     <ClCompile Include="class\scene\Title.cpp" />
     <ClCompile Include="class\stone\Stone.cpp" />
+    <ClCompile Include="class\stone\StoneManager.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +188,7 @@
     <ClInclude Include="class\scene\TestScene.h" />
     <ClInclude Include="class\scene\Title.h" />
     <ClInclude Include="class\stone\Stone.h" />
+    <ClInclude Include="class\stone\StoneManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

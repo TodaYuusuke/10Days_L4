@@ -14,7 +14,7 @@ Wall::Wall()
 {
 }
 
-Wall::Wall(const LWP::Math::Vector2& start, const LWP::Math::Vector2 end, float hp, float lifeTime)
+Wall::Wall(const LWP::Math::Vector2& start, const LWP::Math::Vector2 end, int hp, float lifeTime)
 	:	start_(start),
 		end_(end),
 		hp_(hp),
@@ -55,7 +55,7 @@ void Wall::Update()
 {
 
 	//生存時間
-	lifeTime_ -= LWP::Info::GetDeltaTime();
+	lifeTime_ -= static_cast<float>(LWP::Info::GetDeltaTime());
 
 	if (lifeTime_ <= 0.0f) {
 		isDead_ = true;

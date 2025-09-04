@@ -1,5 +1,7 @@
 #include "MinionAttackState.h"
 #include <Adapter.h>
+#include "../Minion.h"
+#include "../MinionManager.h"
 
 using namespace LWP::Info;
 
@@ -42,10 +44,9 @@ void MinionAttackState::Update(Minion* minion)
 	attackCoolTime_ -= attackSpeed;
 	if (attackCoolTime_ <= 0.0f) {
 		// 攻撃
-
+		minion->ThrowStone();
 		const float kAttackCoolTimeMax = 2.0f;
 		attackCoolTime_ = kAttackCoolTimeMax;
-
 	}
 
 }

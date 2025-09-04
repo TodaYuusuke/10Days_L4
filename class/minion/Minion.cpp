@@ -1,5 +1,6 @@
 #include "Minion.h"
 #include "state/MinionStateFactory.h"
+#include "MinionManager.h"
 
 using namespace LWP;
 
@@ -12,7 +13,7 @@ Minion::Minion()
         currentStateType_(MinionStateType::Idle),
         requestStateType_(MinionStateType::Idle),
         spriteSystem_(nullptr),
-        positon_({0.0f,0.0f}),
+        position_({0.0f,0.0f}),
         direction_({ 0.0f,1.0f }),
         hp_(0),
         serialNumber_(serialNumberCount_),
@@ -27,7 +28,7 @@ Minion::Minion(MinionManager* minionManager)
         currentStateType_(MinionStateType::Idle),
         requestStateType_(MinionStateType::Idle),
         spriteSystem_(nullptr),
-        positon_({ 0.0f,0.0f }),
+        position_({ 0.0f,0.0f }),
         direction_({ 0.0f,1.0f }),
         hp_(0),
         serialNumber_(serialNumberCount_),
@@ -49,7 +50,7 @@ void Minion::Initialize()
 
     spriteSystem_ = std::make_unique<MinionSpriteSystem>();
 
-    positon_ = { 660.0f,660.0f };
+    position_ = { 660.0f,660.0f };
 
     ++serialNumberCount_;
 
@@ -58,9 +59,20 @@ void Minion::Initialize()
 void Minion::Update()
 {
 
+    // デバッグ
+    if(LWP::Input::Mouse::GetTrigger(1)) {
+        if (requestStateType_ == MinionStateType::Attack) {
+            requestStateType_ = MinionStateType::Move;
+        }
+        else {
+            requestStateType_ = MinionStateType::Attack;
+        }
+    }
+
     // 状態 リクエストがあったら変更
     if (currentStateType_ != requestStateType_) {
         ChangeState(requestStateType_);
+        currentStateType_ = requestStateType_;
     }
 
     if (currentState_) {
@@ -68,12 +80,17 @@ void Minion::Update()
     }
 
     // スプライト
-    spriteSystem_->Update(MinionStateType::Move, positon_, direction_);
+    spriteSystem_->Update(currentStateType_, position_, direction_);
 
 }
 
 void Minion::DebugGUI()
 {
+}
+
+void Minion::ThrowStone()
+{
+    minionManager_->GetStoneManager()->CreateStone(position_, direction_);
 }
 
 void Minion::ChangeState(MinionStateType newStateType)

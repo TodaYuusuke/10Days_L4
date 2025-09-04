@@ -19,7 +19,7 @@ void MinionMoveState::Update(Minion* minion)
 {
 
 	// 移動する
-	const Vector2 kMinionPosition = minion->GetPositon();
+	const Vector2 kMinionPosition = minion->GetPosition();
 	const Vector2 kMeetingPlacePosition = minion->GetMinionManager()->GetMeetingPlace()->GetPosition();
 
 	// 番号から最終移動地点を変更
@@ -45,7 +45,7 @@ void MinionMoveState::Update(Minion* minion)
 		}
 
 		degreeInterval = 360.0f / n;
-		theta = std::numbers::pi / 180.0f * (kSerialNumber - serialNumberOffset) * degreeInterval;
+		theta = static_cast<float>(std::numbers::pi) / 180.0f * (kSerialNumber - serialNumberOffset) * degreeInterval;
 		radius = k * 30.0f;
 	}
 	
@@ -60,7 +60,7 @@ void MinionMoveState::Update(Minion* minion)
 	dir = dir.Normalize();
 	// 移動
 	const Vector2 kNewMinionPosition = kMinionPosition + (dir * speed_);
-	minion->SetPositon(kNewMinionPosition);
+	minion->SetPosition(kNewMinionPosition);
 	// 回転、方向
 	minion->SetDirection(dir);
 

@@ -2,6 +2,7 @@
 #include "scene/IScene.h"
 #include "../minion/MinionManager.h"
 #include "../player/Player.h"
+#include "../stone/StoneManager.h"
 
 class TestScene final
 	: public IScene {
@@ -25,6 +26,6 @@ private: //*** これより先に必要な処理や変数を記述 ***//
 
 	std::unique_ptr<MinionManager> minionManager_;
 	std::unique_ptr<Player> player_;
-	
+	std::unique_ptr<StoneManager> stoneManager_;
 
 };

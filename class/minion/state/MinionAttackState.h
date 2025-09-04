@@ -1,5 +1,9 @@
 #pragma once
 #include "IMinionState.h"
+
+/// <summary>
+/// 手下の攻撃状態
+/// </summary>
 class MinionAttackState :
     public IMinionState
 {

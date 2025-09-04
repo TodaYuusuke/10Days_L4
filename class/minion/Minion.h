@@ -54,6 +54,13 @@ public: // メンバ関数
 	void DebugGUI();
 
 	/// <summary>
+	/// 石を投げる
+	/// </summary>
+	void ThrowStone();
+
+private: // メンバ関数
+
+	/// <summary>
 	/// ステータス変更
 	/// </summary>
 	/// <param name="newStateType">新しい状態</param>
@@ -61,12 +68,12 @@ public: // メンバ関数
 
 public: // アクセッサ
 
-	LWP::Math::Vector2 GetPositon() const { return positon_; }
+	LWP::Math::Vector2 GetPosition() const { return position_; }
 	int GetHp() const { return hp_; }
 	int GetSerialNumber() const { return serialNumber_; }
 
 	void SetRequestStateType(MinionStateType requestStateType) { requestStateType_ = requestStateType; }
-	void SetPositon(const LWP::Math::Vector2& positon) { positon_ = positon; }
+	void SetPosition(const LWP::Math::Vector2& position) { position_ = position; }
 	void SetDirection(const LWP::Math::Vector2& direction) { direction_ = direction; }
 
 	MinionManager* GetMinionManager() { return minionManager_; }
@@ -86,7 +93,7 @@ private: // メンバ変数
 	std::unique_ptr<MinionSpriteSystem> spriteSystem_;
 
 	// 位置
-	LWP::Math::Vector2 positon_;
+	LWP::Math::Vector2 position_;
 	// 回転、方向 
 	LWP::Math::Vector2 direction_;
 	// HP
@@ -98,8 +105,6 @@ private: // ポインタ
 
 	// マネージャー
 	MinionManager* minionManager_;
-
-	// 石マネージャー(なげるため)
 
 };
 

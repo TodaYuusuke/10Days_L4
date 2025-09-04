@@ -1,6 +1,7 @@
 #pragma once
 #include "Minion.h"
 #include "../player/MeetingPlace.h"
+#include "../stone/StoneManager.h"
 
 /// <summary>
 /// 手下の管理クラス
@@ -24,7 +25,8 @@ public: // メンバ関数
 	/// コンストラクタ
 	/// </summary>
 	/// <param name="meetingPlace">集合場所</param>
-	MinionManager(MeetingPlace* meetingPlace);
+	/// <param name="stoneManager">石マネージャー</param>
+	MinionManager(MeetingPlace* meetingPlace, StoneManager* stoneManager);
 
 	/// <summary>
 	/// デストラクタ
@@ -44,6 +46,7 @@ public: // メンバ関数
 public: // アクセッサ
 
 	MeetingPlace* GetMeetingPlace() { return meetingPlace_; }
+	StoneManager* GetStoneManager() { return stoneManager_; }
 
 private:
 
@@ -59,6 +62,7 @@ private: // ポインタ
 	MeetingPlace* meetingPlace_;
 
 	// 石マネージャー(なげるため)
+	StoneManager* stoneManager_;
 
 };
 

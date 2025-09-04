@@ -11,7 +11,8 @@ void TestScene::Initialize() {
 
 
 	player_ = std::make_unique<Player>();
-	minionManager_ = std::make_unique<MinionManager>(player_->GetMeetingPlace());
+	stoneManager_ = std::make_unique<StoneManager>();
+	minionManager_ = std::make_unique<MinionManager>(player_->GetMeetingPlace(), stoneManager_.get());
 
 }
 
@@ -23,6 +24,7 @@ void TestScene::Update() {
 
 	minionManager_->Update();
 	player_->Update();
+	stoneManager_->Update();
 
 	// エンジンの各クラスは大体ImGuiを呼び出す関数がある
 	ImGui::Begin("Test");
