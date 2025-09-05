@@ -58,19 +58,12 @@ public:
 		}
 	};
 
-	// 共通のImGui
-	void CommonImGuiProc() {
-#ifdef _DEBUG
-		ImGui::DragFloat2("RespawnPoint", &respawnPoint.x, 0.1f);
-#endif // _DEBUG
-	}
 	// 共通のパラメータデータ
 	void CommonValue(LWP::Utility::JsonIO json) {
 		json.AddValue("RespawnPoint", &respawnPoint);
 	}
 
 	// 純粋仮想関数
-	virtual void ImGuiProc() { CommonImGuiProc(); }
 	virtual void AddValue(LWP::Utility::JsonIO json) { json; }
 
 public: // 共通部分変数
@@ -85,17 +78,6 @@ struct AttackDefaultData {
 	float startupLag = 0.0f;// 前隙  (予測線から攻撃準備動作が終わるまでの時間)
 	float damageTime = 0.0f;// ダメージ時間 (ダメージが与えられる時間)
 	float endingLag = 0.0f;// 後隙　(状態が変化するまでの時間)
-
-	void ImGuiProc(const std::string& keyName) {
-#ifdef _DEBUG
-		if (ImGui::TreeNode(keyName.c_str())) {
-			ImGui::DragFloat("StartUpLag", &startupLag, 0.1f);
-			ImGui::DragFloat("DamageTime", &damageTime, 0.1f);
-			ImGui::DragFloat("EndingLag", &endingLag, 0.1f);
-			ImGui::TreePop();
-		}
-#endif // _DEBUG
-	}
 	// 共通のパラメータデータ
 	void AddValue(const std::string& name, LWP::Utility::JsonIO json) {
 		json.BeginGroup(name)
@@ -121,18 +103,6 @@ struct NormalBossData : public BaseEnemyData {
 	Vector2 idleTime = { 0.0f,0.0f }; // idle時間 { min,max }
 	float moveSpeed = 0.0f; // 移動速度
 	AttackDefaultData slam; // 叩きつけ攻撃
-
-	void ImGuiProc() override {
-#ifdef _DEBUG
-		if (ImGui::TreeNode("NormalBossData")) {
-			BaseEnemyData::CommonImGuiProc();
-			ImGui::DragFloat2("IdleTime", &idleTime.x, 0.1f);
-			ImGui::DragFloat("MoveSpeed", &moveSpeed, 0.1f);
-			slam.ImGuiProc("Slam");
-			ImGui::TreePop();
-		}
-#endif // _DEBUG
-	}
 
 	void AddValue(LWP::Utility::JsonIO json) override {
 		json.BeginGroup("NormalBossData");

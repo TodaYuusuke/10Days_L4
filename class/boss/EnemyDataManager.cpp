@@ -1,5 +1,16 @@
 ﻿#include "EnemyDataManager.h"
 
+const std::string kFileName = "EnemyParameterData.json";
+
+EnemyDataManager::~EnemyDataManager() {
+#ifdef _DEBUG // 普段は邪魔なのでレベルデザインの時に解禁
+	/*int result = MessageBoxA(nullptr, "EnemyDataはセーブされていません。セーブしますか？","確認",MB_YESNO | MB_ICONQUESTION);
+	if (result == IDYES) {
+		Save(kFileName);
+	}*/
+#endif // _DEBUG
+}
+
 EnemyDataManager* EnemyDataManager::GetInstance() {
 	static EnemyDataManager instance;
 	return &instance;
@@ -7,36 +18,16 @@ EnemyDataManager* EnemyDataManager::GetInstance() {
 
 void EnemyDataManager::Initialize() {
 
-	json_.Init("EnemyParameterData.json");
+	json_.Init(kFileName);
 
 	// データの登録
-	NormalBossData data;
-	dataMap_["NormalBoss"] = std::make_unique<NormalBossData>(data);
+	dataMap_["NormalBoss"] = std::make_unique<NormalBossData>();
 
-	Load("EnemyParameterData.json");
+	Load(kFileName);
 }
 
 void EnemyDataManager::ImGuiProc() {
-#ifdef _DEBUG
 	json_.DebugGUI();
-	ImGui::Begin("Parameter", nullptr, ImGuiWindowFlags_MenuBar);
-	ImGui::BeginMenuBar();
-
-	for (size_t i = 0; i < static_cast<size_t>(BaseEnemyData::Type::kMaxNum); ++i) {
-		BaseEnemyData::Type type = static_cast<BaseEnemyData::Type>(i);
-		const char* name = BaseEnemyData::ToString(type);
-		auto it = dataMap_.find(name);
-		if (it == dataMap_.end()) continue;
-
-		if (ImGui::BeginMenu(name)) {
-			it->second->ImGuiProc(); // 継承先のImGuiProc() が呼ばれる
-			ImGui::EndMenu();
-		}
-	}
-
-	ImGui::EndMenuBar();
-	ImGui::End();
-#endif // _DEBUG
 }
 
 BaseEnemyData* EnemyDataManager::GetData(BaseEnemyData::Type type) {
@@ -72,11 +63,9 @@ void EnemyDataManager::Load(const std::string& fileName) {
 	for (auto itr = nameList.begin(); itr != nameList.end(); ++itr) {
 		// NormalBossDataと書かれている場合
 		if (itr->name == "NormalBossData") {
-			// 入れ子
-			NormalBossData handle;
-			handle.AddValue(json_);
 			// 生成
-			dataMap_["NormalBoss"] = std::make_unique<NormalBossData>(handle);
+			dataMap_["NormalBoss"] = std::make_unique<NormalBossData>();
+			dataMap_["NormalBoss"]->AddValue(json_);
 		}
 		// 別の場合
 		else if (itr->name == "Unknown") {

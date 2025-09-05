@@ -8,7 +8,7 @@
 class EnemyDataManager {
 private:
 	EnemyDataManager() = default;
-	~EnemyDataManager() = default;
+	~EnemyDataManager();
 public:
 	// シングルトン
 	static EnemyDataManager* GetInstance();
