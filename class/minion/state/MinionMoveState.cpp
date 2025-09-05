@@ -3,13 +3,9 @@
 #include "../MinionManager.h"
 
 #include <numbers>
+#include "../MinionGlobalData.h"
 
 using namespace LWP::Math;
-
-MinionMoveState::MinionMoveState()
-	: speed_(0.5f)
-{
-}
 
 void MinionMoveState::Enter(Minion* minion)
 {
@@ -59,7 +55,7 @@ void MinionMoveState::Update(Minion* minion)
 	}
 	dir = dir.Normalize();
 	// 移動
-	const Vector2 kNewMinionPosition = kMinionPosition + (dir * speed_);
+	const Vector2 kNewMinionPosition = kMinionPosition + (dir * MinionGlobalData::GetSpeed());
 	minion->SetPosition(kNewMinionPosition);
 	// 回転、方向
 	minion->SetDirection(dir);

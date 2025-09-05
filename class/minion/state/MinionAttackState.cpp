@@ -2,6 +2,7 @@
 #include <Adapter.h>
 #include "../Minion.h"
 #include "../MinionManager.h"
+#include "../MinionGlobalData.h"
 
 using namespace LWP::Info;
 
@@ -14,8 +15,7 @@ MinionAttackState::MinionAttackState()
 void MinionAttackState::Enter(Minion* minion)
 {
 
-	const float kEnterAttackCoolTime = 1.0f;
-	attackCoolTime_ = kEnterAttackCoolTime;
+	attackCoolTime_ = MinionGlobalData::GetAttackCoolTimeMax();
 
 }
 
@@ -32,8 +32,7 @@ void MinionAttackState::Update(Minion* minion)
 	// やる気あり
 	if (motivationTime_ > 0.0f) {
 		motivationTime_ -= kDeltaTime;
-		const float kMotivationMultiplier = 1.5f;
-		attackSpeed *= kMotivationMultiplier;
+		attackSpeed *= MinionGlobalData::GetMotivationMultiplier();
 	}
 	// やる気なし
 	else {
@@ -45,8 +44,7 @@ void MinionAttackState::Update(Minion* minion)
 	if (attackCoolTime_ <= 0.0f) {
 		// 攻撃
 		minion->ThrowStone();
-		const float kAttackCoolTimeMax = 2.0f;
-		attackCoolTime_ = kAttackCoolTimeMax;
+		attackCoolTime_ = MinionGlobalData::GetAttackCoolTimeMax();
 	}
 
 }

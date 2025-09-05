@@ -1,4 +1,5 @@
 #include "MinionSpriteSystem.h"
+#include "MinionGlobalData.h"
 
 using namespace LWP::Math;
 
@@ -24,10 +25,9 @@ void MinionSpriteSystem::Initialize()
 	const std::string kTextureName = "Minion.png";
 	sprite_.LoadTexture(kTextureName);
 	// テクスチャサイズ
-	const Vector2& kSize = { 64.0f, 64.0f };
-	sprite_.SetSplitSize(kSize);
+	sprite_.SetSplitSize(MinionGlobalData::GetTextureSize());
 	// スプライトの大きさ
-	sprite_.worldTF.scale = { 0.5f,0.5f,1.0f };
+	sprite_.worldTF.scale = MinionGlobalData::GetSpriteScale();
 
 }
 
@@ -35,9 +35,9 @@ void MinionSpriteSystem::Update(MinionStateType type, const LWP::Math::Vector2& 
 {
 
 	// indexXの最大値
-	const int kIndexMaxX = 6;
+	const int kIndexMaxX = MinionGlobalData::GetIndexMaxX();
 	// 連番の切り替わりフレーム数
-	const int kChangeIndexFrame = 10;
+	const int kChangeIndexFrame = MinionGlobalData::GetChangeIndexFrame();
 	
 	// 前の状態のままなら
 	if (preType_ == type) {
@@ -57,19 +57,18 @@ void MinionSpriteSystem::Update(MinionStateType type, const LWP::Math::Vector2& 
 		changeIndexFrameCount_ = kChangeIndexFrame;
 	}
 
-	// 現在のタイプからyのindexを決定
-	const int kIndexY = static_cast<int>(type);
 	// 現在のindexの確定
-	sprite_.index = kIndexY * kIndexMaxX + indexX_;
+	sprite_.index = static_cast<int>(type) * kIndexMaxX + indexX_;
 
-	// Z座標（描画順）
-	const float kPositionZ = 0.0f;
 	// 位置の移動
-	sprite_.worldTF.translation = { position.x, position.y, kPositionZ };
+	sprite_.worldTF.translation = { position.x, position.y, MinionGlobalData::GetPositionZ()};
 
 	// 回転
 	const Vector3 kDir3D = { direction.x, direction.y, 0.0f };
 	sprite_.worldTF.rotation = Quaternion::ConvertFromTo(Vector3{ 0.0f,1.0f,0.0f }, kDir3D);
+
+	// 大きさ
+	sprite_.worldTF.scale = MinionGlobalData::GetSpriteScale();
 
 	// 前状態を切り替え
 	preType_ = type;

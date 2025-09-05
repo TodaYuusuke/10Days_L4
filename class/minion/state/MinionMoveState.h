@@ -14,7 +14,7 @@ public: // メンバ関数
     /// <summary>
     /// コンストラクタ
     /// </summary>
-    MinionMoveState();
+    MinionMoveState() = default;
 
     /// <summary>
     /// この状態になる時の処理
@@ -33,11 +33,6 @@ public: // メンバ関数
     /// </summary>
     /// <param name="minion">手下のポインタ</param>
     void Exit(Minion* minion) override;
-
-private:
-
-    // 移動速度
-    float speed_;
 
 };
 

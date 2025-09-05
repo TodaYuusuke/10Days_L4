@@ -56,6 +56,9 @@ private:
 	// 残りの手下たち
 	size_t minionNum_;
 
+	// json
+	LWP::Utility::JsonIO jsonIO_;
+
 private: // ポインタ
 
 	// 集合場所

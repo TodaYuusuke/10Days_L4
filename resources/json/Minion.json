@@ -1,0 +1,23 @@
+{
+    "Group :Attack": {
+        "float :AttackCoolTimeMax": 2.0,
+        "float :MotivationMultiplier": 1.5
+    },
+    "Group :Move": {
+        "float :Speed": 2.0
+    },
+    "Group :Sprite": {
+        "Vector2 :TextureSize": [
+            64.0,
+            64.0
+        ],
+        "Vector3 :SpriteScale": [
+            0.5,
+            0.5,
+            1.0
+        ],
+        "float :PositionZ": 0.0,
+        "int32_t :ChangeIndexFrame": 10,
+        "int32_t :IndexMaxX": 6
+    }
+}
