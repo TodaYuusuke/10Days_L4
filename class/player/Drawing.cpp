@@ -36,7 +36,7 @@ void Drawing::Initialize()
 
 	for (size_t i = 0; i < kSpriteNum_; ++i) {
 		sprites_[i].LoadTexture("Line.png");
-		sprites_[i].worldTF.scale.x = 0.1f;
+		sprites_[i].worldTF.scale.x = PlayerGlobalData::GetLineSpriteScale().x;
 		sprites_[i].isActive = false;
 	}
 
@@ -168,7 +168,7 @@ void Drawing::SpriteActive(const LWP::Math::Vector2& point0, const LWP::Math::Ve
 	sprites_[sprieIndex_].worldTF.rotation = Quaternion::ConvertFromTo(Vector3{ 0.0f,1.0f,0.0f }, kDir3D);
 	// 大きさ
 	const float kLength = (point1 - point0).Length();
-	sprites_[sprieIndex_].worldTF.scale.y = (kLength / PlayerGlobalData::GetLineTextureSize().y) + 0.1f;
+	sprites_[sprieIndex_].worldTF.scale.y = (kLength / PlayerGlobalData::GetLineTextureSize().y) + PlayerGlobalData::GetLineSpriteScale().x;
 
 	// アクティブに
 	sprites_[sprieIndex_].isActive = true;

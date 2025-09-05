@@ -32,6 +32,7 @@ public: // アクセッサ
 	static float GetLineLengthMax() { return lineLengthMax_; }
 	static float GetLinePositionZ() { return linePositionZ_; }
 	static LWP::Math::Vector2 GetLineTextureSize() { return lineTextureSize_; }
+	static LWP::Math::Vector3 GetLineSpriteScale() { return lineSpriteScale_; }
 
 	static LWP::Math::Vector2 GetMeetingPlaceTextureSize() { return meetingPlaceTextureSize_; }
 	static LWP::Math::Vector3 GetMeetingPlaceSpriteScale() { return meetingPlaceSpriteScale_; }
@@ -56,12 +57,14 @@ private: //メンバ変数
 	static float linePositionZ_;
 	// テクスチャサイズ
 	static LWP::Math::Vector2 lineTextureSize_;
+	// スプライトの大きさ	
+	static LWP::Math::Vector3 lineSpriteScale_;
 
 	// 集合場所関係
 
 	// テクスチャサイズ
 	static LWP::Math::Vector2 meetingPlaceTextureSize_;
-	// スプライトサイズ
+	// スプライトの大きさ
 	static LWP::Math::Vector3 meetingPlaceSpriteScale_;
 	// indexXの最大値
 	static int meetingPlaceIndexMaxX_;
