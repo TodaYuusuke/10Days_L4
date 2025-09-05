@@ -2,8 +2,8 @@
     "Group :MinionsNum": {
         "Group :Base": {
             "Vector3 :Positon": [
-                192.0,
-                128.0,
+                170.0,
+                100.0,
                 0.0
             ],
             "Vector3 :Size": [
@@ -26,7 +26,7 @@
         },
         "Group :LeftNum": {
             "Vector3 :Positon": [
-                -64.0,
+                -40.0,
                 0.0,
                 -1.0
             ],
@@ -36,9 +36,21 @@
                 1.0
             ]
         },
+        "Group :Mark": {
+            "Vector3 :Positon": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "Vector3 :Size": [
+                0.6899999976158142,
+                0.3499999940395355,
+                1.0
+            ]
+        },
         "Group :RightNum": {
             "Vector3 :Positon": [
-                64.0,
+                40.0,
                 0.0,
                 -1.0
             ],

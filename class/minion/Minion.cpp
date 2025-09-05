@@ -1,6 +1,7 @@
 #include "Minion.h"
 #include "state/MinionStateFactory.h"
 #include "MinionManager.h"
+#include "MinionGlobalData.h"
 
 using namespace LWP;
 
@@ -15,7 +16,7 @@ Minion::Minion()
         spriteSystem_(nullptr),
         position_({0.0f,0.0f}),
         direction_({ 0.0f,1.0f }),
-        hp_(0),
+        hp_(MinionGlobalData::GetInitialHp()),
         serialNumber_(serialNumberCount_),
         minionManager_(nullptr)
 {
@@ -30,7 +31,7 @@ Minion::Minion(MinionManager* minionManager)
         spriteSystem_(nullptr),
         position_({ 0.0f,0.0f }),
         direction_({ 0.0f,1.0f }),
-        hp_(0),
+        hp_(MinionGlobalData::GetInitialHp()),
         serialNumber_(serialNumberCount_),
         minionManager_(minionManager)
 {

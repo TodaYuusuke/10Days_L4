@@ -26,6 +26,7 @@ public: // メンバ関数
 
 public: // アクセッサ
 
+	static int GetInitialHp() { return initialHp_; }
 	static LWP::Math::Vector2 GetTextureSize() { return textureSize_; }
 	static LWP::Math::Vector3 GetSpriteScale() { return spriteScale_; }
 	static int GetIndexMaxX() { return indexMaxX_; }
@@ -36,6 +37,9 @@ public: // アクセッサ
 	static float GetAttackCoolTimeMax() { return attackCoolTimeMax_; }
 
 private: //メンバ変数
+	
+	//初期HP
+	static int initialHp_;
 
 	// スプライト関係
 

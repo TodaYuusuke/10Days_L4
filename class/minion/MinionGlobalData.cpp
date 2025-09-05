@@ -1,5 +1,7 @@
 #include "MinionGlobalData.h"
 
+//初期HP
+int MinionGlobalData::initialHp_ = 1;
 // テクスチャサイズ
 LWP::Math::Vector2 MinionGlobalData::textureSize_ = { 64.0f,64.0f };
 // スプライトサイズ
@@ -20,8 +22,11 @@ float MinionGlobalData::attackCoolTimeMax_ = 2.0f;
 void MinionGlobalData::JsonDataRegistration(LWP::Utility::JsonIO* jsonIO)
 {
 
-	// スプライト関係
-	jsonIO->BeginGroup("Sprite").
+	//初期HP
+	jsonIO->AddValue("InitialHp", &initialHp_).
+
+		// スプライト関係
+		BeginGroup("Sprite").
 
 		// テクスチャサイズ
 		AddValue("TextureSize", &textureSize_).

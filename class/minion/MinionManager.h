@@ -48,6 +48,8 @@ public: // アクセッサ
 	MeetingPlace* GetMeetingPlace() { return meetingPlace_; }
 	StoneManager* GetStoneManager() { return stoneManager_; }
 
+	size_t GetMinionNum() const { return minionNum_; }
+
 private:
 
 	// 手下たち
