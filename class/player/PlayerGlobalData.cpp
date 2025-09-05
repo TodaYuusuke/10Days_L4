@@ -2,6 +2,8 @@
 
 // ドラッグ認定距離
 float PlayerGlobalData::dragCertifiedDistance_ = 30.0f;
+// スプライトの大きさ	
+LWP::Math::Vector3 PlayerGlobalData::mouseSpriteScale_ = {2.0f,2.0f};
 // レコーディング時間
 float PlayerGlobalData::lineRecordingTime_ = 0.01f;
 // 線の長さ最大
@@ -41,6 +43,8 @@ void PlayerGlobalData::JsonDataRegistration(LWP::Utility::JsonIO* jsonIO)
 
 		// ドラッグ認定距離
 		AddValue("DragCertifiedDistance", &dragCertifiedDistance_).
+		// スプライトの大きさ	
+		AddValue("MouseSpriteScale", &mouseSpriteScale_).
 
 		EndGroup().
 

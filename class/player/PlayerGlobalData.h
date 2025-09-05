@@ -27,6 +27,7 @@ public: // メンバ関数
 public: // アクセッサ
 
 	static float GetDragCertifiedDistance() { return dragCertifiedDistance_; }
+	static LWP::Math::Vector3 GetMouseSpriteScale() { return mouseSpriteScale_; }
 
 	static float GetLineRecordingTime() { return lineRecordingTime_; }
 	static float GetLineLengthMax() { return lineLengthMax_; }
@@ -52,6 +53,8 @@ private: //メンバ変数
 
 	// ドラッグ認定距離
 	static float dragCertifiedDistance_;
+	// スプライトの大きさ	
+	static LWP::Math::Vector3 mouseSpriteScale_;
 
 	//線
 

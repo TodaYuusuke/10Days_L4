@@ -25,7 +25,8 @@ void PlayerMouseOperation::Initialize()
 	ShowCursor(false);
 
 	sprite_.LoadTexture("Pen.png");
-	sprite_.anchorPoint = { 0.0f,1.0f };
+	sprite_.anchorPoint = { 0.0f,1.0f }; 
+	sprite_.worldTF.scale = PlayerGlobalData::GetMouseSpriteScale();
 
 }
 
