@@ -41,6 +41,8 @@ private:
 
 	// 壁
 	std::list<Stone*> stones_;
+	// json
+	LWP::Utility::JsonIO jsonIO_;
 
 };
 

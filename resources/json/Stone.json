@@ -1,0 +1,10 @@
+{
+    "Vector3 :SpriteScale": [
+        0.30000001192092896,
+        0.30000001192092896,
+        1.0
+    ],
+    "float :Acceleration": -0.20000000298023224,
+    "float :InitialSpeed": 10.0,
+    "float :PositionZ": 0.0
+}

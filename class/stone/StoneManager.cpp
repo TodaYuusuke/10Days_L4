@@ -1,7 +1,9 @@
 #include "StoneManager.h"
+#include "StoneGlobalData.h"
 
 StoneManager::StoneManager()
-	:	stones_{}
+	:	stones_{},
+		jsonIO_()
 {
 	Initialize();
 }
@@ -18,6 +20,11 @@ StoneManager::~StoneManager()
 
 void StoneManager::Initialize()
 {
+
+	jsonIO_.Init("Stone.json");
+	StoneGlobalData::JsonDataRegistration(&jsonIO_);
+	jsonIO_.CheckJsonFile();
+
 }
 
 void StoneManager::Update()
@@ -40,6 +47,11 @@ void StoneManager::Update()
 		Stone* stone = *it;
 		stone->Update();
 	}
+
+	// GUI JSON
+	ImGui::Begin("Stone");
+	jsonIO_.DebugGUI();
+	ImGui::End();
 
 }
 

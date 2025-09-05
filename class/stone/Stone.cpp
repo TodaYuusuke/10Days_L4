@@ -1,4 +1,5 @@
 #include "Stone.h"
+#include "StoneGlobalData.h"
 using namespace LWP::Math;
 
 Stone::Stone()
@@ -29,11 +30,11 @@ void Stone::Initialize()
 {
 
 	// 初速度
-	const float kInitialSpeed = 10.0f;
-	speed_ = kInitialSpeed;
+	speed_ = StoneGlobalData::GetInitialSpeed();
 
 	// スプライト
 	sprite_.LoadTexture("Stone.png");
+	sprite_.worldTF.scale = StoneGlobalData::GetSpriteScale();
 
 }
 
@@ -41,11 +42,8 @@ void Stone::Update()
 {
 
 	// 速度計算
-
-	// 加速度
-	const float kAcceleration = -0.2f;
-	speed_ += kAcceleration;
-	if (speed_ <= 0.0f) {
+	speed_ += StoneGlobalData::GetAcceleration();
+	if (speed_ <= 0.0f || speed_ > StoneGlobalData::GetInitialSpeed()) {
 		speed_ = 0.0f;
 		isDead_ = true;
 	}
@@ -54,10 +52,8 @@ void Stone::Update()
 	// 移動処理
 	position_ += velocity;
 
-	// Z座標（描画順）
-	const float kPositionZ = 0.0f;
 	// 位置の移動
-	sprite_.worldTF.translation = { position_.x, position_.y, kPositionZ };
+	sprite_.worldTF.translation = { position_.x, position_.y, StoneGlobalData::GetPositionZ()};
 	// 回転
 	const Vector3 kDir3D = { direction_.x, direction_.y, 0.0f };
 	sprite_.worldTF.rotation = Quaternion::ConvertFromTo(Vector3{ 0.0f,1.0f,0.0f }, kDir3D);
