@@ -41,11 +41,5 @@ private:
 	// 壁
 	std::list<Wall*> walls_;
 
-	// 壁のHP最大値
-	int hpMax_;
-
-	// 壁の生存時間最大値
-	float lifeTimeMax_;
-
 };
 

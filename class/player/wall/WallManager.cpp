@@ -1,9 +1,8 @@
 #include "WallManager.h"
+#include "../PlayerGlobalData.h"
 
 WallManager::WallManager()
-	:	walls_{},
-		hpMax_(0),
-		lifeTimeMax_(0)
+	:	walls_{}
 {
 	Initialize();
 }
@@ -20,9 +19,6 @@ WallManager::~WallManager()
 
 void WallManager::Initialize()
 {
-
-	hpMax_ = 1;
-	lifeTimeMax_ = 5.0f;
 
 }
 
@@ -54,7 +50,7 @@ void WallManager::CreateWalls(const std::vector<LWP::Math::Vector2>* points)
 
 	// 作成、登録
 	for (size_t i = 0; i < points->size() - 1; ++i) {
-		Wall* wall = new Wall((*points)[i], (*points)[i + 1], hpMax_, lifeTimeMax_);
+		Wall* wall = new Wall((*points)[i], (*points)[i + 1], PlayerGlobalData::GetWallHpMax(), PlayerGlobalData::GetWallLifeTimeMax());
 		walls_.push_back(wall);
 	}
 

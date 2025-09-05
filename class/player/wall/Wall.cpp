@@ -1,8 +1,6 @@
 #include "Wall.h"
+#include "../PlayerGlobalData.h"
 using namespace LWP::Math;
-
-// スプライトの大きさ
-const Vector2 Wall::kSpriteSize_ = { 100.0f, 100.0f };
 
 Wall::Wall()
 	:	start_({0.0f,0.0f}),
@@ -22,9 +20,7 @@ Wall::Wall(const LWP::Math::Vector2& start, const LWP::Math::Vector2 end, int hp
 		sprite_(),
 		isDead_(false)
 {
-
 	Initilaize();
-
 }
 
 Wall::~Wall()
@@ -35,19 +31,18 @@ void Wall::Initilaize()
 {
 
 	sprite_.LoadTexture("Wall.png");
+	sprite_.worldTF.scale.x = PlayerGlobalData::GetWallSpriteScale().x;
 
 	// 位置
 	const Vector2 spritePosition = (end_ + start_) / 2.0f;
-	// Z座標（描画順）
-	const float kPositionZ = 0.0f;
-	sprite_.worldTF.translation = { spritePosition.x, spritePosition.y, kPositionZ };
+	sprite_.worldTF.translation = { spritePosition.x, spritePosition.y, PlayerGlobalData::GetWallPositionZ()};
 	// 回転
 	const Vector2 kDir2D = (end_ - start_).Normalize();
 	const Vector3 kDir3D = { kDir2D.x, kDir2D.y, 0.0f };
 	sprite_.worldTF.rotation = Quaternion::ConvertFromTo(Vector3{ 0.0f,1.0f,0.0f }, kDir3D);
 	// 大きさ
 	const float kLength = (end_ - start_).Length();
-	sprite_.worldTF.scale.y = (kLength / kSpriteSize_.y) + 0.1f;
+	sprite_.worldTF.scale.y = (kLength / PlayerGlobalData::GetWallTextureSize().y) + +PlayerGlobalData::GetWallSpriteScale().x;;
 
 }
 

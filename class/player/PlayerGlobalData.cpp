@@ -22,6 +22,16 @@ int PlayerGlobalData::meetingPlaceIndexMaxX_ = 6;
 int PlayerGlobalData::meetingPlaceChangeIndexFrame_ = 4;
 // Z座標（描画順）
 float PlayerGlobalData::meetingPlacePositionZ_ = 0.0f;
+// 壁のHP最大値
+int PlayerGlobalData::wallHpMax_ = 1;
+// 壁の生存時間最大値
+float PlayerGlobalData::wallLifeTimeMax_ = 5.0f;
+// Z座標（描画順）
+float PlayerGlobalData::wallPositionZ_ = 0.0f;
+// テクスチャサイズ
+LWP::Math::Vector2 PlayerGlobalData::wallTextureSize_ = { 100.0f,100.0f };
+// スプライトの大きさ	
+LWP::Math::Vector3 PlayerGlobalData::wallSpriteScale_ = { 1.0f,1.0f,0.0f };
 
 void PlayerGlobalData::JsonDataRegistration(LWP::Utility::JsonIO* jsonIO)
 {
@@ -62,6 +72,22 @@ void PlayerGlobalData::JsonDataRegistration(LWP::Utility::JsonIO* jsonIO)
 		AddValue("ChangeIndexFrame", &meetingPlaceChangeIndexFrame_).
 		// Z座標（描画順）
 		AddValue("PositionZ", &meetingPlacePositionZ_).
+
+		EndGroup().
+
+		// 壁関係
+		BeginGroup("Wall").
+
+		// 壁のHP最大値
+		AddValue("HpMax", &wallHpMax_).
+		// 壁の生存時間最大値
+		AddValue("LifeTimeMax", &wallLifeTimeMax_).
+		// Z座標（描画順）
+		AddValue("PositionZ", &wallPositionZ_).
+		// テクスチャサイズ
+		AddValue("TextureSize", &wallTextureSize_).
+		// スプライトの大きさ	
+		AddValue("SpriteScale", &wallSpriteScale_).
 
 		EndGroup();
 

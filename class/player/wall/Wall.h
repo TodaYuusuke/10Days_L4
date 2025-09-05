@@ -7,11 +7,6 @@
 class Wall
 {
 
-public:
-
-	// スプライトの大きさ
-	static const LWP::Math::Vector2 kSpriteSize_;
-
 public: // メンバ関数
 
 	/// <summary>

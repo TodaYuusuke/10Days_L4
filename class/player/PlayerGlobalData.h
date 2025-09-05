@@ -40,6 +40,12 @@ public: // アクセッサ
 	static int GetMeetingPlaceChangeIndexFrame() { return meetingPlaceChangeIndexFrame_; }
 	static float GetMeetingPlacePositionZ() { return meetingPlacePositionZ_; }
 
+	static int GetWallHpMax() { return wallHpMax_; }
+	static float GetWallLifeTimeMax() { return wallLifeTimeMax_; }
+	static float GetWallPositionZ() { return wallPositionZ_; }
+	static LWP::Math::Vector2 GetWallTextureSize() { return wallTextureSize_; }
+	static LWP::Math::Vector3 GetWallSpriteScale() { return wallSpriteScale_; }
+
 private: //メンバ変数
 
 	// マウス関係
@@ -72,6 +78,19 @@ private: //メンバ変数
 	static int meetingPlaceChangeIndexFrame_;
 	// Z座標（描画順）
 	static float meetingPlacePositionZ_;
+
+	// 壁関係
+
+	// 壁のHP最大値
+	static int wallHpMax_;
+	// 壁の生存時間最大値
+	static float wallLifeTimeMax_;
+	// Z座標（描画順）
+	static float wallPositionZ_;
+	// テクスチャサイズ
+	static LWP::Math::Vector2 wallTextureSize_;
+	// スプライトの大きさ	
+	static LWP::Math::Vector3 wallSpriteScale_;
 
 };
 
