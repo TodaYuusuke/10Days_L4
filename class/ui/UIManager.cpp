@@ -1,5 +1,6 @@
 #include "UIManager.h"
 #include "MinionsNumUI.h"
+#include "LineGaugeUI.h"
 
 using namespace LWP::Utility;
 
@@ -26,6 +27,9 @@ void UIManager::Initialize(Player* player, MinionManager* minionManager)
 	// 手下の数
 	uis_[static_cast<size_t>(UIList::MinionsNum)] = std::make_unique<MinionsNumUI>();
 	dynamic_cast<MinionsNumUI*>(uis_[static_cast<size_t>(UIList::MinionsNum)].get())->SetMinionManager(minionManager);
+	// ゲージ
+	uis_[static_cast<size_t>(UIList::LineGauge)] = std::make_unique<LineGaugeUI>();
+	dynamic_cast<LineGaugeUI*>(uis_[static_cast<size_t>(UIList::LineGauge)].get())->SetPlayer(player);
 
 
 	jsonIO_.Init("UI.json");

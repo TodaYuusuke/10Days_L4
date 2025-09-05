@@ -42,19 +42,11 @@ void MinionsNumUI::Initialize()
 	spriteRightNum_.material.color.A = 200;
 	spriteMark_.material.color.A = 200;
 
-	// 親設定
-	baseWorldTF_.translation = {640.0f,360.0f,0.0f};
-
 	// 親子関係
 	spriteLeftNum_.worldTF.Parent(&baseWorldTF_);
 	spriteCenterNum_.worldTF.Parent(&baseWorldTF_);
 	spriteRightNum_.worldTF.Parent(&baseWorldTF_);
 	spriteMark_.worldTF.Parent(&baseWorldTF_);
-
-	// 位置の設定
-	spriteLeftNum_.worldTF.translation = { -64.0f, 0.0f, -1.0f };
-	spriteCenterNum_.worldTF.translation = {0.0f,0.0f,-1.0f};
-	spriteRightNum_.worldTF.translation = { 64.0f, 0.0f, -1.0f };
 
 }
 

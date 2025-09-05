@@ -5,7 +5,7 @@
 /// </summary>
 enum class UIList {
 	MinionsNum,		// 手下の数
-	//LineGauge,	// 線のゲージ
+	LineGauge,	// 線のゲージ
 	//BossHP,		// ぼすのHP
 	UIListOfCount,	// 数数える用
 };
