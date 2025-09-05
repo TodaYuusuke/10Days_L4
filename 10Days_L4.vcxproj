@@ -167,6 +167,9 @@
     <ClCompile Include="class\scene\Title.cpp" />
     <ClCompile Include="class\stone\Stone.cpp" />
     <ClCompile Include="class\stone\StoneManager.cpp" />
+    <ClCompile Include="class\ui\BaseUI.cpp" />
+    <ClCompile Include="class\ui\MinionsNumUI.cpp" />
+    <ClCompile Include="class\ui\UIManager.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +192,10 @@
     <ClInclude Include="class\scene\Title.h" />
     <ClInclude Include="class\stone\Stone.h" />
     <ClInclude Include="class\stone\StoneManager.h" />
+    <ClInclude Include="class\ui\BaseUI.h" />
+    <ClInclude Include="class\ui\MinionsNumUI.h" />
+    <ClInclude Include="class\ui\UIList.h" />
+    <ClInclude Include="class\ui\UIManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

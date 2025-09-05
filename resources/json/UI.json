@@ -1,0 +1,52 @@
+{
+    "Group :MinionsNum": {
+        "Group :Base": {
+            "Vector3 :Positon": [
+                192.0,
+                128.0,
+                0.0
+            ],
+            "Vector3 :Size": [
+                2.0,
+                2.0,
+                1.0
+            ]
+        },
+        "Group :CenterNum": {
+            "Vector3 :Positon": [
+                0.0,
+                0.0,
+                -1.0
+            ],
+            "Vector3 :Size": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "Group :LeftNum": {
+            "Vector3 :Positon": [
+                -64.0,
+                0.0,
+                -1.0
+            ],
+            "Vector3 :Size": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "Group :RightNum": {
+            "Vector3 :Positon": [
+                64.0,
+                0.0,
+                -1.0
+            ],
+            "Vector3 :Size": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        }
+    }
+}
