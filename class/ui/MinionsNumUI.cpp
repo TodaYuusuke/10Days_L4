@@ -77,29 +77,29 @@ void MinionsNumUI::SetIsActive(bool isActive)
 void MinionsNumUI::JsonDataRegistration(LWP::Utility::JsonIO* jsonIO)
 {
 
-	jsonIO->BeginGroup("MinionsNum");
+	jsonIO->BeginGroup("MinionsNum").
 
-	jsonIO->BeginGroup("Base");
-	jsonIO->AddValue("Positon", &baseWorldTF_.translation);
-	jsonIO->AddValue("Size", &baseWorldTF_.scale);
-	jsonIO->EndGroup();
+	BeginGroup("Base").
+	AddValue("Positon", &baseWorldTF_.translation).
+	AddValue("Size", &baseWorldTF_.scale).
+	EndGroup().
 
-	jsonIO->BeginGroup("LeftNum");
-	jsonIO->AddValue("Positon", &spriteLeftNum_.worldTF.translation);
-	jsonIO->AddValue("Size", &spriteLeftNum_.worldTF.scale);
-	jsonIO->EndGroup();
+	BeginGroup("LeftNum").
+	AddValue("Positon", &spriteLeftNum_.worldTF.translation).
+	AddValue("Size", &spriteLeftNum_.worldTF.scale).
+	EndGroup().
 
-	jsonIO->BeginGroup("CenterNum");
-	jsonIO->AddValue("Positon", &spriteCenterNum_.worldTF.translation);
-	jsonIO->AddValue("Size", &spriteCenterNum_.worldTF.scale);
-	jsonIO->EndGroup();
+	BeginGroup("CenterNum").
+	AddValue("Positon", &spriteCenterNum_.worldTF.translation).
+	AddValue("Size", &spriteCenterNum_.worldTF.scale).
+	EndGroup().
 
-	jsonIO->BeginGroup("RightNum");
-	jsonIO->AddValue("Positon", &spriteRightNum_.worldTF.translation);
-	jsonIO->AddValue("Size", &spriteRightNum_.worldTF.scale);
-	jsonIO->EndGroup();
+	BeginGroup("RightNum").
+	AddValue("Positon", &spriteRightNum_.worldTF.translation).
+	AddValue("Size", &spriteRightNum_.worldTF.scale).
+	EndGroup().
 
-	jsonIO->EndGroup();
+	EndGroup();
 
 }
 
