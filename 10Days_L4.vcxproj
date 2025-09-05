@@ -157,11 +157,13 @@
     <ClCompile Include="class\boss\state\EnemyMoveState.cpp" />
     <ClCompile Include="class\scene\TestScene.cpp" />
     <ClCompile Include="class\scene\Title.cpp" />
+    <ClCompile Include="class\boss\EnemyDataManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="class\boss\normalBoss\NormalBossSpriteSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="class\boss\BaseEnemy.h" />
+    <ClInclude Include="class\boss\BaseEnemyData.h" />
     <ClInclude Include="class\boss\BaseEnemySpriteSystem.h" />
     <ClInclude Include="class\boss\EnemyManager.h" />
     <ClInclude Include="class\boss\normalBoss\NormalBoss.h" />
@@ -173,6 +175,10 @@
     <ClInclude Include="class\scene\TestScene.h" />
     <ClInclude Include="class\scene\Title.h" />
     <ClInclude Include="class\boss\normalBoss\NormalBossSpriteSystem.h" />
+    <ClInclude Include="class\boss\EnemyDataManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

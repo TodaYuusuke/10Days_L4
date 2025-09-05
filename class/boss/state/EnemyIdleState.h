@@ -14,7 +14,6 @@ public:
 	// 終了処理
 	void Exit(BaseEnemy* enemy) override;
 
-
 private:
 
 

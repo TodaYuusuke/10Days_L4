@@ -1,13 +1,18 @@
 ﻿#include "EnemyManager.h"
 #include "normalBoss/NormalBoss.h"
+#include "EnemyDataManager.h"
 
 void EnemyManager::Initialize() {
-	enemies_.push_back(std::make_unique<NormalBoss>());
+	EnemyDataManager::GetInstance()->Initialize();
+	auto normalBossData = EnemyDataManager::GetInstance()->GetData(BaseEnemyData::Type::NormalBoss);
+	enemies_.push_back(std::make_unique<NormalBoss>(*normalBossData));
+
 }
-
 void EnemyManager::Update() {
-	// enemyの状態など通常更新処理
+	
+	EnemyDataManager::GetInstance()->ImGuiProc();
 
+	// enemyの状態など通常更新処理
 	for (auto& enemy : enemies_) {
 		enemy->Update();
 	}

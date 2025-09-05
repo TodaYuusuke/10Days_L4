@@ -5,7 +5,7 @@
 
 #include "BaseEnemySpriteSystem.h"
 #include "state/IEnemyState.h"
-
+#include "BaseEnemyData.h"
 
 // 敵キャラクターの基底クラス
 class BaseEnemy {
@@ -18,7 +18,7 @@ public:
 		StateUpdate();
 		spriteSystem_ = 生成;
 	*/ 
-	virtual void Initialize() = 0;
+	virtual void Initialize(BaseEnemyData& data) = 0;
 	// 更新処理
 	virtual void Update() = 0;
 
@@ -27,6 +27,11 @@ public:
 	/// </summary>
 	/// <returns>状態が切り替わった際、trueを返す</returns>
 	bool StateUpdate();
+
+protected:
+
+	// データのセットを行う純粋仮想関数
+	virtual void SetData(BaseEnemyData& data) = 0;
 
 private:
 
