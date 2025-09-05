@@ -15,8 +15,6 @@ public:
 
 	// スプライトの数
 	static const size_t kSpriteNum_ = 256;
-	// スプライトの大きさ
-	static const LWP::Math::Vector2 kSpriteSize_;
 
 public: // メンバ関数
 

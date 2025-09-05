@@ -161,6 +161,7 @@
     <ClCompile Include="class\player\Drawing.cpp" />
     <ClCompile Include="class\player\MeetingPlace.cpp" />
     <ClCompile Include="class\player\Player.cpp" />
+    <ClCompile Include="class\player\PlayerGlobalData.cpp" />
     <ClCompile Include="class\player\PlayerMouseOperation.cpp" />
     <ClCompile Include="class\player\wall\Wall.cpp" />
     <ClCompile Include="class\player\wall\WallManager.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="class\player\Drawing.h" />
     <ClInclude Include="class\player\MeetingPlace.h" />
     <ClInclude Include="class\player\Player.h" />
+    <ClInclude Include="class\player\PlayerGlobalData.h" />
     <ClInclude Include="class\player\PlayerMouseOperation.h" />
     <ClInclude Include="class\player\wall\Wall.h" />
     <ClInclude Include="class\player\wall\WallManager.h" />

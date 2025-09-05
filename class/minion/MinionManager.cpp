@@ -5,7 +5,8 @@ MinionManager::MinionManager()
 	:	minions_{},
 		minionNum_(kMinionNumMax_),
 		meetingPlace_(nullptr),
-		stoneManager_(nullptr)
+		stoneManager_(nullptr),
+		jsonIO_()
 {
 	Initialize();
 }
@@ -14,7 +15,8 @@ MinionManager::MinionManager(MeetingPlace* meetingPlace, StoneManager* stoneMana
 	:	minions_{},
 		minionNum_(kMinionNumMax_),
 		meetingPlace_(meetingPlace),
-		stoneManager_(stoneManager)
+		stoneManager_(stoneManager),
+		jsonIO_()
 {
 	Initialize();
 }

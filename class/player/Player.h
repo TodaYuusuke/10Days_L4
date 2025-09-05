@@ -57,5 +57,8 @@ private:
 	// 壁マネージャー
 	std::unique_ptr<WallManager> wallManager_;
 
+	// json
+	LWP::Utility::JsonIO jsonIO_;
+
 };
 

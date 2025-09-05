@@ -1,0 +1,28 @@
+{
+    "Group :Line": {
+        "Vector2 :TextureSize": [
+            100.0,
+            100.0
+        ],
+        "float :LengthMax": 6000.0,
+        "float :PositionZ": 0.0,
+        "float :RecordingTime": 0.009999999776482582
+    },
+    "Group :MeetingPlace": {
+        "Vector2 :TextureSize": [
+            64.0,
+            64.0
+        ],
+        "Vector3 :SpriteScale": [
+            1.0,
+            1.0,
+            0.0
+        ],
+        "float :Position": 0.0,
+        "int32_t :ChangeIndexFrame": 4,
+        "int32_t :IndexMaxX": 6
+    },
+    "Group :Mouse": {
+        "float :DragCertifiedDistance": 30.0
+    }
+}

@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "PlayerGlobalData.h"
 
 using namespace LWP::Input;
 
@@ -6,7 +7,8 @@ Player::Player()
 	:	playerMouseOperation_(nullptr),
 		meetingPlace_(nullptr),
 		drawing_(nullptr),
-		wallManager_(nullptr)
+		wallManager_(nullptr),
+		jsonIO_()
 {
 	Initialize();
 }
@@ -17,6 +19,10 @@ Player::~Player()
 
 void Player::Initialize()
 {
+
+	jsonIO_.Init("Player.json");
+	PlayerGlobalData::JsonDataRegistration(&jsonIO_);
+	jsonIO_.CheckJsonFile();
 
 	playerMouseOperation_ = std::make_unique<PlayerMouseOperation>();
 
@@ -40,11 +46,15 @@ void Player::Update()
 
 	drawing_->Update(playerMouseOperation_->GetIsDragging());
 
-
 	if (drawing_->GetWallCreation()) {
 		wallManager_->CreateWalls(drawing_->GetPoints());
 	}
 	wallManager_->Update();
+
+	// GUI JSON
+	ImGui::Begin("Player");
+	jsonIO_.DebugGUI();
+	ImGui::End();
 
 }
 

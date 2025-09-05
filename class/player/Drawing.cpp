@@ -1,11 +1,9 @@
 #include "Drawing.h"
+#include "PlayerGlobalData.h"
 using namespace LWP::Math;
 using namespace LWP::Input;
 using namespace LWP::Info;
 using namespace LWP::Utility;
-
-// スプライトの大きさ
-const Vector2 Drawing::kSpriteSize_ = {100.0f, 100.0f};
 
 Drawing::Drawing()
 	:	points_{},
@@ -74,7 +72,7 @@ void Drawing::Update(bool isDragging)
 		if (isActive_) {
 			recordingTimer_ += static_cast<float>(LWP::Info::GetDeltaTime());
 			// レコーディング時間
-			const float kRecordingTime = 0.01f;
+			const float kRecordingTime = PlayerGlobalData::GetLineRecordingTime();
 			if (recordingTimer_ > kRecordingTime) {
 				// 記録
 				recordingTimer_ -= kRecordingTime;
@@ -84,8 +82,7 @@ void Drawing::Update(bool isDragging)
 
 				// 長さ30未満なのでリターン
 				// ドラッグ認定距離
-				const float kDragCertifiedDistance = 30.0f;
-				if (kLength < kDragCertifiedDistance) {
+				if (kLength < PlayerGlobalData::GetDragCertifiedDistance()) {
 					return;
 				}
 
@@ -97,7 +94,7 @@ void Drawing::Update(bool isDragging)
 				// 線の長さ
 				lineLength_ += kLength;
 				// 線の長さ最大
-				const float kLengthMax = 6000.0f;
+				const float kLengthMax = PlayerGlobalData::GetLineLengthMax();
 				// 差分
 				float difference = lineLength_ - kLengthMax;
 
@@ -164,15 +161,14 @@ void Drawing::SpriteActive(const LWP::Math::Vector2& point0, const LWP::Math::Ve
 	// 位置
 	const Vector2 spritePosition = (point1 + point0) / 2.0f;
 	// Z座標（描画順）
-	const float kPositionZ = 0.0f;
-	sprites_[sprieIndex_].worldTF.translation = { spritePosition.x, spritePosition.y, kPositionZ };
+	sprites_[sprieIndex_].worldTF.translation = { spritePosition.x, spritePosition.y, PlayerGlobalData::GetLinePositionZ()};
 	// 回転
 	const Vector2 kDir2D = (point1 - point0).Normalize();
 	const Vector3 kDir3D = { kDir2D.x, kDir2D.y, 0.0f };
 	sprites_[sprieIndex_].worldTF.rotation = Quaternion::ConvertFromTo(Vector3{ 0.0f,1.0f,0.0f }, kDir3D);
 	// 大きさ
 	const float kLength = (point1 - point0).Length();
-	sprites_[sprieIndex_].worldTF.scale.y = (kLength / kSpriteSize_.y) + 0.1f;
+	sprites_[sprieIndex_].worldTF.scale.y = (kLength / PlayerGlobalData::GetLineTextureSize().y) + 0.1f;
 
 	// アクティブに
 	sprites_[sprieIndex_].isActive = true;

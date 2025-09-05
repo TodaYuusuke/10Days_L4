@@ -1,4 +1,5 @@
 #include "PlayerMouseOperation.h"
+#include "PlayerGlobalData.h"
 
 using namespace LWP::Input;
 using namespace LWP::Math;
@@ -54,9 +55,7 @@ void PlayerMouseOperation::LeftButtonHeldDown()
 		// 推したときとの距離を確認
 		const float kDistance = (kNowPosition - pressedPosition_).Length();
 		// ドラッグ認定距離
-		const float kDragCertifiedDistance = 30.0f;
-
-		if (kDragCertifiedDistance < kDistance) {
+		if (PlayerGlobalData::GetDragCertifiedDistance() < kDistance) {
 			//ドラッグ開始
 			isDragging_ = true;
 		}
