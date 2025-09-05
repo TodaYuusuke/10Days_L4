@@ -8,8 +8,10 @@ using namespace LWP::Math;
 PlayerMouseOperation::PlayerMouseOperation()
 	:	pressedPosition_({0.0f,0.0f}), 
 		isDragging_(false), 
-		clicked_(false)
+		clicked_(false),
+		sprite_()
 {
+	Initialize();
 }
 
 PlayerMouseOperation::~PlayerMouseOperation()
@@ -18,6 +20,13 @@ PlayerMouseOperation::~PlayerMouseOperation()
 
 void PlayerMouseOperation::Initialize()
 {
+
+	// マウスカーソルを消す
+	ShowCursor(false);
+
+	sprite_.LoadTexture("Pen.png");
+	sprite_.anchorPoint = { 0.0f,1.0f };
+
 }
 
 void PlayerMouseOperation::Update()
@@ -34,6 +43,10 @@ void PlayerMouseOperation::Update()
 	else if (Mouse::GetRelease(0)){
 		LeftButtonReleased();
 	}
+
+	const Vector2 kNowPosition = Mouse::GetPosition();
+	// 先頭
+	sprite_.worldTF.translation = { kNowPosition.x, kNowPosition.y, -1000.0f };
 
 }
 

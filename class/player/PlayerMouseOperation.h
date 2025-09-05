@@ -62,6 +62,8 @@ private:
 	// クリックされた
 	bool clicked_;
 
+	// スプライト
+	LWP::Primitive::NormalSprite sprite_;
 
 };
 
