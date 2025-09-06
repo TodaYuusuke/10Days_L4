@@ -12,13 +12,13 @@ void NormalBoss::Initialize(BaseEnemyData& data) {
     SetData(data);
 
     // stateの初期化
-    stateMap_ = StateFactory::NormalBoss::CreateStates();
+    stateMap_ = StateFactory::NormalBoss::CreateStates(&data_);
     StateUpdate();
     spriteSystem_ = std::make_unique<NormalBossSpriteSystem>();
 }
 
 void NormalBoss::Update() {
-    requestStateType_ = static_cast<uint8_t>(NormalBossStateType::Idel);
+    //requestStateType_ = static_cast<uint8_t>(NormalBossStateType::Idel);
     // 状態変化更新
     if (StateUpdate()) {
         // 切り替わりがあった場合

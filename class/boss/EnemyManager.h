@@ -4,7 +4,7 @@
 // 敵用の管理クラス シングルトン扱いでGameSceneのみ生成
 class EnemyManager {
 public:
-	EnemyManager()= default;
+	EnemyManager();
 	~EnemyManager() = default;
 
 	// 初期化処理

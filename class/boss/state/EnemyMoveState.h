@@ -4,7 +4,8 @@
 // 敵キャラクター移動stateクラス
 class EnemyMoveState : public IEnemyState {
 public:
-	EnemyMoveState();
+	EnemyMoveState() = default;
+	EnemyMoveState(const float* moveSpeed);
 	~EnemyMoveState() = default;
 
 	// 初期化処理
@@ -14,8 +15,8 @@ public:
 	// 終了処理
 	void Exit(BaseEnemy* enemy) override;
 
-
 private:
 
+	const float* pMoveSpeed_ = nullptr;
 
 };

@@ -2,6 +2,10 @@
 #include "normalBoss/NormalBoss.h"
 #include "EnemyDataManager.h"
 
+EnemyManager::EnemyManager() {
+	Initialize();
+}
+
 void EnemyManager::Initialize() {
 	EnemyDataManager::GetInstance()->Initialize();
 	auto normalBossData = EnemyDataManager::GetInstance()->GetData(BaseEnemyData::Type::NormalBoss);

@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <Adapter.h>
 
+using namespace LWP::Math;
 class BaseEnemy;
 
 /// <summary>

@@ -28,6 +28,12 @@ public:
 	/// <returns>状態が切り替わった際、trueを返す</returns>
 	bool StateUpdate();
 
+	/// <summary>
+	/// 新しい状態タイプ番号をリクエスト
+	/// </summary>
+	/// <param name="newStateTypeNumber">リクエストする新しい状態タイプ番号。</param>
+	void RequestState(const uint8_t& newStateTypeNumber) { requestStateType_ = newStateTypeNumber; }
+
 protected:
 
 	// データのセットを行う純粋仮想関数
