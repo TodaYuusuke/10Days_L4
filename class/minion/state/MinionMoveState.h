@@ -34,5 +34,10 @@ public: // メンバ関数
     /// <param name="minion">手下のポインタ</param>
     void Exit(Minion* minion) override;
 
+private:
+
+    // 追加回転
+    float addRotate_;
+
 };
 

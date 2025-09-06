@@ -6,9 +6,11 @@
 #include "../MinionGlobalData.h"
 
 using namespace LWP::Math;
+using namespace LWP::Utility;
 
 void MinionMoveState::Enter(Minion* minion)
 {
+	addRotate_ = 0.0f;
 }
 
 void MinionMoveState::Update(Minion* minion)
@@ -50,10 +52,19 @@ void MinionMoveState::Update(Minion* minion)
 
 	// 移動方向
 	Vector2 dir = (kTargetPosition - kMinionPosition);
-	if (dir.Length() == 0.0f) {
+	if (dir.Length() <= MinionGlobalData::GetAttackStateChangesDistance()) {
+		minion->SetRequestStateType(MinionStateType::Attack);
 		return;
 	}
 	dir = dir.Normalize();
+
+	// 回転させて不規則に動くように
+	const float kSddRotateFluctuation = MinionGlobalData::GetAddRotateFluctuation();
+	addRotate_ += Random::GenerateFloat(-kSddRotateFluctuation, kSddRotateFluctuation);
+	const float kSddRotateMax = MinionGlobalData::GetAddRotateMax();
+	addRotate_ = std::clamp(addRotate_, -kSddRotateMax, kSddRotateMax);
+	Matrix4x4 randomRotateMatrix = Matrix4x4::CreateRotateZMatrix(addRotate_);
+	dir = dir * randomRotateMatrix;
 	// 移動
 	const Vector2 kNewMinionPosition = kMinionPosition + (dir * MinionGlobalData::GetSpeed());
 	minion->SetPosition(kNewMinionPosition);

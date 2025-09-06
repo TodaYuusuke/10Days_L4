@@ -27,19 +27,27 @@ public: // メンバ関数
 public: // アクセッサ
 
 	static int GetInitialHp() { return initialHp_; }
+	static float GetAttackStateChangesDistance() { return attackStateChangesDistance_; }
+	static float GetMoveStateChangesDistance() { return moveStateChangesDistance_; }
 	static LWP::Math::Vector2 GetTextureSize() { return textureSize_; }
 	static LWP::Math::Vector3 GetSpriteScale() { return spriteScale_; }
 	static int GetIndexMaxX() { return indexMaxX_; }
 	static int GetChangeIndexFrame() { return changeIndexFrame_; }
 	static float GetPositionZ() { return positionZ_; }
 	static float GetSpeed() { return speed_; }
+	static float GetAddRotateFluctuation() { return addRotateFluctuation_; }
+	static float GetAddRotateMax() { return addRotateMax_; }
 	static float GetMotivationMultiplier() { return motivationMultiplier_; }
 	static float GetAttackCoolTimeMax() { return attackCoolTimeMax_; }
 
 private: //メンバ変数
 	
-	//初期HP
+	// 初期HP
 	static int initialHp_;
+	// 攻撃状態切り替え距離
+	static float attackStateChangesDistance_;
+	// 移動状態切り替え距離
+	static float moveStateChangesDistance_;
 
 	// スプライト関係
 
@@ -58,6 +66,10 @@ private: //メンバ変数
 
 	// 移動速度
 	static float speed_;
+	// 追加回転変動
+	static float addRotateFluctuation_;
+	// 追加回転最大
+	static float addRotateMax_;
 
 	// 攻撃ステート関係
 

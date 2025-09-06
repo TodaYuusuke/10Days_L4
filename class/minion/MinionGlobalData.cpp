@@ -2,6 +2,10 @@
 
 //初期HP
 int MinionGlobalData::initialHp_ = 1;
+// 攻撃状態切り替え距離
+float MinionGlobalData::attackStateChangesDistance_ = 10.0f;
+// 移動状態切り替え距離
+float MinionGlobalData::moveStateChangesDistance_ = 10.0f;
 // テクスチャサイズ
 LWP::Math::Vector2 MinionGlobalData::textureSize_ = { 64.0f,64.0f };
 // スプライトサイズ
@@ -14,6 +18,10 @@ int MinionGlobalData::changeIndexFrame_ = 10;
 float MinionGlobalData::positionZ_ = 0.0f;
 // 移動速度
 float MinionGlobalData::speed_ = 0.5f;
+// 追加回転変動
+float MinionGlobalData::addRotateFluctuation_ = 0.02f;
+// 追加回転最大
+float MinionGlobalData::addRotateMax_ = 0.5f;
 // やる気あるときの倍率
 float MinionGlobalData::motivationMultiplier_ = 1.5f;
 // 攻撃のクールタイム
@@ -24,6 +32,10 @@ void MinionGlobalData::JsonDataRegistration(LWP::Utility::JsonIO* jsonIO)
 
 	//初期HP
 	jsonIO->AddValue("InitialHp", &initialHp_).
+		// 攻撃状態切り替え距離
+		AddValue("AttackStateChangesDistance", &attackStateChangesDistance_).
+		// 移動状態切り替え距離
+		AddValue("MoveStateChangesDistance", &moveStateChangesDistance_).
 
 		// スプライト関係
 		BeginGroup("Sprite").
@@ -46,6 +58,11 @@ void MinionGlobalData::JsonDataRegistration(LWP::Utility::JsonIO* jsonIO)
 
 		// 移動速度
 		AddValue("Speed", &speed_).
+
+		// 追加回転変動
+		AddValue("AddRotateFluctuation", &addRotateFluctuation_).
+		// 追加回転最大
+		AddValue("AddRotateMax", &addRotateMax_).
 
 		EndGroup().
 
