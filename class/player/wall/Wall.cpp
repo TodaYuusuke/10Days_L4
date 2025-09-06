@@ -1,6 +1,7 @@
 #include "Wall.h"
 #include "../PlayerGlobalData.h"
 using namespace LWP::Math;
+using namespace LWP::Utility;
 
 Wall::Wall()
 	:	start_({0.0f,0.0f}),
@@ -56,5 +57,9 @@ void Wall::Update()
 	if (lifeTime_ <= 0.0f) {
 		isDead_ = true;
 	}
+
+	// 色
+	int colorValue = static_cast<int>(255.0f * Easing::CallFunction(Easing::Type::Liner, std::clamp(lifeTime_, 0.0f, 1.0f)));
+	sprite_.material.color = { colorValue , colorValue , colorValue , colorValue };
 
 }
