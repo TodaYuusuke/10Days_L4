@@ -1,5 +1,6 @@
 #include "LineGaugeUI.h"
 #include "../player/Player.h"
+#include "../player/PlayerGlobalData.h"
 
 using namespace LWP::Math;
 using namespace LWP::Input;
@@ -30,6 +31,8 @@ void LineGaugeUI::Initialize()
 	gaugeSprite_.clipRect.min = { 0.0f,0.0f};
 	gaugeSprite_.clipRect.max = { 32.0f,32.0f };
 
+	gaugeSprite_.anchorPoint = { 0.5f, 1.0f };
+
 }
 
 void LineGaugeUI::Update()
@@ -41,6 +44,8 @@ void LineGaugeUI::Update()
 
 	const Vector2 kMousePosition = Mouse::GetPosition();
 	baseWorldTF_.translation = { kMousePosition.x, kMousePosition.y, baseWorldTF_.translation.z };
+
+	gaugeSprite_.clipRect.min.y = 32.0f * (player_->GetDrawing()->GetLineLength() / PlayerGlobalData::GetLineLengthMax());
 
 }
 

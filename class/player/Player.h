@@ -42,6 +42,7 @@ public:
 public: // アクセッサ
 
 	MeetingPlace* GetMeetingPlace() { return meetingPlace_.get(); }
+	Drawing* GetDrawing() { return drawing_.get(); }
 
 private:
 	

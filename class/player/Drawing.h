@@ -49,6 +49,7 @@ public: // アクセッサ
 
 	std::vector<LWP::Math::Vector2>* GetPoints() { return &points_; }
 	bool GetWallCreation() const { return wallCreation_; }
+	float GetLineLength() const { return lineLength_; }
 
 	void SetMinionManager(MinionManager* minionManager) { minionManager_ = minionManager; }
 
