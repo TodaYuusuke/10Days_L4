@@ -12,7 +12,7 @@ class MinionManager
 public:
 
 	// ミニオンの数
-	static const size_t kMinionNumMax_ = 1;
+	static const size_t kMinionNumMax_ = 125;
 
 public: // メンバ関数
 
