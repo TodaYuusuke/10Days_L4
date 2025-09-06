@@ -88,6 +88,8 @@ private: // メンバ変数
 	float lineLength_;
 	// 壁作成フラグ
 	bool wallCreation_;
+	// 書き始め点
+	LWP::Math::Vector2 startWriting_;
 
 private: // ポインタ
 

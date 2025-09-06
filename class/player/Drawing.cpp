@@ -11,6 +11,7 @@ Drawing::Drawing()
 		isActive_(false),
 		recordingTimer_(0.0f),
 		wallCreation_(false),
+		startWriting_({ 0.0f,0.0f }),
 		minionManager_(nullptr)
 {
 	Initialize();
@@ -22,6 +23,7 @@ Drawing::Drawing(MinionManager* minionManager)
 		isActive_(false),
 		recordingTimer_(0.0f),
 		wallCreation_(false),
+		startWriting_({0.0f,0.0f}),
 		minionManager_(minionManager)
 {
 	Initialize();
@@ -63,6 +65,11 @@ void Drawing::Update(bool isDragging)
 			// 壁作成フラグ
 			wallCreation_ = true;
 
+		}
+		else {
+			if (Mouse::GetTrigger(0)) {
+				startWriting_ = Mouse::GetPosition();
+			}
 		}
 		
 	}
@@ -146,6 +153,8 @@ void Drawing::Update(bool isDragging)
 		// これから線を書く
 		else {
 			points_.clear();
+			// 書き始めの位置を保存
+			points_.push_back(startWriting_);
 			// 現在の位置を保存
 			points_.push_back(Mouse::GetPosition());
 			// アクティブ

@@ -28,6 +28,11 @@
         "int32_t :IndexMaxX": 6
     },
     "Group :Mouse": {
+        "Vector3 :MouseSpriteScale": [
+            1.0,
+            2.0,
+            0.0
+        ],
         "float :DragCertifiedDistance": 30.0
     },
     "Group :Wall": {

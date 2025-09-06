@@ -2,7 +2,7 @@
     "Group :LineGauge": {
         "Group :Base": {
             "Vector3 :Positon": [
-                1322.0,
+                1392.0,
                 446.0,
                 0.0
             ],
@@ -14,24 +14,24 @@
         },
         "Group :Container": {
             "Vector3 :Positon": [
-                100.0,
-                -50.0,
+                45.0,
+                -30.0,
                 0.0
             ],
             "Vector3 :Size": [
-                2.0,
+                1.0,
                 2.0,
                 1.0
             ]
         },
         "Group :Gauge": {
             "Vector3 :Positon": [
-                100.0,
-                -50.0,
+                45.0,
+                -30.0,
                 -1.0
             ],
             "Vector3 :Size": [
-                2.0,
+                1.0,
                 2.0,
                 1.0
             ]
