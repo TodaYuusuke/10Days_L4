@@ -16,6 +16,11 @@ void MinionMoveState::Enter(Minion* minion)
 void MinionMoveState::Update(Minion* minion)
 {
 
+	// 画面端処理用画像の半分の値
+	const Vector2 kTextureHalfSize =
+	{ MinionGlobalData::GetTextureSize().x * MinionGlobalData::GetSpriteScale().x * 0.5f,
+		MinionGlobalData::GetTextureSize().y * MinionGlobalData::GetSpriteScale().y * 0.5f };
+
 	// 移動する
 	const Vector2 kMinionPosition = minion->GetPosition();
 	const Vector2 kMeetingPlacePosition = minion->GetMinionManager()->GetMeetingPlace()->GetPosition();
@@ -48,10 +53,13 @@ void MinionMoveState::Update(Minion* minion)
 	}
 	
 	const Vector2 kAddPosition = { std::cosf(theta) * radius, std::sinf(theta) * radius };
-	const Vector2 kTargetPosition = kMeetingPlacePosition + kAddPosition;
+	Vector2 targetPosition = kMeetingPlacePosition + kAddPosition;
+	// 画面端処理
+	targetPosition.x = std::clamp(targetPosition.x, kTextureHalfSize.x, 1920.0f - kTextureHalfSize.x);
+	targetPosition.y = std::clamp(targetPosition.y, kTextureHalfSize.y, 1080.0f - kTextureHalfSize.y);
 
 	// 移動方向
-	Vector2 dir = (kTargetPosition - kMinionPosition);
+	Vector2 dir = (targetPosition - kMinionPosition);
 	if (dir.Length() <= MinionGlobalData::GetAttackStateChangesDistance()) {
 		minion->SetRequestStateType(MinionStateType::Attack);
 		return;
@@ -66,8 +74,15 @@ void MinionMoveState::Update(Minion* minion)
 	Matrix4x4 randomRotateMatrix = Matrix4x4::CreateRotateZMatrix(addRotate_);
 	dir = dir * randomRotateMatrix;
 	// 移動
-	const Vector2 kNewMinionPosition = kMinionPosition + (dir * MinionGlobalData::GetSpeed());
-	minion->SetPosition(kNewMinionPosition);
+	Vector2 newMinionPosition = kMinionPosition + (dir * MinionGlobalData::GetSpeed());
+
+	// 画面端処理
+	newMinionPosition.x = std::clamp(newMinionPosition.x, kTextureHalfSize.x, 1920.0f - kTextureHalfSize.x);
+	newMinionPosition.y = std::clamp(newMinionPosition.y, kTextureHalfSize.y, 1080.0f - kTextureHalfSize.y);
+
+	// 移動
+	minion->SetPosition(newMinionPosition);
+
 	// 回転、方向
 	minion->SetDirection(dir);
 

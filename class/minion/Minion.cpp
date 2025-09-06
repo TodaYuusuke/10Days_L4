@@ -2,6 +2,7 @@
 #include "state/MinionStateFactory.h"
 #include "MinionManager.h"
 #include "MinionGlobalData.h"
+using namespace LWP::Math;
 
 using namespace LWP;
 
@@ -59,18 +60,6 @@ void Minion::Initialize()
 
 void Minion::Update()
 {
-
-#ifdef _DEBUG
-    // デバッグ
-    if(LWP::Input::Mouse::GetTrigger(1)) {
-        if (requestStateType_ == MinionStateType::Attack) {
-            requestStateType_ = MinionStateType::Move;
-        }
-        else {
-            requestStateType_ = MinionStateType::Attack;
-        }
-    }
-#endif // _DEBUG
 
     // 状態 リクエストがあったら変更
     if (currentStateType_ != requestStateType_) {
