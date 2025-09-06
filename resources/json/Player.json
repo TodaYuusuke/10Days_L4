@@ -41,9 +41,9 @@
             100.0
         ],
         "Vector3 :SpriteScale": [
-            0.10000000149011612,
-            1.0,
-            0.0
+            0.5,
+            1.2000000476837158,
+            1.0
         ],
         "float :LifeTimeMax": 5.0,
         "float :PositionZ": 0.0,

@@ -31,7 +31,6 @@ void Wall::Initilaize()
 {
 
 	sprite_.LoadTexture("Wall.png");
-	sprite_.worldTF.scale.x = PlayerGlobalData::GetWallSpriteScale().x;
 
 	// 位置
 	const Vector2 spritePosition = (end_ + start_) / 2.0f;
@@ -41,8 +40,10 @@ void Wall::Initilaize()
 	const Vector3 kDir3D = { kDir2D.x, kDir2D.y, 0.0f };
 	sprite_.worldTF.rotation = Quaternion::ConvertFromTo(Vector3{ 0.0f,1.0f,0.0f }, kDir3D);
 	// 大きさ
+	sprite_.worldTF.scale = PlayerGlobalData::GetWallSpriteScale();
 	const float kLength = (end_ - start_).Length();
-	sprite_.worldTF.scale.y = (kLength / PlayerGlobalData::GetWallTextureSize().y) + +PlayerGlobalData::GetWallSpriteScale().x;;
+	sprite_.clipRect.min = { 0.0f,0.0f };
+	sprite_.clipRect.max = { PlayerGlobalData::GetWallTextureSize().x,kLength };
 
 }
 

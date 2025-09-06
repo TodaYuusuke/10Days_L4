@@ -60,7 +60,7 @@ private: // メンバ変数
 	//LWP::Object::Collider:: lineCollider;
 
 	// スプライト
-	LWP::Primitive::NormalSprite sprite_;
+	LWP::Primitive::ClipSprite sprite_;
 
 	// 死んだか
 	bool isDead_;
