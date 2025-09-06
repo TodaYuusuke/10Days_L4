@@ -17,6 +17,9 @@ void TestScene::Initialize() {
 
 	uiManager_ = std::make_unique<UIManager>(player_.get(), minionManager_.get());
 
+
+	enemyManager_ = std::make_unique<EnemyManager>();
+	enemyManager_->Initialize();
 }
 
 // 更新
@@ -29,6 +32,9 @@ void TestScene::Update() {
 	player_->Update();
 	stoneManager_->Update();
 	uiManager_->Update();
+
+	enemyManager_->Update();
+	enemyManager_->SecondUpdate();
 
 	// エンジンの各クラスは大体ImGuiを呼び出す関数がある
 	ImGui::Begin("Test");

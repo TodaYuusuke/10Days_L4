@@ -4,6 +4,7 @@
 #include "../player/Player.h"
 #include "../stone/StoneManager.h"
 #include "../ui/UIManager.h"
+#include "../boss/EnemyManager.h"
 
 class TestScene final
 	: public IScene {
@@ -21,7 +22,6 @@ public:
 
 private: //*** これより先に必要な処理や変数を記述 ***//
 
-
 	LWP::Resource::RigidModel testModel_;
 	LWP::Primitive::NormalSprite sprite_;
 
@@ -31,4 +31,7 @@ private: //*** これより先に必要な処理や変数を記述 ***//
 
 	std::unique_ptr<UIManager> uiManager_;
 
+	
+	// 敵統括クラス
+	std::unique_ptr<EnemyManager> enemyManager_;
 };
