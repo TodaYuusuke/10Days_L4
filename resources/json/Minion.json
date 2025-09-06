@@ -1,6 +1,6 @@
 {
     "Group :Attack": {
-        "float :AttackCoolTimeMax": 2.0,
+        "float :AttackCoolTimeMax": 1.0,
         "float :MotivationMultiplier": 1.5
     },
     "Group :Move": {
