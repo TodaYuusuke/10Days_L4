@@ -22,7 +22,6 @@
         "int32_t :ChangeIndexFrame": 10,
         "int32_t :IndexMaxX": 6
     },
-    "float :AttackStateChangesDistance": 300.0,
-    "float :MoveStateChangesDistance": 160.0,
+    "float :AttackStateChangesDistance": 600.0,
     "int32_t :InitialHp": 1
 }

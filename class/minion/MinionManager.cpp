@@ -1,5 +1,6 @@
 #include "MinionManager.h"
 #include "MinionGlobalData.h"
+using namespace LWP::Math;
 
 MinionManager::MinionManager()
 	:	minions_{},
@@ -46,10 +47,20 @@ void MinionManager::Update()
 {
 
 	// 目指す場所が変わった
-	if (!(targetPosition_.x == meetingPlace_->GetPosition().x &&
-		targetPosition_.y == meetingPlace_->GetPosition().y)) {
+	const Vector2 kMeetingPlacePosition = meetingPlace_->GetPosition();
+	if (!(targetPosition_.x == kMeetingPlacePosition.x &&
+		targetPosition_.y == kMeetingPlacePosition.y)) {
+		
+		//数を専用に設定
 		attackMinionNum_ = 0;
-		targetPosition_ = meetingPlace_->GetPosition();
+		for (size_t i = 0; i < kMinionNumMax_; ++i) {
+			if ((minions_[i]->GetCurrentStateType() == MinionStateType::Attack) 
+				&& ((kMeetingPlacePosition - minions_[i]->GetPosition()).Length() < 50.0f)) {
+				++attackMinionNum_;
+			}
+		}
+		//場所変更
+		targetPosition_ = kMeetingPlacePosition;
 	}
 
 	minionNum_ = 0;
