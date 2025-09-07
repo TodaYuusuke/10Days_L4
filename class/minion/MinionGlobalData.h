@@ -28,7 +28,6 @@ public: // アクセッサ
 
 	static int GetInitialHp() { return initialHp_; }
 	static float GetAttackStateChangesDistance() { return attackStateChangesDistance_; }
-	static float GetMoveStateChangesDistance() { return moveStateChangesDistance_; }
 	static LWP::Math::Vector2 GetTextureSize() { return textureSize_; }
 	static LWP::Math::Vector3 GetSpriteScale() { return spriteScale_; }
 	static int GetIndexMaxX() { return indexMaxX_; }
@@ -46,8 +45,6 @@ private: //メンバ変数
 	static int initialHp_;
 	// 攻撃状態切り替え距離
 	static float attackStateChangesDistance_;
-	// 移動状態切り替え距離
-	static float moveStateChangesDistance_;
 
 	// スプライト関係
 

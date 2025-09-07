@@ -4,8 +4,6 @@
 int MinionGlobalData::initialHp_ = 1;
 // 攻撃状態切り替え距離
 float MinionGlobalData::attackStateChangesDistance_ = 10.0f;
-// 移動状態切り替え距離
-float MinionGlobalData::moveStateChangesDistance_ = 10.0f;
 // テクスチャサイズ
 LWP::Math::Vector2 MinionGlobalData::textureSize_ = { 64.0f,64.0f };
 // スプライトサイズ
@@ -34,8 +32,6 @@ void MinionGlobalData::JsonDataRegistration(LWP::Utility::JsonIO* jsonIO)
 	jsonIO->AddValue("InitialHp", &initialHp_).
 		// 攻撃状態切り替え距離
 		AddValue("AttackStateChangesDistance", &attackStateChangesDistance_).
-		// 移動状態切り替え距離
-		AddValue("MoveStateChangesDistance", &moveStateChangesDistance_).
 
 		// スプライト関係
 		BeginGroup("Sprite").

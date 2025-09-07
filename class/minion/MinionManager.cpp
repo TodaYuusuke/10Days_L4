@@ -4,6 +4,7 @@
 MinionManager::MinionManager()
 	:	minions_{},
 		minionNum_(kMinionNumMax_),
+		attackMinionNum_(0),
 		meetingPlace_(nullptr),
 		stoneManager_(nullptr),
 		jsonIO_()
@@ -14,6 +15,7 @@ MinionManager::MinionManager()
 MinionManager::MinionManager(MeetingPlace* meetingPlace, StoneManager* stoneManager)
 	:	minions_{},
 		minionNum_(kMinionNumMax_),
+		attackMinionNum_(0),
 		meetingPlace_(meetingPlace),
 		stoneManager_(stoneManager),
 		jsonIO_()
@@ -49,6 +51,13 @@ void MinionManager::Update()
 			++minionNum_;
 		}
 
+	}
+
+	attackMinionNum_ = 0;
+	for (size_t i = 0; i < kMinionNumMax_; ++i) {
+		if (minions_[i]->GetCurrentStateType() == MinionStateType::Attack) {
+			++attackMinionNum_;
+		}
 	}
 
 	// GUI JSON

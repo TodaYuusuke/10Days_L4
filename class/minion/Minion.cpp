@@ -3,6 +3,7 @@
 #include "MinionManager.h"
 #include "MinionGlobalData.h"
 using namespace LWP::Math;
+using namespace LWP::Utility;
 
 using namespace LWP;
 
@@ -19,6 +20,7 @@ Minion::Minion()
         direction_({ 0.0f,1.0f }),
         hp_(MinionGlobalData::GetInitialHp()),
         serialNumber_(serialNumberCount_),
+        targetPosition_({ 0.0f,0.0f }),
         minionManager_(nullptr)
 {
     Initialize();
@@ -34,6 +36,7 @@ Minion::Minion(MinionManager* minionManager)
         direction_({ 0.0f,1.0f }),
         hp_(MinionGlobalData::GetInitialHp()),
         serialNumber_(serialNumberCount_),
+        targetPosition_({ 0.0f,0.0f }),
         minionManager_(minionManager)
 {
     Initialize();
@@ -60,6 +63,19 @@ void Minion::Initialize()
 
 void Minion::Update()
 {
+
+    // リクエスト
+    // 移動距離
+    targetPosition_ = minionManager_->GetMeetingPlace()->GetPosition();
+    Vector2 sub = (targetPosition_ - position_);
+    //倍率
+    const float kDistanceMagnification = static_cast<float>(minionManager_->GetAttackMinionNum()) / static_cast<float>(minionManager_->kMinionNumMax_);
+    if (sub.Length() <= (MinionGlobalData::GetAttackStateChangesDistance() * Easing::CallFunction(Easing::Type::OutExpo, kDistanceMagnification)) + MinionGlobalData::GetSpeed()) {
+        requestStateType_ = MinionStateType::Attack;
+    }
+    else {
+        requestStateType_ = MinionStateType::Move;
+    }
 
     // 状態 リクエストがあったら変更
     if (currentStateType_ != requestStateType_) {

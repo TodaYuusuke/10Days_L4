@@ -4,7 +4,7 @@
         "float :MotivationMultiplier": 1.5
     },
     "Group :Move": {
-        "float :AddRotateFluctuation": 0.019999999552965164,
+        "float :AddRotateFluctuation": 0.05000000074505806,
         "float :AddRotateMax": 0.5,
         "float :Speed": 2.0
     },
@@ -22,7 +22,7 @@
         "int32_t :ChangeIndexFrame": 10,
         "int32_t :IndexMaxX": 6
     },
-    "float :AttackStateChangesDistance": 10.0,
+    "float :AttackStateChangesDistance": 300.0,
     "float :MoveStateChangesDistance": 160.0,
     "int32_t :InitialHp": 1
 }

@@ -12,7 +12,7 @@ class MinionManager
 public:
 
 	// ミニオンの数
-	static const size_t kMinionNumMax_ = 125;
+	static const size_t kMinionNumMax_ = 100;
 
 public: // メンバ関数
 
@@ -50,6 +50,8 @@ public: // アクセッサ
 
 	size_t GetMinionNum() const { return minionNum_; }
 
+	size_t GetAttackMinionNum() const { return attackMinionNum_; }
+
 private:
 
 	// 手下たち
@@ -57,6 +59,9 @@ private:
 
 	// 残りの手下たち
 	size_t minionNum_;
+
+	// 攻撃している手下たち
+	size_t attackMinionNum_;
 
 	// json
 	LWP::Utility::JsonIO jsonIO_;
