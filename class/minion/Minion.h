@@ -71,13 +71,11 @@ public: // アクセッサ
 	LWP::Math::Vector2 GetPosition() const { return position_; }
 	int GetHp() const { return hp_; }
 	int GetSerialNumber() const { return serialNumber_; }
-	LWP::Math::Vector2 GetTargetPosition() const { return targetPosition_; }
 	MinionStateType GetCurrentStateType() const { return currentStateType_; }
 
 	void SetRequestStateType(MinionStateType requestStateType) { requestStateType_ = requestStateType; }
 	void SetPosition(const LWP::Math::Vector2& position) { position_ = position; }
 	void SetDirection(const LWP::Math::Vector2& direction) { direction_ = direction; }
-	void SetTargetPosition(const LWP::Math::Vector2& targetPosition) { targetPosition_ = targetPosition; }
 
 	MinionManager* GetMinionManager() { return minionManager_; }
 
@@ -103,8 +101,6 @@ private: // メンバ変数
 	int hp_;
 	// 手下番号
 	int serialNumber_;
-	// 目指す場所
-	LWP::Math::Vector2 targetPosition_;
 
 private: // ポインタ
 

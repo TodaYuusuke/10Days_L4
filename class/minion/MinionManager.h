@@ -49,8 +49,8 @@ public: // アクセッサ
 	StoneManager* GetStoneManager() { return stoneManager_; }
 
 	size_t GetMinionNum() const { return minionNum_; }
-
 	size_t GetAttackMinionNum() const { return attackMinionNum_; }
+	LWP::Math::Vector2 GetTargetPosition() const { return targetPosition_; }
 
 private:
 
@@ -62,6 +62,9 @@ private:
 
 	// 攻撃している手下たち
 	size_t attackMinionNum_;
+
+	// 目指す場所
+	LWP::Math::Vector2 targetPosition_;
 
 	// json
 	LWP::Utility::JsonIO jsonIO_;

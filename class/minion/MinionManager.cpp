@@ -5,6 +5,7 @@ MinionManager::MinionManager()
 	:	minions_{},
 		minionNum_(kMinionNumMax_),
 		attackMinionNum_(0),
+		targetPosition_({ 0.0f,0.0f }),
 		meetingPlace_(nullptr),
 		stoneManager_(nullptr),
 		jsonIO_()
@@ -16,6 +17,7 @@ MinionManager::MinionManager(MeetingPlace* meetingPlace, StoneManager* stoneMana
 	:	minions_{},
 		minionNum_(kMinionNumMax_),
 		attackMinionNum_(0),
+		targetPosition_({0.0f,0.0f}),
 		meetingPlace_(meetingPlace),
 		stoneManager_(stoneManager),
 		jsonIO_()
@@ -42,6 +44,13 @@ void MinionManager::Initialize()
 
 void MinionManager::Update()
 {
+
+	// 目指す場所が変わった
+	if (!(targetPosition_.x == meetingPlace_->GetPosition().x &&
+		targetPosition_.y == meetingPlace_->GetPosition().y)) {
+		attackMinionNum_ = 0;
+		targetPosition_ = meetingPlace_->GetPosition();
+	}
 
 	minionNum_ = 0;
 	for (size_t i = 0; i < kMinionNumMax_; ++i) {

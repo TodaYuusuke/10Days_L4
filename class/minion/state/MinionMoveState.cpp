@@ -23,10 +23,10 @@ void MinionMoveState::Update(Minion* minion)
 
 	// 移動する
 	const Vector2 kMinionPosition = minion->GetPosition();
-	const Vector2 kMeetingPlacePosition = minion->GetMinionManager()->GetMeetingPlace()->GetPosition();
+	const Vector2 kTargetPosition = minion->GetMinionManager()->GetTargetPosition();
 
 	// 移動方向
-	Vector2 dir = (kMeetingPlacePosition - kMinionPosition);
+	Vector2 dir = (kTargetPosition - kMinionPosition);
 	dir = dir.Normalize();
 
 	// 回転させて不規則に動くように

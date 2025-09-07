@@ -4,7 +4,6 @@
 #include "../MinionManager.h"
 #include "../MinionGlobalData.h"
 using namespace LWP::Math;
-
 using namespace LWP::Info;
 
 MinionAttackState::MinionAttackState()

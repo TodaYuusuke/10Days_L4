@@ -20,7 +20,6 @@ Minion::Minion()
         direction_({ 0.0f,1.0f }),
         hp_(MinionGlobalData::GetInitialHp()),
         serialNumber_(serialNumberCount_),
-        targetPosition_({ 0.0f,0.0f }),
         minionManager_(nullptr)
 {
     Initialize();
@@ -36,7 +35,6 @@ Minion::Minion(MinionManager* minionManager)
         direction_({ 0.0f,1.0f }),
         hp_(MinionGlobalData::GetInitialHp()),
         serialNumber_(serialNumberCount_),
-        targetPosition_({ 0.0f,0.0f }),
         minionManager_(minionManager)
 {
     Initialize();
@@ -55,9 +53,13 @@ void Minion::Initialize()
 
     spriteSystem_ = std::make_unique<MinionSpriteSystem>();
 
-    position_ = { 660.0f,660.0f };
-
     ++serialNumberCount_;
+
+    const Vector2 kBasePosition = { 960.0f, 800.0f };
+    const Vector2 kRadomWidth = { 80.0f, 45.0f };
+    position_ = {
+        kBasePosition.x + Random::GenerateFloat(-kRadomWidth.x, kRadomWidth.x),
+        kBasePosition.y + Random::GenerateFloat(-kRadomWidth.y, kRadomWidth.y) };
 
 }
 
@@ -65,11 +67,10 @@ void Minion::Update()
 {
 
     // リクエスト
-    // 移動距離
-    targetPosition_ = minionManager_->GetMeetingPlace()->GetPosition();
-    Vector2 sub = (targetPosition_ - position_);
+    Vector2 sub = (minionManager_->GetTargetPosition() - position_);
     //倍率
     const float kDistanceMagnification = static_cast<float>(minionManager_->GetAttackMinionNum()) / static_cast<float>(minionManager_->kMinionNumMax_);
+    // リクエスト決定
     if (sub.Length() <= (MinionGlobalData::GetAttackStateChangesDistance() * Easing::CallFunction(Easing::Type::OutExpo, kDistanceMagnification)) + MinionGlobalData::GetSpeed()) {
         requestStateType_ = MinionStateType::Attack;
     }
