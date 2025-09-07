@@ -16,6 +16,9 @@ public:
 	// アニメーションや衝突判定などの二次更新
 	void SecondUpdate();
 
+	// 敵の座標 現在敵が1体しかいないため、くそ定義してる
+	const LWP::Math::Vector2& GetEnemyPosition() const;
+
 private:
 	// 敵のコンテナ
 	std::vector<std::unique_ptr<BaseEnemy>> enemies_;

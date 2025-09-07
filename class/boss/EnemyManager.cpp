@@ -30,3 +30,7 @@ void EnemyManager::SecondUpdate() {
 	// アニメーション等の描画更新処理
 
 }
+
+const LWP::Math::Vector2& EnemyManager::GetEnemyPosition() const {
+	return enemies_.at(0)->corePosition_;
+}
