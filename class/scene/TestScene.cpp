@@ -7,16 +7,18 @@ using namespace LWP::Input;
 // 初期化
 void TestScene::Initialize() {
 	testModel_.LoadCube();				// 立方体と球はデフォルトで用意してある
+	testModel_.isActive = false;
 	sprite_.LoadTexture("uvChecker.png");	// resources/texture直下のパスを指定する
+	sprite_.isActive = false;
 
-	/*
+	
 	player_ = std::make_unique<Player>();
 	stoneManager_ = std::make_unique<StoneManager>();
 	minionManager_ = std::make_unique<MinionManager>(player_->GetMeetingPlace(), stoneManager_.get());
 	player_->SetMinionManagerForDrawing(minionManager_.get());
 
 	uiManager_ = std::make_unique<UIManager>(player_.get(), minionManager_.get());
-	*/
+	
 
 	enemyManager_ = std::make_unique<EnemyManager>();
 }
@@ -27,10 +29,10 @@ void TestScene::Update() {
 		nextSceneFunction = []() { return new Title(); };	// 次のシーンに行くための処理
 	}
 
-	//minionManager_->Update();
-	//player_->Update();
-	//stoneManager_->Update();
-	//uiManager_->Update();
+	minionManager_->Update();
+	player_->Update();
+	stoneManager_->Update();
+	uiManager_->Update();
 
 	enemyManager_->Update();
 	enemyManager_->SecondUpdate();
