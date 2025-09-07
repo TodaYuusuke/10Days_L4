@@ -47,6 +47,10 @@ private:
 	/// <param name="newStateTypeNumber">新しい状態 enumからcastして使用</param>
 	void ChangeState(const uint8_t& newStateTypeNumber);
 
+public:
+	// 敵のコア座標
+	Vector2 corePosition_;
+
 protected:
 	// キャラクターの名前 のちに使う（と思う）
 	std::string name_ = "unknown";

@@ -6,7 +6,7 @@
 class EnemyIdleState : public IEnemyState {
 public:
 	EnemyIdleState() = default;
-	EnemyIdleState(const Vector2* idleTime);
+	EnemyIdleState(const Vector2* idleTime, NormalBossStateManager* sManager);
 	~EnemyIdleState() = default;
 
 	// 初期化処理
@@ -16,11 +16,10 @@ public:
 	// 終了処理
 	void Exit(BaseEnemy* enemy) override;
 
-	void Initialize(const Vector2* idleTime) {}
-
 private:
 
 	const Vector2* pIdleTime_ = nullptr;
+	NormalBossStateManager* pStateManager_ = nullptr;
 
 	// 時間
 	float idleTime_ = 0.0f;
