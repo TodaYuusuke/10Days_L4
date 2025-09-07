@@ -22,6 +22,16 @@ void MinionAttackState::Enter(Minion* minion)
 void MinionAttackState::Update(Minion* minion)
 {
 
+	// 向き
+
+	// ボスの位置
+	const Vector2 kBossPosition = {0.0f,0.0f};
+	// 自分の位置
+	const Vector2 kMyPosition = minion->GetPosition();
+	// 向き
+	const Vector2 kDirection = (kBossPosition - kMyPosition).Normalize();
+	minion->SetDirection(kDirection);
+
 	const float kDeltaTime = static_cast<float>(GetDeltaTime());
 
 	motivationTime_ -= kDeltaTime;
