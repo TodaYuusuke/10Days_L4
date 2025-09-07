@@ -183,6 +183,7 @@
     <ClCompile Include="class\boss\EnemyDataManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="class\boss\normalBoss\NormalBossSpriteSystem.cpp" />
+    <ClCompile Include="class\boss\normalBoss\NormalBossStateManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="class\minion\Minion.h" />
@@ -224,6 +225,7 @@
     <ClInclude Include="class\ui\UIManager.h" />
     <ClInclude Include="class\boss\normalBoss\NormalBossSpriteSystem.h" />
     <ClInclude Include="class\boss\EnemyDataManager.h" />
+    <ClInclude Include="class\boss\normalBoss\NormalBossStateManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

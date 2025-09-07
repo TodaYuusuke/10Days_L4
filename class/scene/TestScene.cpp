@@ -9,17 +9,16 @@ void TestScene::Initialize() {
 	testModel_.LoadCube();				// 立方体と球はデフォルトで用意してある
 	sprite_.LoadTexture("uvChecker.png");	// resources/texture直下のパスを指定する
 
-
+	/*
 	player_ = std::make_unique<Player>();
 	stoneManager_ = std::make_unique<StoneManager>();
 	minionManager_ = std::make_unique<MinionManager>(player_->GetMeetingPlace(), stoneManager_.get());
 	player_->SetMinionManagerForDrawing(minionManager_.get());
 
 	uiManager_ = std::make_unique<UIManager>(player_.get(), minionManager_.get());
-
+	*/
 
 	enemyManager_ = std::make_unique<EnemyManager>();
-	enemyManager_->Initialize();
 }
 
 // 更新
@@ -28,10 +27,10 @@ void TestScene::Update() {
 		nextSceneFunction = []() { return new Title(); };	// 次のシーンに行くための処理
 	}
 
-	minionManager_->Update();
-	player_->Update();
-	stoneManager_->Update();
-	uiManager_->Update();
+	//minionManager_->Update();
+	//player_->Update();
+	//stoneManager_->Update();
+	//uiManager_->Update();
 
 	enemyManager_->Update();
 	enemyManager_->SecondUpdate();

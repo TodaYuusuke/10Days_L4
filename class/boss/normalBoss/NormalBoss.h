@@ -3,6 +3,7 @@
 #include <memory>
 #include "NormalBossStateType.h"
 #include "../state/IEnemyState.h"
+#include "NormalBossStateManager.h"
 
 class NormalBoss : public BaseEnemy{
 public:
@@ -17,5 +18,6 @@ private:
 	void SetData(BaseEnemyData& data) override;
 	// データ
 	NormalBossData& data_;
-
+	// state管理クラス
+	std::unique_ptr<NormalBossStateManager> stateManager_;
 };
