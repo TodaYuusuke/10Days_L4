@@ -21,4 +21,8 @@ public:
 private:
 
 	const Vector2* pIdleTime_ = nullptr;
+
+	// 時間
+	float idleTime_ = 0.0f;
+	float nowTime_ = 0.0f;
 };

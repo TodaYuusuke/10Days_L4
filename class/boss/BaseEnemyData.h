@@ -58,6 +58,21 @@ public:
 		}
 	};
 
+	// dataの型キャスト
+	template <typename T>
+	T& Cast() const {
+		// 型チェック
+		if (this->type != T::kType) {
+			std::string log = "Type mismatch: Expected " + std::string(BaseEnemyData::ToString(T::kType)) +
+				" but got " + std::string(BaseEnemyData::ToString(this->type));
+			throw std::runtime_error(log);
+		}
+
+		// 安全にキャスト
+		return dynamic_cast<T&>(*this);
+	}
+
+
 	// 共通のパラメータデータ
 	void CommonValue(LWP::Utility::JsonIO json) {
 		json.AddValue("RespawnPoint", &respawnPoint);
@@ -90,13 +105,14 @@ struct AttackDefaultData {
 
 // NormalBossのデータ
 struct NormalBossData : public BaseEnemyData {
+	static constexpr Type kType = Type::NormalBoss;
 	NormalBossData() {
-		type = Type::NormalBoss;
+		type = kType;
 	}
 	NormalBossData(const NormalBossData&) = default;
 	// 初期生成
 	NormalBossData(const Vector2& resP) { 
-		type = Type::NormalBoss;
+		type = kType;
 		respawnPoint = resP;
 	}
 
