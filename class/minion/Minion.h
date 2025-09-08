@@ -78,6 +78,7 @@ public: // アクセッサ
 	void SetDirection(const LWP::Math::Vector2& direction) { direction_ = direction; }
 
 	MinionManager* GetMinionManager() { return minionManager_; }
+	void SetMinionManager(MinionManager* minionManager) { minionManager_ = minionManager; }
 
 private: // メンバ変数
 
@@ -91,7 +92,7 @@ private: // メンバ変数
 	MinionStateType requestStateType_;
 
 	// スプライトシステム
-	std::unique_ptr<MinionSpriteSystem> spriteSystem_;
+	MinionSpriteSystem spriteSystem_;
 
 	// 位置
 	LWP::Math::Vector2 position_;
