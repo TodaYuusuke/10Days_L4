@@ -4,6 +4,14 @@
 int MinionGlobalData::initialHp_ = 1;
 // 攻撃状態切り替え距離
 float MinionGlobalData::attackStateChangesDistance_ = 10.0f;
+// 初期位置
+LWP::Math::Vector2 MinionGlobalData::initialPosition_ = { 960.0f, 800.0f };
+// 初期位置ランダム幅
+LWP::Math::Vector2 MinionGlobalData::initialPositionWidth_ = { 80.0f, 45.0f };
+// リクエスト確認時の長さ、追加分
+float MinionGlobalData::requestCheckAddLength_ = 20.0f;
+// 集合地点変更時の長さ確認用
+float MinionGlobalData::meetingPlaceChangeLength_ = 50.0f;
 // テクスチャサイズ
 LWP::Math::Vector2 MinionGlobalData::textureSize_ = { 64.0f,64.0f };
 // スプライトサイズ
@@ -34,6 +42,14 @@ void MinionGlobalData::JsonDataRegistration(LWP::Utility::JsonIO* jsonIO)
 	jsonIO->AddValue("InitialHp", &initialHp_).
 		// 攻撃状態切り替え距離
 		AddValue("AttackStateChangesDistance", &attackStateChangesDistance_).
+		// 初期位置
+		AddValue("InitialPosition", &initialPosition_).
+		// 初期位置ランダム幅
+		AddValue("InitialPositionWidth", &initialPositionWidth_).
+		// リクエスト確認時の長さ、追加分
+		AddValue("RequestCheckAddLength", &requestCheckAddLength_).
+		// 集合地点変更時の長さ確認用
+		AddValue("MeetingPlaceChangeLength", &meetingPlaceChangeLength_).
 
 		// スプライト関係
 		BeginGroup("Sprite").

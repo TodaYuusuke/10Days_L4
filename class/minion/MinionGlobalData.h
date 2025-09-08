@@ -28,6 +28,10 @@ public: // アクセッサ
 
 	static int GetInitialHp() { return initialHp_; }
 	static float GetAttackStateChangesDistance() { return attackStateChangesDistance_; }
+	static LWP::Math::Vector2 GetInitialPosition() { return initialPosition_; }
+	static LWP::Math::Vector2 GetInitialPositionWidth() { return initialPositionWidth_; }
+	static float GetRequestCheckAddLength() { return requestCheckAddLength_; }
+	static float GetMeetingPlaceChangeLength() { return meetingPlaceChangeLength_; }
 	static LWP::Math::Vector2 GetTextureSize() { return textureSize_; }
 	static LWP::Math::Vector3 GetSpriteScale() { return spriteScale_; }
 	static int GetIndexMaxX() { return indexMaxX_; }
@@ -46,6 +50,14 @@ private: //メンバ変数
 	static int initialHp_;
 	// 攻撃状態切り替え距離
 	static float attackStateChangesDistance_;
+	// 初期位置
+	static LWP::Math::Vector2 initialPosition_;
+	// 初期位置ランダム幅
+	static LWP::Math::Vector2 initialPositionWidth_;
+	// リクエスト確認時の長さ、追加分
+	static float requestCheckAddLength_;
+	// 集合地点変更時の長さ確認用
+	static float meetingPlaceChangeLength_;
 
 	// スプライト関係
 

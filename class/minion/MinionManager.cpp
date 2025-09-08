@@ -57,7 +57,7 @@ void MinionManager::Update()
 		attackMinionNum_ = 0;
 		for (size_t i = 0; i < kMinionNumMax_; ++i) {
 			if ((minions_[i]->GetCurrentStateType() == MinionStateType::Attack) 
-				&& ((kMeetingPlacePosition - minions_[i]->GetPosition()).Length() < 50.0f)) {
+				&& ((kMeetingPlacePosition - minions_[i]->GetPosition()).Length() < MinionGlobalData::GetMeetingPlaceChangeLength())) {
 				++attackMinionNum_;
 			}
 		}

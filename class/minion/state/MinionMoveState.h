@@ -14,7 +14,7 @@ public: // メンバ関数
     /// <summary>
     /// コンストラクタ
     /// </summary>
-    MinionMoveState() = default;
+    MinionMoveState();
 
     /// <summary>
     /// この状態になる時の処理
