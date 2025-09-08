@@ -1,5 +1,4 @@
 ﻿#pragma once
-#include "../BaseEnemy.h"
 
 enum class NormalBossStateType : uint8_t {
 	Idle, // 待機

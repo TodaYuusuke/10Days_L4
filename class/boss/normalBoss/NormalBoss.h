@@ -1,9 +1,8 @@
 ﻿#pragma once
 #include "../BaseEnemy.h"
 #include <memory>
-#include "NormalBossStateType.h"
-#include "../state/IEnemyState.h"
 #include "NormalBossStateManager.h"
+#include "../data/NormalBossData.h"
 
 class NormalBoss : public BaseEnemy{
 public:
@@ -27,6 +26,7 @@ private:
 
 	// 衝突判定
 	LWP::Object::Collision2D collider_;
+	// 当たったかのフラグ
 	bool isHit_ = false;
 
 };

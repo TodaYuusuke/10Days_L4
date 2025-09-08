@@ -1,6 +1,9 @@
 ﻿#pragma once
 #include "IEnemyState.h"
-#include "../BaseEnemyData.h"
+#include "../data/BaseEnemyData.h"
+#include "../data/AttackDefaultData.h"
+
+class NormalBossStateManager;
 
 // 敵キャラクターのたたきつけ攻撃
 class NormalEnemySlamState : public IEnemyState {

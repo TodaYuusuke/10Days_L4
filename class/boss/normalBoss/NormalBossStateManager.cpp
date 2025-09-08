@@ -21,4 +21,5 @@ uint8_t NormalBossStateManager::Update(const uint8_t currentType) {
 		targetPosition_.y = LWP::Utility::Random::GenerateFloat(0.0f, 720.0f);
 		return StateType::ToUInt8(NormalBossStateType::Move);
 	}
+	return currentType;
 }

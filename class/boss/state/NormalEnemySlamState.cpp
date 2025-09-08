@@ -1,9 +1,10 @@
 ﻿#include "NormalEnemySlamState.h"
 #include "../normalBoss/NormalBossStateType.h"
 #include "../normalBoss/NormalBossStateManager.h"
+#include "../data/NormalBossData.h"
+#include "../normalBoss/NormalBoss.h"
 
 NormalEnemySlamState::NormalEnemySlamState(const BaseEnemyData* data, NormalBossStateManager* sManager) {
-	data;
 	const NormalBossData* d = dynamic_cast<const NormalBossData*>(data);
 	pSlam_ = &d->slam;
 }

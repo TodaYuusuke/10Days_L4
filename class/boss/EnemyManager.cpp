@@ -1,6 +1,6 @@
 ﻿#include "EnemyManager.h"
 #include "normalBoss/NormalBoss.h"
-#include "EnemyDataManager.h"
+#include "data/EnemyDataManager.h"
 
 EnemyManager::EnemyManager() {
 	Initialize();

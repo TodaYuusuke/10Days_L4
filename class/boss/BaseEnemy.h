@@ -5,7 +5,7 @@
 
 #include "BaseEnemySpriteSystem.h"
 #include "state/IEnemyState.h"
-#include "BaseEnemyData.h"
+#include "data/BaseEnemyData.h"
 
 // 敵キャラクターの基底クラス
 class BaseEnemy {

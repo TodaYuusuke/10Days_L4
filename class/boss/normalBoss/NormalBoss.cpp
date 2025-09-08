@@ -24,7 +24,7 @@ void NormalBoss::Initialize(BaseEnemyData& data) {
 
     collider_.mask.SetHitFrag(ColMaskGetter::GetBullet() | ColMaskGetter::GetPlayer());
     collider_.mask.SetBelongFrag(ColMaskGetter::GetEnemy());
-
+    
     // 衝突時
     collider_.stayLambda = [this](LWP::Object::Collision2D* hit) {
         isHit_ = true;
@@ -48,8 +48,10 @@ void NormalBoss::Update() {
     // 描画用更新
     spriteSystem_->Update(corePosition_);
 
+    // collision座標の更新 SetFollowに切り替えた方がいいけど作り的にめんどい
     collider_.worldTF.translation = { corePosition_.x,corePosition_.y,0.0f };
     
+    // 衝突時の処理
     if (isHit_) {
         OnCollision();
     }
@@ -70,6 +72,7 @@ void NormalBoss::SetData(BaseEnemyData& data) {
 }
 
 void NormalBoss::OnCollision() {
+    // とりあえず色を赤くしている
     NormalBossSpriteSystem& handle = dynamic_cast<NormalBossSpriteSystem&>(*spriteSystem_);
     handle.ColorUpdate();
     isHit_ = false;
