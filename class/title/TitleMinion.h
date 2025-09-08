@@ -40,7 +40,7 @@ public: // メンバ関数
 private:
 
 	// スプライトシステム
-	std::unique_ptr<MinionSpriteSystem> spriteSystem_;
+	MinionSpriteSystem spriteSystem_;
 
 	// 位置
 	LWP::Math::Vector2 position_;
@@ -48,7 +48,7 @@ private:
 	LWP::Math::Vector2 direction_;
 
 	// 石
-	std::unique_ptr<Stone> stone_;
+	Stone stone_;
 	// やる気タイム
 	float motivationTime_;
 	// 石を投げるまでの時間

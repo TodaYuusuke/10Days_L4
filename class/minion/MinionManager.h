@@ -51,6 +51,10 @@ public: // アクセッサ
 	StoneManager* GetStoneManager() { return stoneManager_; }
 	EnemyManager* GetEnemyManager() { return enemyManager_; }
 
+	void SetMeetingPlace(MeetingPlace* meetingPlace) { meetingPlace_ = meetingPlace; }
+	void SetStoneManager(StoneManager* stoneManager) { stoneManager_ = stoneManager; }
+	void SetEnemyManager(EnemyManager* enemyManager) { enemyManager_ = enemyManager; }
+
 	size_t GetMinionNum() const { return minionNum_; }
 	size_t GetAttackMinionNum() const { return attackMinionNum_; }
 	LWP::Math::Vector2 GetTargetPosition() const { return targetPosition_; }
