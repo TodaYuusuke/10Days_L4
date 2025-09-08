@@ -20,9 +20,23 @@ void NormalBoss::Initialize(BaseEnemyData& data) {
     spriteSystem_ = std::make_unique<NormalBossSpriteSystem>();
 
     corePosition_ = data_.respawnPoint;
+
+    collider_.mask.SetHitFrag(ColMask0);
+    collider_.mask.SetBelongFrag(ColMask0);
+
+    // 衝突時
+    collider_.stayLambda = [this](LWP::Object::Collision2D* hit) {
+        isHit_ = true;
+        };
+
 }
 
 void NormalBoss::Update() {
+    // debug
+    ImGui::Begin("Enemy");
+    collider_.DebugGUI();
+    ImGui::End();
+
     // 状態変化更新
     if (StateUpdate()) {
         // 切り替わりがあった場合
@@ -32,6 +46,13 @@ void NormalBoss::Update() {
     requestStateType_ = stateManager_->Update(currentStateType_);
     // 描画用更新
     spriteSystem_->Update(corePosition_);
+
+    collider_.worldTF.translation = { corePosition_.x,corePosition_.y,0.0f };
+    
+    if (isHit_) {
+        OnCollision();
+    }
+
 }
 
 void NormalBoss::SetData(BaseEnemyData& data) {
@@ -45,4 +66,10 @@ void NormalBoss::SetData(BaseEnemyData& data) {
         // castエラー
         throw std::runtime_error(e.what());
     }
+}
+
+void NormalBoss::OnCollision() {
+    NormalBossSpriteSystem& handle = dynamic_cast<NormalBossSpriteSystem&>(*spriteSystem_);
+    handle.ColorUpdate();
+    isHit_ = false;
 }

@@ -120,6 +120,12 @@
     <ClCompile Include="class\boss\normalBoss\NormalBossStateManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="class\boss\state\NormalEnemySlamState.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="class\areaOffEffect\AreaOffEffect.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
     <ClCompile Include="class\title\TitleMinion.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -246,6 +252,12 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="class\boss\normalBoss\NormalBossStateManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="class\boss\state\NormalEnemySlamState.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="class\areaOffEffect\AreaOffEffect.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="class\title\TitleMinion.h">
