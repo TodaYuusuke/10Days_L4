@@ -1,7 +1,9 @@
 #include "Wall.h"
 #include "../PlayerGlobalData.h"
+#include "../../ColMaskGetter.h"
 using namespace LWP::Math;
 using namespace LWP::Utility;
+using namespace LWP::Object;
 
 Wall::Wall()
 	:	start_({0.0f,0.0f}),
@@ -9,7 +11,8 @@ Wall::Wall()
 		hp_(0),
 		lifeTime_(0.0f),
 		sprite_(),
-		isDead_(false)
+		isDead_(false),
+		collider_()
 {
 }
 
@@ -19,7 +22,8 @@ Wall::Wall(const LWP::Math::Vector2& start, const LWP::Math::Vector2 end, int hp
 		hp_(hp),
 		lifeTime_(lifeTime),
 		sprite_(),
-		isDead_(false)
+		isDead_(false),
+		collider_()
 {
 	Initilaize();
 }
@@ -45,6 +49,29 @@ void Wall::Initilaize()
 	const float kLength = (end_ - start_).Length();
 	sprite_.worldTF.scale.y = (kLength / PlayerGlobalData::GetWallTextureSize().y) + PlayerGlobalData::GetLineSpriteScale().x;
 	sprite_.material.uvTransform.scale = sprite_.worldTF.scale;
+
+	// レクタングル
+	Collider2D::Rectangle& rectangle = collider_.SetBroadShape<Collider2D::Rectangle>();
+	rectangle.size = { PlayerGlobalData::GetWallTextureSize().x * sprite_.worldTF.scale.x,
+		PlayerGlobalData::GetWallTextureSize().y * sprite_.worldTF.scale.y };
+	rectangle.rotation = std::atan2f(kDir2D.y, kDir2D.x);
+	rectangle.rotation += 1.57f;
+	// 親子
+	collider_.worldTF.Parent(&sprite_.worldTF);
+
+	// 関数
+	// ヒットした瞬間のとき
+	collider_.enterLambda = [this](Collision2D* hitTarget) { 
+		--hp_;
+		if (hp_ == 0) {
+			isDead_ = true;
+		}
+		};
+
+	// マスク、所属
+	collider_.mask.SetBelongFrag(ColMaskGetter::GetWall());
+	// マスク,hit
+	collider_.mask.SetHitFrag(ColMaskGetter::GetPlayer() + ColMaskGetter::GetEnemy() + ColMaskGetter::GetBullet());
 
 }
 

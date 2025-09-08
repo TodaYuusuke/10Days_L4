@@ -57,7 +57,7 @@ private: // メンバ変数
 	float lifeTime_;
 	
 	// コライダー
-	//LWP::Object::Collider:: lineCollider;
+	LWP::Object::Collision2D collider_;
 
 	// スプライト
 	LWP::Primitive::NormalSprite sprite_;

@@ -149,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="class\ColMaskGetter.cpp" />
     <ClCompile Include="class\minion\Minion.cpp" />
     <ClCompile Include="class\minion\MinionGlobalData.cpp" />
     <ClCompile Include="class\minion\MinionManager.cpp" />
@@ -188,6 +189,7 @@
     <ClCompile Include="class\boss\normalBoss\NormalBossStateManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="class\ColMaskGetter.h" />
     <ClInclude Include="class\minion\Minion.h" />
     <ClInclude Include="class\minion\MinionGlobalData.h" />
     <ClInclude Include="class\minion\MinionManager.h" />
