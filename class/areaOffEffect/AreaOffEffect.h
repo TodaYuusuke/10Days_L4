@@ -1,11 +1,11 @@
-#pragma once
+ï»¿#pragma once
 #include <Adapter.h>
 
-// UŒ‚—\’›ƒGƒtƒFƒNƒg
+// æ”»æ’ƒäºˆå…†ã‚¨ãƒ•ã‚§ã‚¯ãƒˆ
 class AreaOffEffect {
 public:
 	AreaOffEffect();
-	~AreaOffEffect();
+	~AreaOffEffect() = default;
 
 	void Intiialize();
 

@@ -1,4 +1,4 @@
-#include "AreaOffEffect.h"
+﻿#include "AreaOffEffect.h"
 
 AreaOffEffect::AreaOffEffect() {
 
