@@ -6,6 +6,7 @@ using namespace LWP::Info;
 void MinionDownState::Enter(Minion* minion)
 {
 
+	minion;
 	remainingTime_ = MinionGlobalData::GetDownTime();
 
 }
@@ -25,4 +26,5 @@ void MinionDownState::Update(Minion* minion)
 
 void MinionDownState::Exit(Minion* minion)
 {
+	minion;
 }

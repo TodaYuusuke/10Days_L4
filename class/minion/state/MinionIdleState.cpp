@@ -7,6 +7,7 @@ using namespace LWP::Utility;
 
 void MinionIdleState::Enter(Minion* minion)
 {
+    minion;
 }
 
 void MinionIdleState::Update(Minion* minion)

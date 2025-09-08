@@ -35,9 +35,6 @@ public: // メンバ関数
 
 public:
 
-    // やる気タイム
-    float motivationTime_;
-
     // 石を投げるまでの時間
     float attackCoolTime_;
 

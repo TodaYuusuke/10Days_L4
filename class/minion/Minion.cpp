@@ -20,6 +20,7 @@ Minion::Minion()
         direction_({ 0.0f,1.0f }),
         hp_(MinionGlobalData::GetInitialHp()),
         serialNumber_(serialNumberCount_),
+        motivationTime_(0.0f),
         minionManager_(nullptr)
 {
     Initialize();
@@ -35,6 +36,7 @@ Minion::Minion(MinionManager* minionManager)
         direction_({ 0.0f,1.0f }),
         hp_(MinionGlobalData::GetInitialHp()),
         serialNumber_(serialNumberCount_),
+        motivationTime_(0.0f),
         minionManager_(minionManager)
 {
     Initialize();
@@ -65,20 +67,6 @@ void Minion::Initialize()
 
 void Minion::Update()
 {
-    // ダウン状態ならリクエストは変わらない
-    //if (requestStateType_ != MinionStateType::Down) {
-    //    // リクエスト
-    //    Vector2 sub = (minionManager_->GetTargetPosition() - position_);
-    //    //倍率
-    //    const float kDistanceMagnification = static_cast<float>(minionManager_->GetAttackMinionNum()) / static_cast<float>(minionManager_->kMinionNumMax_);
-    //    // リクエスト決定
-    //    if (sub.Length() <= (MinionGlobalData::GetAttackStateChangesDistance() * Easing::CallFunction(Easing::Type::OutExpo, kDistanceMagnification)) + MinionGlobalData::GetRequestCheckAddLength()) {
-    //        requestStateType_ = MinionStateType::Attack;
-    //    }
-    //    else {
-    //        requestStateType_ = MinionStateType::Move;
-    //    }
-    //}
 
     // 状態 リクエストがあったら変更
     if (currentStateType_ != requestStateType_) {

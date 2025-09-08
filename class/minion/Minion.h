@@ -80,6 +80,9 @@ public: // アクセッサ
 	MinionManager* GetMinionManager() { return minionManager_; }
 	void SetMinionManager(MinionManager* minionManager) { minionManager_ = minionManager; }
 
+	float GetMotivationTime() const { return motivationTime_; }
+	void SetMotivationTime(float motivationTime) { motivationTime_ = motivationTime; }
+
 private: // メンバ変数
 
 	// ステータス
@@ -102,6 +105,9 @@ private: // メンバ変数
 	int hp_;
 	// 手下番号
 	int serialNumber_;
+
+	// やる気タイム
+	float motivationTime_;
 
 private: // ポインタ
 
