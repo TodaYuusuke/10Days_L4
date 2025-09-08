@@ -10,7 +10,7 @@
             0.0
         ],
         "float :LengthMax": 6000.0,
-        "float :PositionZ": 0.0,
+        "float :PositionZ": -100.0,
         "float :RecordingTime": 0.009999999776482582
     },
     "Group :MeetingPlace": {
@@ -33,7 +33,7 @@
             2.0,
             0.0
         ],
-        "float :DragCertifiedDistance": 30.0
+        "float :DragCertifiedDistance": 5.0
     },
     "Group :Wall": {
         "Vector2 :TextureSize": [
