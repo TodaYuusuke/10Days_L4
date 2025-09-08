@@ -45,6 +45,11 @@ public: // メンバ関数
 	/// </summary>
 	void Update();
 
+	/// <summary>
+	/// デバッグ
+	/// </summary>
+	void DebugGUI();
+
 public: // アクセッサ
 
 	MeetingPlace* GetMeetingPlace() { return meetingPlace_; }

@@ -22,6 +22,9 @@ void MinionIdleState::Update(Minion* minion)
     if (sub.Length() > (MinionGlobalData::GetIdleStateChangesDistance() * Easing::CallFunction(Easing::Type::OutExpo, kDistanceMagnification)) + MinionGlobalData::GetRequestCheckAddLength()) {
         minion->SetRequestStateType(MinionStateType::Move);
     }
+    else if (minion->GetMotivationTime() > 0.0f) {
+        minion->SetRequestStateType(MinionStateType::Attack);
+    }
 
 }
 

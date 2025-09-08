@@ -79,8 +79,26 @@ void MinionManager::Update()
 		}
 	}
 
+	DebugGUI();
+
+}
+
+void MinionManager::DebugGUI()
+{
+
 	// GUI JSON
 	ImGui::Begin("Minion");
+	if (ImGui::Button("Down")) {
+		for (size_t i = 0; i < kMinionNumMax_; ++i) {
+			minions_[i].SetRequestStateType(MinionStateType::Down);
+		}
+	}
+	if (ImGui::Button("Attack")) {
+		for (size_t i = 0; i < kMinionNumMax_; ++i) {
+			minions_[i].SetMotivationTime(minions_[i].GetMotivationTime() + 1.0f);
+		}
+	}
+
 	jsonIO_.DebugGUI();
 	ImGui::End();
 
