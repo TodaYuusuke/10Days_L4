@@ -6,7 +6,7 @@
 class NormalEnemySlamState : public IEnemyState {
 public:
 	NormalEnemySlamState() = default;
-	//NormalEnemySlamState(const BaseEnemyData* data, NormalBossStateManager* sManager);
+	NormalEnemySlamState(const BaseEnemyData* data, NormalBossStateManager* sManager);
 	~NormalEnemySlamState() = default;
 
 	// 初期化処理

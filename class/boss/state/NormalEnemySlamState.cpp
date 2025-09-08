@@ -2,11 +2,11 @@
 #include "../normalBoss/NormalBossStateType.h"
 #include "../normalBoss/NormalBossStateManager.h"
 
-//NormalEnemySlamState::NormalEnemySlamState(const BaseEnemyData* data, NormalBossStateManager* sManager) {
-//	data;
-//	/*const NormalBossData* d = dynamic_cast<const NormalBossData*>(data);
-//	pSlam_ = &d->slam;*/
-//}
+NormalEnemySlamState::NormalEnemySlamState(const BaseEnemyData* data, NormalBossStateManager* sManager) {
+	data;
+	const NormalBossData* d = dynamic_cast<const NormalBossData*>(data);
+	pSlam_ = &d->slam;
+}
 
 void NormalEnemySlamState::Enter([[maybe_unused]] BaseEnemy* enemy) {
 	totalTime_ = pSlam_->startupLag + pSlam_->damageTime + pSlam_->endingLag;
