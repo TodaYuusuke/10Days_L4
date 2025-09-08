@@ -59,6 +59,8 @@ void Minion::Initialize()
         kBasePosition.x + Random::GenerateFloat(-kRadomWidth.x, kRadomWidth.x),
         kBasePosition.y + Random::GenerateFloat(-kRadomWidth.y, kRadomWidth.y) };
 
+    spriteSystem_.ColorChange(serialNumber_);
+
 }
 
 void Minion::Update()

@@ -74,3 +74,25 @@ void MinionSpriteSystem::Update(MinionStateType type, const LWP::Math::Vector2& 
 	preType_ = type;
 
 }
+
+void MinionSpriteSystem::ColorChange(int serialNumber)
+{
+
+	sprite_.material.color.R = static_cast<unsigned char>(GetRandomFloat(serialNumber) * 255.0f);
+	sprite_.material.color.G = static_cast<unsigned char>(GetRandomFloat(serialNumber + 1) * 255.0f);
+	sprite_.material.color.B = static_cast<unsigned char>(GetRandomFloat(serialNumber + 2) * 255.0f);
+
+}
+
+uint32_t MinionSpriteSystem::Hash(uint32_t x) {
+	x ^= x >> 16;
+	x *= 0x7feb352d;
+	x ^= x >> 15;
+	x *= 0x846ca68b;
+	x ^= x >> 16;
+	return x;
+}
+
+float MinionSpriteSystem::GetRandomFloat(uint32_t seed) {
+	return (Hash(seed) & 0xFFFFFF) / static_cast<float>(1 << 24);
+}

@@ -2,6 +2,9 @@
 #include <Adapter.h>
 #include "state/MinionStateType.h"
 
+// 前方宣言
+class Minion;
+
 /// <summary>
 /// 手下のスプライト機能
 /// </summary>
@@ -32,6 +35,28 @@ public:  // メンバ関数
 	/// <param name="position">位置</param>
 	/// <param name="direction">方向ベクトル</param>
 	void Update(MinionStateType type, const LWP::Math::Vector2& position, const LWP::Math::Vector2& direction);
+
+	/// <summary>
+	/// 色を変える
+	/// </summary>
+	/// <param name="serialNumber">シリアルナンバー</param>
+	void ColorChange(int serialNumber);
+
+private:
+
+	/// <summary>
+	/// ハッシュ
+	/// </summary>
+	/// <param name="x">値</param>
+	/// <returns></returns>
+	uint32_t Hash(uint32_t  x);
+
+	/// <summary>
+	/// 乱数
+	/// </summary>
+	/// <param name="seed">シード</param>
+	/// <returns></returns>
+	float GetRandomFloat(uint32_t  seed);
 
 private: // メンバ変数
 
