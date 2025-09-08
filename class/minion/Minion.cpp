@@ -13,8 +13,8 @@ int Minion::serialNumberCount_ = 0;
 Minion::Minion()
     :   stateMap_{},
         currentState_(nullptr),
-        currentStateType_(MinionStateType::Idle),
-        requestStateType_(MinionStateType::Idle),
+        currentStateType_(MinionStateType::Move),
+        requestStateType_(MinionStateType::Move),
         spriteSystem_(),
         position_({0.0f,0.0f}),
         direction_({ 0.0f,1.0f }),
@@ -28,8 +28,8 @@ Minion::Minion()
 Minion::Minion(MinionManager* minionManager)
     :   stateMap_{},
         currentState_(nullptr),
-        currentStateType_(MinionStateType::Idle),
-        requestStateType_(MinionStateType::Idle),
+        currentStateType_(MinionStateType::Move),
+        requestStateType_(MinionStateType::Move),
         spriteSystem_(),
         position_({ 0.0f,0.0f }),
         direction_({ 0.0f,1.0f }),
@@ -66,19 +66,19 @@ void Minion::Initialize()
 void Minion::Update()
 {
     // ダウン状態ならリクエストは変わらない
-    if (requestStateType_ != MinionStateType::Down) {
-        // リクエスト
-        Vector2 sub = (minionManager_->GetTargetPosition() - position_);
-        //倍率
-        const float kDistanceMagnification = static_cast<float>(minionManager_->GetAttackMinionNum()) / static_cast<float>(minionManager_->kMinionNumMax_);
-        // リクエスト決定
-        if (sub.Length() <= (MinionGlobalData::GetAttackStateChangesDistance() * Easing::CallFunction(Easing::Type::OutExpo, kDistanceMagnification)) + MinionGlobalData::GetRequestCheckAddLength()) {
-            requestStateType_ = MinionStateType::Attack;
-        }
-        else {
-            requestStateType_ = MinionStateType::Move;
-        }
-    }
+    //if (requestStateType_ != MinionStateType::Down) {
+    //    // リクエスト
+    //    Vector2 sub = (minionManager_->GetTargetPosition() - position_);
+    //    //倍率
+    //    const float kDistanceMagnification = static_cast<float>(minionManager_->GetAttackMinionNum()) / static_cast<float>(minionManager_->kMinionNumMax_);
+    //    // リクエスト決定
+    //    if (sub.Length() <= (MinionGlobalData::GetAttackStateChangesDistance() * Easing::CallFunction(Easing::Type::OutExpo, kDistanceMagnification)) + MinionGlobalData::GetRequestCheckAddLength()) {
+    //        requestStateType_ = MinionStateType::Attack;
+    //    }
+    //    else {
+    //        requestStateType_ = MinionStateType::Move;
+    //    }
+    //}
 
     // 状態 リクエストがあったら変更
     if (currentStateType_ != requestStateType_) {

@@ -27,17 +27,17 @@ public: // メンバ関数
 public: // アクセッサ
 
 	static int GetInitialHp() { return initialHp_; }
-	static float GetAttackStateChangesDistance() { return attackStateChangesDistance_; }
+	static float GetIdleStateChangesDistance() { return idleStateChangesDistance_; }
 	static LWP::Math::Vector2 GetInitialPosition() { return initialPosition_; }
 	static LWP::Math::Vector2 GetInitialPositionWidth() { return initialPositionWidth_; }
 	static float GetRequestCheckAddLength() { return requestCheckAddLength_; }
-	static float GetMeetingPlaceChangeLength() { return meetingPlaceChangeLength_; }
 	static LWP::Math::Vector2 GetTextureSize() { return textureSize_; }
 	static LWP::Math::Vector3 GetSpriteScale() { return spriteScale_; }
 	static int GetIndexMaxX() { return indexMaxX_; }
 	static int GetChangeIndexFrame() { return changeIndexFrame_; }
 	static float GetPositionZ() { return positionZ_; }
 	static float GetSpeed() { return speed_; }
+	static float GetAddSpeedFluctuation() { return addSpeedFluctuation_; }
 	static float GetAddRotateFluctuation() { return addRotateFluctuation_; }
 	static float GetAddRotateMax() { return addRotateMax_; }
 	static float GetMotivationMultiplier() { return motivationMultiplier_; }
@@ -48,16 +48,14 @@ private: //メンバ変数
 	
 	// 初期HP
 	static int initialHp_;
-	// 攻撃状態切り替え距離
-	static float attackStateChangesDistance_;
+	// 待機状態切り替え距離
+	static float idleStateChangesDistance_;
 	// 初期位置
 	static LWP::Math::Vector2 initialPosition_;
 	// 初期位置ランダム幅
 	static LWP::Math::Vector2 initialPositionWidth_;
 	// リクエスト確認時の長さ、追加分
 	static float requestCheckAddLength_;
-	// 集合地点変更時の長さ確認用
-	static float meetingPlaceChangeLength_;
 
 	// スプライト関係
 
@@ -76,6 +74,8 @@ private: //メンバ変数
 
 	// 移動速度
 	static float speed_;
+	// 追加移動速度変動
+	static float addSpeedFluctuation_;
 	// 追加回転変動
 	static float addRotateFluctuation_;
 	// 追加回転最大

@@ -9,17 +9,24 @@ using namespace LWP::Math;
 using namespace LWP::Utility;
 
 MinionMoveState::MinionMoveState()
-	: addRotate_(0.0f)
+	:	addRotate_(0.0f),
+		speed_(0.0f)
 {
 }
 
 void MinionMoveState::Enter(Minion* minion)
 {
+	minion;
 	addRotate_ = 0.0f;
+	const float kAddSpeedFluctuation = MinionGlobalData::GetAddSpeedFluctuation();
+	speed_ = MinionGlobalData::GetSpeed() + Random::GenerateFloat(-kAddSpeedFluctuation, kAddSpeedFluctuation);
 }
 
 void MinionMoveState::Update(Minion* minion)
 {
+
+
+	MinionManager* minionManager = minion->GetMinionManager();
 
 	// 画面端処理用画像の半分の値
 	const Vector2 kTextureHalfSize =
@@ -28,11 +35,11 @@ void MinionMoveState::Update(Minion* minion)
 
 	// 移動する
 	const Vector2 kMinionPosition = minion->GetPosition();
-	const Vector2 kTargetPosition = minion->GetMinionManager()->GetTargetPosition();
+	const Vector2 kTargetPosition = minionManager->GetTargetPosition();
 
 	// 移動方向
-	Vector2 dir = (kTargetPosition - kMinionPosition);
-	dir = dir.Normalize();
+	Vector2 sub = (kTargetPosition - kMinionPosition);
+	Vector2 dir = sub.Normalize();
 
 	// 回転させて不規則に動くように
 	const float kSddRotateFluctuation = MinionGlobalData::GetAddRotateFluctuation();
@@ -42,7 +49,7 @@ void MinionMoveState::Update(Minion* minion)
 	Matrix4x4 randomRotateMatrix = Matrix4x4::CreateRotateZMatrix(addRotate_);
 	dir = dir * randomRotateMatrix;
 	// 移動
-	Vector2 newMinionPosition = kMinionPosition + (dir * MinionGlobalData::GetSpeed());
+	Vector2 newMinionPosition = kMinionPosition + (dir * speed_);
 
 	// 画面端処理
 	newMinionPosition.x = std::clamp(newMinionPosition.x, kTextureHalfSize.x, 1920.0f - kTextureHalfSize.x);
@@ -54,8 +61,17 @@ void MinionMoveState::Update(Minion* minion)
 	// 回転、方向
 	minion->SetDirection(dir);
 
+	// リクエスト
+	//倍率
+	const float kDistanceMagnification = static_cast<float>(minionManager->GetAttackMinionNum()) / static_cast<float>(minionManager->kMinionNumMax_);
+	// リクエスト決定
+	if (sub.Length() <= (MinionGlobalData::GetIdleStateChangesDistance() * Easing::CallFunction(Easing::Type::OutExpo, kDistanceMagnification)) + MinionGlobalData::GetRequestCheckAddLength()) {
+		minion->SetRequestStateType(MinionStateType::Idle);
+	}
+
 }
 
 void MinionMoveState::Exit(Minion* minion)
 {
+	minion;
 }

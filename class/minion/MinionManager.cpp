@@ -56,10 +56,7 @@ void MinionManager::Update()
 		//数を専用に設定
 		attackMinionNum_ = 0;
 		for (size_t i = 0; i < kMinionNumMax_; ++i) {
-			if ((minions_[i].GetCurrentStateType() == MinionStateType::Attack) 
-				&& ((kMeetingPlacePosition - minions_[i].GetPosition()).Length() < MinionGlobalData::GetMeetingPlaceChangeLength())) {
-				++attackMinionNum_;
-			}
+			minions_[i].SetRequestStateType(MinionStateType::Move);
 		}
 		//場所変更
 		targetPosition_ = kMeetingPlacePosition;
@@ -77,7 +74,7 @@ void MinionManager::Update()
 
 	attackMinionNum_ = 0;
 	for (size_t i = 0; i < kMinionNumMax_; ++i) {
-		if (minions_[i].GetCurrentStateType() == MinionStateType::Attack) {
+		if (minions_[i].GetCurrentStateType() != MinionStateType::Move) {
 			++attackMinionNum_;
 		}
 	}
