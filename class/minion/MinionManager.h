@@ -58,7 +58,8 @@ public: // アクセッサ
 	size_t GetMinionNum() const { return minionNum_; }
 	size_t GetAttackMinionNum() const { return attackMinionNum_; }
 	LWP::Math::Vector2 GetTargetPosition() const { return targetPosition_; }
-	std::array<Minion, kMinionNumMax_>* GetMinions() { return &minions_; }
+	std::array<Minion, kMinionNumMax_>& GetMinions() { return minions_; }
+	const std::array<Minion, kMinionNumMax_>& GetMinions() const { return minions_; }
 
 private:
 
