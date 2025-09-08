@@ -25,7 +25,7 @@ void AreaOffEffectManager::Update() {
 	while (!circleInitDatas_.empty()) {
 		const CircleInitData& req = circleInitDatas_.front();
 		// エフェクト生成、コンテナに追加
-		container_.push_back(std::make_unique<AreaOffEffect>(pFirstAlpha_,req.pos, req.maxRadius, req.data));
+		container_.push_back(std::make_unique<AreaOffEffect>(&firstAlpha_,req.pos, req.maxRadius, req.data));
 		// リクエストを削除
 		circleInitDatas_.pop();
 	}
