@@ -1,6 +1,7 @@
 ﻿#include "NormalBoss.h"
 #include "NormalBossStateFactory.h"
 #include "NormalBossSpriteSystem.h"
+#include "../../ColMaskGetter.h"
 
 // data_に関してはとりあえずの初期化 のちに再設定している
 NormalBoss::NormalBoss(BaseEnemyData& data) : data_(dynamic_cast<NormalBossData&>(data)) {
@@ -21,8 +22,8 @@ void NormalBoss::Initialize(BaseEnemyData& data) {
 
     corePosition_ = data_.respawnPoint;
 
-    collider_.mask.SetHitFrag(ColMask0);
-    collider_.mask.SetBelongFrag(ColMask0);
+    collider_.mask.SetHitFrag(ColMaskGetter::GetBullet() | ColMaskGetter::GetPlayer());
+    collider_.mask.SetBelongFrag(ColMaskGetter::GetEnemy());
 
     // 衝突時
     collider_.stayLambda = [this](LWP::Object::Collision2D* hit) {
