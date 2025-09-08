@@ -60,5 +60,8 @@ private: // メンバ変数
 	// 死んだか
 	bool isDead_;
 
+	// コライダー
+	LWP::Object::Collision2D collider_;
+
 };
 
