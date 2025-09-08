@@ -2,17 +2,24 @@
 #undef min
 
 AreaOffEffect::AreaOffEffect() {
-	outerFrame_.LoadTexture("outerCircle.png");
-	innerFrame_.LoadTexture("innerCircle.png");
+	outerFrame_.LoadTexture(kOuterCirclePath);
+	innerFrame_.LoadTexture(kInnerCirclePath);
 }
 
-void AreaOffEffect::Intiialize(const Vector2& pos, const float& maxRadius, const AttackDefaultData& data) {
+AreaOffEffect::AreaOffEffect(const Vector2& pos, const float& maxRadius, const AttackDefaultData& data) {
+	outerFrame_.LoadTexture(kOuterCirclePath);
+	innerFrame_.LoadTexture(kInnerCirclePath);
+	Initialize(pos, maxRadius, data);
+}
+
+void AreaOffEffect::Initialize(const Vector2& pos, const float& maxRadius, const AttackDefaultData& data) {
 	outerFrame_.worldTF.translation = { pos.x,pos.y,0.0f };
 	outerFrame_.worldTF.scale = { 0.0f,0.0f,0.0f };
 	innerFrame_.worldTF.translation = { pos.x,pos.y,0.0f };
 	innerFrame_.worldTF.scale = { 0.0f,0.0f,0.0f };
 	maxRadius_ = maxRadius;
 	data_ = data;
+	state_ = State::OuterScaleUp;
 }
 
 void AreaOffEffect::Update() {

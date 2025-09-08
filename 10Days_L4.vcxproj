@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="class\areaOffEffect\AreaOffEffect.cpp" />
+    <ClCompile Include="class\areaOffEffect\AreaOffEffectManager.cpp" />
     <ClCompile Include="class\boss\state\NormalEnemySlamState.cpp" />
     <ClCompile Include="class\ColMaskGetter.cpp" />
     <ClCompile Include="class\minion\Minion.cpp" />
@@ -192,6 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="class\areaOffEffect\AreaOffEffect.h" />
+    <ClInclude Include="class\areaOffEffect\AreaOffEffectManager.h" />
     <ClInclude Include="class\boss\data\AttackDefaultData.h" />
     <ClInclude Include="class\boss\data\NormalBossData.h" />
     <ClInclude Include="class\boss\state\NormalEnemySlamState.h" />

@@ -22,6 +22,9 @@ void TestScene::Initialize() {
 
 	uiManager_ = std::make_unique<UIManager>(player_.get(), minionManager_.get());
 
+	pAOEManager_ = AreaOffEffectManager::GetInstance();
+	pAOEManager_->Initialize();
+
 }
 
 // 更新
@@ -37,6 +40,8 @@ void TestScene::Update() {
 
 	enemyManager_->Update();
 	enemyManager_->SecondUpdate();
+
+	pAOEManager_->Update();
 
 	// エンジンの各クラスは大体ImGuiを呼び出す関数がある
 	ImGui::Begin("Test");
