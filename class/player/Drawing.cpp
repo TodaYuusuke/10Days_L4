@@ -57,6 +57,7 @@ void Drawing::Update(bool isDragging)
 		if (isActive_) {
 			// スプライトとポイントをリセット
 			ResetSprites();
+			isActive_ = false;	// ラクガキしゅうりょ～う！
 
 			// 壁作成フラグ
 			wallCreation_ = true;
@@ -163,8 +164,6 @@ void Drawing::Update(bool isDragging)
 
 }
 void Drawing::ResetSprites() {
-	// 非アクティブ
-	isActive_ = false;
 	sprieIndex_ = 0;
 	for (size_t i = 0; i < kSpriteNum_; ++i) {
 		sprites_[i].isActive = false;
@@ -243,6 +242,7 @@ bool Drawing::IsCircleCreated()
 			if (opt != std::nullopt) {
 				ResetSprites();	// スプライトをリセット
 				points_.clear();
+				points_.push_back({ opt->x, opt->y });
 				p.worldTF.translation.x = opt->x;
 				p.worldTF.translation.y = opt->y;
 				//sprites_[std::max<int>(0, i-1)].material.color = ColorPattern::GREEN;
