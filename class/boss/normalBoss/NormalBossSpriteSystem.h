@@ -10,6 +10,8 @@ public:
 	void Initialize() override;
 	void Update(const LWP::Math::Vector2& centerPosition) override;
 
+	void ColorUpdate();
+
 private:
 
 };

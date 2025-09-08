@@ -149,6 +149,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="class\areaOffEffect\AreaOffEffect.cpp" />
+    <ClCompile Include="class\boss\state\NormalEnemySlamState.cpp" />
     <ClCompile Include="class\minion\Minion.cpp" />
     <ClCompile Include="class\minion\MinionGlobalData.cpp" />
     <ClCompile Include="class\minion\MinionManager.cpp" />
@@ -186,6 +188,8 @@
     <ClCompile Include="class\boss\normalBoss\NormalBossStateManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="class\areaOffEffect\AreaOffEffect.h" />
+    <ClInclude Include="class\boss\state\NormalEnemySlamState.h" />
     <ClInclude Include="class\minion\Minion.h" />
     <ClInclude Include="class\minion\MinionGlobalData.h" />
     <ClInclude Include="class\minion\MinionManager.h" />
