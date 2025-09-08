@@ -27,7 +27,6 @@ private:
 
 	// 衝突判定
 	LWP::Object::Collision2D collider_;
-	LWP::Object::Collision2D test;
 	bool isHit_ = false;
 
 };

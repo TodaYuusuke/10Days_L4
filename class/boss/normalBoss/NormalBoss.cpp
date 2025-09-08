@@ -24,9 +24,6 @@ void NormalBoss::Initialize(BaseEnemyData& data) {
     collider_.mask.SetHitFrag(ColMask0);
     collider_.mask.SetBelongFrag(ColMask0);
 
-    test.mask.SetHitFrag(ColMask0);
-    test.mask.SetBelongFrag(ColMask0);
-
     // 衝突時
     collider_.stayLambda = [this](LWP::Object::Collision2D* hit) {
         isHit_ = true;
@@ -39,7 +36,6 @@ void NormalBoss::Update() {
     ImGui::Begin("Enemy");
     collider_.DebugGUI();
     ImGui::End();
-    test.DebugGUI();
 
     // 状態変化更新
     if (StateUpdate()) {
