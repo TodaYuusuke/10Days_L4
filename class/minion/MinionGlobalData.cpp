@@ -24,6 +24,8 @@ float MinionGlobalData::addRotateMax_ = 0.5f;
 float MinionGlobalData::motivationMultiplier_ = 1.5f;
 // 攻撃のクールタイム
 float MinionGlobalData::attackCoolTimeMax_ = 2.0f;
+// ダウン時間
+float MinionGlobalData::downTime_ = 2.0f;
 
 void MinionGlobalData::JsonDataRegistration(LWP::Utility::JsonIO* jsonIO)
 {
@@ -69,6 +71,14 @@ void MinionGlobalData::JsonDataRegistration(LWP::Utility::JsonIO* jsonIO)
 		AddValue("MotivationMultiplier", &motivationMultiplier_).
 		// 攻撃のクールタイム
 		AddValue("AttackCoolTimeMax", &attackCoolTimeMax_).
+
+		EndGroup().
+
+		// ダウンステート関係
+		BeginGroup("Down").
+
+		// やる気あるときの倍率
+		AddValue("DownTime", &downTime_).
 
 		EndGroup();
 

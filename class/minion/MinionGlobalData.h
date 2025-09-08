@@ -38,6 +38,7 @@ public: // アクセッサ
 	static float GetAddRotateMax() { return addRotateMax_; }
 	static float GetMotivationMultiplier() { return motivationMultiplier_; }
 	static float GetAttackCoolTimeMax() { return attackCoolTimeMax_; }
+	static float GetDownTime() { return downTime_; }
 
 private: //メンバ変数
 	
@@ -74,6 +75,11 @@ private: //メンバ変数
 	static float motivationMultiplier_;
 	// 攻撃のクールタイム
 	static float attackCoolTimeMax_;
+
+	// ダウンステート関係
+
+	// ダウン時間
+	static float downTime_;
 
 };
 
