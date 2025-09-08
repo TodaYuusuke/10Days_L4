@@ -67,7 +67,7 @@ void Drawing::Update(bool isDragging)
 
 		}
 		else {
-			if (Mouse::GetTrigger(0)) {
+			if ((Mouse::GetTrigger(0) && !Keyboard::GetPress(DIK_SPACE)) || (Keyboard::GetTrigger(DIK_SPACE) && !Mouse::GetPress(0))) {
 				startWriting_ = Mouse::GetPosition();
 			}
 		}
