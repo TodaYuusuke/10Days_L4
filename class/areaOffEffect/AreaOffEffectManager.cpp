@@ -1,13 +1,20 @@
 ﻿#include "AreaOffEffectManager.h"
 
+const std::string kFileName = "EffectParameter.json";
+
+
+AreaOffEffectManager::~AreaOffEffectManager() {
+	// 全削除
+	circleInitDatas_ = {};
+}
+
 AreaOffEffectManager* AreaOffEffectManager::GetInstance() {
 	static AreaOffEffectManager instance;
 	return &instance;
 }
 
 void AreaOffEffectManager::Initialize() {
-	// 仮生成
-	pFirstAlpha_ = new float(155.0f);
+	Load();
 }
 
 void AreaOffEffectManager::Update() {
@@ -36,4 +43,27 @@ void AreaOffEffectManager::RequestCreate(const Vector2& pos, const float& maxRad
 	// リクエストコンテナに追加
 	CircleInitData req{ pos,maxRadius,data };
 	circleInitDatas_.push(req);
+}
+
+void AreaOffEffectManager::Load() {
+	json_.Init(kFileName);
+	json_.CheckJsonFile();
+
+	// グループ名の取得
+	LWP::Utility::NestedList nameList = LWP::Utility::JsonIO::LoadGroupNames(kFileName);
+
+	// グループ名リストが空の場合早期リターン
+	if (nameList.empty()) {
+		return;
+	}
+
+	for (auto itr = nameList.begin(); itr != nameList.end(); ++itr) {
+		// NormalBossDataと書かれている場合
+		if (itr->name == "AreaOffEffect") {
+			// 生成
+			json_.BeginGroup("AreaOffEffect").AddValue("firstAlpha", &firstAlpha_).EndGroup();
+		}
+	}
+
+	json_.Load();
 }

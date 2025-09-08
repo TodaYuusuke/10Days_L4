@@ -1,5 +1,8 @@
 ﻿#include "AreaOffEffect.h"
-#undef min
+
+// textureパスの宣言
+const std::string kOuterCirclePath = "outerCircle.png";
+const std::string kInnerCirclePath = "innerCircle.png";
 
 AreaOffEffect::AreaOffEffect() {
 	outerFrame_.LoadTexture(kOuterCirclePath);

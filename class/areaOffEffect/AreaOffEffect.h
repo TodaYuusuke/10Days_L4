@@ -40,9 +40,6 @@ private: // ローカル関数
 	void FadeOutUpdate();
 
 private:
-	// textureパスの宣言
-	const std::string kOuterCirclePath = "outerCircle.png";
-	const std::string kInnerCirclePath = "innerCircle.png";
 
 	// 外枠
 	LWP::Primitive::NormalSprite outerFrame_;
