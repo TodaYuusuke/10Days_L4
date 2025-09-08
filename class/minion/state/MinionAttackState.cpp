@@ -25,7 +25,7 @@ void MinionAttackState::Update(Minion* minion)
 	// 向き
 
 	// ボスの位置
-	const Vector2 kBossPosition = {0.0f,0.0f};
+	const Vector2 kBossPosition = minion->GetMinionManager()->GetEnemyManager()->GetEnemyPosition();
 	// 自分の位置
 	const Vector2 kMyPosition = minion->GetPosition();
 	// 向き

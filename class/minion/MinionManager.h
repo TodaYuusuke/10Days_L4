@@ -49,6 +49,7 @@ public: // アクセッサ
 
 	MeetingPlace* GetMeetingPlace() { return meetingPlace_; }
 	StoneManager* GetStoneManager() { return stoneManager_; }
+	EnemyManager* GetEnemyManager() { return enemyManager_; }
 
 	size_t GetMinionNum() const { return minionNum_; }
 	size_t GetAttackMinionNum() const { return attackMinionNum_; }

@@ -16,16 +16,12 @@ void TestScene::Initialize() {
 	stoneManager_ = std::make_unique<StoneManager>();
 
 	enemyManager_ = std::make_unique<EnemyManager>();
-	enemyManager_->Initialize();
-
 
 	minionManager_ = std::make_unique<MinionManager>(player_->GetMeetingPlace(), stoneManager_.get(), enemyManager_.get());
 	player_->SetMinionManagerForDrawing(minionManager_.get());
 
 	uiManager_ = std::make_unique<UIManager>(player_.get(), minionManager_.get());
-	
 
-	enemyManager_ = std::make_unique<EnemyManager>();
 }
 
 // 更新
