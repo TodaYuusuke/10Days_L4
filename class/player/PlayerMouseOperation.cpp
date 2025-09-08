@@ -39,13 +39,13 @@ void PlayerMouseOperation::Update()
 	const bool kIsPress = (Mouse::GetPress(0) || Keyboard::GetPress(DIK_SPACE));
 	const bool kIsRelease = (Mouse::GetRelease(0) && !Keyboard::GetPress(DIK_SPACE)) || (Keyboard::GetRelease(DIK_SPACE) && !Mouse::GetPress(0));
 
-	if (isTrigger_) {
+	if (kIsTrigger) {
 		LeftButtonPressed();
 	}
-	else if(isPress_){
+	else if(kIsPress){
 		LeftButtonHeldDown();
 	}
-	else if (isRelease_){
+	else if (kIsRelease){
 		LeftButtonReleased();
 	}
 

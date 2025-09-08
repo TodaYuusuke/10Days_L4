@@ -43,8 +43,8 @@ void Wall::Initilaize()
 	// 大きさ
 	sprite_.worldTF.scale = PlayerGlobalData::GetWallSpriteScale();
 	const float kLength = (end_ - start_).Length();
-	sprite_.clipRect.min = { 0.0f,0.0f };
-	sprite_.clipRect.max = { PlayerGlobalData::GetWallTextureSize().x,kLength };
+	sprite_.worldTF.scale.y = (kLength / PlayerGlobalData::GetWallTextureSize().y) + PlayerGlobalData::GetLineSpriteScale().x;
+	sprite_.material.uvTransform.scale = sprite_.worldTF.scale;
 
 }
 
