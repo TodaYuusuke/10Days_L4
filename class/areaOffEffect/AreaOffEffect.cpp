@@ -6,9 +6,10 @@ AreaOffEffect::AreaOffEffect() {
 	innerFrame_.LoadTexture(kInnerCirclePath);
 }
 
-AreaOffEffect::AreaOffEffect(const Vector2& pos, const float& maxRadius, const AttackDefaultData& data) {
+AreaOffEffect::AreaOffEffect(const float* alpha, const Vector2& pos, const float& maxRadius, const AttackDefaultData& data) {
 	outerFrame_.LoadTexture(kOuterCirclePath);
 	innerFrame_.LoadTexture(kInnerCirclePath);
+	pFirstAlpha_ = alpha;
 	Initialize(pos, maxRadius, data);
 }
 
@@ -17,9 +18,14 @@ void AreaOffEffect::Initialize(const Vector2& pos, const float& maxRadius, const
 	outerFrame_.worldTF.scale = { 0.0f,0.0f,0.0f };
 	innerFrame_.worldTF.translation = { pos.x,pos.y,0.0f };
 	innerFrame_.worldTF.scale = { 0.0f,0.0f,0.0f };
+	outerFrame_.material.color = LWP::Utility::ColorPattern::YELLOW;
+	outerFrame_.material.color.A = static_cast<unsigned char>(*pFirstAlpha_);
+	innerFrame_.material.color = LWP::Utility::ColorPattern::RED;
+	innerFrame_.material.color.A = static_cast<unsigned char>(*pFirstAlpha_);
 	maxRadius_ = maxRadius;
 	data_ = data;
 	state_ = State::OuterScaleUp;
+	isAlive_ = true;
 }
 
 void AreaOffEffect::Update() {
@@ -37,6 +43,7 @@ void AreaOffEffect::Update() {
 		FadeOutUpdate();
 		break;
 	case AreaOffEffect::Delete:
+		isAlive_ = false;
 		break;
 	}
 }
@@ -90,6 +97,7 @@ void AreaOffEffect::FadeOutUpdate() {
 		t = 1.0f;
 		StateInitialize(State::Delete);
 	}
-	float alpha = LWP::Utility::Interp::LerpF(255.0f, 0.0f, t);
+	float alpha = LWP::Utility::Interp::LerpF(*pFirstAlpha_, 0.0f, t);
 	outerFrame_.material.color.A = static_cast<unsigned char>(alpha);
+	innerFrame_.material.color.A = static_cast<unsigned char>(alpha);
 }

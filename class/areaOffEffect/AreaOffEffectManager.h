@@ -7,7 +7,7 @@
 class AreaOffEffectManager {
 public:
 	AreaOffEffectManager() = default;
-	~AreaOffEffectManager() = default;
+	~AreaOffEffectManager();
 
 	// シングルトンインスタンス
 	static AreaOffEffectManager* GetInstance();
@@ -42,5 +42,7 @@ private:
 
 	// エフェクトをまとめたコンテナ
 	std::vector<std::unique_ptr<AreaOffEffect>> container_;
+
+	float* pFirstAlpha_ = nullptr;
 
 };

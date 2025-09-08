@@ -1,9 +1,9 @@
 {
     "Group :NormalBossData": {
         "Group :Slam": {
-            "float :DamageTime": 1.0,
+            "float :DamageTime": 0.5,
             "float :EndingLag": 1.0,
-            "float :StartUpLag": 1.0
+            "float :StartUpLag": 4.0
         },
         "Vector2 :RespawnPoint": [
             500.0,

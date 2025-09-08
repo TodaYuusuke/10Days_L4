@@ -3,15 +3,18 @@
 #include "../normalBoss/NormalBossStateManager.h"
 #include "../data/NormalBossData.h"
 #include "../normalBoss/NormalBoss.h"
+#include "../../areaOffEffect/AreaOffEffectManager.h"
 
 NormalEnemySlamState::NormalEnemySlamState(const BaseEnemyData* data, NormalBossStateManager* sManager) {
 	const NormalBossData* d = dynamic_cast<const NormalBossData*>(data);
 	pSlam_ = &d->slam;
+	pStateManager_ = sManager;
 }
 
 void NormalEnemySlamState::Enter([[maybe_unused]] BaseEnemy* enemy) {
 	totalTime_ = pSlam_->startupLag + pSlam_->damageTime + pSlam_->endingLag;
 	nowTime_ = 0.0f;
+	AreaOffEffectManager::GetInstance()->RequestCreate(enemy->corePosition_, 5.0f, *pSlam_);
 }
 
 void NormalEnemySlamState::Update(BaseEnemy* enemy) {

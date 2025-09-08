@@ -8,7 +8,7 @@ using namespace LWP::Math;
 class AreaOffEffect {
 public:
 	AreaOffEffect();
-	AreaOffEffect(const Vector2& pos, const float& maxRadius, const AttackDefaultData& data);
+	AreaOffEffect(const float* alpha, const Vector2& pos, const float& maxRadius, const AttackDefaultData& data);
 	~AreaOffEffect() = default;
 
 
@@ -60,4 +60,6 @@ private:
 	float aroundRate_ = 4.0f;
 	// エフェクトが生きているか
 	bool isAlive_ = false;
+	// 最初のアルファ地
+	const float* pFirstAlpha_ = nullptr;
 };
