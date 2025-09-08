@@ -44,6 +44,10 @@ public: // メンバ関数
 	/// </summary>
 	/// <param name="isDragging">ドラッグ中か</param>
 	void Update(bool isDragging);
+	/// <summary>
+	/// 点の集合をリセットする関数（円判定が計測された後に呼び出される）
+	/// </summary>
+	void ResetSprites();
 
 public: // アクセッサ
 
@@ -77,6 +81,7 @@ private: // メンバ変数
 
 	// 点
 	std::vector<LWP::Math::Vector2> points_;
+	LWP::Primitive::NormalSprite p;
 	// スプライト
 	std::array<LWP::Primitive::NormalSprite, kSpriteNum_> sprites_;
 	// スプライト番号

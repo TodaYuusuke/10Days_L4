@@ -1,5 +1,6 @@
 #include "Drawing.h"
 #include "PlayerGlobalData.h"
+
 using namespace LWP::Math;
 using namespace LWP::Input;
 using namespace LWP::Info;
@@ -35,7 +36,9 @@ Drawing::~Drawing()
 
 void Drawing::Initialize()
 {
-
+	p.LoadTexture("MinionNumBack.png");
+	p.worldTF.scale = { 0.1f,0.1f,0.1f };
+	p.material.color = ColorPattern::RED;
 	for (size_t i = 0; i < kSpriteNum_; ++i) {
 		sprites_[i].LoadTexture("Line.png");
 		sprites_[i].worldTF.scale.x = PlayerGlobalData::GetLineSpriteScale().x;
@@ -46,21 +49,15 @@ void Drawing::Initialize()
 
 void Drawing::Update(bool isDragging)
 {
-
 	wallCreation_ = false;
 
 	// ドラッグしていない
 	if (!isDragging) {
 		// アクティブなら止める
 		if (isActive_) {
-
-			// 非アクティブ
-			isActive_ = false;
-			sprieIndex_ = 0;
-			for (size_t i = 0; i < kSpriteNum_; ++i) {
-				sprites_[i].isActive = false;
-			}
-			lineLength_ = 0.0f;
+			// スプライトとポイントをリセット
+			ResetSprites();
+			isActive_ = false;	// ラクガキしゅうりょ～う！
 
 			// 壁作成フラグ
 			wallCreation_ = true;
@@ -141,6 +138,9 @@ void Drawing::Update(bool isDragging)
 
 				}
 
+				for (int i = 0; i < kSpriteNum_; ++i) {
+					sprites_[i].material.color = ColorPattern::WHITE;
+				}
 				// ここで線が生成され終わるのでおそらくここで円確認
 				if (IsCircleCreated()) {
 					// 囲まれた手下の更新
@@ -162,6 +162,13 @@ void Drawing::Update(bool isDragging)
 		}
 	}
 
+}
+void Drawing::ResetSprites() {
+	sprieIndex_ = 0;
+	for (size_t i = 0; i < kSpriteNum_; ++i) {
+		sprites_[i].isActive = false;
+	}
+	lineLength_ = 0.0f;
 }
 
 void Drawing::SpriteActive(const LWP::Math::Vector2& point0, const LWP::Math::Vector2& point1)
@@ -189,8 +196,63 @@ void Drawing::SpriteActive(const LWP::Math::Vector2& point0, const LWP::Math::Ve
 
 }
 
+// 外積による向き判定
+float ccw(const Vector2& A, const Vector2& B, const Vector2& C) {
+	return (B.x - A.x) * (C.y - A.y) - (B.y - A.y) * (C.x - A.x);
+}
+
+// 線分交差判定
+std::optional<Vector2> GetIntersection(const Vector2& A1, const Vector2& A2, const Vector2& B1, const Vector2& B2) {
+	float d1 = ccw(A1, A2, B1);
+	float d2 = ccw(A1, A2, B2);
+	float d3 = ccw(B1, B2, A1);
+	float d4 = ccw(B1, B2, A2);
+
+	if (d1 * d2 > 0.0f || d3 * d4 > 0.0f) {
+		// 交差していない
+		return std::nullopt;
+	}
+
+	// パラメータ t を求める
+	float denom = (A2.x - A1.x) * (B2.y - B1.y) - (A2.y - A1.y) * (B2.x - B1.x);
+	if (denom == 0.0f) return std::nullopt; // 平行または重なり
+
+	float t = ((B1.x - A1.x) * (B2.y - B1.y) - (B1.y - A1.y) * (B2.x - B1.x)) / denom;
+
+	Vector2 intersection;
+	intersection.x = A1.x + t * (A2.x - A1.x);
+	intersection.y = A1.y + t * (A2.y - A1.y);
+
+	return intersection;
+}
 bool Drawing::IsCircleCreated()
-{
+{	
+	if (points_.size() < 4) { return false; }	// 3以下ならば絶対に円は作れないので戻る
+	// 線から円が形成されているか判定する
+
+	for (int i = 2; i < points_.size() - 1; i++) {
+		// 判定する線分を指定
+		Vector2 a1 = points_[i];
+		Vector2 a2 = points_[i + 1];
+		// これまでの線分と交差しているか判定
+		for (int n = 0; n < i-1; n++) {
+			Vector2 b1 = points_[n];
+			Vector2 b2 = points_[n + 1];
+			std::optional<Vector2> opt = GetIntersection(a1, a2, b1, b2);
+			if (opt != std::nullopt) {
+				ResetSprites();	// スプライトをリセット
+				points_.clear();
+				points_.push_back({ opt->x, opt->y });
+				p.worldTF.translation.x = opt->x;
+				p.worldTF.translation.y = opt->y;
+				//sprites_[std::max<int>(0, i-1)].material.color = ColorPattern::GREEN;
+				//sprites_[std::max<int>(0, n-1)].material.color = ColorPattern::GREEN;
+				return true;
+			}
+		}
+	}
+
+	// 判定が取れなかったのでfalse
 	return false;
 }
 
@@ -198,8 +260,9 @@ void Drawing::SurroundedMinionsUpdate()
 {
 	// 手下の管理クラスのポインタがあるか
 	if (!minionManager_) {
-		assert(0);
+		assert(false);
 		return;
 	}
+
 
 }
