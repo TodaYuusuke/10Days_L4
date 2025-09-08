@@ -46,6 +46,7 @@ void Stone::Update()
 	if (speed_ <= 0.0f || speed_ > StoneGlobalData::GetInitialSpeed()) {
 		speed_ = 0.0f;
 		isDead_ = true;
+		sprite_.isActive = false;
 	}
 	// 速度
 	const Vector2 velocity = speed_ * direction_;
@@ -57,5 +58,18 @@ void Stone::Update()
 	// 回転
 	const Vector3 kDir3D = { direction_.x, direction_.y, 0.0f };
 	sprite_.worldTF.rotation = Quaternion::ConvertFromTo(Vector3{ 0.0f,1.0f,0.0f }, kDir3D);
+
+}
+
+void Stone::Reset(const LWP::Math::Vector2& position, const LWP::Math::Vector2& direction)
+{
+
+	// 初速度
+	speed_ = StoneGlobalData::GetInitialSpeed();
+
+	position_ = position;
+	direction_ = direction;
+
+	sprite_.isActive = true;
 
 }

@@ -35,6 +35,13 @@ public: // メンバ関数
 	/// 更新
 	/// </summary>
 	void Update();
+
+	/// <summary>
+	/// リセット
+	/// </summary>
+	/// <param name="position">位置</param>
+	/// <param name="direction">方向</param>
+	void Reset(const LWP::Math::Vector2& position, const LWP::Math::Vector2& direction);
 	
 public: // アクセッサ
 
