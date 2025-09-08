@@ -58,9 +58,25 @@ public:
 		}
 	};
 
+	// dataの型キャスト
+	template <typename T>
+	T& Cast() {
+		// 型チェック
+		if (this->type != T::kType) {
+			std::string log = "Type mismatch: Expected " + std::string(BaseEnemyData::ToString(T::kType)) +
+				" but got " + std::string(BaseEnemyData::ToString(this->type));
+			throw std::runtime_error(log);
+		}
+
+		// 安全にキャスト
+		return dynamic_cast<T&>(*this);
+	}
+
+
 	// 共通のパラメータデータ
 	void CommonValue(LWP::Utility::JsonIO json) {
 		json.AddValue("RespawnPoint", &respawnPoint);
+		json.AddValue("TargetPosition", &targetPosition);
 	}
 
 	// 純粋仮想関数
@@ -71,6 +87,8 @@ public: // 共通部分変数
 	uint8_t partsNumber = 0u;
 	// 初期スポーン
 	Vector2 respawnPoint = { 0.0f,0.0f };
+	// ターゲットとなる座標や向き
+	Vector2 targetPosition = { 0.0f,0.0f };
 };
 
 // 攻撃用構造体 基本的にtimeはsecondとなる
@@ -90,13 +108,14 @@ struct AttackDefaultData {
 
 // NormalBossのデータ
 struct NormalBossData : public BaseEnemyData {
+	static constexpr Type kType = Type::NormalBoss;
 	NormalBossData() {
-		type = Type::NormalBoss;
+		type = kType;
 	}
 	NormalBossData(const NormalBossData&) = default;
 	// 初期生成
 	NormalBossData(const Vector2& resP) { 
-		type = Type::NormalBoss;
+		type = kType;
 		respawnPoint = resP;
 	}
 

@@ -4,7 +4,7 @@
 // 敵用の管理クラス シングルトン扱いでGameSceneのみ生成
 class EnemyManager {
 public:
-	EnemyManager()= default;
+	EnemyManager();
 	~EnemyManager() = default;
 
 	// 初期化処理
@@ -15,6 +15,9 @@ public:
 
 	// アニメーションや衝突判定などの二次更新
 	void SecondUpdate();
+
+	// 敵の座標 現在敵が1体しかいないため、くそ定義してる
+	const LWP::Math::Vector2& GetEnemyPosition() const;
 
 private:
 	// 敵のコンテナ

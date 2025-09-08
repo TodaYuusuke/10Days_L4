@@ -12,20 +12,26 @@ void NormalBoss::Initialize(BaseEnemyData& data) {
     SetData(data);
 
     // stateの初期化
-    stateMap_ = StateFactory::NormalBoss::CreateStates();
+    requestStateType_ = static_cast<uint8_t>(NormalBossStateType::Idle);
+    stateManager_ = std::make_unique<NormalBossStateManager>();
+    stateMap_ = StateFactory::NormalBoss::CreateStates(&data_, stateManager_.get());
     StateUpdate();
+
     spriteSystem_ = std::make_unique<NormalBossSpriteSystem>();
+
+    corePosition_ = data_.respawnPoint;
 }
 
 void NormalBoss::Update() {
-    requestStateType_ = static_cast<uint8_t>(NormalBossStateType::Idel);
     // 状態変化更新
     if (StateUpdate()) {
         // 切り替わりがあった場合
         // アニメーション等のリクエストを走らせる
     }
-
-    spriteSystem_->Update(LWP::Math::Vector2(1280.0f, 720.0f));
+    // リクエストがあれば次の状態を決める
+    requestStateType_ = stateManager_->Update(currentStateType_);
+    // 描画用更新
+    spriteSystem_->Update(corePosition_);
 }
 
 void NormalBoss::SetData(BaseEnemyData& data) {

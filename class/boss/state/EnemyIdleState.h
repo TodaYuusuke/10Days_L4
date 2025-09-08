@@ -1,10 +1,12 @@
 ﻿#pragma once
 #include "IEnemyState.h"
 
+
 // 敵キャラクター移動stateクラス
 class EnemyIdleState : public IEnemyState {
 public:
-	EnemyIdleState();
+	EnemyIdleState() = default;
+	EnemyIdleState(const Vector2* idleTime, NormalBossStateManager* sManager);
 	~EnemyIdleState() = default;
 
 	// 初期化処理
@@ -16,5 +18,10 @@ public:
 
 private:
 
+	const Vector2* pIdleTime_ = nullptr;
+	NormalBossStateManager* pStateManager_ = nullptr;
 
+	// 時間
+	float idleTime_ = 0.0f;
+	float nowTime_ = 0.0f;
 };

@@ -27,7 +27,9 @@ void EnemyDataManager::Initialize() {
 }
 
 void EnemyDataManager::ImGuiProc() {
+	ImGui::Begin("EnemyDataManager");
 	json_.DebugGUI();
+	ImGui::End();
 }
 
 BaseEnemyData* EnemyDataManager::GetData(BaseEnemyData::Type type) {

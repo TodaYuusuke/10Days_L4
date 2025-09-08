@@ -28,6 +28,12 @@ public:
 	/// <returns>状態が切り替わった際、trueを返す</returns>
 	bool StateUpdate();
 
+	/// <summary>
+	/// 新しい状態タイプ番号をリクエスト
+	/// </summary>
+	/// <param name="newStateTypeNumber">リクエストする新しい状態タイプ番号。</param>
+	void RequestState(const uint8_t& newStateTypeNumber) { requestStateType_ = newStateTypeNumber; }
+
 protected:
 
 	// データのセットを行う純粋仮想関数
@@ -40,6 +46,10 @@ private:
 	/// </summary>
 	/// <param name="newStateTypeNumber">新しい状態 enumからcastして使用</param>
 	void ChangeState(const uint8_t& newStateTypeNumber);
+
+public:
+	// 敵のコア座標
+	Vector2 corePosition_;
 
 protected:
 	// キャラクターの名前 のちに使う（と思う）

@@ -9,10 +9,14 @@
             500.0,
             100.0
         ],
-        "Vector2 :idleTime": [
-            0.10000000149011612,
-            1.0
+        "Vector2 :TargetPosition": [
+            0.0,
+            0.0
         ],
-        "float :moveSpeed": 1.0
+        "Vector2 :idleTime": [
+            1.0,
+            3.0
+        ],
+        "float :moveSpeed": 10.0
     }
 }
