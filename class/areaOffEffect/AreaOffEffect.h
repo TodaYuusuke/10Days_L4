@@ -40,7 +40,7 @@ private: // ローカル関数
 	void FadeOutUpdate();
 
 private:
-
+	
 	// 外枠
 	LWP::Primitive::NormalSprite outerFrame_;
 	// 内枠

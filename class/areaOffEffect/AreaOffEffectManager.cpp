@@ -18,6 +18,9 @@ void AreaOffEffectManager::Initialize() {
 }
 
 void AreaOffEffectManager::Update() {
+	ImGui::Begin("Effect");
+	json_.DebugGUI();
+	ImGui::End();
 	// リクエストがあれば生成
 	while (!circleInitDatas_.empty()) {
 		const CircleInitData& req = circleInitDatas_.front();

@@ -37,12 +37,18 @@ public: //
 	void RequestCreate(const Vector2& pos, const float& maxRadius, const AttackDefaultData& data);
 
 private:
+	// データのロード
+	void Load();
+
+private:
 	// 初期化用データ一時保存用コンテナ
 	std::queue<CircleInitData> circleInitDatas_;
 
 	// エフェクトをまとめたコンテナ
 	std::vector<std::unique_ptr<AreaOffEffect>> container_;
+	// 初期アルファ地
+	float firstAlpha_ = 255.0f;
 
-	float* pFirstAlpha_ = nullptr;
-
+	// json変数
+	LWP::Utility::JsonIO json_;
 };
