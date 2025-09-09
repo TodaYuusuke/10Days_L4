@@ -42,19 +42,18 @@ void Stone::Initialize()
 	sprite_.worldTF.scale = StoneGlobalData::GetSpriteScale();
 	
 	// サークル
-	Collider2D::Circle circle = collider_.SetBroadShape<Collider2D::Circle>();
-	circle.radius = 30.0f;
+	Collider2D::Circle& circle = collider_.SetBroadShape<Collider2D::Circle>();
+	circle.radius = StoneGlobalData::GetColliderRadius();
 	// 親子
 	collider_.worldTF.Parent(&sprite_.worldTF);
 
 	// 関数
 	// ヒットした瞬間のとき
-	//collider_.enterLambda = [this](Collision2D* hitTarget) {
-	//	--hp_;
-	//	if (hp_ == 0) {
-	//		isDead_ = true;
-	//	}
-	//	};
+	collider_.enterLambda = [this](Collision2D* hitTarget) {
+		hitTarget;
+		isDead_ = true;
+		sprite_.isActive = false;
+		};
 
 	// マスク、所属
 	collider_.mask.SetBelongFrag(ColMaskGetter::GetBullet() + ColMaskGetter::GetPlayer());

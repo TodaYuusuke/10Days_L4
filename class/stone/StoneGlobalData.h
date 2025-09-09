@@ -35,6 +35,8 @@ public: // アクセッサ
 	static float GetPositionZ() { return positionZ_; }
 	// スプライトの大きさ	
 	static LWP::Math::Vector3 GetSpriteScale() { return spriteScale_; }
+	// コライダー半径
+	static float GetColliderRadius() { return colliderRadius_; }
 
 private:
 
@@ -46,6 +48,8 @@ private:
 	static float positionZ_;
 	// スプライトの大きさ	
 	static LWP::Math::Vector3 spriteScale_;
+	// コライダー半径
+	static float colliderRadius_;
 
 };
 
