@@ -15,7 +15,7 @@ Minion::Minion()
         currentState_(nullptr),
         currentStateType_(MinionStateType::Idle),
         requestStateType_(MinionStateType::Idle),
-        spriteSystem_(nullptr),
+        spriteSystem_(),
         position_({0.0f,0.0f}),
         direction_({ 0.0f,1.0f }),
         hp_(MinionGlobalData::GetInitialHp()),
@@ -30,7 +30,7 @@ Minion::Minion(MinionManager* minionManager)
         currentState_(nullptr),
         currentStateType_(MinionStateType::Idle),
         requestStateType_(MinionStateType::Idle),
-        spriteSystem_(nullptr),
+        spriteSystem_(),
         position_({ 0.0f,0.0f }),
         direction_({ 0.0f,1.0f }),
         hp_(MinionGlobalData::GetInitialHp()),
@@ -50,8 +50,6 @@ void Minion::Initialize()
     // ステータス
     stateMap_ = MinionStateFactory::CreateStates();
     ChangeState(requestStateType_);
-
-    spriteSystem_ = std::make_unique<MinionSpriteSystem>();
 
     ++serialNumberCount_;
 
@@ -91,7 +89,7 @@ void Minion::Update()
     }
 
     // スプライト
-    spriteSystem_->Update(currentStateType_, position_, direction_);
+    spriteSystem_.Update(currentStateType_, position_, direction_);
 
 }
 

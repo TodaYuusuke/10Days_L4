@@ -40,7 +40,7 @@ void MinionManager::Initialize()
 	jsonIO_.CheckJsonFile();
 
 	for (size_t i = 0; i < kMinionNumMax_; ++i) {
-		minions_[i] = std::make_unique<Minion>(this);
+		minions_[i].SetMinionManager(this);
 	}
 
 }
@@ -56,8 +56,8 @@ void MinionManager::Update()
 		//数を専用に設定
 		attackMinionNum_ = 0;
 		for (size_t i = 0; i < kMinionNumMax_; ++i) {
-			if ((minions_[i]->GetCurrentStateType() == MinionStateType::Attack) 
-				&& ((kMeetingPlacePosition - minions_[i]->GetPosition()).Length() < MinionGlobalData::GetMeetingPlaceChangeLength())) {
+			if ((minions_[i].GetCurrentStateType() == MinionStateType::Attack) 
+				&& ((kMeetingPlacePosition - minions_[i].GetPosition()).Length() < MinionGlobalData::GetMeetingPlaceChangeLength())) {
 				++attackMinionNum_;
 			}
 		}
@@ -67,9 +67,9 @@ void MinionManager::Update()
 
 	minionNum_ = 0;
 	for (size_t i = 0; i < kMinionNumMax_; ++i) {
-		minions_[i]->Update();
+		minions_[i].Update();
 
-		if (minions_[i]->GetHp() > 0) {
+		if (minions_[i].GetHp() > 0) {
 			++minionNum_;
 		}
 
@@ -77,7 +77,7 @@ void MinionManager::Update()
 
 	attackMinionNum_ = 0;
 	for (size_t i = 0; i < kMinionNumMax_; ++i) {
-		if (minions_[i]->GetCurrentStateType() == MinionStateType::Attack) {
+		if (minions_[i].GetCurrentStateType() == MinionStateType::Attack) {
 			++attackMinionNum_;
 		}
 	}
