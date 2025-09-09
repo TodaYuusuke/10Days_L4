@@ -78,7 +78,8 @@ void Minion::Initialize()
     collider_.enterLambda = [this](Collision2D* hitTarget) {
         // 敵
         if (hitTarget->mask.GetBelongFrag() == ColMaskGetter::GetEnemy()) {
-            if (currentStateType_ != MinionStateType::Down) {
+            if (currentStateType_ != MinionStateType::Down && 
+                currentStateType_ != MinionStateType::Absorb) {
                 --hp_;
                 requestStateType_ = MinionStateType::Down;
             }

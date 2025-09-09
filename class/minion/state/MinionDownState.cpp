@@ -19,7 +19,12 @@ void MinionDownState::Update(Minion* minion)
 
 	if (remainingTime_ <= 0.0f) {
 		// 確認のため移動状態をリクエスト
-		minion->SetRequestStateType(MinionStateType::Move);
+		if (minion->GetHp() > 0) {
+			minion->SetRequestStateType(MinionStateType::Move);
+		}
+		else {
+			minion->SetRequestStateType(MinionStateType::Absorb);
+		}
 	}
 		
 }

@@ -157,6 +157,7 @@
     <ClCompile Include="class\minion\MinionManager.cpp" />
     <ClCompile Include="class\minion\MinionSpriteSystem.cpp" />
     <ClCompile Include="class\minion\state\IMinionState.cpp" />
+    <ClCompile Include="class\minion\state\MinionAbsorbState.cpp" />
     <ClCompile Include="class\minion\state\MinionAttackState.cpp" />
     <ClCompile Include="class\minion\state\MinionDownState.cpp" />
     <ClCompile Include="class\minion\state\MinionIdleState.cpp" />
@@ -199,6 +200,7 @@
     <ClInclude Include="class\minion\MinionManager.h" />
     <ClInclude Include="class\minion\MinionSpriteSystem.h" />
     <ClInclude Include="class\minion\state\IMinionState.h" />
+    <ClInclude Include="class\minion\state\MinionAbsorbState.h" />
     <ClInclude Include="class\minion\state\MinionAttackState.h" />
     <ClInclude Include="class\minion\state\MinionDownState.h" />
     <ClInclude Include="class\minion\state\MinionIdleState.h" />

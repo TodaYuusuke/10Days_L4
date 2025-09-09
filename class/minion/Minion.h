@@ -83,6 +83,14 @@ public: // アクセッサ
 	float GetMotivationTime() const { return motivationTime_; }
 	void SetMotivationTime(float motivationTime) { motivationTime_ = motivationTime; }
 
+	// スプライト
+	MinionSpriteSystem& GetSprite() { return spriteSystem_; }
+	const MinionSpriteSystem& GetSprite() const { return spriteSystem_; }
+
+	// スプライト
+	LWP::Object::Collision2D& GetCollider() { return collider_; }
+	const LWP::Object::Collision2D& GetCollider() const { return collider_; }
+
 private: // メンバ変数
 
 	// ステータス
