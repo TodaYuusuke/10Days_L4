@@ -1,6 +1,7 @@
 ﻿#include "EnemyManager.h"
 #include "normalBoss/NormalBoss.h"
 #include "data/EnemyDataManager.h"
+#include "../minion/MinionManager.h"
 
 EnemyManager::EnemyManager() {
 	Initialize();
@@ -28,6 +29,12 @@ void EnemyManager::SecondUpdate() {
 
 	// アニメーション等の描画更新処理
 
+}
+
+void EnemyManager::SetMinionManagerPtr(MinionManager* manager) {
+	minionManager_ = manager;
+	NormalBoss* nBoss = dynamic_cast<NormalBoss*>(enemies_[0].get());
+	nBoss->SetMinionManagerPtr(manager);
 }
 
 const LWP::Math::Vector2& EnemyManager::GetEnemyPosition() const {
