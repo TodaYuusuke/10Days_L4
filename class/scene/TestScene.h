@@ -36,5 +36,5 @@ private: //*** これより先に必要な処理や変数を記述 ***//
 	// 敵統括クラス
 	std::unique_ptr<EnemyManager> enemyManager_;
 	// AOEマネージャー
-	AreaOffEffectManager* pAOEManager_ = nullptr;
+	AreaOffEffectManager pAOEManager_;
 };

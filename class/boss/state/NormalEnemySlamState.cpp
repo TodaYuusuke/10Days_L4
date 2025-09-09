@@ -14,7 +14,7 @@ NormalEnemySlamState::NormalEnemySlamState(const BaseEnemyData* data, NormalBoss
 void NormalEnemySlamState::Enter([[maybe_unused]] BaseEnemy* enemy) {
 	totalTime_ = pSlam_->startupLag + pSlam_->damageTime + pSlam_->endingLag;
 	nowTime_ = 0.0f;
-	AreaOffEffectManager::GetInstance()->RequestCreate(enemy->corePosition_, 5.0f, *pSlam_);
+	AreaOffEffectManager::RequestCreate(enemy->corePosition_, 5.0f, *pSlam_);
 }
 
 void NormalEnemySlamState::Update(BaseEnemy* enemy) {

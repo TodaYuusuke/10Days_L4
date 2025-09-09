@@ -1,16 +1,13 @@
 ﻿#include "AreaOffEffectManager.h"
 
-const std::string kFileName = "EffectParameter.json";
+// 静的メンバの定義
+std::queue<AreaOffEffectManager::CircleInitData> AreaOffEffectManager::circleInitDatas_;
 
+const std::string kFileName = "EffectParameter.json";
 
 AreaOffEffectManager::~AreaOffEffectManager() {
 	// 全削除
 	circleInitDatas_ = {};
-}
-
-AreaOffEffectManager* AreaOffEffectManager::GetInstance() {
-	static AreaOffEffectManager instance;
-	return &instance;
 }
 
 void AreaOffEffectManager::Initialize() {
