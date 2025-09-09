@@ -17,9 +17,9 @@ AreaOffEffect::AreaOffEffect(const float* alpha, const Vector2& pos, const float
 }
 
 void AreaOffEffect::Initialize(const Vector2& pos, const float& maxRadius, const AttackDefaultData& data) {
-	outerFrame_.worldTF.translation = { pos.x,pos.y,0.0f };
+	outerFrame_.worldTF.translation = { pos.x,pos.y,-0.01f };
 	outerFrame_.worldTF.scale = { 0.0f,0.0f,0.0f };
-	innerFrame_.worldTF.translation = { pos.x,pos.y,0.0f };
+	innerFrame_.worldTF.translation = { pos.x,pos.y,-0.01f };
 	innerFrame_.worldTF.scale = { 0.0f,0.0f,0.0f };
 	outerFrame_.material.color = LWP::Utility::ColorPattern::YELLOW;
 	outerFrame_.material.color.A = static_cast<unsigned char>(*pFirstAlpha_);
