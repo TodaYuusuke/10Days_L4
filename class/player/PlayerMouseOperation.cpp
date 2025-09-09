@@ -11,7 +11,6 @@ PlayerMouseOperation::PlayerMouseOperation()
 		clicked_(false),
 		sprite_()
 {
-	Initialize();
 }
 
 PlayerMouseOperation::~PlayerMouseOperation()

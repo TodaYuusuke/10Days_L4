@@ -8,7 +8,6 @@ MeetingPlace::MeetingPlace()
 		changeIndexFrameCount_(0),
 		position_({ 0.0f,0.0f })
 {
-	Initialize();
 }
 
 MeetingPlace::~MeetingPlace()

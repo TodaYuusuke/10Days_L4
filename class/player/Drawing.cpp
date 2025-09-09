@@ -11,25 +11,27 @@ using namespace LWP::Utility;
 Drawing::Drawing()
 	:	points_{},
 		sprites_{},
+		sprieIndex_(0),
 		isActive_(false),
 		recordingTimer_(0.0f),
+		lineLength_(0.0f),
 		wallCreation_(false),
 		startWriting_({ 0.0f,0.0f }),
 		minionManager_(nullptr)
 {
-	Initialize();
 }
 
 Drawing::Drawing(MinionManager* minionManager)
 	:	points_{},
 		sprites_{},
+		sprieIndex_(0),
 		isActive_(false),
 		recordingTimer_(0.0f),
+		lineLength_(0.0f),
 		wallCreation_(false),
 		startWriting_({0.0f,0.0f}),
 		minionManager_(minionManager)
 {
-	Initialize();
 }
 
 Drawing::~Drawing()

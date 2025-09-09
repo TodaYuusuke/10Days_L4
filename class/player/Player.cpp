@@ -24,6 +24,15 @@ void Player::Initialize()
 	PlayerGlobalData::JsonDataRegistration(&jsonIO_);
 	jsonIO_.CheckJsonFile();
 
+	// マウスの操作
+	playerMouseOperation_.Initialize();
+	// 集合場所
+	meetingPlace_.Initialize();
+	// 書き途中
+	drawing_.Initialize();
+	// 壁マネージャー
+	wallManager_.Initialize();
+
 }
 
 void Player::Update()
