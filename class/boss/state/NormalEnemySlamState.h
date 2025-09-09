@@ -27,4 +27,7 @@ private:
 	// 時間
 	float totalTime_ = 0.0f;
 	float nowTime_ = 0.0f;
+
+	// 衝突判定
+	LWP::Object::Collision2D coll2D_;
 };

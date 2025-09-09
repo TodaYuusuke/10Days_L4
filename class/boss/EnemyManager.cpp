@@ -26,11 +26,14 @@ void EnemyManager::Update() {
 void EnemyManager::SecondUpdate() {
 	// 衝突判定等での座標処理
 
-
 	// アニメーション等の描画更新処理
 
 }
 
 const LWP::Math::Vector2& EnemyManager::GetEnemyPosition() const {
 	return enemies_.at(0)->corePosition_;
+}
+
+const int* EnemyManager::GetEnemyAttackPowerPtr() const {
+	return enemies_.at(0)->GetAttackPowerPtr();
 }

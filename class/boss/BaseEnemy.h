@@ -34,6 +34,12 @@ public:
 	/// <param name="newStateTypeNumber">リクエストする新しい状態タイプ番号。</param>
 	void RequestState(const uint8_t& newStateTypeNumber) { requestStateType_ = newStateTypeNumber; }
 
+	// 攻撃力のポインタ取得
+	const int* GetAttackPowerPtr() const { return &attackPower_; }
+
+	// 攻撃力のセット Stateのみで使用
+	void SetAttackPower(const int& power) { attackPower_ = power; }
+
 protected:
 
 	// データのセットを行う純粋仮想関数
@@ -66,5 +72,7 @@ protected:
 	uint8_t currentStateType_ = 0u;
 	// リクエストされた状態
 	uint8_t requestStateType_ = 0u;
+	// 攻撃力
+	int attackPower_ = 0;
 
 };

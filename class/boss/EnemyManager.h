@@ -18,6 +18,8 @@ public:
 
 	// 敵の座標 現在敵が1体しかいないため、くそ定義してる
 	const LWP::Math::Vector2& GetEnemyPosition() const;
+	// 敵の攻撃力ptt くそ定義
+	const int* GetEnemyAttackPowerPtr() const;
 
 private:
 	// 敵のコンテナ

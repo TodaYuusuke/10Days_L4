@@ -4,17 +4,23 @@
 #include "../data/NormalBossData.h"
 #include "../normalBoss/NormalBoss.h"
 #include "../../areaOffEffect/AreaOffEffectManager.h"
+#include "../../ColMaskGetter.h"
 
 NormalEnemySlamState::NormalEnemySlamState(const BaseEnemyData* data, NormalBossStateManager* sManager) {
 	const NormalBossData* d = dynamic_cast<const NormalBossData*>(data);
 	pSlam_ = &d->slam;
 	pStateManager_ = sManager;
+
+	// マスクの作成
+	coll2D_.mask.SetBelongFrag(ColMaskGetter::GetEnemy());
+	coll2D_.mask.SetHitFrag(ColMaskGetter::GetPlayer() | ColMaskGetter::GetWall());
 }
 
 void NormalEnemySlamState::Enter([[maybe_unused]] BaseEnemy* enemy) {
 	totalTime_ = pSlam_->startupLag + pSlam_->damageTime + pSlam_->endingLag;
 	nowTime_ = 0.0f;
 	AreaOffEffectManager::RequestCreate(enemy->corePosition_, 5.0f, *pSlam_);
+	enemy->SetAttackPower(pSlam_->attackPower);
 }
 
 void NormalEnemySlamState::Update(BaseEnemy* enemy) {
