@@ -109,6 +109,9 @@ private: // メンバ変数
 	// やる気タイム
 	float motivationTime_;
 
+	// コライダー
+	LWP::Object::Collision2D collider_;
+
 private: // ポインタ
 
 	// マネージャー

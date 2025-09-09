@@ -42,6 +42,12 @@ public:  // メンバ関数
 	/// <param name="serialNumber">シリアルナンバー</param>
 	void ColorChange(int serialNumber);
 
+public:
+
+	// スプライト
+	LWP::Primitive::SequenceSprite& GetSprite() { return sprite_; }
+	const LWP::Primitive::SequenceSprite& GetSprite() const { return sprite_; }
+
 private:
 
 	/// <summary>

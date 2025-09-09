@@ -2,8 +2,10 @@
 #include "state/MinionStateFactory.h"
 #include "MinionManager.h"
 #include "MinionGlobalData.h"
+#include "../ColMaskGetter.h"
 using namespace LWP::Math;
 using namespace LWP::Utility;
+using namespace LWP::Object;
 
 using namespace LWP;
 
@@ -21,6 +23,7 @@ Minion::Minion()
         hp_(MinionGlobalData::GetInitialHp()),
         serialNumber_(serialNumberCount_),
         motivationTime_(0.0f),
+        collider_(),
         minionManager_(nullptr)
 {
 }
@@ -36,6 +39,7 @@ Minion::Minion(MinionManager* minionManager)
         hp_(MinionGlobalData::GetInitialHp()),
         serialNumber_(serialNumberCount_),
         motivationTime_(0.0f),
+        collider_(),
         minionManager_(minionManager)
 {
 }
@@ -62,6 +66,35 @@ void Minion::Initialize()
 
     spriteSystem_.Initialize();
     spriteSystem_.ColorChange(serialNumber_);
+
+    // サークル
+    Collider2D::Circle& circle = collider_.SetBroadShape<Collider2D::Circle>();
+    circle.radius = 30.0f;
+    // 親子
+    collider_.worldTF.Parent(&(spriteSystem_.GetSprite().worldTF));
+
+    // 関数
+    // ヒットした瞬間のとき
+    collider_.enterLambda = [this](Collision2D* hitTarget) {
+        // 敵
+        if (hitTarget->mask.GetBelongFrag() == ColMaskGetter::GetEnemy()) {
+            if (currentStateType_ != MinionStateType::Down) {
+                --hp_;
+                requestStateType_ = MinionStateType::Down;
+            }
+        }
+        // 壁
+        else if(hitTarget->mask.GetBelongFrag() == ColMaskGetter::GetWall()){
+            hitTarget->GetScreenPosition();
+
+
+            }
+        };
+
+    // マスク、所属
+    collider_.mask.SetBelongFrag(ColMaskGetter::GetPlayer());
+    // マスク,hit
+    collider_.mask.SetHitFrag(ColMaskGetter::GetEnemy() | ColMaskGetter::GetWall());
 
 }
 
