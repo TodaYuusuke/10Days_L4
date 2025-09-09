@@ -35,6 +35,7 @@
         45.0
     ],
     "float :IdleStateChangesDistance": 600.0,
+    "float :IncreasedMotivation": 1.0,
     "float :RequestCheckAddLength": 20.0,
     "int32_t :InitialHp": 1
 }

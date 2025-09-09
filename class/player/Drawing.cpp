@@ -1,6 +1,7 @@
 #include "Drawing.h"
 #include "PlayerGlobalData.h"
 #include "../minion/MinionManager.h"
+#include "../minion/MinionGlobalData.h"
 
 using namespace LWP::Math;
 using namespace LWP::Input;
@@ -264,6 +265,8 @@ void Drawing::SurroundedMinionsUpdate()
 {
 	// 手下の管理クラスのポインタがあるか
 	assert(minionManager_);
+	// 手下取得
+	std::array<Minion, MinionManager::kMinionNumMax_>& minons = minionManager_->GetMinions();
 	
 	// 全手下確認
 	int index = 0;
@@ -280,7 +283,7 @@ void Drawing::SurroundedMinionsUpdate()
 		
 		if (inside) {
 			// index番目の手下はやる気増加
-			minionManager_->ApplyMinionAttack(index);
+			minons[index].SetMotivationTime(minons[index].GetMotivationTime() + MinionGlobalData::GetIncreasedMotivation());
 		}
 		index++;
 	}

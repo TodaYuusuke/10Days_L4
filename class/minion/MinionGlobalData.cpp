@@ -10,6 +10,8 @@ LWP::Math::Vector2 MinionGlobalData::initialPosition_ = { 960.0f, 800.0f };
 LWP::Math::Vector2 MinionGlobalData::initialPositionWidth_ = { 80.0f, 45.0f };
 // リクエスト確認時の長さ、追加分
 float MinionGlobalData::requestCheckAddLength_ = 20.0f;
+// やる気増加量
+float MinionGlobalData::increasedMotivation_ = 1.0f;
 // テクスチャサイズ
 LWP::Math::Vector2 MinionGlobalData::textureSize_ = { 64.0f,64.0f };
 // スプライトサイズ
@@ -48,6 +50,8 @@ void MinionGlobalData::JsonDataRegistration(LWP::Utility::JsonIO* jsonIO)
 		AddValue("InitialPositionWidth", &initialPositionWidth_).
 		// リクエスト確認時の長さ、追加分
 		AddValue("RequestCheckAddLength", &requestCheckAddLength_).
+		// やる気増加量
+		AddValue("IncreasedMotivation", &increasedMotivation_).
 
 		// スプライト関係
 		BeginGroup("Sprite").
