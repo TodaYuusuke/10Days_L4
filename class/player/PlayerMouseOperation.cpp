@@ -24,6 +24,10 @@ void PlayerMouseOperation::Initialize()
 	// マウスカーソルを消す
 	ShowCursor(false);
 
+#ifdef _DEBUG
+	ShowCursor(true);
+#endif // _DEBUG
+
 	sprite_.LoadTexture("Pen.png");
 	sprite_.anchorPoint = { 0.0f,1.0f }; 
 	sprite_.worldTF.scale = PlayerGlobalData::GetMouseSpriteScale();
