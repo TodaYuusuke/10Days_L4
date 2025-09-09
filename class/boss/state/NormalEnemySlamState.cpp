@@ -25,7 +25,6 @@ void NormalEnemySlamState::Enter([[maybe_unused]] BaseEnemy* enemy) {
 	// 当たり判定の設定
 	coll2D_.worldTF.translation = { enemy->corePosition_.x, enemy->corePosition_.y, 0.0f };
 	coll2D_.isActive = false;
-	coll2D_.isMove = true;
 	
 	LWP::Object::Collider2D::Circle& circle = coll2D_.SetBroadShape<LWP::Object::Collider2D::Circle>();
 	circle.radius = pSlam_->attackRange.x;
@@ -44,7 +43,7 @@ void NormalEnemySlamState::Update(BaseEnemy* enemy) {
 		// 当たり判定を有効可
 		coll2D_.isActive = true;
 	}
-	else { coll2D_.isActive = true; }
+	else { coll2D_.isActive = false; }
 	// 攻撃の一連の動作がおわったらstateを変更
 	if (totalTime_ < nowTime_) {
 		pStateManager_->RequestStateChange();

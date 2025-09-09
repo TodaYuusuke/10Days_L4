@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "../BaseEnemySpriteSystem.h"
+#include "../../partsAnimation/PartsAnimation.h"
 
 // normalBoss用sprite管理クラス
 class NormalBossSpriteSystem : public BaseEnemySpriteSystem {
@@ -13,6 +14,8 @@ public:
 	void ColorUpdate();
 
 private:
+	LWP::Object::TransformQuat baseTransform_;
+	PartsAnimation animation_;
 
 };
 

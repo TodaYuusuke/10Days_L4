@@ -1,0 +1,112 @@
+{
+    "Group :NormalBossPartsDefault": {
+        "TransformQuat :Body": {
+            "Quaternion :rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "Vector3 :scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "Vector3 :translation": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        "TransformQuat :Head": {
+            "Quaternion :rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "Vector3 :scale": [
+                0.5,
+                0.5,
+                1.0
+            ],
+            "Vector3 :translation": [
+                0.0,
+                0.0,
+                0.10000000149011612
+            ]
+        },
+        "TransformQuat :L_Arm": {
+            "Quaternion :rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "Vector3 :scale": [
+                0.5,
+                0.5,
+                1.0
+            ],
+            "Vector3 :translation": [
+                -25.0,
+                1.0,
+                0.0
+            ]
+        },
+        "TransformQuat :L_Legs": {
+            "Quaternion :rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "Vector3 :scale": [
+                0.5,
+                0.6000000238418579,
+                1.0
+            ],
+            "Vector3 :translation": [
+                -10.0,
+                15.0,
+                -1.0
+            ]
+        },
+        "TransformQuat :R_Arm": {
+            "Quaternion :rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "Vector3 :scale": [
+                0.5,
+                0.5,
+                1.0
+            ],
+            "Vector3 :translation": [
+                25.0,
+                1.0,
+                0.0
+            ]
+        },
+        "TransformQuat :R_Legs": {
+            "Quaternion :rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "Vector3 :scale": [
+                0.5,
+                0.6000000238418579,
+                1.0
+            ],
+            "Vector3 :translation": [
+                10.0,
+                -15.0,
+                -1.0
+            ]
+        }
+    }
+}

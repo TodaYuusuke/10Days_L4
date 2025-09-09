@@ -12,17 +12,17 @@ uint8_t NormalBossStateManager::Update(const uint8_t currentType) {
 	isStateChange_ = false;
 
 	// 以下仮
-	if (currentType == StateType::ToUInt8(NormalBossStateType::Move)) {
-		return StateType::ToUInt8(NormalBossStateType::Slam);
+	if (currentType == EnumCast::ToUInt8(NormalBossStateType::Move)) {
+		return EnumCast::ToUInt8(NormalBossStateType::Slam);
 	}
-	else if (currentType == StateType::ToUInt8(NormalBossStateType::Idle)) {
+	else if (currentType == EnumCast::ToUInt8(NormalBossStateType::Idle)) {
 		// 移動する場所を雑に設定
 		targetPosition_.x = LWP::Utility::Random::GenerateFloat(0.0f, 1280.0f);
 		targetPosition_.y = LWP::Utility::Random::GenerateFloat(0.0f, 720.0f);
-		return StateType::ToUInt8(NormalBossStateType::Move);
+		return EnumCast::ToUInt8(NormalBossStateType::Move);
 	}
-	else if (currentType == StateType::ToUInt8(NormalBossStateType::Slam)) {
-		return StateType::ToUInt8(NormalBossStateType::Idle);
+	else if (currentType == EnumCast::ToUInt8(NormalBossStateType::Slam)) {
+		return EnumCast::ToUInt8(NormalBossStateType::Idle);
 	}
 	return currentType;
 }

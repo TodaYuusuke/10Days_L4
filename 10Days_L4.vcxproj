@@ -163,6 +163,8 @@
     <ClCompile Include="class\minion\state\MinionIdleState.cpp" />
     <ClCompile Include="class\minion\state\MinionMoveState.cpp" />
     <ClCompile Include="class\minion\state\MinionStateFactory.cpp" />
+    <ClCompile Include="class\partsAnimation\PartsAnimation.cpp" />
+    <ClCompile Include="class\partsAnimation\PartsAnimation.h" />
     <ClCompile Include="class\player\Drawing.cpp" />
     <ClCompile Include="class\player\MeetingPlace.cpp" />
     <ClCompile Include="class\player\Player.cpp" />
@@ -196,6 +198,7 @@
     <ClInclude Include="class\areaOffEffect\AreaOffEffectManager.h" />
     <ClInclude Include="class\boss\data\AttackDefaultData.h" />
     <ClInclude Include="class\boss\data\NormalBossData.h" />
+    <ClInclude Include="class\boss\normalBoss\NormalBossParts.h" />
     <ClInclude Include="class\boss\state\NormalEnemySlamState.h" />
     <ClInclude Include="class\ColMaskGetter.h" />
     <ClInclude Include="class\minion\Minion.h" />

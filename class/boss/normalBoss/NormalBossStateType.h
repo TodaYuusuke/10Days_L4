@@ -8,8 +8,8 @@ enum class NormalBossStateType : uint8_t {
 	StateTypeOfCount // 最大数
 };
 
-namespace StateType {
-
+namespace EnumCast {
+	
 	// enum を uint8_t に変更
 	template <typename EnumType>
 	constexpr uint8_t ToUInt8(EnumType e) noexcept {
