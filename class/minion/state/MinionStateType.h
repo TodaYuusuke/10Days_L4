@@ -8,6 +8,6 @@ enum class MinionStateType {
 	Move,				// 移動
 	Attack,				// 攻撃
 	Down,				// ダウン
-	//Absorb,			// 吸収
+	Absorb,			// 吸収
 	StateTypeOfCount,	// 数数える用
 };

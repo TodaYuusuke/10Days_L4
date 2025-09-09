@@ -3,9 +3,13 @@
         "float :AttackCoolTimeMax": 1.0,
         "float :MotivationMultiplier": 1.5
     },
+    "Group :Down": {
+        "float :DownTime": 2.0
+    },
     "Group :Move": {
         "float :AddRotateFluctuation": 0.05000000074505806,
         "float :AddRotateMax": 0.5,
+        "float :AddSpeedFluctuation": 0.5,
         "float :Speed": 2.0
     },
     "Group :Sprite": {
@@ -22,6 +26,17 @@
         "int32_t :ChangeIndexFrame": 10,
         "int32_t :IndexMaxX": 6
     },
-    "float :AttackStateChangesDistance": 600.0,
+    "Vector2 :InitialPosition": [
+        960.0,
+        800.0
+    ],
+    "Vector2 :InitialPositionWidth": [
+        80.0,
+        45.0
+    ],
+    "float :ColliderRadius": 15.0,
+    "float :IdleStateChangesDistance": 600.0,
+    "float :IncreasedMotivation": 1.0,
+    "float :RequestCheckAddLength": 20.0,
     "int32_t :InitialHp": 1
 }

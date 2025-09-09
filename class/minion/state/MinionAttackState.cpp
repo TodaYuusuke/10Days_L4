@@ -7,14 +7,14 @@ using namespace LWP::Math;
 using namespace LWP::Info;
 
 MinionAttackState::MinionAttackState()
-	:	motivationTime_(0.0f),
-		attackCoolTime_(0.0f)
+	:	attackCoolTime_(0.0f)
 {
 }
 
 void MinionAttackState::Enter(Minion* minion)
 {
 
+	minion;
 	attackCoolTime_ = MinionGlobalData::GetAttackCoolTimeMax();
 
 }
@@ -34,20 +34,27 @@ void MinionAttackState::Update(Minion* minion)
 
 	const float kDeltaTime = static_cast<float>(GetDeltaTime());
 
-	motivationTime_ -= kDeltaTime;
+	float motivationTime = minion->GetMotivationTime();
+
+	motivationTime -= kDeltaTime;
 
 	// 攻撃速度
 	float attackSpeed = kDeltaTime;
 
 	// やる気あり
-	if (motivationTime_ > 0.0f) {
-		motivationTime_ -= kDeltaTime;
-		attackSpeed *= MinionGlobalData::GetMotivationMultiplier();
+	if (motivationTime > 0.0f) {
+		motivationTime -= kDeltaTime;
+		//attackSpeed *= MinionGlobalData::GetMotivationMultiplier();
 	}
 	// やる気なし
 	else {
-		motivationTime_ = 0.0f;
+		motivationTime = 0.0f;
+		// Idleへ
+		minion->SetRequestStateType(MinionStateType::Idle);
 	}
+
+	// やる気の値をセット
+	minion->SetMotivationTime(motivationTime);
 
 	// 石投げ処理
 	attackCoolTime_ -= attackSpeed;
@@ -61,4 +68,5 @@ void MinionAttackState::Update(Minion* minion)
 
 void MinionAttackState::Exit(Minion* minion)
 {
+	minion;
 }

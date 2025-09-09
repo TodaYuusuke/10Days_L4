@@ -80,6 +80,17 @@ public: // アクセッサ
 	MinionManager* GetMinionManager() { return minionManager_; }
 	void SetMinionManager(MinionManager* minionManager) { minionManager_ = minionManager; }
 
+	float GetMotivationTime() const { return motivationTime_; }
+	void SetMotivationTime(float motivationTime) { motivationTime_ = motivationTime; }
+
+	// スプライト
+	MinionSpriteSystem& GetSprite() { return spriteSystem_; }
+	const MinionSpriteSystem& GetSprite() const { return spriteSystem_; }
+
+	// スプライト
+	LWP::Object::Collision2D& GetCollider() { return collider_; }
+	const LWP::Object::Collision2D& GetCollider() const { return collider_; }
+
 private: // メンバ変数
 
 	// ステータス
@@ -96,12 +107,19 @@ private: // メンバ変数
 
 	// 位置
 	LWP::Math::Vector2 position_;
+	LWP::Math::Vector2 prevPosition_;
 	// 回転、方向 
 	LWP::Math::Vector2 direction_;
 	// HP
 	int hp_;
 	// 手下番号
 	int serialNumber_;
+
+	// やる気タイム
+	float motivationTime_;
+
+	// コライダー
+	LWP::Object::Collision2D collider_;
 
 private: // ポインタ
 

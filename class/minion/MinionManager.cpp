@@ -40,6 +40,7 @@ void MinionManager::Initialize()
 	jsonIO_.CheckJsonFile();
 
 	for (size_t i = 0; i < kMinionNumMax_; ++i) {
+		minions_[i].Initialize();
 		minions_[i].SetMinionManager(this);
 	}
 
@@ -56,9 +57,10 @@ void MinionManager::Update()
 		//数を専用に設定
 		attackMinionNum_ = 0;
 		for (size_t i = 0; i < kMinionNumMax_; ++i) {
-			if ((minions_[i].GetCurrentStateType() == MinionStateType::Attack) 
-				&& ((kMeetingPlacePosition - minions_[i].GetPosition()).Length() < MinionGlobalData::GetMeetingPlaceChangeLength())) {
-				++attackMinionNum_;
+			const MinionStateType kCurrentStateType = minions_[i].GetCurrentStateType();
+			if (kCurrentStateType == MinionStateType::Idle ||
+				kCurrentStateType == MinionStateType::Attack) {
+				minions_[i].SetRequestStateType(MinionStateType::Move);
 			}
 		}
 		//場所変更
@@ -71,19 +73,39 @@ void MinionManager::Update()
 
 		if (minions_[i].GetHp() > 0) {
 			++minionNum_;
+			minionsPosition_[i] = minions_[i].GetPosition();	// ミニオンの座標をメモ
 		}
-
 	}
 
 	attackMinionNum_ = 0;
 	for (size_t i = 0; i < kMinionNumMax_; ++i) {
-		if (minions_[i].GetCurrentStateType() == MinionStateType::Attack) {
+		const MinionStateType kCurrentStateType = minions_[i].GetCurrentStateType();
+		if (kCurrentStateType == MinionStateType::Idle ||
+			kCurrentStateType == MinionStateType::Attack) {
 			++attackMinionNum_;
 		}
 	}
 
+	DebugGUI();
+
+}
+
+void MinionManager::DebugGUI()
+{
+
 	// GUI JSON
 	ImGui::Begin("Minion");
+	if (ImGui::Button("Down")) {
+		for (size_t i = 0; i < kMinionNumMax_; ++i) {
+			minions_[i].SetRequestStateType(MinionStateType::Down);
+		}
+	}
+	if (ImGui::Button("Attack")) {
+		for (size_t i = 0; i < kMinionNumMax_; ++i) {
+			minions_[i].SetMotivationTime(minions_[i].GetMotivationTime() + 1.0f);
+		}
+	}
+
 	jsonIO_.DebugGUI();
 	ImGui::End();
 

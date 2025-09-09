@@ -4,10 +4,10 @@ using namespace LWP::Math;
 using namespace LWP::Info;
 
 TitleMinion::TitleMinion()
-	:	spriteSystem_(nullptr),
+	:	spriteSystem_(),
 		position_({ 960.0f, 800.0f }),
 		direction_({1.0f,0.0f }),
-		stone_(nullptr),
+		stone_(),
 		motivationTime_(0.0f),
 		attackCoolTime_(0.0f)
 {
@@ -20,14 +20,13 @@ TitleMinion::~TitleMinion()
 
 void TitleMinion::Initialize()
 {
-	spriteSystem_ = std::make_unique<MinionSpriteSystem>();
-	stone_ = std::make_unique<Stone>();
+
 }
 
 void TitleMinion::Update()
 {
 	
-	spriteSystem_->Update(MinionStateType::Attack, position_, direction_);
+	spriteSystem_.Update(MinionStateType::Attack, position_, direction_);
 
 	const float kDeltaTime = static_cast<float>(GetDeltaTime());
 
@@ -50,11 +49,11 @@ void TitleMinion::Update()
 	attackCoolTime_ -= attackSpeed;
 	if (attackCoolTime_ <= 0.0f) {
 		// 攻撃
-		stone_->Reset(position_, direction_);
+		stone_.Reset(position_, direction_);
 		attackCoolTime_ = MinionGlobalData::GetAttackCoolTimeMax();
 	}
 	
-	stone_->Update();
+	stone_.Update();
 
 }
 

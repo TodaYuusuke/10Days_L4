@@ -2,18 +2,13 @@
 #include "IMinionState.h"
 
 /// <summary>
-/// 手下の攻撃状態
+/// 手下の吸収状態
 /// </summary>
-class MinionAttackState :
+class MinionAbsorbState :
     public IMinionState
 {
 
 public: // メンバ関数
-
-    /// <summary>
-    /// コンストラクタ
-    /// </summary>
-    MinionAttackState();
 
     /// <summary>
     /// この状態になる時の処理
@@ -32,11 +27,6 @@ public: // メンバ関数
     /// </summary>
     /// <param name="minion"></param>
     void Exit(Minion* minion) override;
-
-public:
-
-    // 石を投げるまでの時間
-    float attackCoolTime_;
 
 };
 

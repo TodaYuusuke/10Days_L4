@@ -8,6 +8,8 @@ float StoneGlobalData::initialSpeed_ = 10.0f;
 float StoneGlobalData::positionZ_ = 0.0f;
 // スプライトの大きさ	
 LWP::Math::Vector3 StoneGlobalData::spriteScale_ = { 1.0f,1.0f,1.0f };
+// コライダー半径
+float StoneGlobalData::colliderRadius_ = 50.0f;
 
 void StoneGlobalData::JsonDataRegistration(LWP::Utility::JsonIO* jsonIO)
 {
@@ -19,6 +21,8 @@ void StoneGlobalData::JsonDataRegistration(LWP::Utility::JsonIO* jsonIO)
 		// Z座標
 		AddValue("PositionZ", &positionZ_).
 		// スプライトの大きさ
-		AddValue("SpriteScale", &spriteScale_);
+		AddValue("SpriteScale", &spriteScale_).
+		// コライダー半径
+		AddValue("ColliderRadius", &colliderRadius_);
 
 }

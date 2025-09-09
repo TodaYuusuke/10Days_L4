@@ -4,7 +4,6 @@
 WallManager::WallManager()
 	:	walls_{}
 {
-	Initialize();
 }
 
 WallManager::~WallManager()
@@ -19,7 +18,6 @@ WallManager::~WallManager()
 
 void WallManager::Initialize()
 {
-
 }
 
 void WallManager::Update()

@@ -7,6 +7,7 @@
 // 前方宣言
 class Player;
 class MinionManager;
+class EnemyManager;
 
 /// <summary>
 /// UI管理クラス
@@ -26,7 +27,8 @@ public: // メンバ関数
 	/// </summary>
 	/// <param name="player">プレイヤー</param>
 	/// <param name="minionManager">手下のマネージャー</param>
-	UIManager(Player* player, MinionManager* minionManager);
+	/// <param name="minionManager">エネミーマネージャー</param>
+	UIManager(Player* player, MinionManager* minionManager, EnemyManager* enemyManager);
 
 	/// <summary>
 	/// デストラクタ
@@ -38,7 +40,8 @@ public: // メンバ関数
 	/// </summary>
 	/// <param name="player">プレイヤー</param>
 	/// <param name="minionManager">手下のマネージャー</param>
-	void Initialize(Player* player, MinionManager* minionManager);
+	/// <param name="minionManager">エネミーマネージャー</param>
+	void Initialize(Player* player, MinionManager* minionManager, EnemyManager* enemyManager);
 
 	/// <summary>
 	/// 更新

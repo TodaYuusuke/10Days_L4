@@ -41,22 +41,22 @@ public:
 
 public: // アクセッサ
 
-	MeetingPlace* GetMeetingPlace() { return meetingPlace_.get(); }
-	Drawing* GetDrawing() { return drawing_.get(); }
+	MeetingPlace* GetMeetingPlace() { return &meetingPlace_; }
+	Drawing* GetDrawing() { return &drawing_; }
 
 private:
 	
 	// マウスの操作
-	std::unique_ptr<PlayerMouseOperation> playerMouseOperation_;
+	PlayerMouseOperation playerMouseOperation_;
 
 	// 集合場所
-	std::unique_ptr<MeetingPlace> meetingPlace_;
+	MeetingPlace meetingPlace_;
 
 	// 書き途中
-	std::unique_ptr<Drawing> drawing_;
+	Drawing drawing_;
 
 	// 壁マネージャー
-	std::unique_ptr<WallManager> wallManager_;
+	WallManager wallManager_;
 
 	// json
 	LWP::Utility::JsonIO jsonIO_;

@@ -1,5 +1,7 @@
 #include "Drawing.h"
 #include "PlayerGlobalData.h"
+#include "../minion/MinionManager.h"
+#include "../minion/MinionGlobalData.h"
 
 using namespace LWP::Math;
 using namespace LWP::Input;
@@ -9,25 +11,27 @@ using namespace LWP::Utility;
 Drawing::Drawing()
 	:	points_{},
 		sprites_{},
+		sprieIndex_(0),
 		isActive_(false),
 		recordingTimer_(0.0f),
+		lineLength_(0.0f),
 		wallCreation_(false),
 		startWriting_({ 0.0f,0.0f }),
 		minionManager_(nullptr)
 {
-	Initialize();
 }
 
 Drawing::Drawing(MinionManager* minionManager)
 	:	points_{},
 		sprites_{},
+		sprieIndex_(0),
 		isActive_(false),
 		recordingTimer_(0.0f),
+		lineLength_(0.0f),
 		wallCreation_(false),
 		startWriting_({0.0f,0.0f}),
 		minionManager_(minionManager)
 {
-	Initialize();
 }
 
 Drawing::~Drawing()
@@ -36,9 +40,6 @@ Drawing::~Drawing()
 
 void Drawing::Initialize()
 {
-	p.LoadTexture("MinionNumBack.png");
-	p.worldTF.scale = { 0.1f,0.1f,0.1f };
-	p.material.color = ColorPattern::RED;
 	for (size_t i = 0; i < kSpriteNum_; ++i) {
 		sprites_[i].LoadTexture("Line.png");
 		sprites_[i].worldTF.scale.x = PlayerGlobalData::GetLineSpriteScale().x;
@@ -49,6 +50,10 @@ void Drawing::Initialize()
 
 void Drawing::Update(bool isDragging)
 {
+	ImGui::Begin("Drawing");
+	ImGui::Text("Points Count : %d", points_.size());
+	ImGui::End();
+
 	wallCreation_ = false;
 
 	// ドラッグしていない
@@ -142,10 +147,7 @@ void Drawing::Update(bool isDragging)
 					sprites_[i].material.color = ColorPattern::WHITE;
 				}
 				// ここで線が生成され終わるのでおそらくここで円確認
-				if (IsCircleCreated()) {
-					// 囲まれた手下の更新
-					SurroundedMinionsUpdate();
-				}
+				IsCircleCreated();
 			
 			}
 
@@ -156,7 +158,7 @@ void Drawing::Update(bool isDragging)
 			// 書き始めの位置を保存
 			points_.push_back(startWriting_);
 			// 現在の位置を保存
-			points_.push_back(Mouse::GetPosition());
+			//points_.push_back(Mouse::GetPosition());
 			// アクティブ
 			isActive_ = true;
 		}
@@ -225,9 +227,9 @@ std::optional<Vector2> GetIntersection(const Vector2& A1, const Vector2& A2, con
 
 	return intersection;
 }
-bool Drawing::IsCircleCreated()
+void Drawing::IsCircleCreated()
 {	
-	if (points_.size() < 4) { return false; }	// 3以下ならば絶対に円は作れないので戻る
+	if (points_.size() < 4) { return; }	// 3以下ならば絶対に円は作れないので戻る
 	// 線から円が形成されているか判定する
 
 	for (int i = 2; i < points_.size() - 1; i++) {
@@ -240,29 +242,52 @@ bool Drawing::IsCircleCreated()
 			Vector2 b2 = points_[n + 1];
 			std::optional<Vector2> opt = GetIntersection(a1, a2, b1, b2);
 			if (opt != std::nullopt) {
+				// 衝突した線分を、衝突した部分にまで縮小する
+				points_[i + 1] = *opt;
+				points_[n] = *opt;
+
+				// nより手前の点を削除する
+				if (n >= 1) {
+					points_.erase(points_.begin(), points_.begin() + n - 1);
+				}
+
+				// 囲まれた手下の更新
+				SurroundedMinionsUpdate();
+
 				ResetSprites();	// スプライトをリセット
-				points_.clear();
-				points_.push_back({ opt->x, opt->y });
-				p.worldTF.translation.x = opt->x;
-				p.worldTF.translation.y = opt->y;
-				//sprites_[std::max<int>(0, i-1)].material.color = ColorPattern::GREEN;
-				//sprites_[std::max<int>(0, n-1)].material.color = ColorPattern::GREEN;
-				return true;
+				points_.clear();	// 点をリセット
+				points_.push_back(*opt);	// 初期地点は設定する
+				break;
 			}
 		}
 	}
-
-	// 判定が取れなかったのでfalse
-	return false;
 }
 
 void Drawing::SurroundedMinionsUpdate()
 {
 	// 手下の管理クラスのポインタがあるか
-	if (!minionManager_) {
-		assert(false);
-		return;
+	assert(minionManager_);
+	// 手下取得
+	std::array<Minion, MinionManager::kMinionNumMax_>& minons = minionManager_->GetMinions();
+	
+	// 全手下確認
+	int index = 0;
+	for (Vector2& pos : minionManager_->GetMinionsPosition()) {
+		// 各線分を確認
+		bool inside = false;
+		for (int i = 0; i < points_.size() - 1; i++) {
+				const Vector2& pi = points_[i];
+				const Vector2& pj = points_[i + 1];
+				bool intersect = ((pi.y > pos.y) != (pj.y > pos.y)) &&
+					(pos.x < (pj.x - pi.x) * (pos.y - pi.y) / (pj.y - pi.y + 1e-6f) + pi.x);
+				if (intersect) inside = !inside;
+			}
+		
+		if (inside) {
+			// index番目の手下はやる気増加
+			minons[index].SetMotivationTime(minons[index].GetMotivationTime() + MinionGlobalData::GetIncreasedMotivation());
+		}
+		index++;
 	}
-
 
 }

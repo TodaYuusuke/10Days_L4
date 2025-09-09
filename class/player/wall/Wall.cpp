@@ -61,10 +61,12 @@ void Wall::Initilaize()
 
 	// 関数
 	// ヒットした瞬間のとき
-	collider_.enterLambda = [this](Collision2D* hitTarget) { 
-		--hp_;
-		if (hp_ == 0) {
-			isDead_ = true;
+	collider_.enterLambda = [this](Collision2D* hitTarget) {
+		if (hitTarget->mask.GetBelongFrag() == ColMaskGetter::GetEnemy()) {
+			--hp_;
+			if (hp_ == 0) {
+				isDead_ = true;
+			}
 		}
 		};
 

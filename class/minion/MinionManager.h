@@ -45,21 +45,37 @@ public: // メンバ関数
 	/// </summary>
 	void Update();
 
+	/// <summary>
+	/// デバッグ
+	/// </summary>
+	void DebugGUI();
+
 public: // アクセッサ
+
+	void ApplyMinionAttack(int i) {
+		minions_[i].SetRequestStateType(MinionStateType::Attack);
+	}
 
 	MeetingPlace* GetMeetingPlace() { return meetingPlace_; }
 	StoneManager* GetStoneManager() { return stoneManager_; }
 	EnemyManager* GetEnemyManager() { return enemyManager_; }
 
+	void SetMeetingPlace(MeetingPlace* meetingPlace) { meetingPlace_ = meetingPlace; }
+	void SetStoneManager(StoneManager* stoneManager) { stoneManager_ = stoneManager; }
+	void SetEnemyManager(EnemyManager* enemyManager) { enemyManager_ = enemyManager; }
+
+	std::array<LWP::Math::Vector2, kMinionNumMax_> GetMinionsPosition() { return minionsPosition_; }
 	size_t GetMinionNum() const { return minionNum_; }
 	size_t GetAttackMinionNum() const { return attackMinionNum_; }
 	LWP::Math::Vector2 GetTargetPosition() const { return targetPosition_; }
-	std::array<Minion, kMinionNumMax_>* GetMinions() { return &minions_; }
+	std::array<Minion, kMinionNumMax_>& GetMinions() { return minions_; }
+	const std::array<Minion, kMinionNumMax_>& GetMinions() const { return minions_; }
 
 private:
 
 	// 手下たち
 	std::array<Minion, kMinionNumMax_> minions_;
+	std::array<LWP::Math::Vector2, kMinionNumMax_> minionsPosition_;
 
 	// 残りの手下たち
 	size_t minionNum_;

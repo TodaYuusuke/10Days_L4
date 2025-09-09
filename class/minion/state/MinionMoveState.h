@@ -38,6 +38,8 @@ private:
 
     // 追加回転
     float addRotate_;
+    // 速さ
+    float speed_;
 
 };
 

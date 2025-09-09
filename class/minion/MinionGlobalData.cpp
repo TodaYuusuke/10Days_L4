@@ -2,16 +2,18 @@
 
 //初期HP
 int MinionGlobalData::initialHp_ = 1;
-// 攻撃状態切り替え距離
-float MinionGlobalData::attackStateChangesDistance_ = 10.0f;
+// 待機状態切り替え距離
+float MinionGlobalData::idleStateChangesDistance_ = 10.0f;
 // 初期位置
 LWP::Math::Vector2 MinionGlobalData::initialPosition_ = { 960.0f, 800.0f };
 // 初期位置ランダム幅
 LWP::Math::Vector2 MinionGlobalData::initialPositionWidth_ = { 80.0f, 45.0f };
 // リクエスト確認時の長さ、追加分
 float MinionGlobalData::requestCheckAddLength_ = 20.0f;
-// 集合地点変更時の長さ確認用
-float MinionGlobalData::meetingPlaceChangeLength_ = 50.0f;
+// やる気増加量
+float MinionGlobalData::increasedMotivation_ = 1.0f;
+// コライダー半径
+float MinionGlobalData::colliderRadius_ = 30.0f;
 // テクスチャサイズ
 LWP::Math::Vector2 MinionGlobalData::textureSize_ = { 64.0f,64.0f };
 // スプライトサイズ
@@ -24,6 +26,8 @@ int MinionGlobalData::changeIndexFrame_ = 10;
 float MinionGlobalData::positionZ_ = 0.0f;
 // 移動速度
 float MinionGlobalData::speed_ = 0.5f;
+// 追加移動速度変動
+float MinionGlobalData::addSpeedFluctuation_ = 0.5f;
 // 追加回転変動
 float MinionGlobalData::addRotateFluctuation_ = 0.02f;
 // 追加回転最大
@@ -40,16 +44,18 @@ void MinionGlobalData::JsonDataRegistration(LWP::Utility::JsonIO* jsonIO)
 
 	//初期HP
 	jsonIO->AddValue("InitialHp", &initialHp_).
-		// 攻撃状態切り替え距離
-		AddValue("AttackStateChangesDistance", &attackStateChangesDistance_).
+		// 待機状態切り替え距離
+		AddValue("IdleStateChangesDistance", &idleStateChangesDistance_).
 		// 初期位置
 		AddValue("InitialPosition", &initialPosition_).
 		// 初期位置ランダム幅
 		AddValue("InitialPositionWidth", &initialPositionWidth_).
 		// リクエスト確認時の長さ、追加分
 		AddValue("RequestCheckAddLength", &requestCheckAddLength_).
-		// 集合地点変更時の長さ確認用
-		AddValue("MeetingPlaceChangeLength", &meetingPlaceChangeLength_).
+		// やる気増加量
+		AddValue("IncreasedMotivation", &increasedMotivation_).
+		// コライダー半径
+		AddValue("ColliderRadius", &colliderRadius_).
 
 		// スプライト関係
 		BeginGroup("Sprite").
@@ -72,7 +78,8 @@ void MinionGlobalData::JsonDataRegistration(LWP::Utility::JsonIO* jsonIO)
 
 		// 移動速度
 		AddValue("Speed", &speed_).
-
+		// 集合地点変更時の長さ確認用
+		AddValue("AddSpeedFluctuation", &addSpeedFluctuation_).
 		// 追加回転変動
 		AddValue("AddRotateFluctuation", &addRotateFluctuation_).
 		// 追加回転最大
