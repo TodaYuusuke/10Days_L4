@@ -279,6 +279,7 @@ void Drawing::SurroundedMinionsUpdate()
 			}
 		
 		if (inside) {
+			// index番目の手下はやる気増加
 			minionManager_->ApplyMinionAttack(index);
 		}
 		index++;
