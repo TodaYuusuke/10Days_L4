@@ -1,9 +1,47 @@
 {
+    "Group :BossHPUI": {
+        "Group :Base": {
+            "Vector3 :Positon": [
+                100.0,
+                850.0,
+                0.0
+            ],
+            "Vector3 :Size": [
+                0.25,
+                0.25,
+                1.0
+            ]
+        },
+        "Group :Container": {
+            "Vector3 :Positon": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "Vector3 :Size": [
+                68.0,
+                1.0,
+                1.0
+            ]
+        },
+        "Group :Gauge": {
+            "Vector3 :Positon": [
+                0.0,
+                0.0,
+                -1.0
+            ],
+            "Vector3 :Size": [
+                34.0,
+                1.0,
+                1.0
+            ]
+        }
+    },
     "Group :LineGauge": {
         "Group :Base": {
             "Vector3 :Positon": [
-                1329.0,
-                667.0,
+                435.0,
+                345.0,
                 0.0
             ],
             "Vector3 :Size": [

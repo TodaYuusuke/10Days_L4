@@ -1,6 +1,7 @@
 #include "UIManager.h"
 #include "MinionsNumUI.h"
 #include "LineGaugeUI.h"
+#include "BossHPUI.h"
 
 using namespace LWP::Utility;
 
@@ -8,20 +9,21 @@ UIManager::UIManager()
 	:	uis_{},
 		jsonIO_()
 {
-	Initialize(nullptr, nullptr);
+	Initialize(nullptr, nullptr, nullptr);
 }
 
-UIManager::UIManager(Player* player, MinionManager* minionManager)
-	: uis_{}
+UIManager::UIManager(Player* player, MinionManager* minionManager, EnemyManager* enemyManager)
+	:	uis_{},
+		jsonIO_()
 {
-	Initialize(player, minionManager);
+	Initialize(player, minionManager, enemyManager);
 }
 
 UIManager::~UIManager()
 {
 }
 
-void UIManager::Initialize(Player* player, MinionManager* minionManager)
+void UIManager::Initialize(Player* player, MinionManager* minionManager, EnemyManager* enemyManager)
 {
 
 	// 手下の数
@@ -30,6 +32,9 @@ void UIManager::Initialize(Player* player, MinionManager* minionManager)
 	// ゲージ
 	uis_[static_cast<size_t>(UIList::LineGauge)] = std::make_unique<LineGaugeUI>();
 	dynamic_cast<LineGaugeUI*>(uis_[static_cast<size_t>(UIList::LineGauge)].get())->SetPlayer(player);
+	// ボスHP
+	uis_[static_cast<size_t>(UIList::BossHP)] = std::make_unique<BossHPUI>();
+	dynamic_cast<BossHPUI*>(uis_[static_cast<size_t>(UIList::BossHP)].get())->SetEnemyManager(enemyManager);
 
 
 	jsonIO_.Init("UI.json");

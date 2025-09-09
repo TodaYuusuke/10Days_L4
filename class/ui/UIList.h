@@ -6,6 +6,6 @@
 enum class UIList {
 	MinionsNum,		// 手下の数
 	LineGauge,	// 線のゲージ
-	//BossHP,		// ぼすのHP
+	BossHP,		// ぼすのHP
 	UIListOfCount,	// 数数える用
 };

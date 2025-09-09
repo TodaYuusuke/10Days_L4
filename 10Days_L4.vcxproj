@@ -183,6 +183,7 @@
     <ClCompile Include="class\stone\StoneManager.cpp" />
     <ClCompile Include="class\title\TitleMinion.cpp" />
     <ClCompile Include="class\ui\BaseUI.cpp" />
+    <ClCompile Include="class\ui\BossHPUI.cpp" />
     <ClCompile Include="class\ui\LineGaugeUI.cpp" />
     <ClCompile Include="class\ui\MinionsNumUI.cpp" />
     <ClCompile Include="class\ui\UIManager.cpp" />
@@ -231,6 +232,7 @@
     <ClInclude Include="class\stone\StoneManager.h" />
     <ClInclude Include="class\title\TitleMinion.h" />
     <ClInclude Include="class\ui\BaseUI.h" />
+    <ClInclude Include="class\ui\BossHPUI.h" />
     <ClInclude Include="class\ui\LineGaugeUI.h" />
     <ClInclude Include="class\ui\MinionsNumUI.h" />
     <ClInclude Include="class\ui\UIList.h" />
