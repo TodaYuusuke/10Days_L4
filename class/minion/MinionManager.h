@@ -2,6 +2,7 @@
 #include "Minion.h"
 #include "../player/MeetingPlace.h"
 #include "../stone/StoneManager.h"
+#include "../boss/EnemyManager.h"
 
 /// <summary>
 /// 手下の管理クラス
@@ -26,7 +27,8 @@ public: // メンバ関数
 	/// </summary>
 	/// <param name="meetingPlace">集合場所</param>
 	/// <param name="stoneManager">石マネージャー</param>
-	MinionManager(MeetingPlace* meetingPlace, StoneManager* stoneManager);
+	/// <param name="enemyManager">エネミーマネージャー</param>
+	MinionManager(MeetingPlace* meetingPlace, StoneManager* stoneManager, EnemyManager* enemyManager);
 
 	/// <summary>
 	/// デストラクタ
@@ -51,6 +53,7 @@ public: // アクセッサ
 
 	MeetingPlace* GetMeetingPlace() { return meetingPlace_; }
 	StoneManager* GetStoneManager() { return stoneManager_; }
+	EnemyManager* GetEnemyManager() { return enemyManager_; }
 
 	std::array<LWP::Math::Vector2, kMinionNumMax_> GetMinionsPosition() { return minionsPosition_; }
 	size_t GetMinionNum() const { return minionNum_; }
@@ -82,6 +85,9 @@ private: // ポインタ
 
 	// 石マネージャー(なげるため)
 	StoneManager* stoneManager_;
+
+	// エネミーマネージャー
+	EnemyManager* enemyManager_;
 
 };
 

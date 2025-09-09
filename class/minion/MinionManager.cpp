@@ -9,18 +9,20 @@ MinionManager::MinionManager()
 		targetPosition_({ 0.0f,0.0f }),
 		meetingPlace_(nullptr),
 		stoneManager_(nullptr),
+		enemyManager_(nullptr),
 		jsonIO_()
 {
 	Initialize();
 }
 
-MinionManager::MinionManager(MeetingPlace* meetingPlace, StoneManager* stoneManager)
+MinionManager::MinionManager(MeetingPlace* meetingPlace, StoneManager* stoneManager, EnemyManager* enemyManager)
 	:	minions_{},
 		minionNum_(kMinionNumMax_),
 		attackMinionNum_(0),
 		targetPosition_({0.0f,0.0f}),
 		meetingPlace_(meetingPlace),
 		stoneManager_(stoneManager),
+		enemyManager_(enemyManager),
 		jsonIO_()
 {
 	Initialize();
@@ -55,7 +57,7 @@ void MinionManager::Update()
 		attackMinionNum_ = 0;
 		for (size_t i = 0; i < kMinionNumMax_; ++i) {
 			if ((minions_[i]->GetCurrentStateType() == MinionStateType::Attack) 
-				&& ((kMeetingPlacePosition - minions_[i]->GetPosition()).Length() < 50.0f)) {
+				&& ((kMeetingPlacePosition - minions_[i]->GetPosition()).Length() < MinionGlobalData::GetMeetingPlaceChangeLength())) {
 				++attackMinionNum_;
 			}
 		}

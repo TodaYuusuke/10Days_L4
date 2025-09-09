@@ -149,12 +149,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="class\areaOffEffect\AreaOffEffect.cpp" />
+    <ClCompile Include="class\boss\state\NormalEnemySlamState.cpp" />
+    <ClCompile Include="class\ColMaskGetter.cpp" />
     <ClCompile Include="class\minion\Minion.cpp" />
     <ClCompile Include="class\minion\MinionGlobalData.cpp" />
     <ClCompile Include="class\minion\MinionManager.cpp" />
     <ClCompile Include="class\minion\MinionSpriteSystem.cpp" />
     <ClCompile Include="class\minion\state\IMinionState.cpp" />
     <ClCompile Include="class\minion\state\MinionAttackState.cpp" />
+    <ClCompile Include="class\minion\state\MinionDownState.cpp" />
     <ClCompile Include="class\minion\state\MinionIdleState.cpp" />
     <ClCompile Include="class\minion\state\MinionMoveState.cpp" />
     <ClCompile Include="class\minion\state\MinionStateFactory.cpp" />
@@ -176,6 +180,7 @@
     <ClCompile Include="class\stone\Stone.cpp" />
     <ClCompile Include="class\stone\StoneGlobalData.cpp" />
     <ClCompile Include="class\stone\StoneManager.cpp" />
+    <ClCompile Include="class\title\TitleMinion.cpp" />
     <ClCompile Include="class\ui\BaseUI.cpp" />
     <ClCompile Include="class\ui\LineGaugeUI.cpp" />
     <ClCompile Include="class\ui\MinionsNumUI.cpp" />
@@ -186,12 +191,16 @@
     <ClCompile Include="class\boss\normalBoss\NormalBossStateManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="class\areaOffEffect\AreaOffEffect.h" />
+    <ClInclude Include="class\boss\state\NormalEnemySlamState.h" />
+    <ClInclude Include="class\ColMaskGetter.h" />
     <ClInclude Include="class\minion\Minion.h" />
     <ClInclude Include="class\minion\MinionGlobalData.h" />
     <ClInclude Include="class\minion\MinionManager.h" />
     <ClInclude Include="class\minion\MinionSpriteSystem.h" />
     <ClInclude Include="class\minion\state\IMinionState.h" />
     <ClInclude Include="class\minion\state\MinionAttackState.h" />
+    <ClInclude Include="class\minion\state\MinionDownState.h" />
     <ClInclude Include="class\minion\state\MinionIdleState.h" />
     <ClInclude Include="class\minion\state\MinionMoveState.h" />
     <ClInclude Include="class\minion\state\MinionStateFactory.h" />
@@ -218,6 +227,7 @@
     <ClInclude Include="class\stone\Stone.h" />
     <ClInclude Include="class\stone\StoneGlobalData.h" />
     <ClInclude Include="class\stone\StoneManager.h" />
+    <ClInclude Include="class\title\TitleMinion.h" />
     <ClInclude Include="class\ui\BaseUI.h" />
     <ClInclude Include="class\ui\LineGaugeUI.h" />
     <ClInclude Include="class\ui\MinionsNumUI.h" />

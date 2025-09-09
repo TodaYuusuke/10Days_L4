@@ -2,19 +2,13 @@
 #include "IMinionState.h"
 
 /// <summary>
-/// 手下の移動状態
+/// 手下のダウン状態
 /// </summary>
-class MinionMoveState :
+class MinionDownState : 
     public IMinionState
 {
 
 public: // メンバ関数
-
-    
-    /// <summary>
-    /// コンストラクタ
-    /// </summary>
-    MinionMoveState();
 
     /// <summary>
     /// この状態になる時の処理
@@ -25,19 +19,19 @@ public: // メンバ関数
     /// <summary>
     /// 更新処理
     /// </summary>
-    /// <param name="minion">手下のポインタ</param>
+    /// <param name="minion"></param>
     void Update(Minion* minion) override;
 
     /// <summary>
     /// この状態でなくなる時の処理
     /// </summary>
-    /// <param name="minion">手下のポインタ</param>
+    /// <param name="minion"></param>
     void Exit(Minion* minion) override;
 
-private:
+private: // メンバ変数
 
-    // 追加回転
-    float addRotate_;
+    // 残り時間
+    float remainingTime_;
 
 };
 

@@ -55,8 +55,8 @@ void Minion::Initialize()
 
     ++serialNumberCount_;
 
-    const Vector2 kBasePosition = { 960.0f, 800.0f };
-    const Vector2 kRadomWidth = { 80.0f, 45.0f };
+    const Vector2 kBasePosition = MinionGlobalData::GetInitialPosition();
+    const Vector2 kRadomWidth = MinionGlobalData::GetInitialPositionWidth();
     position_ = {
         kBasePosition.x + Random::GenerateFloat(-kRadomWidth.x, kRadomWidth.x),
         kBasePosition.y + Random::GenerateFloat(-kRadomWidth.y, kRadomWidth.y) };
@@ -65,17 +65,19 @@ void Minion::Initialize()
 
 void Minion::Update()
 {
-
-    // リクエスト
-    Vector2 sub = (minionManager_->GetTargetPosition() - position_);
-    //倍率
-    const float kDistanceMagnification = static_cast<float>(minionManager_->GetAttackMinionNum()) / static_cast<float>(minionManager_->kMinionNumMax_);
-    // リクエスト決定
-    if (sub.Length() <= (MinionGlobalData::GetAttackStateChangesDistance() * Easing::CallFunction(Easing::Type::OutExpo, kDistanceMagnification)) + 20.0f) {
-        //requestStateType_ = MinionStateType::Attack;
-    }
-    else {
-        requestStateType_ = MinionStateType::Move;
+    // ダウン状態ならリクエストは変わらない
+    if (requestStateType_ != MinionStateType::Down) {
+        // リクエスト
+        Vector2 sub = (minionManager_->GetTargetPosition() - position_);
+        //倍率
+        const float kDistanceMagnification = static_cast<float>(minionManager_->GetAttackMinionNum()) / static_cast<float>(minionManager_->kMinionNumMax_);
+        // リクエスト決定
+        if (sub.Length() <= (MinionGlobalData::GetAttackStateChangesDistance() * Easing::CallFunction(Easing::Type::OutExpo, kDistanceMagnification)) + MinionGlobalData::GetRequestCheckAddLength()) {
+            requestStateType_ = MinionStateType::Attack;
+        }
+        else {
+            requestStateType_ = MinionStateType::Move;
+        }
     }
 
     // 状態 リクエストがあったら変更

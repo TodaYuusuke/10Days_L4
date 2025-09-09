@@ -7,7 +7,7 @@ EnemyIdleState::EnemyIdleState(const Vector2* idleTime, NormalBossStateManager* 
 	pStateManager_ = sManager;
 }
 
-void EnemyIdleState::Enter(BaseEnemy* enemy) {
+void EnemyIdleState::Enter([[maybe_unused]] BaseEnemy* enemy) {
 	idleTime_ = LWP::Utility::Random::GenerateFloat(pIdleTime_->x, pIdleTime_->y);
 	nowTime_ = 0.0f;
 }
@@ -24,6 +24,6 @@ void EnemyIdleState::Update(BaseEnemy* enemy) {
 	}
 }
 
-void EnemyIdleState::Exit(BaseEnemy* enemy) {
+void EnemyIdleState::Exit([[maybe_unused]] BaseEnemy* enemy) {
 
 }

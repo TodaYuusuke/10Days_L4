@@ -8,6 +8,11 @@
 using namespace LWP::Math;
 using namespace LWP::Utility;
 
+MinionMoveState::MinionMoveState()
+	: addRotate_(0.0f)
+{
+}
+
 void MinionMoveState::Enter(Minion* minion)
 {
 	addRotate_ = 0.0f;
