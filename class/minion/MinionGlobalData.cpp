@@ -12,6 +12,8 @@ LWP::Math::Vector2 MinionGlobalData::initialPositionWidth_ = { 80.0f, 45.0f };
 float MinionGlobalData::requestCheckAddLength_ = 20.0f;
 // やる気増加量
 float MinionGlobalData::increasedMotivation_ = 1.0f;
+// コライダー半径
+float MinionGlobalData::colliderRadius_ = 30.0f;
 // テクスチャサイズ
 LWP::Math::Vector2 MinionGlobalData::textureSize_ = { 64.0f,64.0f };
 // スプライトサイズ
@@ -52,6 +54,8 @@ void MinionGlobalData::JsonDataRegistration(LWP::Utility::JsonIO* jsonIO)
 		AddValue("RequestCheckAddLength", &requestCheckAddLength_).
 		// やる気増加量
 		AddValue("IncreasedMotivation", &increasedMotivation_).
+		// コライダー半径
+		AddValue("ColliderRadius", &colliderRadius_).
 
 		// スプライト関係
 		BeginGroup("Sprite").

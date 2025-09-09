@@ -107,6 +107,7 @@ private: // メンバ変数
 
 	// 位置
 	LWP::Math::Vector2 position_;
+	LWP::Math::Vector2 prevPosition_;
 	// 回転、方向 
 	LWP::Math::Vector2 direction_;
 	// HP

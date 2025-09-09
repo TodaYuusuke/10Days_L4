@@ -32,6 +32,7 @@ public: // アクセッサ
 	static LWP::Math::Vector2 GetInitialPositionWidth() { return initialPositionWidth_; }
 	static float GetRequestCheckAddLength() { return requestCheckAddLength_; }
 	static float GetIncreasedMotivation() { return increasedMotivation_; }
+	static float GetColliderRadius() { return colliderRadius_; }
 	static LWP::Math::Vector2 GetTextureSize() { return textureSize_; }
 	static LWP::Math::Vector3 GetSpriteScale() { return spriteScale_; }
 	static int GetIndexMaxX() { return indexMaxX_; }
@@ -59,6 +60,8 @@ private: //メンバ変数
 	static float requestCheckAddLength_;
 	// やる気増加量
 	static float increasedMotivation_;
+	// コライダー半径
+	static float colliderRadius_;
 
 	// スプライト関係
 

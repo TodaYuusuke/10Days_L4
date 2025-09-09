@@ -69,7 +69,7 @@ void Minion::Initialize()
 
     // サークル
     Collider2D::Circle& circle = collider_.SetBroadShape<Collider2D::Circle>();
-    circle.radius = 30.0f;
+    circle.radius = MinionGlobalData::GetColliderRadius();
     // 親子
     collider_.worldTF.Parent(&(spriteSystem_.GetSprite().worldTF));
 
@@ -86,11 +86,63 @@ void Minion::Initialize()
         }
         // 壁
         else if(hitTarget->mask.GetBelongFrag() == ColMaskGetter::GetWall()){
-            hitTarget->GetScreenPosition();
 
+            //if (std::holds_alternative<Collider2D::Rectangle>(hitTarget->broad)) {
 
-            }
-        };
+            //    Collider2D::Rectangle rect = std::get<Collider2D::Rectangle>(hitTarget->broad);
+
+            //    // 矩形中心
+            //    Vector2 rectCenter = hitTarget->GetScreenPosition();
+            //    // 矩形サイズ — 幅と高さ
+            //    Vector2 rectSize = rect.size;
+            //    // 回転角度（ラジアン）
+            //    float angle = rect.rotation;
+            //    //angle -= 1.57f;
+            //    // 半径
+            //    float radius = MinionGlobalData::GetColliderRadius();
+
+            //    // ローカルの円
+            //    Vector2 p = position_ - rectCenter;
+            //    float c = std::cosf(-angle);
+            //    float s = std::sinf(-angle);
+            //    Vector2 localCircleCenter = { c * p.x + s * p.y, -s * p.x + c * p.y };
+
+            //    Vector2 halfSize = rectSize * 0.5f;
+            //    Vector2 localClosestPoint =
+            //    {   std::clamp(localCircleCenter.x, -halfSize.x, halfSize.x),
+            //        std::clamp(localCircleCenter.y, -halfSize.y, halfSize.y)
+            //    };
+
+            //    // 距離ベクトル（ローカル）
+            //    Vector2 localDiff = localCircleCenter - localClosestPoint;
+            //    float localDist = localDiff.Length();
+
+            //    // 衝突チェック
+            //    if (localDist < radius) {
+
+            //        if (localDist == 0.0f) {
+            //            // 完全に矩形の中心にある場合
+            //            localDiff = halfSize;
+            //            localDist = 1e-6;
+            //        }
+            //        // 押し出しベクトル（ローカル空間）
+            //        Vector2 localPush = localDiff.Normalize() * (radius - localDist);
+
+            //        // ワールド空間に戻す（回転）
+            //        float cReturn = std::cosf(angle);
+            //        float sReturn = std::sinf(angle);
+            //        Vector2 worldPush = { cReturn * localPush.x + sReturn * localPush.y, -sReturn * localPush.x + cReturn * localPush.y };
+
+            //        // 円の位置を押し出す
+            //        position_ += worldPush;
+            //    }
+
+            //}
+
+            position_ = prevPosition_;
+            requestStateType_ = MinionStateType::Down;
+        }
+    };
 
     // マスク、所属
     collider_.mask.SetBelongFrag(ColMaskGetter::GetPlayer());
@@ -101,6 +153,8 @@ void Minion::Initialize()
 
 void Minion::Update()
 {
+
+    prevPosition_ = position_;
 
     // 状態 リクエストがあったら変更
     if (currentStateType_ != requestStateType_) {
