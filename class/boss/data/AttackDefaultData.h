@@ -8,6 +8,7 @@ struct AttackDefaultData {
 	float damageTime = 0.0f;// ダメージ時間 (ダメージが与えられる時間)
 	float endingLag = 0.0f;	// 後隙　(状態が変化するまでの時間)
 	int attackPower = 0;	// 攻撃力
+	LWP::Math::Vector2 attackRange;	// 攻撃範囲 円の場合はx=半径となる
 	// 共通のパラメータデータ
 	void AddValue(const std::string& name, LWP::Utility::JsonIO json) {
 		json.BeginGroup(name)
@@ -15,6 +16,7 @@ struct AttackDefaultData {
 			.AddValue("DamageTime", &damageTime)
 			.AddValue("EndingLag", &endingLag)
 			.AddValue("AttackPower", &attackPower)
+			.AddValue("AttackRange", &attackRange)
 			.EndGroup();
 	}
 };

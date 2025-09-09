@@ -25,7 +25,11 @@ void AreaOffEffect::Initialize(const Vector2& pos, const float& maxRadius, const
 	outerFrame_.material.color.A = static_cast<unsigned char>(*pFirstAlpha_);
 	innerFrame_.material.color = LWP::Utility::ColorPattern::RED;
 	innerFrame_.material.color.A = static_cast<unsigned char>(*pFirstAlpha_);
-	maxRadius_ = maxRadius;
+	// テクスチャの半分の長さを取得
+	float size = innerFrame_.material.texture.t.GetSize().x * 0.5f;
+	innerFrame_.GetFitSizeImpl(&innerFrame_.material);
+	// 尺を合わせる
+	maxRadius_ = maxRadius / size;
 	data_ = data;
 	state_ = State::OuterScaleUp;
 	isAlive_ = true;
