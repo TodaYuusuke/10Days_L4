@@ -70,8 +70,7 @@ private: // メンバ関数
 	/// 円が作成されたか
 	/// </summary>
 	/// <returns>作成されたかどうか</returns>
-	bool IsCircleCreated();
-
+	void IsCircleCreated();
 	/// <summary>
 	/// 囲まれた手下の更新
 	/// </summary>
@@ -81,7 +80,6 @@ private: // メンバ変数
 
 	// 点
 	std::vector<LWP::Math::Vector2> points_;
-	LWP::Primitive::NormalSprite p;
 	// スプライト
 	std::array<LWP::Primitive::NormalSprite, kSpriteNum_> sprites_;
 	// スプライト番号

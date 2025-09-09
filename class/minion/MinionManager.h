@@ -52,6 +52,10 @@ public: // メンバ関数
 
 public: // アクセッサ
 
+	void ApplyMinionAttack(int i) {
+		minions_[i].SetRequestStateType(MinionStateType::Attack);
+	}
+
 	MeetingPlace* GetMeetingPlace() { return meetingPlace_; }
 	StoneManager* GetStoneManager() { return stoneManager_; }
 	EnemyManager* GetEnemyManager() { return enemyManager_; }
@@ -60,6 +64,7 @@ public: // アクセッサ
 	void SetStoneManager(StoneManager* stoneManager) { stoneManager_ = stoneManager; }
 	void SetEnemyManager(EnemyManager* enemyManager) { enemyManager_ = enemyManager; }
 
+	std::array<LWP::Math::Vector2, kMinionNumMax_> GetMinionsPosition() { return minionsPosition_; }
 	size_t GetMinionNum() const { return minionNum_; }
 	size_t GetAttackMinionNum() const { return attackMinionNum_; }
 	LWP::Math::Vector2 GetTargetPosition() const { return targetPosition_; }
@@ -70,6 +75,7 @@ private:
 
 	// 手下たち
 	std::array<Minion, kMinionNumMax_> minions_;
+	std::array<LWP::Math::Vector2, kMinionNumMax_> minionsPosition_;
 
 	// 残りの手下たち
 	size_t minionNum_;

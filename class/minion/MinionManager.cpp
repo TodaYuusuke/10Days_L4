@@ -68,8 +68,8 @@ void MinionManager::Update()
 
 		if (minions_[i].GetHp() > 0) {
 			++minionNum_;
+			minionsPosition_[i] = minions_[i].GetPosition();	// ミニオンの座標をメモ
 		}
-
 	}
 
 	attackMinionNum_ = 0;
