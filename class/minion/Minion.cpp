@@ -13,7 +13,7 @@ int Minion::serialNumberCount_ = 0;
 Minion::Minion()
     :   stateMap_{},
         currentState_(nullptr),
-        currentStateType_(MinionStateType::Move),
+        currentStateType_(MinionStateType::Idle),
         requestStateType_(MinionStateType::Move),
         spriteSystem_(),
         position_({0.0f,0.0f}),
@@ -29,7 +29,7 @@ Minion::Minion()
 Minion::Minion(MinionManager* minionManager)
     :   stateMap_{},
         currentState_(nullptr),
-        currentStateType_(MinionStateType::Move),
+        currentStateType_(MinionStateType::Idle),
         requestStateType_(MinionStateType::Move),
         spriteSystem_(),
         position_({ 0.0f,0.0f }),

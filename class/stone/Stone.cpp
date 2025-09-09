@@ -3,6 +3,7 @@
 #include "../ColMaskGetter.h"
 using namespace LWP::Math;
 using namespace LWP::Object;
+using namespace LWP::Utility;
 
 Stone::Stone()
 	:	position_({0.0f,0.0f}),
@@ -83,6 +84,9 @@ void Stone::Update()
 	// 回転
 	const Vector3 kDir3D = { direction_.x, direction_.y, 0.0f };
 	sprite_.worldTF.rotation = Quaternion::ConvertFromTo(Vector3{ 0.0f,1.0f,0.0f }, kDir3D);
+	// 大きさ
+	const float kScale = (1.0f - 4.0f * std::powf(speed_ / StoneGlobalData::GetInitialSpeed() - 0.5f, 2.0f)) * 0.3f;
+	sprite_.worldTF.scale = { StoneGlobalData::GetSpriteScale().x + kScale, StoneGlobalData::GetSpriteScale().y + kScale,1.0f };
 
 }
 
