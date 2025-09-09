@@ -9,9 +9,6 @@ MinionSpriteSystem::MinionSpriteSystem()
 		preType_(MinionStateType::Idle),
 		changeIndexFrameCount_(0)
 {
-
-	Initialize();
-
 }
 
 MinionSpriteSystem::~MinionSpriteSystem()

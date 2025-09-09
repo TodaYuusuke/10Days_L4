@@ -40,6 +40,7 @@ void MinionManager::Initialize()
 	jsonIO_.CheckJsonFile();
 
 	for (size_t i = 0; i < kMinionNumMax_; ++i) {
+		minions_[i].Initialize();
 		minions_[i].SetMinionManager(this);
 	}
 

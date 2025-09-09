@@ -23,7 +23,6 @@ Minion::Minion()
         motivationTime_(0.0f),
         minionManager_(nullptr)
 {
-    Initialize();
 }
 
 Minion::Minion(MinionManager* minionManager)
@@ -39,7 +38,6 @@ Minion::Minion(MinionManager* minionManager)
         motivationTime_(0.0f),
         minionManager_(minionManager)
 {
-    Initialize();
 }
 
 Minion::~Minion()
@@ -53,6 +51,7 @@ void Minion::Initialize()
     stateMap_ = MinionStateFactory::CreateStates();
     ChangeState(requestStateType_);
 
+    serialNumber_ = serialNumberCount_;
     ++serialNumberCount_;
 
     const Vector2 kBasePosition = MinionGlobalData::GetInitialPosition();
@@ -61,6 +60,7 @@ void Minion::Initialize()
         kBasePosition.x + Random::GenerateFloat(-kRadomWidth.x, kRadomWidth.x),
         kBasePosition.y + Random::GenerateFloat(-kRadomWidth.y, kRadomWidth.y) };
 
+    spriteSystem_.Initialize();
     spriteSystem_.ColorChange(serialNumber_);
 
 }
