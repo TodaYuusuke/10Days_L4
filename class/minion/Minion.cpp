@@ -72,7 +72,7 @@ void Minion::Update()
     const float kDistanceMagnification = static_cast<float>(minionManager_->GetAttackMinionNum()) / static_cast<float>(minionManager_->kMinionNumMax_);
     // リクエスト決定
     if (sub.Length() <= (MinionGlobalData::GetAttackStateChangesDistance() * Easing::CallFunction(Easing::Type::OutExpo, kDistanceMagnification)) + 20.0f) {
-        requestStateType_ = MinionStateType::Attack;
+        //requestStateType_ = MinionStateType::Attack;
     }
     else {
         requestStateType_ = MinionStateType::Move;

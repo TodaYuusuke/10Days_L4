@@ -66,11 +66,10 @@ void MinionManager::Update()
 	minionNum_ = 0;
 	for (size_t i = 0; i < kMinionNumMax_; ++i) {
 		minions_[i]->Update();
-
 		if (minions_[i]->GetHp() > 0) {
 			++minionNum_;
+			minionsPosition_[i] = minions_[i]->GetPosition();	// ミニオンの座標をメモ
 		}
-
 	}
 
 	attackMinionNum_ = 0;
