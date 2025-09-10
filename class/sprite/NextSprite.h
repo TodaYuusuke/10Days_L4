@@ -2,7 +2,7 @@
 #include <Adapter.h>
 
 /// <summary>
-/// Ÿ‚Ös‚­‚½‚ß‚ÌƒXƒvƒ‰ƒCƒg
+/// æ¬¡ã¸è¡ŒããŸã‚ã®ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆ
 /// </summary>
 class NextSprite
 {
@@ -10,27 +10,27 @@ class NextSprite
 public:
 
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	NextSprite();
 
 	/// <summary>
-	/// ƒfƒXƒgƒ‰ƒNƒ^
+	/// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	~NextSprite();
 
 	/// <summary>
-	/// ‰Šú‰»
+	/// åˆæœŸåŒ–
 	/// </summary>
 	void Initialize();
 
 	/// <summary>
-	/// XV
+	/// æ›´æ–°
 	/// </summary>
 	void Update();
 
 	/// <summary>
-	/// ƒAƒNƒeƒBƒuØ‚è‘Ö‚¦
+	/// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–åˆ‡ã‚Šæ›¿ãˆ
 	/// </summary>
 	/// <param name="isActive"></param>
 	void SetIsActive(bool isActive);

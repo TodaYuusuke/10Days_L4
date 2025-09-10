@@ -5,7 +5,7 @@
 #include "../title/TitleMinion.h"
 #include "../sceneTransition/SceneTransitionBlackOut.h"
 #include "../BackGround.h"
-#include "../sprite/nextSprite.h"
+#include "../sprite/NextSprite.h"
 
 class Title final
 	: public IScene {
