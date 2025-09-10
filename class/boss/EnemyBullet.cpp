@@ -11,9 +11,6 @@ void EnemyBullet::Initialize() {
     sprite_.LoadTexture(kBulletPath);
     isAlive_ = false;
     // spriteの設定
-    float exSize = sprite_.GetFitSizeImpl(&sprite_.material).x * 0.5f;
-    exSize = 10.0f / exSize;
-    sprite_.worldTF.scale = { exSize,exSize,0.0f };
     sprite_.isActive = false;
 
     // コライダーの設定
@@ -27,8 +24,6 @@ void EnemyBullet::Initialize() {
         sprite_.isActive = false;
         };
     coll2D_.worldTF.Parent(&sprite_.worldTF);
-    LWP::Object::Collider2D::Circle& circle = coll2D_.SetBroadShape<LWP::Object::Collider2D::Circle>();
-    circle.radius = exSize;
 
 }
 
@@ -40,8 +35,14 @@ void EnemyBullet::Update(const LWP::Math::Vector2& dir) {
 }
 
 void EnemyBullet::SetBullet(const LWP::Math::Vector2& pos, const float& radius) {
+    
     sprite_.worldTF.translation = { pos.x,pos.y,0.0f };
-    sprite_.worldTF.scale = { radius,radius,0.0f };
+    float exSize = sprite_.GetFitSizeImpl(&sprite_.material).x * 0.5f;
+    exSize = radius / exSize;
+    sprite_.worldTF.scale = { exSize,exSize,0.0f };
+    LWP::Object::Collider2D::Circle& circle = coll2D_.SetBroadShape<LWP::Object::Collider2D::Circle>();
+    circle.radius = exSize;
+
     isAlive_ = true;
     coll2D_.isActive = isAlive_;
     sprite_.isActive = isAlive_;
