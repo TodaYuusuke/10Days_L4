@@ -22,8 +22,13 @@ void MeetingPlace::Initialize()
 	sprite_.LoadTexture(kTextureName);
 	// テクスチャサイズ
 	sprite_.SetSplitSize(PlayerGlobalData::GetMeetingPlaceTextureSize());
+	sprite_.anchorPoint = { 0.12f, 0.92f };
 	
 	audio_.LoadShortPath("meetingPlace.mp3");
+
+	spriteComeon_.LoadTexture("Comeon.png");
+
+	spriteComeon_.SetSplitSize({256.0f,256.0f});
 
 }
 
@@ -37,12 +42,20 @@ void MeetingPlace::Update()
 		indexX_ = (++indexX_) % PlayerGlobalData::GetMeetingPlaceIndexMaxX();
 		// フレームカウントを戻す
 		changeIndexFrameCount_ = PlayerGlobalData::GetMeetingPlaceChangeIndexFrame();
+
+		comeonIndexX_ = (++comeonIndexX_) % 7;
+
 	}
 
 	// 現在のindexの確定
 	sprite_.index = indexX_;
 	// 位置の移動
-	sprite_.worldTF.translation = { position_.x, position_.y, PlayerGlobalData::GetMeetingPlacePositionZ()};
+	sprite_.worldTF.translation = { position_.x, position_.y, PlayerGlobalData::GetMeetingPlacePositionZ() - 1.0f};
+
+	spriteComeon_.index = comeonIndexX_;
+	// 位置の移動
+	spriteComeon_.worldTF.translation = { position_.x, position_.y, PlayerGlobalData::GetMeetingPlacePositionZ() };
+	spriteComeon_.worldTF.rotation *= Quaternion::CreateFromAxisAngle(Vector3::UnitZ(), 0.01f);
 
 }
 
