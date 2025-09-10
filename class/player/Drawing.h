@@ -101,7 +101,9 @@ private: // メンバ変数
 	// スタート時フラグ
 	bool startCheck_;
 
-	LWP::Resource::Audio audio_;
+	LWP::Resource::Audio audio_[8];
+
+	int audioCount_;
 
 	DirtSplash dirtSplash_;
 
