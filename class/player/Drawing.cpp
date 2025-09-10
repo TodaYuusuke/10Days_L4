@@ -17,6 +17,7 @@ Drawing::Drawing()
 		lineLength_(0.0f),
 		wallCreation_(false),
 		startWriting_({ 0.0f,0.0f }),
+		startCheck_(true),
 		minionManager_(nullptr)
 {
 }
@@ -30,6 +31,7 @@ Drawing::Drawing(MinionManager* minionManager)
 		lineLength_(0.0f),
 		wallCreation_(false),
 		startWriting_({0.0f,0.0f}),
+		startCheck_(true),
 		minionManager_(minionManager)
 {
 }
@@ -69,6 +71,7 @@ void Drawing::Update(bool isDragging)
 
 		}
 		else {
+			startCheck_ = false;
 			if ((Mouse::GetTrigger(0) && !Keyboard::GetPress(DIK_SPACE)) || (Keyboard::GetTrigger(DIK_SPACE) && !Mouse::GetPress(0))) {
 				startWriting_ = Mouse::GetPosition();
 			}
@@ -77,6 +80,9 @@ void Drawing::Update(bool isDragging)
 	}
 	// ドラッグしている
 	else {
+		if (startCheck_) {
+			return;
+		}
 		// 線を書き途中
 		if (isActive_) {
 			recordingTimer_ += static_cast<float>(LWP::Info::GetDeltaTime());

@@ -94,6 +94,8 @@ private: // メンバ変数
 	bool wallCreation_;
 	// 書き始め点
 	LWP::Math::Vector2 startWriting_;
+	// スタート時フラグ
+	bool startCheck_;
 
 private: // ポインタ
 
