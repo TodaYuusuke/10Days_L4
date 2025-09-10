@@ -5,6 +5,10 @@ NormalBossStateManager::NormalBossStateManager() {
 
 }
 
+NormalBossStateManager::NormalBossStateManager(NormalBoss* boss) {
+	pBoss_ = boss;
+}
+
 uint8_t NormalBossStateManager::Update(const uint8_t currentType) {
 	//ImGui::Text("currentType %u", static_cast<unsigned int>(currentType));
 	// 変更がなければ何もなし
@@ -13,7 +17,8 @@ uint8_t NormalBossStateManager::Update(const uint8_t currentType) {
 
 	// 以下仮
 	if (currentType == StateType::ToUInt8(NormalBossStateType::Move)) {
-		return LWP::Utility::Random::GenerateInt(StateType::ToUInt8(NormalBossStateType::Slam), StateType::ToUInt8(NormalBossStateType::Barrage));
+		return StateType::ToUInt8(NormalBossStateType::Rain);
+		//return LWP::Utility::Random::GenerateInt(StateType::ToUInt8(NormalBossStateType::Slam), StateType::ToUInt8(NormalBossStateType::Barrage));
 	}
 	else if (currentType == StateType::ToUInt8(NormalBossStateType::Idle)) {
 		// 移動する場所を雑に設定
@@ -26,6 +31,9 @@ uint8_t NormalBossStateManager::Update(const uint8_t currentType) {
 		return StateType::ToUInt8(NormalBossStateType::Idle);
 	}
 	else if (currentType == StateType::ToUInt8(NormalBossStateType::Barrage)) {
+		return StateType::ToUInt8(NormalBossStateType::Idle);
+	}
+	else if (currentType == StateType::ToUInt8(NormalBossStateType::Rain)) {
 		return StateType::ToUInt8(NormalBossStateType::Idle);
 	}
 	return currentType;
