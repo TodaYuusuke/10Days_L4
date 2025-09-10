@@ -30,6 +30,8 @@ void MeetingPlace::Initialize()
 
 	spriteComeon_.SetSplitSize({256.0f,256.0f});
 
+	position_ = { 1920.0f / 2.0f, 1080.0f / 2.0f };
+
 }
 
 void MeetingPlace::Update()
