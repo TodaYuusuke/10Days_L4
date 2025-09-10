@@ -16,8 +16,7 @@ void NormalBoss::Initialize(BaseEnemyData& data) {
     // stateの初期化
     requestStateType_ = static_cast<uint8_t>(NormalBossStateType::Idle);
     stateManager_ = std::make_unique<NormalBossStateManager>();
-    
-    stateMap_ = StateFactory::NormalBoss::CreateStates(&data_, stateManager_.get(), &bullets_, pMinionManager_);
+    stateMap_ = StateFactory::NormalBoss::CreateStates(&data_, stateManager_.get(), &bullets_);
     StateUpdate();
 
     spriteSystem_ = std::make_unique<NormalBossSpriteSystem>();

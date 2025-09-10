@@ -68,7 +68,7 @@ void BarrageAttackState::Exit(BaseEnemy* enemy) {
 void BarrageAttackState::FireBullet(const Vector2& pos, const Vector2& dir) {
     for (auto& bullet : *pBullets_) {
         if (!bullet.GetIsAlive()) {
-            bullet.SetBullet(pos, pBarrage_->attackData.attackRange.x);
+            bullet.SetBullet(pos);
             break;
         }
     }
