@@ -33,6 +33,7 @@ private: //*** これより先に必要な処理や変数を記述 ***//
 	// 手下
 	TitleMinion minion_;
 
+	// シーン遷移
 	SceneTransitionBlackOut sceneTransitionBlackOut_;
 
 };

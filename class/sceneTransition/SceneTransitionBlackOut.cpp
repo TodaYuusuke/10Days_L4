@@ -27,7 +27,7 @@ void SceneTransitionBlackOut::Initialize()
 	sprite_.material.color.G = 0;
 	sprite_.material.color.B = 0;
 
-	sprite_.worldTF.translation = { 1920.0f * 0.5f, 1080.0f * 0.5f, 0.0f };
+	sprite_.worldTF.translation = { 1920.0f * 0.5f, 1080.0f * 0.5f, -100.0f };
 	sprite_.worldTF.scale = { 20.0f, 11.0f, 1.0f };
 
 }

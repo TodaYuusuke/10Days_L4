@@ -25,12 +25,23 @@ void TestScene::Initialize() {
 
 	pAOEManager_.Initialize();
 
+	sceneTransitionBlackOut_.Initialize();
+	sceneTransitionBlackOut_.SetIsFadeIn(false);
+
 }
 
 // 更新
 void TestScene::Update() {
+
+	if (!sceneTransitionBlackOut_.GetStoppingUpdates()) {
+		sceneTransitionBlackOut_.Update();
+		if (sceneTransitionBlackOut_.GetSwitchScene()) {
+			nextSceneFunction = []() { return new Title(); };
+		}
+	}
+
 	if (Keyboard::GetTrigger(DIK_P)) {
-		nextSceneFunction = []() { return new Title(); };	// 次のシーンに行くための処理
+		sceneTransitionBlackOut_.Reset();	// 次のシーンに行くための処理
 	}
 
 	minionManager_->Update();

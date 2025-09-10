@@ -6,6 +6,7 @@
 #include "../ui/UIManager.h"
 #include "../boss/EnemyManager.h"
 #include "../areaOffEffect/AreaOffEffectManager.h"
+#include "../sceneTransition/SceneTransitionBlackOut.h"
 
 class TestScene final
 	: public IScene {
@@ -37,4 +38,8 @@ private: //*** これより先に必要な処理や変数を記述 ***//
 	std::unique_ptr<EnemyManager> enemyManager_;
 	// AOEマネージャー
 	AreaOffEffectManager pAOEManager_;
+
+	// シーン遷移
+	SceneTransitionBlackOut sceneTransitionBlackOut_;
+
 };
