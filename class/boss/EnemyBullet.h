@@ -12,7 +12,7 @@ public:
 	void Update(const LWP::Math::Vector2& dir);
 
 	// 弾の生成
-	void SetBullet(const LWP::Math::Vector2& pos);
+	void SetBullet(const LWP::Math::Vector2& pos, const float& radius);
 	// 生死フラグの取得
 	const bool& GetIsAlive() const { return isAlive_; }
 private:
