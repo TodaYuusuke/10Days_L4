@@ -276,19 +276,21 @@ void Drawing::SurroundedMinionsUpdate()
 	// 全手下確認
 	int index = 0;
 	for (Vector2& pos : minionManager_->GetMinionsPosition()) {
-		// 各線分を確認
-		bool inside = false;
-		for (int i = 0; i < points_.size() - 1; i++) {
+		if (minons[index].GetCurrentStateType() != MinionStateType::Absorb) {
+			// 各線分を確認
+			bool inside = false;
+			for (int i = 0; i < points_.size() - 1; i++) {
 				const Vector2& pi = points_[i];
 				const Vector2& pj = points_[i + 1];
 				bool intersect = ((pi.y > pos.y) != (pj.y > pos.y)) &&
 					(pos.x < (pj.x - pi.x) * (pos.y - pi.y) / (pj.y - pi.y + 1e-6f) + pi.x);
 				if (intersect) inside = !inside;
 			}
-		
-		if (inside) {
-			// index番目の手下はやる気増加
-			minons[index].SetMotivationTime(minons[index].GetMotivationTime() + MinionGlobalData::GetIncreasedMotivation());
+
+			if (inside) {
+				// index番目の手下はやる気増加
+				minons[index].SetMotivationTime(minons[index].GetMotivationTime() + MinionGlobalData::GetIncreasedMotivation());
+			}
 		}
 		index++;
 	}
