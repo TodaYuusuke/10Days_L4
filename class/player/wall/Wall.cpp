@@ -76,7 +76,7 @@ void Wall::Initilaize()
 	// マスク、所属
 	collider_.mask.SetBelongFrag(ColMaskGetter::GetWall());
 	// マスク,hit
-	collider_.mask.SetHitFrag(ColMaskGetter::GetPlayer() + ColMaskGetter::GetEnemy() + ColMaskGetter::GetBullet());
+	collider_.mask.SetHitFrag(ColMaskGetter::GetPlayer() | ColMaskGetter::GetEnemy() | ColMaskGetter::GetBullet() | ColMaskGetter::GetEnemyAttack());
 
 }
 
