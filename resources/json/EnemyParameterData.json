@@ -2,10 +2,10 @@
     "Group :NormalBossData": {
         "Group :Slam": {
             "Vector2 :AttackRange": [
-                300.0,
+                150.0,
                 5.0
             ],
-            "float :DamageTime": 0.5,
+            "float :DamageTime": 0.20000000298023224,
             "float :EndingLag": 1.0,
             "float :StartUpLag": 4.0,
             "int32_t :AttackPower": 10
