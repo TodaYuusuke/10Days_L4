@@ -44,6 +44,8 @@ void MinionManager::Initialize()
 		minions_[i].SetMinionManager(this);
 	}
 
+	audio_.LoadShortPath("minionDamage.mp3");
+
 }
 
 void MinionManager::Update()
@@ -68,13 +70,25 @@ void MinionManager::Update()
 	}
 
 	minionNum_ = 0;
+	bool audioPlay = false;
 	for (size_t i = 0; i < kMinionNumMax_; ++i) {
+		if (minions_[i].GetCurrentStateType() != MinionStateType::Down &&
+			minions_[i].GetRequestStateType() == MinionStateType::Down &&
+			minions_[i].GetInvincible()) {
+			audioPlay = true;
+		}
+
 		minions_[i].Update();
 
 		if (minions_[i].GetHp() > 0) {
 			++minionNum_;
 			minionsPosition_[i] = minions_[i].GetPosition();	// ミニオンの座標をメモ
 		}
+	}
+
+	if (audioPlay) {
+		audio_.Play();
+		audio_.SetVolume(0.1f);
 	}
 
 	attackMinionNum_ = 0;

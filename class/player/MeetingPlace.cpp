@@ -22,6 +22,8 @@ void MeetingPlace::Initialize()
 	sprite_.LoadTexture(kTextureName);
 	// テクスチャサイズ
 	sprite_.SetSplitSize(PlayerGlobalData::GetMeetingPlaceTextureSize());
+	
+	audio_.LoadShortPath("meetingPlace.mp3");
 
 }
 
@@ -42,4 +44,11 @@ void MeetingPlace::Update()
 	// 位置の移動
 	sprite_.worldTF.translation = { position_.x, position_.y, PlayerGlobalData::GetMeetingPlacePositionZ()};
 
+}
+
+void MeetingPlace::SetPosition(const LWP::Math::Vector2& position)
+{
+	position_ = position;
+	audio_.Play();
+	audio_.SetVolume(0.1f);
 }

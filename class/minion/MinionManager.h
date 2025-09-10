@@ -86,6 +86,8 @@ private:
 	// 目指す場所
 	LWP::Math::Vector2 targetPosition_;
 
+	LWP::Resource::Audio audio_;
+
 	// json
 	LWP::Utility::JsonIO jsonIO_;
 
