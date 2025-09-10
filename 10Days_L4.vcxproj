@@ -168,6 +168,7 @@
     <ClCompile Include="class\minion\state\MinionMoveState.cpp" />
     <ClCompile Include="class\minion\state\MinionStateFactory.cpp" />
     <ClCompile Include="class\particle\DirtSplash.cpp" />
+    <ClCompile Include="class\particle\TracesofDirt.cpp" />
     <ClCompile Include="class\player\Drawing.cpp" />
     <ClCompile Include="class\player\MeetingPlace.cpp" />
     <ClCompile Include="class\player\Player.cpp" />
@@ -222,6 +223,7 @@
     <ClInclude Include="class\minion\state\MinionStateFactory.h" />
     <ClInclude Include="class\minion\state\MinionStateType.h" />
     <ClInclude Include="class\particle\DirtSplash.h" />
+    <ClInclude Include="class\particle\TracesofDirt.h" />
     <ClInclude Include="class\player\Drawing.h" />
     <ClInclude Include="class\player\MeetingPlace.h" />
     <ClInclude Include="class\player\Player.h" />

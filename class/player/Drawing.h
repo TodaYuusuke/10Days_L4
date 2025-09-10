@@ -2,6 +2,7 @@
 #include <vector>
 #include <Adapter.h>
 #include "../particle/DirtSplash.h"
+#include "../particle/TracesofDirt.h"
 
 // 前方宣言
 class MinionManager;

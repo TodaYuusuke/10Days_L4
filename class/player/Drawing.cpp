@@ -112,6 +112,7 @@ void Drawing::Update(bool isDragging)
 				// スプライト
 				SpriteActive(preMousePosition, mousePosition);
 
+
 				// 線の長さ
 				lineLength_ += kLength;
 				// 線の長さ最大
