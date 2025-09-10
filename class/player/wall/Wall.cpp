@@ -65,7 +65,7 @@ void Wall::Initilaize()
 	// 関数
 	// ヒットした瞬間のとき
 	collider_.enterLambda = [this](Collision2D* hitTarget) {
-		if (hitTarget->mask.GetBelongFrag() == ColMaskGetter::GetEnemy()) {
+		if (hitTarget->mask.GetBelongFrag() & ColMaskGetter::GetEnemy()) {
 			hp_ -= *wallManager_->GetEnemyManager()->GetEnemyAttackPowerPtr();
 			if (hp_ <= 0) {
 				isDead_ = true;
