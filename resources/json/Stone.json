@@ -6,6 +6,6 @@
     ],
     "float :Acceleration": -0.15000000596046448,
     "float :ColliderRadius": 12.0,
-    "float :InitialSpeed": 15.0,
+    "float :InitialSpeed": 10.0,
     "float :PositionZ": 0.0
 }

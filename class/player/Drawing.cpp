@@ -48,7 +48,15 @@ void Drawing::Initialize()
 		sprites_[i].isActive = false;
 	}
 
-	audio_.LoadShortPath("surround.mp3");
+	audio_[0].LoadShortPath("circleSE0.mp3");
+	audio_[1].LoadShortPath("circleSE1.mp3");
+	audio_[2].LoadShortPath("circleSE2.mp3");
+	audio_[3].LoadShortPath("circleSE3.mp3");
+	audio_[4].LoadShortPath("circleSE4.mp3");
+	audio_[5].LoadShortPath("circleSE5.mp3");
+	audio_[6].LoadShortPath("circleSE6.mp3");
+	audio_[7].LoadShortPath("circleSE7.mp3");
+	audioCount_ = 0;
 
 }
 
@@ -66,6 +74,7 @@ void Drawing::Update(bool isDragging)
 
 			// 壁作成フラグ
 			wallCreation_ = true;
+			audioCount_ = 0;
 
 		}
 		else {
@@ -277,8 +286,8 @@ void Drawing::SurroundedMinionsUpdate()
 	// 手下の管理クラスのポインタがあるか
 	if (!minionManager_) {
 		gameStart = true;
-		audio_.Play();
-		audio_.SetVolume(0.1f);
+		audio_[7].Play();
+		audio_[7].SetVolume(0.1f);
 		return;
 	}
 	assert(minionManager_);
@@ -302,9 +311,14 @@ void Drawing::SurroundedMinionsUpdate()
 			}
 
 			if (inside) {
-				// index番目の手下はやる気増加
-				minons[index].SetMotivationTime(minons[index].GetMotivationTime() + MinionGlobalData::GetIncreasedMotivation());
-				minons[index].GetSprite().LightEmission();
+				if (minons[index].GetCurrentStateType() == MinionStateType::Foam) {
+					minons[index].SetRequestStateType(MinionStateType::Move);
+				}
+				else {
+					// index番目の手下はやる気増加
+					minons[index].SetMotivationTime(minons[index].GetMotivationTime() + MinionGlobalData::GetIncreasedMotivation());
+					minons[index].GetSprite().LightEmission();
+				}
 				surround = true;
 			}
 		}
@@ -312,8 +326,11 @@ void Drawing::SurroundedMinionsUpdate()
 	}
 
 	if (surround) {
-		audio_.Play();
-		audio_.SetVolume(0.1f);
+		audio_[audioCount_].Play();
+		audio_[audioCount_++].SetVolume(0.1f);
+		if (audioCount_ >= 7) {
+			audioCount_ = 7;
+		}
 	}
 
 }
