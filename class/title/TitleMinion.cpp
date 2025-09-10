@@ -11,7 +11,6 @@ TitleMinion::TitleMinion()
 		motivationTime_(0.0f),
 		attackCoolTime_(0.0f)
 {
-	Initialize();
 }
 
 TitleMinion::~TitleMinion()
@@ -20,7 +19,7 @@ TitleMinion::~TitleMinion()
 
 void TitleMinion::Initialize()
 {
-
+	spriteSystem_.Initialize();
 }
 
 void TitleMinion::Update()

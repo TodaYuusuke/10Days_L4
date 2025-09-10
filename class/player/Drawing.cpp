@@ -266,6 +266,9 @@ void Drawing::IsCircleCreated()
 void Drawing::SurroundedMinionsUpdate()
 {
 	// 手下の管理クラスのポインタがあるか
+	if (!minionManager_) {
+		return;
+	}
 	assert(minionManager_);
 	// 手下取得
 	std::array<Minion, MinionManager::kMinionNumMax_>& minons = minionManager_->GetMinions();
