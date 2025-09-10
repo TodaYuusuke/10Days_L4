@@ -40,10 +40,6 @@ void NormalBoss::Initialize(BaseEnemyData& data) {
 }
 
 void NormalBoss::Update() {
-    // debug
-    ImGui::Begin("Enemy");
-    collider_.DebugGUI();
-    ImGui::End();
 
     // 状態変化更新
     if (StateUpdate()) {

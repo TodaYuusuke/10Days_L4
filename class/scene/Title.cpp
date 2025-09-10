@@ -11,6 +11,10 @@ Title::~Title()
 
 // 初期化
 void Title::Initialize() {
+#if DEMO
+#else
+	LWP::Window::ChangeFullScreenMode();
+#endif
 
 	drawing_.Initialize();
 	playerMouseOperation_.Initialize();

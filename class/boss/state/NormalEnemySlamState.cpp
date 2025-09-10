@@ -32,9 +32,6 @@ void NormalEnemySlamState::Enter([[maybe_unused]] BaseEnemy* enemy) {
 }
 
 void NormalEnemySlamState::Update(BaseEnemy* enemy) {
-	ImGui::Begin("SlamState");
-	coll2D_.DebugGUI();
-	ImGui::End();
 	// 時間の加算
 	const float kDeltaTime = LWP::Info::GetDeltaTimeF();
 	nowTime_ += kDeltaTime;

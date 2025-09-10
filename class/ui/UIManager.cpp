@@ -52,10 +52,4 @@ void UIManager::Update()
 	for (size_t i = 0; i < static_cast<size_t>(UIList::UIListOfCount); ++i) {
 		uis_[i]->Update();
 	}
-
-	// GUI JSON
-	ImGui::Begin("UIManager");
-	jsonIO_.DebugGUI();
-	ImGui::End();
-
 }

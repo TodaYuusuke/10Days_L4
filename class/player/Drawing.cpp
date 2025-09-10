@@ -75,7 +75,6 @@ void Drawing::Update(bool isDragging)
 			// 壁作成フラグ
 			wallCreation_ = true;
 			audioCount_ = 0;
-
 		}
 		else {
 			startCheck_ = false;

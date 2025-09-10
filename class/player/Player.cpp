@@ -52,11 +52,6 @@ void Player::Update()
 	}
 	wallManager_.Update();
 
-	// GUI JSON
-	ImGui::Begin("Player");
-	jsonIO_.DebugGUI();
-	ImGui::End();
-
 }
 
 void Player::SetMinionManagerForDrawing(MinionManager* minionManager)

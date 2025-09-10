@@ -64,12 +64,6 @@ void StoneManager::Update()
 		Stone* stone = *it;
 		stone->Update();
 	}
-
-	// GUI JSON
-	ImGui::Begin("Stone");
-	jsonIO_.DebugGUI();
-	ImGui::End();
-
 }
 
 void StoneManager::CreateStone(const LWP::Math::Vector2& position, const LWP::Math::Vector2& direction)

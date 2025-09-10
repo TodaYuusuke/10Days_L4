@@ -89,16 +89,4 @@ void TestScene::Update() {
 	enemyManager_->SecondUpdate();
 
 	pAOEManager_.Update();
-
-	// エンジンの各クラスは大体ImGuiを呼び出す関数がある
-	ImGui::Begin("Test");
-	if (ImGui::TreeNode("model")) {
-		testModel_.DebugGUI();
-		ImGui::TreePop();
-	}
-	if (ImGui::TreeNode("sprite")) {
-		sprite_.DebugGUI();
-		ImGui::TreePop();
-	}
-	ImGui::End();
 }

@@ -147,6 +147,9 @@
       <AdditionalManifestDependencies>
       </AdditionalManifestDependencies>
     </Link>
+    <Manifest>
+      <AdditionalManifestFiles>resources/system/manifest/DpiAwarenessPerMonitorV2.manifest %(AdditionalManifestFiles)</AdditionalManifestFiles>
+    </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="class\boss\EnemyBullet.cpp" />
