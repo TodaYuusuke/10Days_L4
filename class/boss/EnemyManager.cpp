@@ -19,6 +19,7 @@ void EnemyManager::Update() {
 
 	// enemyの状態など通常更新処理
 	for (auto& enemy : enemies_) {
+		if (!enemy->GetIsAlive()) { continue; }
 		enemy->Update();
 	}
 
@@ -43,4 +44,11 @@ const LWP::Math::Vector2& EnemyManager::GetEnemyPosition() const {
 
 const int* EnemyManager::GetEnemyAttackPowerPtr() const {
 	return enemies_.at(0)->GetAttackPowerPtr();
+}
+
+const int& EnemyManager::GetEnemyHp(int* max) const {
+	if (max != nullptr) {
+		*max = *enemies_.at(0)->GetMaxHpPtr();
+	}
+	return *enemies_.at(0)->GetHpPtr();
 }

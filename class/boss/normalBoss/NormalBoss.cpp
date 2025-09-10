@@ -21,13 +21,18 @@ void NormalBoss::Initialize(BaseEnemyData& data) {
 
     spriteSystem_ = std::make_unique<NormalBossSpriteSystem>();
 
+    // データの代入
     corePosition_ = data_.respawnPoint;
+    hp_ = data_.hp_;
+    maxHp_ = data_.hp_;
+
+    isAlive_ = true;
 
     collider_.mask.SetBelongFrag(ColMaskGetter::GetEnemy());
     collider_.mask.SetHitFrag(ColMaskGetter::GetBullet());
     
     // 衝突時
-    collider_.stayLambda = [this](LWP::Object::Collision2D* hit) {
+    collider_.enterLambda = [this](LWP::Object::Collision2D* hit) {
         isHit_ = true;
         };
 
@@ -81,6 +86,11 @@ void NormalBoss::OnCollision() {
     NormalBossSpriteSystem& handle = dynamic_cast<NormalBossSpriteSystem&>(*spriteSystem_);
     handle.ColorUpdate();
     isHit_ = false;
+    // ダメージ
+    hp_--;
+    if (hp_ <= 0u) {
+        isAlive_ = false;
+    }
 }
 
 void NormalBoss::UpdateAbsorbMinions() {

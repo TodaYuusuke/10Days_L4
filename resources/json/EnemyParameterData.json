@@ -5,7 +5,7 @@
                 300.0,
                 5.0
             ],
-            "float :DamageTime": 0.5,
+            "float :DamageTime": 0.30000001192092896,
             "float :EndingLag": 1.0,
             "float :StartUpLag": 4.0,
             "int32_t :AttackPower": 10
@@ -14,14 +14,11 @@
             500.0,
             100.0
         ],
-        "Vector2 :TargetPosition": [
-            0.0,
-            0.0
-        ],
         "Vector2 :idleTime": [
             1.0,
             3.0
         ],
-        "float :moveSpeed": 10.0
+        "float :moveSpeed": 10.0,
+        "int32_t :HP": 50
     }
 }

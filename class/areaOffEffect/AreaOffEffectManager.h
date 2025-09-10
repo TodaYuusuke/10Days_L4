@@ -45,6 +45,8 @@ private:
 	std::vector<std::unique_ptr<AreaOffEffect>> container_;
 	// 初期アルファ地
 	float firstAlpha_ = 255.0f;
+	// 点滅回数
+	float frashCount_ = 5.0f;
 
 	// json変数
 	LWP::Utility::JsonIO json_;

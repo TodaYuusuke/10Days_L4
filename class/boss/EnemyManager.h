@@ -24,6 +24,12 @@ public:
 	const LWP::Math::Vector2& GetEnemyPosition() const;
 	// 敵の攻撃力ptt くそ定義
 	const int* GetEnemyAttackPowerPtr() const;
+	/// <summary>
+	/// 敵の体力を渡す
+	/// </summary>
+	/// <returns>今の体力</returns>
+	const int& GetEnemyHp(int* max) const;
+	
 
 private:
 	// 敵のコンテナ
