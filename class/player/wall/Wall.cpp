@@ -65,7 +65,7 @@ void Wall::Initilaize()
 	// 関数
 	// ヒットした瞬間のとき
 	collider_.enterLambda = [this](Collision2D* hitTarget) {
-		if (hitTarget->mask.GetBelongFrag() == ColMaskGetter::GetEnemy()) {
+		if (hitTarget->mask.GetBelongFrag() & ColMaskGetter::GetEnemy()) {
 			hp_ -= *wallManager_->GetEnemyManager()->GetEnemyAttackPowerPtr();
 			if (hp_ <= 0) {
 				isDead_ = true;
@@ -76,7 +76,7 @@ void Wall::Initilaize()
 	// マスク、所属
 	collider_.mask.SetBelongFrag(ColMaskGetter::GetWall());
 	// マスク,hit
-	collider_.mask.SetHitFrag(ColMaskGetter::GetPlayer() + ColMaskGetter::GetEnemy() + ColMaskGetter::GetBullet());
+	collider_.mask.SetHitFrag(ColMaskGetter::GetPlayer() | ColMaskGetter::GetEnemy() | ColMaskGetter::GetBullet() | ColMaskGetter::GetEnemyAttack());
 
 }
 
