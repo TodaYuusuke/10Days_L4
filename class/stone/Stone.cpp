@@ -35,7 +35,7 @@ void Stone::Initialize()
 {
 
 	// 初速度
-	speed_ = StoneGlobalData::GetInitialSpeed();
+	speed_ = StoneGlobalData::GetInitialSpeed() + Random::GenerateFloat(0.0f, 0.5f);;
 
 	// スプライト
 	sprite_.LoadTexture("Stone.png");
