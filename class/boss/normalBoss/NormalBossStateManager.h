@@ -1,12 +1,15 @@
 ﻿#pragma once
 #include <Adapter.h>
 
+class NormalBoss;
+
 /// <summary>
 /// Stateを管理する敵Aiマネージャー
 /// </summary>
 class NormalBossStateManager {
 public:
 	NormalBossStateManager();
+	NormalBossStateManager(NormalBoss* boss);
 	~NormalBossStateManager() = default;
 	
 	/// <summary>
@@ -25,5 +28,7 @@ private:
 	LWP::Math::Vector2 targetPosition_ = { 0.0f,0.0f };
 	// 状態を変化させるか
 	bool isStateChange_ = false;
+
+	NormalBoss* pBoss_ = nullptr;
 };
 

@@ -1,5 +1,20 @@
 {
     "Group :NormalBossData": {
+        "Group :RainBarrage": {
+            "Group :AttackData": {
+                "Vector2 :AttackRange": [
+                    30.0,
+                    30.0
+                ],
+                "float :DamageTime": 5.0,
+                "float :EndingLag": 1.0,
+                "float :StartUpLag": 3.0,
+                "int32_t :AttackPower": 3
+            },
+            "float :BulletSpeed": 8.0,
+            "float :FireInterval": 0.20000000298023224,
+            "int32_t :MaxFireCount": 15
+        },
         "Group :Slam": {
             "Vector2 :AttackRange": [
                 140.0,

@@ -15,10 +15,10 @@ void EnemyBullet::Initialize() {
 
     // コライダーの設定
     coll2D_.mask.SetBelongFrag(ColMaskGetter::GetEnemyAttack());
-    coll2D_.mask.SetHitFrag(ColMaskGetter::GetWall() | ColMaskGetter::GetPlayer());
+    coll2D_.mask.SetHitFrag(ColMaskGetter::GetPlayer() | ColMaskGetter::GetWall());
     coll2D_.isActive = false;
     // 衝突時
-    coll2D_.enterLambda = [this](LWP::Object::Collision2D* hit) {
+    coll2D_.stayLambda = [this](LWP::Object::Collision2D* hit) {
         isAlive_ = false;
         coll2D_.isActive = false;
         sprite_.isActive = false;
@@ -28,7 +28,7 @@ void EnemyBullet::Initialize() {
 }
 
 void EnemyBullet::Update(const LWP::Math::Vector2& dir) {
-    sprite_.DebugGUI();
+    coll2D_.DebugGUI();
     sprite_.worldTF.translation += {dir.x, dir.y, 0.0f};
 
     Limit();
