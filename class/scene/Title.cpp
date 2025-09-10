@@ -19,6 +19,8 @@ void Title::Initialize() {
 
 	backGround_.Initialize();
 
+	nextSprite_.Initialize();
+
 }
 
 // 更新
@@ -41,5 +43,7 @@ void Title::Update() {
 	drawing_.Update(playerMouseOperation_.GetIsDragging());
 
 	minion_.Update();
+
+	nextSprite_.Update();
 
 }

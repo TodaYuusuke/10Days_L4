@@ -5,6 +5,7 @@
 #include "../title/TitleMinion.h"
 #include "../sceneTransition/SceneTransitionBlackOut.h"
 #include "../BackGround.h"
+#include "../sprite/nextSprite.h"
 
 class Title final
 	: public IScene {
@@ -39,5 +40,7 @@ private: //*** これより先に必要な処理や変数を記述 ***//
 
 	// 背景
 	BackGround backGround_;
+
+	NextSprite nextSprite_;
 
 };
