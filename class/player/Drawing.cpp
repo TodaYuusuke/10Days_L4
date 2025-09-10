@@ -297,6 +297,7 @@ void Drawing::SurroundedMinionsUpdate()
 			if (inside) {
 				// index番目の手下はやる気増加
 				minons[index].SetMotivationTime(minons[index].GetMotivationTime() + MinionGlobalData::GetIncreasedMotivation());
+				minons[index].GetSprite().LightEmission();
 			}
 		}
 		index++;

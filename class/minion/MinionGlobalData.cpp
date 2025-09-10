@@ -14,6 +14,8 @@ float MinionGlobalData::requestCheckAddLength_ = 20.0f;
 float MinionGlobalData::increasedMotivation_ = 1.0f;
 // コライダー半径
 float MinionGlobalData::colliderRadius_ = 30.0f;
+// 発光時間
+float MinionGlobalData::lightEmissionSecondMax_ = 0.5f;
 // テクスチャサイズ
 LWP::Math::Vector2 MinionGlobalData::textureSize_ = { 64.0f,64.0f };
 // スプライトサイズ
@@ -56,6 +58,8 @@ void MinionGlobalData::JsonDataRegistration(LWP::Utility::JsonIO* jsonIO)
 		AddValue("IncreasedMotivation", &increasedMotivation_).
 		// コライダー半径
 		AddValue("ColliderRadius", &colliderRadius_).
+		// 発光時間
+		AddValue("LightEmissionSecondMax", &lightEmissionSecondMax_).
 
 		// スプライト関係
 		BeginGroup("Sprite").

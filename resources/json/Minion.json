@@ -37,6 +37,7 @@
     "float :ColliderRadius": 15.0,
     "float :IdleStateChangesDistance": 600.0,
     "float :IncreasedMotivation": 1.0,
+    "float :LightEmissionSecondMax": 0.30000001192092896,
     "float :RequestCheckAddLength": 20.0,
     "int32_t :InitialHp": 1
 }
