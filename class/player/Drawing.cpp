@@ -306,9 +306,14 @@ void Drawing::SurroundedMinionsUpdate()
 			}
 
 			if (inside) {
-				// index番目の手下はやる気増加
-				minons[index].SetMotivationTime(minons[index].GetMotivationTime() + MinionGlobalData::GetIncreasedMotivation());
-				minons[index].GetSprite().LightEmission();
+				if (minons[index].GetCurrentStateType() == MinionStateType::Foam) {
+					minons[index].SetRequestStateType(MinionStateType::Move);
+				}
+				else {
+					// index番目の手下はやる気増加
+					minons[index].SetMotivationTime(minons[index].GetMotivationTime() + MinionGlobalData::GetIncreasedMotivation());
+					minons[index].GetSprite().LightEmission();
+				}
 				surround = true;
 			}
 		}
