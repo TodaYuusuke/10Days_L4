@@ -28,6 +28,8 @@ void TestScene::Initialize() {
 	sceneTransitionBlackOut_.Initialize();
 	sceneTransitionBlackOut_.SetIsFadeIn(false);
 
+	backGround_.Initialize();
+
 }
 
 // 更新
@@ -39,9 +41,10 @@ void TestScene::Update() {
 			nextSceneFunction = []() { return new Title(); };
 		}
 	}
-
-	if (Keyboard::GetTrigger(DIK_P)) {
-		sceneTransitionBlackOut_.Reset();	// 次のシーンに行くための処理
+	else {
+		if (minionManager_->GetMinionNum() == 0) {
+			sceneTransitionBlackOut_.Reset();	// 次のシーンに行くための処理
+		}
 	}
 
 	minionManager_->Update();

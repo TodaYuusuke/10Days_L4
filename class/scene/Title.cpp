@@ -17,6 +17,8 @@ void Title::Initialize() {
 	sceneTransitionBlackOut_.Initialize();
 	sceneTransitionBlackOut_.SetIsFadeIn(false);
 
+	backGround_.Initialize();
+
 }
 
 // 更新
@@ -28,9 +30,10 @@ void Title::Update() {
 			nextSceneFunction = []() { return new TestScene(); };
 		}
 	}
-
-	if (Keyboard::GetTrigger(DIK_P)) {
-		sceneTransitionBlackOut_.Reset();	// 次のシーンに行くための処理
+	else {
+		if (Keyboard::GetTrigger(DIK_P)) {
+			sceneTransitionBlackOut_.Reset();	// 次のシーンに行くための処理
+		}
 	}
 
 	playerMouseOperation_.Update();

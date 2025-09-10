@@ -7,6 +7,7 @@
 #include "../boss/EnemyManager.h"
 #include "../areaOffEffect/AreaOffEffectManager.h"
 #include "../sceneTransition/SceneTransitionBlackOut.h"
+#include "../BackGround.h"
 
 class TestScene final
 	: public IScene {
@@ -41,5 +42,8 @@ private: //*** これより先に必要な処理や変数を記述 ***//
 
 	// シーン遷移
 	SceneTransitionBlackOut sceneTransitionBlackOut_;
+
+	// 背景
+	BackGround backGround_;
 
 };
