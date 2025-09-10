@@ -2,6 +2,7 @@
 
 // 静的メンバの定義
 std::queue<AreaOffEffectManager::CircleInitData> AreaOffEffectManager::circleInitDatas_;
+std::queue<AreaOffEffectManager::RectangleInitData> AreaOffEffectManager::rectangleInitDatas_;
 
 const std::string kFileName = "EffectParameter.json";
 
@@ -15,9 +16,6 @@ void AreaOffEffectManager::Initialize() {
 }
 
 void AreaOffEffectManager::Update() {
-	ImGui::Begin("Effect");
-	json_.DebugGUI();
-	ImGui::End();
 	// リクエストがあれば生成
 	while (!circleInitDatas_.empty()) {
 		const CircleInitData& req = circleInitDatas_.front();
@@ -25,6 +23,14 @@ void AreaOffEffectManager::Update() {
 		container_.push_back(std::make_unique<AreaOffEffect>(&firstAlpha_,&frashCount_,req.pos, req.maxRadius, req.data));
 		// リクエストを削除
 		circleInitDatas_.pop();
+	}
+	// リクエストがあれば生成
+	while (!rectangleInitDatas_.empty()) {
+		const RectangleInitData& req = rectangleInitDatas_.front();
+		// エフェクト生成、コンテナに追加
+		container_.push_back(std::make_unique<AreaOffEffect>(&firstAlpha_,&frashCount_,req.pos, req.maxSize, req.data));
+		// リクエストを削除
+		rectangleInitDatas_.pop();
 	}
 
 	// エフェクトの更新
@@ -43,6 +49,12 @@ void AreaOffEffectManager::RequestCreate(const Vector2& pos, const float& maxRad
 	// リクエストコンテナに追加
 	CircleInitData req{ pos,maxRadius,data };
 	circleInitDatas_.push(req);
+}
+
+void AreaOffEffectManager::RequestCreate(const Vector2& pos, const Vector2& maxSize, const AttackDefaultData& data) {
+	// リクエストコンテナに追加
+	RectangleInitData req{ pos,maxSize,data };
+	rectangleInitDatas_.push(req);
 }
 
 void AreaOffEffectManager::Load() {

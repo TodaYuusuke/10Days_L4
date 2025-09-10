@@ -8,8 +8,12 @@ using namespace LWP::Math;
 class AreaOffEffect {
 public:
 	AreaOffEffect() = delete;
-	AreaOffEffect(const float* alpha,const float* frashcount, const Vector2& pos, const float& maxRadius, const AttackDefaultData& data);
 	~AreaOffEffect() = default;
+
+	// 円の場合
+	AreaOffEffect(const float* alpha,const float* frashcount, const Vector2& pos, const float& maxRadius, const AttackDefaultData& data);
+	// 矩形の場合
+	AreaOffEffect(const float* alpha,const float* frashcount, const Vector2& pos, const Vector2& maxSize, const AttackDefaultData& data);
 
 
 private: // 構造体やenum
@@ -24,6 +28,7 @@ private: // 構造体やenum
 public:
 	// 初期化
 	void Initialize(const Vector2& pos, const float& maxRadius, const AttackDefaultData& data);
+	void Initialize(const Vector2& pos, const Vector2& maxSize, const AttackDefaultData& data);
 	// 更新
 	void Update();
 
@@ -33,9 +38,9 @@ private: // ローカル関数
 	// stateを変える時の初期化
 	void StateInitialize(State type);
 	// 外枠の更新
-	void OuterScaleUpUpdate();
+	void OuterScaleUpUpdate(Vector2 scale);
 	// 内枠の更新
-	void InnerScaleUpUpdate();
+	void InnerScaleUpUpdate(Vector2 scale);
 	// フェードアウトの更新
 	void FadeOutUpdate();
 
@@ -59,7 +64,9 @@ private: // ローカル関数
 	}
 
 private:
-	
+	// true:円/false:矩形
+	bool isCircle_ = true;
+
 	// 外枠
 	LWP::Primitive::NormalSprite outerFrame_;
 	// 内枠
@@ -74,6 +81,7 @@ private:
 	AttackDefaultData data_;
 	// 最大半径
 	float maxRadius_ = 0.0f;
+	Vector2 maxSize_ = { 0.0f,0.0f };
 	// 外枠の移動から内枠の移動までの比率 (4だった場合 外1:内3) n = 外(n):内(n-1)
 	float aroundRate_ = 4.0f;
 	// エフェクトが生きているか
