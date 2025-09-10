@@ -34,6 +34,6 @@
             3.0
         ],
         "float :moveSpeed": 10.0,
-        "int32_t :HP": 50
+        "int32_t :HP": 1000
     }
 }
