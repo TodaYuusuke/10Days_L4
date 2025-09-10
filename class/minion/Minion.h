@@ -91,6 +91,9 @@ public: // アクセッサ
 	LWP::Object::Collision2D& GetCollider() { return collider_; }
 	const LWP::Object::Collision2D& GetCollider() const { return collider_; }
 
+	bool GetInvincible() const { return invincible_; }
+	void SetInvincible(bool invincible) { invincible_ = invincible; }
+
 private: // メンバ変数
 
 	// ステータス
@@ -117,6 +120,8 @@ private: // メンバ変数
 
 	// やる気タイム
 	float motivationTime_;
+	// 無敵
+	bool invincible_;
 
 	// コライダー
 	LWP::Object::Collision2D collider_;
