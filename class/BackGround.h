@@ -2,7 +2,7 @@
 #include <Adapter.h>
 
 /// <summary>
-/// ”wŒi
+/// èƒŒæ™¯
 /// </summary>
 class BackGround
 {
