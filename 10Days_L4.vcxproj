@@ -202,6 +202,7 @@
     <ClCompile Include="class\boss\normalBoss\NormalBossStateManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="class\boss\data\BarrageDefaultData.h" />
     <ClInclude Include="class\boss\EnemyBullet.h" />
     <ClInclude Include="class\boss\state\BarrageAttackState.h" />
     <ClInclude Include="class\areaOffEffect\AreaOffEffect.h" />

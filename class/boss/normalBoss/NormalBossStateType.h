@@ -4,6 +4,7 @@ enum class NormalBossStateType : uint8_t {
 	Idle, // 待機
 	Move, // 移動
 	Slam, // たたきつけ攻撃
+	Barrage, // 弾幕
 
 	StateTypeOfCount // 最大数
 };
