@@ -2,6 +2,8 @@
 #include "MinionGlobalData.h"
 
 using namespace LWP::Math;
+using namespace LWP::Info;
+using namespace LWP::Utility;
 
 MinionSpriteSystem::MinionSpriteSystem()
 	:	sprite_(),
@@ -67,6 +69,21 @@ void MinionSpriteSystem::Update(MinionStateType type, const LWP::Math::Vector2& 
 	// 大きさ
 	sprite_.worldTF.scale = MinionGlobalData::GetSpriteScale();
 
+	// 発光
+	lightEmissionSeconds_ -= static_cast<float>(GetDeltaTime());
+	if (lightEmissionSeconds_ < 0.0f) {
+		lightEmissionSeconds_ = 0.0f;
+	}
+
+	float t = lightEmissionSeconds_ / MinionGlobalData::GetLightEmissionSecondMax();
+	t = Easing::CallFunction(Easing::Type::Liner, t);
+	float r = 255.0f * t + static_cast<float>(color_.R) * (1.0f - t);
+	float g = 255.0f * t + static_cast<float>(color_.G) * (1.0f - t);
+	float b = 255.0f * t + static_cast<float>(color_.B) * (1.0f - t);
+	sprite_.material.color.R = static_cast<unsigned char>(r);
+	sprite_.material.color.G = static_cast<unsigned char>(g);
+	sprite_.material.color.B = static_cast<unsigned char>(b);
+
 	// 前状態を切り替え
 	preType_ = type;
 
@@ -78,6 +95,15 @@ void MinionSpriteSystem::ColorChange(int serialNumber)
 	sprite_.material.color.R = static_cast<unsigned char>(GetRandomFloat(serialNumber) * 255.0f);
 	sprite_.material.color.G = static_cast<unsigned char>(GetRandomFloat(serialNumber + 1) * 255.0f);
 	sprite_.material.color.B = static_cast<unsigned char>(GetRandomFloat(serialNumber + 2) * 255.0f);
+
+	color_ = sprite_.material.color;
+
+}
+
+void MinionSpriteSystem::LightEmission()
+{
+
+	lightEmissionSeconds_ = MinionGlobalData::GetLightEmissionSecondMax();
 
 }
 
