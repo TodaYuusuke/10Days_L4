@@ -28,7 +28,6 @@ void EnemyBullet::Initialize() {
 }
 
 void EnemyBullet::Update(const LWP::Math::Vector2& dir) {
-    coll2D_.DebugGUI();
     sprite_.worldTF.translation += {dir.x, dir.y, 0.0f};
 
     Limit();

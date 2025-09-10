@@ -29,13 +29,14 @@ void NormalBoss::Initialize(BaseEnemyData& data) {
 
     isAlive_ = true;
 
+    collider_.SetBroadShape<lwp::Collider2D::Circle>().radius = 70.0f;
     collider_.mask.SetBelongFrag(ColMaskGetter::GetEnemy());
     collider_.mask.SetHitFrag(ColMaskGetter::GetBullet());
     
     // 衝突時
     collider_.enterLambda = [this](LWP::Object::Collision2D* hit) {
         isHit_ = true;
-        };
+    };
 
 }
 

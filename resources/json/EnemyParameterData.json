@@ -17,7 +17,7 @@
         },
         "Group :Slam": {
             "Vector2 :AttackRange": [
-                140.0,
+                600.0,
                 5.0
             ],
             "float :DamageTime": 0.30000001192092896,
@@ -49,6 +49,6 @@
             3.0
         ],
         "float :moveSpeed": 10.0,
-        "int32_t :HP": 1000
+        "int32_t :HP": 800
     }
 }
