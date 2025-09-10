@@ -201,6 +201,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="class\boss\normalBoss\NormalBossSpriteSystem.cpp" />
     <ClCompile Include="class\boss\normalBoss\NormalBossStateManager.cpp" />
+    <ClCompile Include="class\boss\state\RainBarrage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="class\boss\data\BarrageDefaultData.h" />
@@ -263,6 +264,7 @@
     <ClInclude Include="class\boss\normalBoss\NormalBossSpriteSystem.h" />
     <ClInclude Include="class\boss\data\EnemyDataManager.h" />
     <ClInclude Include="class\boss\normalBoss\NormalBossStateManager.h" />
+    <ClInclude Include="class\boss\state\RainBarrage.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

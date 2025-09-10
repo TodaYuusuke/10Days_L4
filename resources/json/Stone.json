@@ -1,11 +1,11 @@
 {
     "Vector3 :SpriteScale": [
-        0.20000000298023224,
-        0.20000000298023224,
+        0.05999999865889549,
+        0.05999999865889549,
         1.0
     ],
     "float :Acceleration": -0.15000000596046448,
     "float :ColliderRadius": 12.0,
-    "float :InitialSpeed": 10.0,
+    "float :InitialSpeed": 14.0,
     "float :PositionZ": 0.0
 }

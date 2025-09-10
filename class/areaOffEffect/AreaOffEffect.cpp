@@ -17,6 +17,15 @@ AreaOffEffect::AreaOffEffect(const float* alpha, const float* frashcount, const 
 	Initialize(pos, maxRadius, data);
 }
 
+AreaOffEffect::AreaOffEffect(const float* alpha, const float* frashcount, const Vector2& pos, const Vector2& maxSize, const AttackDefaultData& data) {
+	outerFrame_.LoadTexture(kOuterCirclePath);
+	innerFrame_.LoadTexture(kInnerCirclePath);
+	exclamation_.LoadTexture(kExclamationPath);
+	pFirstAlpha_ = alpha;
+	pFrashCount_ = frashcount;
+	Initialize(pos, maxSize, data);
+}
+
 void AreaOffEffect::Initialize(const Vector2& pos, const float& maxRadius, const AttackDefaultData& data) {
 	outerFrame_.worldTF.translation = { pos.x,pos.y,kEffectTranslate_Z };
 	outerFrame_.worldTF.scale = { 0.0f,0.0f,0.0f };
@@ -43,17 +52,53 @@ void AreaOffEffect::Initialize(const Vector2& pos, const float& maxRadius, const
 	data_ = data;
 	state_ = State::OuterScaleUp;
 	isAlive_ = true;
+	isCircle_ = true;
+}
+
+void AreaOffEffect::Initialize(const Vector2& pos, const Vector2& maxSize, const AttackDefaultData& data) {
+	outerFrame_.worldTF.translation = { pos.x,pos.y,kEffectTranslate_Z };
+	outerFrame_.worldTF.scale = { 0.0f,0.0f,0.0f };
+	outerFrame_.material.color = LWP::Utility::ColorPattern::YELLOW;
+	outerFrame_.material.color.A = static_cast<unsigned char>(*pFirstAlpha_);
+
+	innerFrame_.worldTF.translation = { pos.x,pos.y,kEffectTranslate_Z };
+	innerFrame_.worldTF.scale = { 0.0f,0.0f,0.0f };
+	innerFrame_.material.color = LWP::Utility::ColorPattern::RED;
+	innerFrame_.material.color.A = static_cast<unsigned char>(*pFirstAlpha_);
+
+	Vector2 exSize = exclamation_.GetFitSizeImpl(&exclamation_.material) * 0.5f;
+	exSize.x = maxSize.x / exSize.x;
+	exSize.y = maxSize.y / exSize.y;
+	exclamation_.worldTF.translation = { pos.x,pos.y,kEffectTranslate_Z };
+	exclamation_.worldTF.scale = { exSize.x,exSize.y,0.0f };
+	exclamation_.material.color = LWP::Utility::ColorPattern::YELLOW;
+	exclamation_.material.color.A = 0u;
+	exclamation_.isActive = false;
+
+	// テクスチャの半分の長さを取得
+	float size = innerFrame_.GetFitSizeImpl(&innerFrame_.material).x * 0.5f;
+	// 尺を合わせる
+	maxSize_ = maxSize / size;
+	data_ = data;
+	state_ = State::OuterScaleUp;
+	isAlive_ = true;
+	isCircle_ = false;
 }
 
 void AreaOffEffect::Update() {
+	Vector2 scale = { maxRadius_,maxRadius_ };
+	if (!isCircle_) {
+		scale = maxSize_;
+	}
+
 	switch (state_) {
 	case AreaOffEffect::OuterScaleUp:
 		// 先に外枠を広げる
-		OuterScaleUpUpdate();
+		OuterScaleUpUpdate(scale);
 		break;
 	case AreaOffEffect::InnerScaleUp:
 		// その後に内枠を広げる
-		InnerScaleUpUpdate();
+		InnerScaleUpUpdate(scale);
 		break;
 	case AreaOffEffect::FadeOut:
 		// ダメージタイムでどんどん薄くしていく
@@ -70,7 +115,7 @@ void AreaOffEffect::StateInitialize(State type) {
 	state_ = type;
 }
 
-void AreaOffEffect::OuterScaleUpUpdate() {
+void AreaOffEffect::OuterScaleUpUpdate(Vector2 scale) {
 	// 前隙の1/nの速度で外枠を広げる
 	const float kMaxTime = data_.startupLag / aroundRate_;
 	// タイマーの加算
@@ -84,10 +129,10 @@ void AreaOffEffect::OuterScaleUpUpdate() {
 		exclamation_.isActive = true;
 	}
 	outerFrame_.worldTF.scale =
-		LWP::Utility::Interp::Lerp({ 0.0f,0.0f,0.0f }, { maxRadius_ ,maxRadius_ ,0.0f }, t);
+		LWP::Utility::Interp::Lerp({ 0.0f,0.0f,0.0f }, { scale.x ,scale.y,0.0f }, t);
 }
 
-void AreaOffEffect::InnerScaleUpUpdate() {
+void AreaOffEffect::InnerScaleUpUpdate(Vector2 scale) {
 
 	// 前隙の 1/n * (n-1) の速度で内枠を広げる
 	const float kMaxTime = (data_.startupLag / aroundRate_) * (aroundRate_ - 1.0f);
@@ -102,7 +147,7 @@ void AreaOffEffect::InnerScaleUpUpdate() {
 		exclamation_.isActive = false;
 	}
 	innerFrame_.worldTF.scale =
-		LWP::Utility::Interp::Lerp({ 0.0f,0.0f,0.0f }, { maxRadius_ ,maxRadius_ ,0.0f }, t);
+		LWP::Utility::Interp::Lerp({ 0.0f,0.0f,0.0f }, { scale.x ,scale.y ,0.0f }, t);
 
 	// exclamationの処理 3回点滅させる
 	exclamation_.material.color.A = GetAlpha(nowTime_, kMaxTime / *pFrashCount_);
