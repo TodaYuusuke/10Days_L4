@@ -18,7 +18,7 @@ void MeetingPlace::Initialize()
 {
 
 	// テクスチャの名前
-	const std::string kTextureName = "MeetingPlace.png";
+	const std::string kTextureName = "Flag.png";
 	sprite_.LoadTexture(kTextureName);
 	// テクスチャサイズ
 	sprite_.SetSplitSize(PlayerGlobalData::GetMeetingPlaceTextureSize());

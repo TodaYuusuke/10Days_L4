@@ -15,17 +15,17 @@
     },
     "Group :MeetingPlace": {
         "Vector2 :TextureSize": [
-            64.0,
-            64.0
+            128.0,
+            128.0
         ],
         "Vector3 :SpriteScale": [
-            1.0,
-            1.0,
+            0.6000000238418579,
+            0.6000000238418579,
             0.0
         ],
         "float :PositionZ": 0.0,
         "int32_t :ChangeIndexFrame": 4,
-        "int32_t :IndexMaxX": 6
+        "int32_t :IndexMaxX": 4
     },
     "Group :Mouse": {
         "Vector3 :MouseSpriteScale": [
