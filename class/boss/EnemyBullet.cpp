@@ -18,7 +18,7 @@ void EnemyBullet::Initialize() {
     coll2D_.mask.SetHitFrag(ColMaskGetter::GetPlayer() | ColMaskGetter::GetWall());
     coll2D_.isActive = false;
     // 衝突時
-    coll2D_.stayLambda = [this](LWP::Object::Collision2D* hit) {
+    coll2D_.enterLambda = [this](LWP::Object::Collision2D* hit) {
         isAlive_ = false;
         coll2D_.isActive = false;
         sprite_.isActive = false;

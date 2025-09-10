@@ -11,6 +11,13 @@ BarrageAttackState::BarrageAttackState(const BaseEnemyData* data, NormalBossStat
 	pBullets_ = bullets;
 }
 
+BarrageAttackState::BarrageAttackState(const BaseEnemyData* data, NormalBossStateManager* sManager, std::array<EnemyBullet, NormalBossData::kNormalBossBulletMax>* bullets) {
+    const NormalBossData* d = dynamic_cast<const NormalBossData*>(data);
+    pBarrage_ = &d->straightBarrage;
+	pStateManager_ = sManager;
+	pBullets_ = bullets;
+}
+
 void BarrageAttackState::Enter(BaseEnemy* enemy) {
     // とりあえず真下に向けて撃つ
     dir_ = { 0.0f,1.0f };
