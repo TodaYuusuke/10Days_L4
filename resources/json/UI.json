@@ -3,7 +3,7 @@
         "Group :Base": {
             "Vector3 :Positon": [
                 100.0,
-                850.0,
+                1025.0,
                 0.0
             ],
             "Vector3 :Size": [
@@ -31,7 +31,7 @@
                 -1.0
             ],
             "Vector3 :Size": [
-                34.0,
+                65.552001953125,
                 1.0,
                 1.0
             ]
@@ -40,8 +40,8 @@
     "Group :LineGauge": {
         "Group :Base": {
             "Vector3 :Positon": [
-                435.0,
-                345.0,
+                669.0,
+                249.0,
                 0.0
             ],
             "Vector3 :Size": [
@@ -78,12 +78,12 @@
     "Group :MinionsNum": {
         "Group :Base": {
             "Vector3 :Positon": [
-                170.0,
-                100.0,
+                180.0,
+                110.0,
                 0.0
             ],
             "Vector3 :Size": [
-                2.0,
+                1.0,
                 2.0,
                 1.0
             ]
@@ -91,25 +91,25 @@
         "Group :CenterNum": {
             "Vector3 :Positon": [
                 0.0,
-                0.0,
+                7.5,
                 -1.0
             ],
             "Vector3 :Size": [
+                2.0,
                 1.0,
-                1.0,
-                1.0
+                2.0
             ]
         },
         "Group :LeftNum": {
             "Vector3 :Positon": [
-                -40.0,
-                0.0,
+                -75.0,
+                7.5,
                 -1.0
             ],
             "Vector3 :Size": [
+                2.0,
                 1.0,
-                1.0,
-                1.0
+                2.0
             ]
         },
         "Group :Mark": {
@@ -126,14 +126,14 @@
         },
         "Group :RightNum": {
             "Vector3 :Positon": [
-                40.0,
-                0.0,
+                75.0,
+                7.5,
                 -1.0
             ],
             "Vector3 :Size": [
+                2.0,
                 1.0,
-                1.0,
-                1.0
+                2.0
             ]
         }
     }
