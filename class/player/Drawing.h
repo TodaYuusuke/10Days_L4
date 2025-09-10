@@ -97,6 +97,8 @@ private: // メンバ変数
 	// スタート時フラグ
 	bool startCheck_;
 
+	LWP::Resource::Audio audio_;
+
 private: // ポインタ
 
 	// 手下のマネージャー

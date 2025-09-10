@@ -48,6 +48,8 @@ void Drawing::Initialize()
 		sprites_[i].isActive = false;
 	}
 
+	audio_.LoadShortPath("surround.mp3");
+
 }
 
 void Drawing::Update(bool isDragging)
@@ -274,12 +276,16 @@ void Drawing::SurroundedMinionsUpdate()
 	// 手下の管理クラスのポインタがあるか
 	if (!minionManager_) {
 		gameStart = true;
+		audio_.Play();
+		audio_.SetVolume(0.1f);
 		return;
 	}
 	assert(minionManager_);
 	// 手下取得
 	std::array<Minion, MinionManager::kMinionNumMax_>& minons = minionManager_->GetMinions();
 	
+	bool surround = false;
+
 	// 全手下確認
 	int index = 0;
 	for (Vector2& pos : minionManager_->GetMinionsPosition()) {
@@ -298,9 +304,15 @@ void Drawing::SurroundedMinionsUpdate()
 				// index番目の手下はやる気増加
 				minons[index].SetMotivationTime(minons[index].GetMotivationTime() + MinionGlobalData::GetIncreasedMotivation());
 				minons[index].GetSprite().LightEmission();
+				surround = true;
 			}
 		}
 		index++;
+	}
+
+	if (surround) {
+		audio_.Play();
+		audio_.SetVolume(0.1f);
 	}
 
 }

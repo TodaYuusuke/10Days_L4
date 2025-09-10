@@ -72,6 +72,7 @@ public: // アクセッサ
 	int GetHp() const { return hp_; }
 	int GetSerialNumber() const { return serialNumber_; }
 	MinionStateType GetCurrentStateType() const { return currentStateType_; }
+	MinionStateType GetRequestStateType() const { return requestStateType_; }
 
 	void SetRequestStateType(MinionStateType requestStateType) { requestStateType_ = requestStateType; }
 	void SetPosition(const LWP::Math::Vector2& position) { position_ = position; }

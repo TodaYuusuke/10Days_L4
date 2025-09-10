@@ -18,6 +18,7 @@ WallManager::~WallManager()
 
 void WallManager::Initialize()
 {
+	audio_.LoadShortPath("wallCreate.mp3");
 }
 
 void WallManager::Update()
@@ -52,5 +53,8 @@ void WallManager::CreateWalls(const std::vector<LWP::Math::Vector2>* points)
 		wall->SetWallManager(this);
 		walls_.push_back(wall);
 	}
+
+	audio_.Play();
+	audio_.SetVolume(0.05f);
 
 }
