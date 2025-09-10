@@ -267,6 +267,7 @@ void Drawing::SurroundedMinionsUpdate()
 {
 	// 手下の管理クラスのポインタがあるか
 	if (!minionManager_) {
+		gameStart = true;
 		return;
 	}
 	assert(minionManager_);

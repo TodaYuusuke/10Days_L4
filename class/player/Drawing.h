@@ -100,5 +100,13 @@ private: // ポインタ
 	// 手下のマネージャー
 	MinionManager* minionManager_;
 
+private:
+
+	bool gameStart = false;
+
+public: 
+
+	bool GetGameStart() { return gameStart; }
+
 };
 

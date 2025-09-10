@@ -31,7 +31,7 @@ void Title::Update() {
 		}
 	}
 	else {
-		if (Keyboard::GetTrigger(DIK_P)) {
+		if (drawing_.GetGameStart()) {
 			sceneTransitionBlackOut_.Reset();	// 次のシーンに行くための処理
 		}
 	}
