@@ -157,6 +157,8 @@
     <ClCompile Include="class\areaOffEffect\AreaOffEffect.cpp" />
     <ClCompile Include="class\areaOffEffect\AreaOffEffectManager.cpp" />
     <ClCompile Include="class\BackGround.cpp" />
+    <ClCompile Include="class\boss\state\CircleBarrageState.cpp" />
+    <ClCompile Include="class\boss\state\CircleBarrageState.h" />
     <ClCompile Include="class\boss\state\NormalEnemySlamState.cpp" />
     <ClCompile Include="class\ColMaskGetter.cpp" />
     <ClCompile Include="class\minion\Minion.cpp" />

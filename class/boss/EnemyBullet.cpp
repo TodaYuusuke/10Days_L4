@@ -28,7 +28,8 @@ void EnemyBullet::Initialize() {
 }
 
 void EnemyBullet::Update(const LWP::Math::Vector2& dir) {
-    sprite_.worldTF.translation += {dir.x, dir.y, 0.0f};
+    LWP::Math::Vector2 handle = dir + dir_;
+    sprite_.worldTF.translation += {handle.x, handle.y, 0.0f};
 
     Limit();
 }
@@ -45,6 +46,11 @@ void EnemyBullet::SetBullet(const LWP::Math::Vector2& pos, const float& radius) 
     isAlive_ = true;
     coll2D_.isActive = isAlive_;
     sprite_.isActive = isAlive_;
+}
+
+void EnemyBullet::SetBullet(const LWP::Math::Vector2& pos, const float& radius, const LWP::Math::Vector2& dir) {
+    SetBullet(pos, radius);
+    dir_ = dir;
 }
 
 void EnemyBullet::Limit() {
