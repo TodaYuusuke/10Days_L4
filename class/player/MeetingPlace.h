@@ -48,6 +48,11 @@ private:
 	// 位置
 	LWP::Math::Vector2 position_;
 
+	// スプライト
+	LWP::Primitive::SequenceSprite spriteComeon_;
+	// 連番のindexX
+	int comeonIndexX_;
+
 	LWP::Resource::Audio audio_;
 
 };
