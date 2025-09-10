@@ -2,6 +2,8 @@
 #include <list>
 #include "Wall.h"
 
+class EnemyManager;
+
 /// <summary>
 /// 壁の管理者
 /// </summary>
@@ -36,10 +38,19 @@ public:
 	/// <param name="points">点</param>
 	void CreateWalls(const std::vector<LWP::Math::Vector2>* points);
 
+public:
+
+	void SetEnemyManager(EnemyManager* enemyManager) { enemyManager_ = enemyManager; }
+	EnemyManager* GetEnemyManager() { return enemyManager_; }
+
 private:
 
 	// 壁
 	std::list<Wall*> walls_;
+
+private:
+
+	EnemyManager* enemyManager_;
 
 };
 

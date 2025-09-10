@@ -1,6 +1,9 @@
 #include "Wall.h"
 #include "../PlayerGlobalData.h"
 #include "../../ColMaskGetter.h"
+#include "../wall/WallManager.h"
+#include "../../boss/EnemyManager.h"
+
 using namespace LWP::Math;
 using namespace LWP::Utility;
 using namespace LWP::Object;
@@ -63,8 +66,8 @@ void Wall::Initilaize()
 	// ヒットした瞬間のとき
 	collider_.enterLambda = [this](Collision2D* hitTarget) {
 		if (hitTarget->mask.GetBelongFrag() == ColMaskGetter::GetEnemy()) {
-			--hp_;
-			if (hp_ == 0) {
+			hp_ -= *wallManager_->GetEnemyManager()->GetEnemyAttackPowerPtr();
+			if (hp_ <= 0) {
 				isDead_ = true;
 			}
 		}

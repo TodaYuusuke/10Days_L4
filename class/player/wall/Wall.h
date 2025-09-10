@@ -1,6 +1,8 @@
 #pragma once
 #include <Adapter.h>
 
+class WallManager;
+
 /// <summary>
 /// 壁
 /// </summary>
@@ -44,6 +46,10 @@ public: // メンバ関数
 	/// <returns></returns>
 	bool IsDead() const { return isDead_; }
 
+public:
+
+	void SetWallManager(WallManager* wallManager) { wallManager_ = wallManager; }
+
 private: // メンバ変数
 
 	// 開始地点
@@ -64,6 +70,10 @@ private: // メンバ変数
 
 	// 死んだか
 	bool isDead_;
+
+public:
+
+	WallManager* wallManager_;
 
 };
 

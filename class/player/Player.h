@@ -5,6 +5,8 @@
 #include "Drawing.h"
 #include "wall/WallManager.h"
 
+class EnemyManager;
+
 /// <summary>
 /// プレイヤー
 /// </summary>
@@ -38,6 +40,12 @@ public:
 	/// </summary>
 	/// <param name="minionManager"></param>
 	void SetMinionManagerForDrawing(MinionManager* minionManager);
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="enemyManager"></param>
+	void SetEnemyManagerForWallManager(EnemyManager* enemyManager);
 
 public: // アクセッサ
 

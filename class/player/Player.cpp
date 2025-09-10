@@ -65,3 +65,8 @@ void Player::SetMinionManagerForDrawing(MinionManager* minionManager)
 	drawing_.SetMinionManager(minionManager);
 
 }
+
+void Player::SetEnemyManagerForWallManager(EnemyManager* enemyManager)
+{
+	wallManager_.SetEnemyManager(enemyManager);
+}

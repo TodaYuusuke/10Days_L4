@@ -49,6 +49,7 @@ void WallManager::CreateWalls(const std::vector<LWP::Math::Vector2>* points)
 	// 作成、登録
 	for (size_t i = 0; i < points->size() - 1; ++i) {
 		Wall* wall = new Wall((*points)[i], (*points)[i + 1], PlayerGlobalData::GetWallHpMax(), PlayerGlobalData::GetWallLifeTimeMax());
+		wall->SetWallManager(this);
 		walls_.push_back(wall);
 	}
 
