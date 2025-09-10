@@ -2,7 +2,7 @@
 #include <Adapter.h>
 
 /// <summary>
-/// I‚í‚é‚ÌƒXƒvƒ‰ƒCƒg
+/// çµ‚ã‚ã‚‹æ™‚ã®ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆ
 /// </summary>
 class GameSprite
 {
@@ -11,40 +11,40 @@ class GameSprite
 public:
 
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	GameSprite();
 
 	/// <summary>
-	/// ƒfƒXƒgƒ‰ƒNƒ^
+	/// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	/// </summary>
 	~GameSprite();
 
 	/// <summary>
-	/// ‰Šú‰»
+	/// åˆæœŸåŒ–
 	/// </summary>
 	void Initialize();
 
 	/// <summary>
-	/// XV
+	/// æ›´æ–°
 	/// </summary>
 	void Update();
 
 	/// <summary>
-	/// ƒAƒNƒeƒBƒuØ‚è‘Ö‚¦
+	/// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–åˆ‡ã‚Šæ›¿ãˆ
 	/// </summary>
 	/// <param name="isActive"></param>
 	void SetIsActive(bool isActive);
 
 	/// <summary>
-	/// ƒAƒNƒeƒBƒuØ‚è‘Ö‚¦
+	/// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–åˆ‡ã‚Šæ›¿ãˆ
 	/// </summary>
 	bool GetIsActive();
 
 	/// <summary>
-	/// indexæ“¾
+	/// indexå–å¾—
 	/// </summary>
-	/// <param name="index">ƒCƒ“ƒfƒbƒNƒX</param>
+	/// <param name="index">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹</param>
 	void SetIndex(int index);
 
 private:
