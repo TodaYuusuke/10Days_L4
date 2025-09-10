@@ -76,7 +76,7 @@ public:
 	// 共通のパラメータデータ
 	void CommonValue(LWP::Utility::JsonIO json) {
 		json.AddValue("RespawnPoint", &respawnPoint);
-		json.AddValue("TargetPosition", &targetPosition);
+		json.AddValue("HP", &hp_);
 	}
 
 	// 純粋仮想関数
@@ -87,6 +87,6 @@ public: // 共通部分変数
 	uint8_t partsNumber = 0u;
 	// 初期スポーン
 	Vector2 respawnPoint = { 0.0f,0.0f };
-	// ターゲットとなる座標や向き
-	Vector2 targetPosition = { 0.0f,0.0f };
+	// 体力
+	int hp_ = 0;
 };

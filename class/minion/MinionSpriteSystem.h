@@ -42,6 +42,11 @@ public:  // メンバ関数
 	/// <param name="serialNumber">シリアルナンバー</param>
 	void ColorChange(int serialNumber);
 
+	/// <summary>
+	/// 発光
+	/// </summary>
+	void LightEmission();
+
 public:
 
 	// スプライト
@@ -77,6 +82,11 @@ private: // メンバ変数
 
 	// index変更までのフレームカウント
 	int changeIndexFrameCount_;
+
+	// 発光秒数
+	float lightEmissionSeconds_;
+
+	LWP::Utility::Color color_;
 
 };
 

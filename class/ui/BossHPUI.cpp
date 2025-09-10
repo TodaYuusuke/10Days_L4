@@ -1,4 +1,5 @@
 #include "BossHPUI.h"
+#include "../boss/EnemyManager.h"
 
 BossHPUI::BossHPUI()
 	:	containerSprite_(),
@@ -43,11 +44,11 @@ void BossHPUI::Update()
 		return;
 	}
 
-	// 今のHP
-	const float kNowHP = 1.0f;
 	// HP最大
-	const float kMaxHP = 1.0f;
-	gaugeSprite_.worldTF.scale.x = 68.0f * (kNowHP / kMaxHP);
+	int pMaxHP = 0;
+	// 今のHP
+	const float kNowHP = static_cast<float>(enemyManager_->GetEnemyHp(&pMaxHP));
+	gaugeSprite_.worldTF.scale.x = 68.0f * (kNowHP / static_cast<float>(pMaxHP));
 
 }
 

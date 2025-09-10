@@ -31,7 +31,7 @@ public:
 
 public: // アクセッサ
 
-	void SetPosition(const LWP::Math::Vector2& position) { position_ = position; }
+	void SetPosition(const LWP::Math::Vector2& position);
 	LWP::Math::Vector2 GetPosition() const { return position_; }
 
 private:
@@ -47,6 +47,8 @@ private:
 
 	// 位置
 	LWP::Math::Vector2 position_;
+
+	LWP::Resource::Audio audio_;
 
 };
 

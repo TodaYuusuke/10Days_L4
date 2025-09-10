@@ -33,6 +33,7 @@ public: // アクセッサ
 	static float GetRequestCheckAddLength() { return requestCheckAddLength_; }
 	static float GetIncreasedMotivation() { return increasedMotivation_; }
 	static float GetColliderRadius() { return colliderRadius_; }
+	static float GetLightEmissionSecondMax() { return lightEmissionSecondMax_; }
 	static LWP::Math::Vector2 GetTextureSize() { return textureSize_; }
 	static LWP::Math::Vector3 GetSpriteScale() { return spriteScale_; }
 	static int GetIndexMaxX() { return indexMaxX_; }
@@ -62,6 +63,8 @@ private: //メンバ変数
 	static float increasedMotivation_;
 	// コライダー半径
 	static float colliderRadius_;
+	// 発光時間
+	static float lightEmissionSecondMax_;
 
 	// スプライト関係
 

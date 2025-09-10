@@ -72,6 +72,7 @@ public: // アクセッサ
 	int GetHp() const { return hp_; }
 	int GetSerialNumber() const { return serialNumber_; }
 	MinionStateType GetCurrentStateType() const { return currentStateType_; }
+	MinionStateType GetRequestStateType() const { return requestStateType_; }
 
 	void SetRequestStateType(MinionStateType requestStateType) { requestStateType_ = requestStateType; }
 	void SetPosition(const LWP::Math::Vector2& position) { position_ = position; }
@@ -90,6 +91,9 @@ public: // アクセッサ
 	// スプライト
 	LWP::Object::Collision2D& GetCollider() { return collider_; }
 	const LWP::Object::Collision2D& GetCollider() const { return collider_; }
+
+	bool GetInvincible() const { return invincible_; }
+	void SetInvincible(bool invincible) { invincible_ = invincible; }
 
 private: // メンバ変数
 
@@ -117,6 +121,8 @@ private: // メンバ変数
 
 	// やる気タイム
 	float motivationTime_;
+	// 無敵
+	bool invincible_;
 
 	// コライダー
 	LWP::Object::Collision2D collider_;

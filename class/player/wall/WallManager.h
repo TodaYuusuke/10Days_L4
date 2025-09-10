@@ -48,6 +48,8 @@ private:
 	// 壁
 	std::list<Wall*> walls_;
 
+	LWP::Resource::Audio audio_;
+
 private:
 
 	EnemyManager* enemyManager_;

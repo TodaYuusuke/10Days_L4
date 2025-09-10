@@ -36,6 +36,12 @@ public:
 
 	// 攻撃力のポインタ取得
 	const int* GetAttackPowerPtr() const { return &attackPower_; }
+	// 体力のポインタ取得
+	const int* GetHpPtr() const { return &hp_; }
+	// 最大体力の取得
+	const int* GetMaxHpPtr() const { return &maxHp_; }
+	// 生死フラグの取得
+	const bool& GetIsAlive() const { return isAlive_; }
 
 	// 攻撃力のセット Stateのみで使用
 	void SetAttackPower(const int& power) { attackPower_ = power; }
@@ -74,5 +80,10 @@ protected:
 	uint8_t requestStateType_ = 0u;
 	// 攻撃力
 	int attackPower_ = 0;
+	// 体力
+	int hp_ = 0;
+	int maxHp_ = 0;
+	// 生きているかどうか
+	bool isAlive_ = true;
 
 };

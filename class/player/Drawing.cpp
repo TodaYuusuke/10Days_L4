@@ -17,6 +17,7 @@ Drawing::Drawing()
 		lineLength_(0.0f),
 		wallCreation_(false),
 		startWriting_({ 0.0f,0.0f }),
+		startCheck_(true),
 		minionManager_(nullptr)
 {
 }
@@ -30,6 +31,7 @@ Drawing::Drawing(MinionManager* minionManager)
 		lineLength_(0.0f),
 		wallCreation_(false),
 		startWriting_({0.0f,0.0f}),
+		startCheck_(true),
 		minionManager_(minionManager)
 {
 }
@@ -45,6 +47,8 @@ void Drawing::Initialize()
 		sprites_[i].worldTF.scale.x = PlayerGlobalData::GetLineSpriteScale().x;
 		sprites_[i].isActive = false;
 	}
+
+	audio_.LoadShortPath("surround.mp3");
 
 }
 
@@ -69,6 +73,7 @@ void Drawing::Update(bool isDragging)
 
 		}
 		else {
+			startCheck_ = false;
 			if ((Mouse::GetTrigger(0) && !Keyboard::GetPress(DIK_SPACE)) || (Keyboard::GetTrigger(DIK_SPACE) && !Mouse::GetPress(0))) {
 				startWriting_ = Mouse::GetPosition();
 			}
@@ -77,6 +82,9 @@ void Drawing::Update(bool isDragging)
 	}
 	// ドラッグしている
 	else {
+		if (startCheck_) {
+			return;
+		}
 		// 線を書き途中
 		if (isActive_) {
 			recordingTimer_ += static_cast<float>(LWP::Info::GetDeltaTime());
@@ -268,12 +276,16 @@ void Drawing::SurroundedMinionsUpdate()
 	// 手下の管理クラスのポインタがあるか
 	if (!minionManager_) {
 		gameStart = true;
+		audio_.Play();
+		audio_.SetVolume(0.1f);
 		return;
 	}
 	assert(minionManager_);
 	// 手下取得
 	std::array<Minion, MinionManager::kMinionNumMax_>& minons = minionManager_->GetMinions();
 	
+	bool surround = false;
+
 	// 全手下確認
 	int index = 0;
 	for (Vector2& pos : minionManager_->GetMinionsPosition()) {
@@ -291,9 +303,16 @@ void Drawing::SurroundedMinionsUpdate()
 			if (inside) {
 				// index番目の手下はやる気増加
 				minons[index].SetMotivationTime(minons[index].GetMotivationTime() + MinionGlobalData::GetIncreasedMotivation());
+				minons[index].GetSprite().LightEmission();
+				surround = true;
 			}
 		}
 		index++;
+	}
+
+	if (surround) {
+		audio_.Play();
+		audio_.SetVolume(0.1f);
 	}
 
 }

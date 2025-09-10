@@ -149,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="class\boss\EnemyBullet.cpp" />
     <ClCompile Include="class\boss\state\BarrageAttackState.cpp" />
     <ClCompile Include="class\areaOffEffect\AreaOffEffect.cpp" />
     <ClCompile Include="class\areaOffEffect\AreaOffEffectManager.cpp" />
@@ -197,6 +198,7 @@
     <ClCompile Include="class\boss\normalBoss\NormalBossStateManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="class\boss\EnemyBullet.h" />
     <ClInclude Include="class\boss\state\BarrageAttackState.h" />
     <ClInclude Include="class\areaOffEffect\AreaOffEffect.h" />
     <ClInclude Include="class\areaOffEffect\AreaOffEffectManager.h" />

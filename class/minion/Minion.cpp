@@ -23,6 +23,7 @@ Minion::Minion()
         hp_(MinionGlobalData::GetInitialHp()),
         serialNumber_(serialNumberCount_),
         motivationTime_(0.0f),
+        invincible_(false),
         collider_(),
         minionManager_(nullptr)
 {
@@ -39,6 +40,7 @@ Minion::Minion(MinionManager* minionManager)
         hp_(MinionGlobalData::GetInitialHp()),
         serialNumber_(serialNumberCount_),
         motivationTime_(0.0f),
+        invincible_(false),
         collider_(),
         minionManager_(minionManager)
 {
@@ -81,10 +83,10 @@ void Minion::Initialize()
             if (!hitTarget->isActive) {
                 return;
             }
-            if (currentStateType_ != MinionStateType::Down && 
-                currentStateType_ != MinionStateType::Absorb) {
+            if (!invincible_) {
                 --hp_;
                 requestStateType_ = MinionStateType::Down;
+                invincible_ = true;
             }
         }
         // 壁

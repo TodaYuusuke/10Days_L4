@@ -31,5 +31,5 @@ void MinionDownState::Update(Minion* minion)
 
 void MinionDownState::Exit(Minion* minion)
 {
-	minion;
+	minion->SetInvincible(false);
 }
