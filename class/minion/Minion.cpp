@@ -77,7 +77,10 @@ void Minion::Initialize()
     // ヒットした瞬間のとき
     collider_.enterLambda = [this](Collision2D* hitTarget) {
         // 敵
-        if (hitTarget->mask.GetBelongFrag() == ColMaskGetter::GetEnemy()) {
+        if (hitTarget->mask.GetBelongFrag() == ColMaskGetter::GetEnemyAttack()) {
+            if (!hitTarget->isActive) {
+                return;
+            }
             if (currentStateType_ != MinionStateType::Down && 
                 currentStateType_ != MinionStateType::Absorb) {
                 --hp_;
@@ -147,7 +150,7 @@ void Minion::Initialize()
     // マスク、所属
     collider_.mask.SetBelongFrag(ColMaskGetter::GetPlayer());
     // マスク,hit
-    collider_.mask.SetHitFrag(ColMaskGetter::GetEnemy() | ColMaskGetter::GetWall());
+    collider_.mask.SetHitFrag(ColMaskGetter::GetEnemyAttack() | ColMaskGetter::GetWall());
 
 }
 

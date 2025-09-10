@@ -13,7 +13,7 @@ uint8_t NormalBossStateManager::Update(const uint8_t currentType) {
 
 	// 以下仮
 	if (currentType == StateType::ToUInt8(NormalBossStateType::Move)) {
-		return StateType::ToUInt8(NormalBossStateType::Idle);
+		return StateType::ToUInt8(NormalBossStateType::Slam);
 	}
 	else if (currentType == StateType::ToUInt8(NormalBossStateType::Idle)) {
 		// 移動する場所を雑に設定
@@ -21,4 +21,8 @@ uint8_t NormalBossStateManager::Update(const uint8_t currentType) {
 		targetPosition_.y = LWP::Utility::Random::GenerateFloat(0.0f, 720.0f);
 		return StateType::ToUInt8(NormalBossStateType::Move);
 	}
+	else if (currentType == StateType::ToUInt8(NormalBossStateType::Slam)) {
+		return StateType::ToUInt8(NormalBossStateType::Idle);
+	}
+	return currentType;
 }

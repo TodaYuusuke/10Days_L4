@@ -1,10 +1,9 @@
 ﻿#pragma once
-#include "../BaseEnemy.h"
 
 enum class NormalBossStateType : uint8_t {
 	Idle, // 待機
 	Move, // 移動
-	//Slam, // たたきつけ攻撃
+	Slam, // たたきつけ攻撃
 
 	StateTypeOfCount // 最大数
 };

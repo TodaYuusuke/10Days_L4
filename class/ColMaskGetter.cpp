@@ -20,3 +20,8 @@ int ColMaskGetter::GetBullet()
 {
 	return ColMask3;
 }
+
+int ColMaskGetter::GetEnemyAttack()
+{
+	return ColMask4;
+}

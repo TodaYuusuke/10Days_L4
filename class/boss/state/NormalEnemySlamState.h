@@ -1,6 +1,9 @@
 ﻿#pragma once
 #include "IEnemyState.h"
-#include "../BaseEnemyData.h"
+#include "../data/BaseEnemyData.h"
+#include "../data/AttackDefaultData.h"
+
+class NormalBossStateManager;
 
 // 敵キャラクターのたたきつけ攻撃
 class NormalEnemySlamState : public IEnemyState {
@@ -24,4 +27,7 @@ private:
 	// 時間
 	float totalTime_ = 0.0f;
 	float nowTime_ = 0.0f;
+
+	// 衝突判定
+	LWP::Object::Collision2D coll2D_;
 };

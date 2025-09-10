@@ -5,7 +5,7 @@
 
 #include "BaseEnemySpriteSystem.h"
 #include "state/IEnemyState.h"
-#include "BaseEnemyData.h"
+#include "data/BaseEnemyData.h"
 
 // 敵キャラクターの基底クラス
 class BaseEnemy {
@@ -33,6 +33,12 @@ public:
 	/// </summary>
 	/// <param name="newStateTypeNumber">リクエストする新しい状態タイプ番号。</param>
 	void RequestState(const uint8_t& newStateTypeNumber) { requestStateType_ = newStateTypeNumber; }
+
+	// 攻撃力のポインタ取得
+	const int* GetAttackPowerPtr() const { return &attackPower_; }
+
+	// 攻撃力のセット Stateのみで使用
+	void SetAttackPower(const int& power) { attackPower_ = power; }
 
 protected:
 
@@ -66,5 +72,7 @@ protected:
 	uint8_t currentStateType_ = 0u;
 	// リクエストされた状態
 	uint8_t requestStateType_ = 0u;
+	// 攻撃力
+	int attackPower_ = 0;
 
 };

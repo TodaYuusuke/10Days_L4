@@ -29,6 +29,13 @@ public: // メンバ関数
 	/// </summary>
 	/// <returns></returns>
 	static int GetBullet();
+	
+	/// <summary>
+	/// 敵の攻撃
+	/// </summary>
+	/// <returns></returns>
+	static int GetEnemyAttack();
+
 
 };
 

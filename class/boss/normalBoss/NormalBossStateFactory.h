@@ -1,7 +1,9 @@
 ﻿#pragma once
 #include <unordered_map>
 #include "NormalBossStateType.h"
-#include "../EnemyDataManager.h"
+#include "../data/EnemyDataManager.h"
+#include "../data/NormalBossData.h"
+#include "../state/IEnemyState.h"
 
 class NormalBossStateManager;
 

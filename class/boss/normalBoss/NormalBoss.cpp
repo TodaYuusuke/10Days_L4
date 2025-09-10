@@ -2,6 +2,7 @@
 #include "NormalBossStateFactory.h"
 #include "NormalBossSpriteSystem.h"
 #include "../../ColMaskGetter.h"
+#include "../../minion/MinionManager.h"
 
 // data_に関してはとりあえずの初期化 のちに再設定している
 NormalBoss::NormalBoss(BaseEnemyData& data) : data_(dynamic_cast<NormalBossData&>(data)) {
@@ -22,9 +23,9 @@ void NormalBoss::Initialize(BaseEnemyData& data) {
 
     corePosition_ = data_.respawnPoint;
 
-    collider_.mask.SetHitFrag(ColMaskGetter::GetBullet() | ColMaskGetter::GetPlayer());
     collider_.mask.SetBelongFrag(ColMaskGetter::GetEnemy());
-
+    collider_.mask.SetHitFrag(ColMaskGetter::GetBullet());
+    
     // 衝突時
     collider_.stayLambda = [this](LWP::Object::Collision2D* hit) {
         isHit_ = true;
@@ -48,12 +49,18 @@ void NormalBoss::Update() {
     // 描画用更新
     spriteSystem_->Update(corePosition_);
 
+    // collision座標の更新 SetFollowに切り替えた方がいいけど作り的にめんどい
     collider_.worldTF.translation = { corePosition_.x,corePosition_.y,0.0f };
-    
+
+    // 衝突時の処理
     if (isHit_) {
         OnCollision();
     }
 
+}
+
+void NormalBoss::SetMinionManagerPtr(MinionManager* mManager) {
+    pMinionManager_ = mManager;
 }
 
 void NormalBoss::SetData(BaseEnemyData& data) {
@@ -70,7 +77,27 @@ void NormalBoss::SetData(BaseEnemyData& data) {
 }
 
 void NormalBoss::OnCollision() {
+    // とりあえず色を赤くしている
     NormalBossSpriteSystem& handle = dynamic_cast<NormalBossSpriteSystem&>(*spriteSystem_);
     handle.ColorUpdate();
     isHit_ = false;
+}
+
+void NormalBoss::UpdateAbsorbMinions() {
+    // 給される状態に切り替わったタイミングが取れないので、毎回空に
+    absorbMinions_.clear();
+    
+    if (pMinionManager_) {
+        for (auto& minion : pMinionManager_->GetMinions()) {
+            // もし、吸収される状態なら
+            if (minion.GetCurrentStateType() == MinionStateType::Absorb) {
+                // コンテナに追加
+                absorbMinions_.push_back(&minion);
+            }
+        }
+    }
+    // 画面外に座標を固定
+    for (auto minion : absorbMinions_) {
+        minion->SetPosition({ -100.0f,-100.0f });
+    }
 }

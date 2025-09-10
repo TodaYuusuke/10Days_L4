@@ -18,8 +18,6 @@ void EnemyIdleState::Update(BaseEnemy* enemy) {
 	
 	// 待機時間が終わったらstateを変更
 	if (idleTime_ < nowTime_) {
-		//*pTargetPos_ = Vector2(1280.0f, 0.0f);
-		//enemy->RequestState(static_cast<uint8_t>(NormalBossStateType::Move));
 		pStateManager_->RequestStateChange();
 	}
 }

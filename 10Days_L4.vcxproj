@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="class\areaOffEffect\AreaOffEffect.cpp" />
+    <ClCompile Include="class\areaOffEffect\AreaOffEffectManager.cpp" />
     <ClCompile Include="class\boss\state\NormalEnemySlamState.cpp" />
     <ClCompile Include="class\ColMaskGetter.cpp" />
     <ClCompile Include="class\minion\Minion.cpp" />
@@ -188,13 +189,16 @@
     <ClCompile Include="class\ui\LineGaugeUI.cpp" />
     <ClCompile Include="class\ui\MinionsNumUI.cpp" />
     <ClCompile Include="class\ui\UIManager.cpp" />
-    <ClCompile Include="class\boss\EnemyDataManager.cpp" />
+    <ClCompile Include="class\boss\data\EnemyDataManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="class\boss\normalBoss\NormalBossSpriteSystem.cpp" />
     <ClCompile Include="class\boss\normalBoss\NormalBossStateManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="class\areaOffEffect\AreaOffEffect.h" />
+    <ClInclude Include="class\areaOffEffect\AreaOffEffectManager.h" />
+    <ClInclude Include="class\boss\data\AttackDefaultData.h" />
+    <ClInclude Include="class\boss\data\NormalBossData.h" />
     <ClInclude Include="class\boss\state\NormalEnemySlamState.h" />
     <ClInclude Include="class\ColMaskGetter.h" />
     <ClInclude Include="class\minion\Minion.h" />
@@ -217,7 +221,7 @@
     <ClInclude Include="class\player\wall\Wall.h" />
     <ClInclude Include="class\player\wall\WallManager.h" />
     <ClInclude Include="class\boss\BaseEnemy.h" />
-    <ClInclude Include="class\boss\BaseEnemyData.h" />
+    <ClInclude Include="class\boss\data\BaseEnemyData.h" />
     <ClInclude Include="class\boss\BaseEnemySpriteSystem.h" />
     <ClInclude Include="class\boss\EnemyManager.h" />
     <ClInclude Include="class\boss\normalBoss\NormalBoss.h" />
@@ -240,7 +244,7 @@
     <ClInclude Include="class\ui\UIList.h" />
     <ClInclude Include="class\ui\UIManager.h" />
     <ClInclude Include="class\boss\normalBoss\NormalBossSpriteSystem.h" />
-    <ClInclude Include="class\boss\EnemyDataManager.h" />
+    <ClInclude Include="class\boss\data\EnemyDataManager.h" />
     <ClInclude Include="class\boss\normalBoss\NormalBossStateManager.h" />
   </ItemGroup>
   <ItemGroup>

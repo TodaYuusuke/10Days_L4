@@ -1,4 +1,5 @@
 ﻿#include "EnemyDataManager.h"
+#include "NormalBossData.h"
 
 const std::string kFileName = "EnemyParameterData.json";
 

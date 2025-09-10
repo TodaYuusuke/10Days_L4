@@ -1,6 +1,7 @@
 ﻿#include "EnemyMoveState.h"
 #include "../normalBoss/NormalBossStateType.h"
 #include "../normalBoss/NormalBossStateManager.h"
+#include "../normalBoss/NormalBoss.h"
 
 EnemyMoveState::EnemyMoveState(const float* moveSpeed, NormalBossStateManager* sManager) {
 	pMoveSpeed_ = moveSpeed;

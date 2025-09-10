@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "IEnemyState.h"
+class NormalBossStateManager;
 
 // 敵キャラクター移動stateクラス
 class EnemyIdleState : public IEnemyState {

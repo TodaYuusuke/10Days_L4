@@ -3,7 +3,6 @@
 
 using namespace LWP::Math;
 class BaseEnemy;
-class NormalBossStateManager;
 
 /// <summary>
 /// 敵の状態インターフェース
