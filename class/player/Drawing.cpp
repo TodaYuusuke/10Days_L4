@@ -54,10 +54,6 @@ void Drawing::Initialize()
 
 void Drawing::Update(bool isDragging)
 {
-	ImGui::Begin("Drawing");
-	ImGui::Text("Points Count : %d", points_.size());
-	ImGui::End();
-
 	wallCreation_ = false;
 
 	// ドラッグしていない
