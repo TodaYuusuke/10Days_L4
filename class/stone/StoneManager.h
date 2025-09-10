@@ -44,5 +44,9 @@ private:
 	// json
 	LWP::Utility::JsonIO jsonIO_;
 
+	bool isCreate_;
+
+	LWP::Resource::Audio audio_[3];
+
 };
 
