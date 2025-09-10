@@ -4,6 +4,8 @@ using namespace LWP::Math;
 
 using namespace LWP::Utility;
 
+using namespace LWP::Utility;
+
 StoneManager::StoneManager()
 	:	stones_{},
 		jsonIO_()
