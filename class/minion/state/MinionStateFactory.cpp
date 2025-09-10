@@ -4,6 +4,7 @@
 #include "MinionAttackState.h"
 #include "MinionDownState.h"
 #include "MinionAbsorbState.h"
+#include "MinionFoamState.h"
 
 std::unordered_map<MinionStateType, std::unique_ptr<IMinionState>> MinionStateFactory::CreateStates()
 {
@@ -15,6 +16,7 @@ std::unordered_map<MinionStateType, std::unique_ptr<IMinionState>> MinionStateFa
     states[MinionStateType::Attack] = std::make_unique<MinionAttackState>();
     states[MinionStateType::Down] = std::make_unique<MinionDownState>();
     states[MinionStateType::Absorb] = std::make_unique<MinionAbsorbState>();
+    states[MinionStateType::Foam] = std::make_unique<MinionFoamState>();
     states[MinionStateType::StateTypeOfCount] = nullptr;
 
     return states;

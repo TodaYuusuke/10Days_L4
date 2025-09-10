@@ -9,5 +9,6 @@ enum class MinionStateType {
 	Attack,				// 攻撃
 	Down,				// ダウン
 	Absorb,			// 吸収
+	Foam,			// 泡
 	StateTypeOfCount,	// 数数える用
 };

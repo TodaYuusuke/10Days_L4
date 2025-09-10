@@ -74,6 +74,7 @@ public: // アクセッサ
 	MinionStateType GetCurrentStateType() const { return currentStateType_; }
 	MinionStateType GetRequestStateType() const { return requestStateType_; }
 
+	void SetHp(int hp) { hp_ = hp; }
 	void SetRequestStateType(MinionStateType requestStateType) { requestStateType_ = requestStateType; }
 	void SetPosition(const LWP::Math::Vector2& position) { position_ = position; }
 	void SetDirection(const LWP::Math::Vector2& direction) { direction_ = direction; }

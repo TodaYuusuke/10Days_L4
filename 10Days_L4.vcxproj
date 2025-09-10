@@ -164,6 +164,7 @@
     <ClCompile Include="class\minion\state\MinionAbsorbState.cpp" />
     <ClCompile Include="class\minion\state\MinionAttackState.cpp" />
     <ClCompile Include="class\minion\state\MinionDownState.cpp" />
+    <ClCompile Include="class\minion\state\MinionFoamState.cpp" />
     <ClCompile Include="class\minion\state\MinionIdleState.cpp" />
     <ClCompile Include="class\minion\state\MinionMoveState.cpp" />
     <ClCompile Include="class\minion\state\MinionStateFactory.cpp" />
@@ -220,6 +221,7 @@
     <ClInclude Include="class\minion\state\MinionAbsorbState.h" />
     <ClInclude Include="class\minion\state\MinionAttackState.h" />
     <ClInclude Include="class\minion\state\MinionDownState.h" />
+    <ClInclude Include="class\minion\state\MinionFoamState.h" />
     <ClInclude Include="class\minion\state\MinionIdleState.h" />
     <ClInclude Include="class\minion\state\MinionMoveState.h" />
     <ClInclude Include="class\minion\state\MinionStateFactory.h" />
