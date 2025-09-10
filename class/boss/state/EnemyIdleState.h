@@ -1,12 +1,13 @@
 ﻿#pragma once
 #include "IEnemyState.h"
 class NormalBossStateManager;
+class MinionManager;
 
 // 敵キャラクター移動stateクラス
 class EnemyIdleState : public IEnemyState {
 public:
 	EnemyIdleState() = default;
-	EnemyIdleState(const Vector2* idleTime, NormalBossStateManager* sManager);
+	EnemyIdleState(const Vector2* idleTime, NormalBossStateManager* sManager, MinionManager* mManager);
 	~EnemyIdleState() = default;
 
 	// 初期化処理
@@ -20,8 +21,11 @@ private:
 
 	const Vector2* pIdleTime_ = nullptr;
 	NormalBossStateManager* pStateManager_ = nullptr;
+	MinionManager* pMinionManager_ = nullptr;
 
 	// 時間
 	float idleTime_ = 0.0f;
 	float nowTime_ = 0.0f;
+
+	bool isPushMinion_ = false;
 };

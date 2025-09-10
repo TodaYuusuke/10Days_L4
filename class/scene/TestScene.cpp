@@ -25,6 +25,7 @@ void TestScene::Initialize() {
 	minionManager_ = std::make_unique<MinionManager>(player_->GetMeetingPlace(), stoneManager_.get(), enemyManager_.get());
 	player_->SetMinionManagerForDrawing(minionManager_.get());
 	enemyManager_->SetMinionManagerPtr(minionManager_.get());
+	enemyManager_->Initialize();
 
 	uiManager_ = std::make_unique<UIManager>(player_.get(), minionManager_.get(), enemyManager_.get());
 
