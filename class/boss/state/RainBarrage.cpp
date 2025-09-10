@@ -28,6 +28,7 @@ void RainBarrageState::Enter(BaseEnemy* enemy) {
         Vector2 pos = { a.x,pBarrage_->attackData.attackRange.y };
         AreaOffEffectManager::RequestCreate(pos, pBarrage_->attackData.attackRange, pBarrage_->attackData);
     }
+    isBullet_ = false;
 }
 
 void RainBarrageState::Update(BaseEnemy* enemy) {

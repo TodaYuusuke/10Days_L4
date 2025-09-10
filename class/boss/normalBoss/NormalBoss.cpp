@@ -41,7 +41,6 @@ void NormalBoss::Initialize(BaseEnemyData& data) {
 }
 
 void NormalBoss::Update() {
-
     // 状態変化更新
     if (StateUpdate()) {
         // 切り替わりがあった場合
