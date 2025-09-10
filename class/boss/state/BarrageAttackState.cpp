@@ -17,6 +17,7 @@ void BarrageAttackState::Enter(BaseEnemy* enemy) {
     nowTime_ = 0.0f;
     fireCount_ = 0;
     fireCooldown_ = pBarrage_->fireInterval_;
+    enemy->SetAttackPower(pBarrage_->attackData.attackPower);
 }
 
 void BarrageAttackState::Update(BaseEnemy* enemy) {
