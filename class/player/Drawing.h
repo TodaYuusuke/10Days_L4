@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <Adapter.h>
+#include "../particle/DirtSplash.h"
 
 // 前方宣言
 class MinionManager;
@@ -98,6 +99,8 @@ private: // メンバ変数
 	bool startCheck_;
 
 	LWP::Resource::Audio audio_;
+
+	DirtSplash dirtSplash_;
 
 private: // ポインタ
 

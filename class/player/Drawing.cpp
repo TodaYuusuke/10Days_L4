@@ -87,13 +87,17 @@ void Drawing::Update(bool isDragging)
 		}
 		// 線を書き途中
 		if (isActive_) {
+			
+			const Vector2 mousePosition = Mouse::GetPosition();
+			const Vector3 particlePosition = { mousePosition.x, mousePosition.y, 0.0f };
+			dirtSplash_.Add(1, particlePosition);
+			
 			recordingTimer_ += static_cast<float>(LWP::Info::GetDeltaTime());
 			// レコーディング時間
 			const float kRecordingTime = PlayerGlobalData::GetLineRecordingTime();
 			if (recordingTimer_ > kRecordingTime) {
 				// 記録
 				recordingTimer_ -= kRecordingTime;
-				const Vector2 mousePosition = Mouse::GetPosition();
 				const Vector2 preMousePosition = points_[points_.size() - 1];
 				const float kLength = (mousePosition - preMousePosition).Length();
 
