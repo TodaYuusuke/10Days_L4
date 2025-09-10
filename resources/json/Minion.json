@@ -10,7 +10,7 @@
         "float :AddRotateFluctuation": 0.05000000074505806,
         "float :AddRotateMax": 0.5,
         "float :AddSpeedFluctuation": 0.5,
-        "float :Speed": 2.0
+        "float :Speed": 5.0
     },
     "Group :Sprite": {
         "Vector2 :TextureSize": [
