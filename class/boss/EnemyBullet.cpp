@@ -1,7 +1,7 @@
 ﻿#include "EnemyBullet.h"
 #include "../ColMaskGetter.h"
 
-const std::string kBulletPath = "innerCircle.png";
+const std::string kBulletPath = "Bullet_RED.png";
 
 EnemyBullet::EnemyBullet() {
     Initialize();
@@ -39,8 +39,9 @@ void EnemyBullet::Update(const LWP::Math::Vector2& dir) {
     Limit();
 }
 
-void EnemyBullet::SetBullet(const LWP::Math::Vector2& pos) {
+void EnemyBullet::SetBullet(const LWP::Math::Vector2& pos, const float& radius) {
     sprite_.worldTF.translation = { pos.x,pos.y,0.0f };
+    sprite_.worldTF.scale = { radius,radius,0.0f };
     isAlive_ = true;
     coll2D_.isActive = isAlive_;
     sprite_.isActive = isAlive_;
