@@ -42,7 +42,7 @@ void TestScene::Update() {
 		}
 	}
 	else {
-		if (minionManager_->GetMinionNum() == 0) {
+		if (minionManager_->GetMinionNum() == 0 || enemyManager_->GetEnemyHp(nullptr) <= 0u) {
 			sceneTransitionBlackOut_.Reset();	// 次のシーンに行くための処理
 		}
 	}
