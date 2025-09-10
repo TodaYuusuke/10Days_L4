@@ -3,10 +3,12 @@
 
 void MinionFoamState::Enter(Minion* minion)
 {
+	minion;
 }
 
 void MinionFoamState::Update(Minion* minion)
 {
+	minion;
 }
 
 void MinionFoamState::Exit(Minion* minion)

@@ -1,5 +1,6 @@
 #include "StoneManager.h"
 #include "StoneGlobalData.h"
+using namespace LWP::Math;
 
 using namespace LWP::Utility;
 
@@ -75,7 +76,16 @@ void StoneManager::CreateStone(const LWP::Math::Vector2& position, const LWP::Ma
 {
 
 	// 作成、登録
-	Stone* stone = new Stone(position, direction);
+	Vector2 newDirection = direction;
+
+	float angleRad = Random::GenerateFloat(-0.5f, 0.5f);
+	float cosA = std::cos(angleRad);
+	float sinA = std::sin(angleRad);
+
+	newDirection.x = direction.x * cosA - direction.y * sinA;
+	newDirection.y = direction.x * sinA + direction.y * cosA;
+
+	Stone* stone = new Stone(position, newDirection);
 	stones_.push_back(stone);
 
 	isCreate_ = true;
