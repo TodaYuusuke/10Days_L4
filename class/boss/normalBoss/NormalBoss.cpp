@@ -6,7 +6,7 @@
 
 // data_に関してはとりあえずの初期化 のちに再設定している
 NormalBoss::NormalBoss(BaseEnemyData& data) : data_(dynamic_cast<NormalBossData&>(data)) {
-    Initialize(data);
+    
 }
 
 void NormalBoss::Initialize(BaseEnemyData& data) {

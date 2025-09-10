@@ -4,13 +4,18 @@
 #include "../minion/MinionManager.h"
 
 EnemyManager::EnemyManager() {
-	Initialize();
+	
 }
 
 void EnemyManager::Initialize() {
 	EnemyDataManager::GetInstance()->Initialize();
 	auto normalBossData = EnemyDataManager::GetInstance()->GetData(BaseEnemyData::Type::NormalBoss);
 	enemies_.push_back(std::make_unique<NormalBoss>(*normalBossData));
+
+	NormalBoss* nBoss = dynamic_cast<NormalBoss*>(enemies_[0].get());
+	nBoss->SetMinionManagerPtr(minionManager_);
+
+	nBoss->Initialize(*normalBossData);
 
 }
 void EnemyManager::Update() {
@@ -34,8 +39,6 @@ void EnemyManager::SecondUpdate() {
 
 void EnemyManager::SetMinionManagerPtr(MinionManager* manager) {
 	minionManager_ = manager;
-	NormalBoss* nBoss = dynamic_cast<NormalBoss*>(enemies_[0].get());
-	nBoss->SetMinionManagerPtr(manager);
 }
 
 const LWP::Math::Vector2& EnemyManager::GetEnemyPosition() const {
