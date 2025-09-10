@@ -8,7 +8,7 @@ using namespace LWP::Math;
 class AreaOffEffect {
 public:
 	AreaOffEffect() = delete;
-	AreaOffEffect(const float* alpha, const Vector2& pos, const float& maxRadius, const AttackDefaultData& data);
+	AreaOffEffect(const float* alpha,const float* frashcount, const Vector2& pos, const float& maxRadius, const AttackDefaultData& data);
 	~AreaOffEffect() = default;
 
 
@@ -80,5 +80,6 @@ private:
 	bool isAlive_ = false;
 	// 最初のアルファ地
 	const float* pFirstAlpha_ = nullptr;
+	const float* pFrashCount_ = nullptr;
 };
 

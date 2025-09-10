@@ -8,11 +8,12 @@ const std::string kExclamationPath = "exclamation.png";
 // エフェクトの描画優先度 奥行座標
 const float kEffectTranslate_Z = 10.0f;
 
-AreaOffEffect::AreaOffEffect(const float* alpha, const Vector2& pos, const float& maxRadius, const AttackDefaultData& data) {
+AreaOffEffect::AreaOffEffect(const float* alpha, const float* frashcount, const Vector2& pos, const float& maxRadius, const AttackDefaultData& data) {
 	outerFrame_.LoadTexture(kOuterCirclePath);
 	innerFrame_.LoadTexture(kInnerCirclePath);
 	exclamation_.LoadTexture(kExclamationPath);
 	pFirstAlpha_ = alpha;
+	pFrashCount_ = frashcount;
 	Initialize(pos, maxRadius, data);
 }
 
@@ -104,7 +105,7 @@ void AreaOffEffect::InnerScaleUpUpdate() {
 		LWP::Utility::Interp::Lerp({ 0.0f,0.0f,0.0f }, { maxRadius_ ,maxRadius_ ,0.0f }, t);
 
 	// exclamationの処理 3回点滅させる
-	exclamation_.material.color.A = GetAlpha(nowTime_, kMaxTime / 3.0f);
+	exclamation_.material.color.A = GetAlpha(nowTime_, kMaxTime / *pFrashCount_);
 }
 
 void AreaOffEffect::FadeOutUpdate() {
