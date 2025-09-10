@@ -23,6 +23,7 @@ void MeetingPlace::Initialize()
 	// テクスチャサイズ
 	sprite_.SetSplitSize(PlayerGlobalData::GetMeetingPlaceTextureSize());
 	sprite_.anchorPoint = { 0.12f, 0.92f };
+	sprite_.worldTF.scale = { 0.5f,0.5f,0.5f };
 	
 	audio_.LoadShortPath("meetingPlace.mp3");
 
