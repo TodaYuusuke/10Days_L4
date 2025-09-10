@@ -16,6 +16,11 @@ private: // 構造体
 		float maxRadius;
 		AttackDefaultData data;
 	};
+	struct RectangleInitData {
+		Vector2 pos;
+		Vector2 maxSize;
+		AttackDefaultData data;
+	};
 
 public: // 
 
@@ -32,6 +37,8 @@ public: //
 	/// <param name="maxRadius">最大半径</param>
 	/// <param name="data">攻撃に必要な時間データ</param>
 	static void RequestCreate(const Vector2& pos, const float& maxRadius, const AttackDefaultData& data);
+	// 矩形
+	static void RequestCreate(const Vector2& pos, const Vector2& maxSize, const AttackDefaultData& data);
 
 private:
 	// データのロード
@@ -40,6 +47,7 @@ private:
 private:
 	// 初期化用データ一時保存用コンテナ
 	static std::queue<CircleInitData> circleInitDatas_;
+	static std::queue<RectangleInitData> rectangleInitDatas_;
 
 	// エフェクトをまとめたコンテナ
 	std::vector<std::unique_ptr<AreaOffEffect>> container_;

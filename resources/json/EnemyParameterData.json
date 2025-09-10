@@ -3,8 +3,8 @@
         "Group :RainBarrage": {
             "Group :AttackData": {
                 "Vector2 :AttackRange": [
-                    30.0,
-                    30.0
+                    70.0,
+                    640.0
                 ],
                 "float :DamageTime": 5.0,
                 "float :EndingLag": 1.0,

@@ -39,5 +39,6 @@ private:
 	const BarrageDefaultData* pBarrage_ = nullptr;
 
 	std::array<Vector2, 3u> respawnPos_;
+	bool isBullet_ = false; // 弾が発射
 
 };

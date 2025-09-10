@@ -3,6 +3,7 @@
 #include "../data/NormalBossData.h"
 #include "../EnemyBullet.h"
 #include "../BaseEnemy.h"
+#include "../../areaOffEffect/AreaOffEffectManager.h"
 
 RainBarrageState::RainBarrageState(const BaseEnemyData* data, NormalBossStateManager* sManager, 
 	std::array<EnemyBullet, NormalBossData::kNormalBossBulletMax>* bullets) {
@@ -23,13 +24,26 @@ void RainBarrageState::Enter(BaseEnemy* enemy) {
 	fireCooldown_ = pBarrage_->fireInterval_;
 	enemy->SetAttackPower(pBarrage_->attackData.attackPower);
     BulletUpdate();
+    for (auto& a : respawnPos_) {
+        Vector2 pos = { a.x,pBarrage_->attackData.attackRange.y };
+        AreaOffEffectManager::RequestCreate(pos, pBarrage_->attackData.attackRange, pBarrage_->attackData);
+    }
 }
 
 void RainBarrageState::Update(BaseEnemy* enemy) {
-    const float deltaTime = LWP::Info::GetDefaultDeltaTimeF();
+    const float kDeltaTime = LWP::Info::GetDefaultDeltaTimeF();
+    const float totalTime = pBarrage_->attackData.startupLag + pBarrage_->attackData.damageTime + pBarrage_->attackData.endingLag;
+
+    // 時間の加算
+    nowTime_ += kDeltaTime;
+    // ダメージが入る時間ならば
+    if (pBarrage_->attackData.startupLag < nowTime_) {
+        isBullet_ = true;
+    }
+
     // クールタイムを減らす
-    if (fireCount_ < pBarrage_->maxFireCount_) {
-        fireCooldown_ -= deltaTime;
+    if (fireCount_ < pBarrage_->maxFireCount_ && isBullet_) {
+        fireCooldown_ -= kDeltaTime;
 
         if (fireCooldown_ <= 0.0f) {
             // 発射処理
@@ -42,9 +56,6 @@ void RainBarrageState::Update(BaseEnemy* enemy) {
             fireCooldown_ = pBarrage_->fireInterval_;
         }
     }
-    else {
-        nowTime_ += deltaTime;
-    }
 
     // 弾の更新
     int index = 0;
@@ -55,7 +66,7 @@ void RainBarrageState::Update(BaseEnemy* enemy) {
     }
 
     // 攻撃の一連の動作がおわったらstateを変更
-    if (pBarrage_->attackData.endingLag < nowTime_) {
+    if (totalTime < nowTime_) {
         bool isAlive = false;
         for (auto& bullet : *pBullets_) {
             if (bullet.GetIsAlive()) {
