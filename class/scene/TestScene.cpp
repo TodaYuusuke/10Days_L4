@@ -33,6 +33,9 @@ void TestScene::Initialize() {
 	nextSprite_.Initialize();
 	nextSprite_.SetIsActive(false);
 
+	gameSprite_.Initialize();
+	gameSprite_.SetIsActive(false);
+
 }
 
 // 更新
@@ -50,9 +53,20 @@ void TestScene::Update() {
 				sceneTransitionBlackOut_.Reset();	// 次のシーンに行くための処理
 			}
 			else {
-				nextSprite_.SetIsActive(true);
+				if (!gameSprite_.GetIsActive()) {
+					player_->GetDrawing()->SetStartCheck(false);
+					gameSprite_.SetIsActive(true);
+					if (enemyManager_->GetEnemyHp(nullptr) <= 0u) {
+						gameSprite_.SetIndex(0);
+					}
+					else {
+						gameSprite_.SetIndex(1);
+					}
+					nextSprite_.SetIsActive(true);
+					player_->SetMinionManagerForDrawing(nullptr);
+				}
+				gameSprite_.Update();
 				nextSprite_.Update();
-				player_->SetMinionManagerForDrawing(nullptr);
 			}
 		}
 	}

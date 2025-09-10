@@ -9,6 +9,7 @@
 #include "../sceneTransition/SceneTransitionBlackOut.h"
 #include "../BackGround.h"
 #include "../sprite/NextSprite.h"
+#include "../sprite/GameSprite.h"
 
 class TestScene final
 	: public IScene {
@@ -48,5 +49,7 @@ private: //*** これより先に必要な処理や変数を記述 ***//
 	BackGround backGround_;
 
 	NextSprite nextSprite_;
+
+	GameSprite gameSprite_;
 
 };

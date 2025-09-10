@@ -59,6 +59,8 @@ public: // アクセッサ
 
 	void SetMinionManager(MinionManager* minionManager) { minionManager_ = minionManager; }
 
+	void SetStartCheck(bool startCheck) { startCheck_ = startCheck; }
+
 private: // メンバ関数
 	
 	/// <summary>
