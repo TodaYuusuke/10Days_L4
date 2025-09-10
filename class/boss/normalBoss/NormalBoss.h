@@ -1,13 +1,15 @@
 ﻿#pragma once
 #include "../BaseEnemy.h"
 #include <memory>
+#include <array>
 #include "NormalBossStateManager.h"
 #include "../data/NormalBossData.h"
+#include "../EnemyBullet.h"
 
 class MinionManager;
 class Minion;
 
-class NormalBoss : public BaseEnemy{
+class NormalBoss : public BaseEnemy {
 public:
 	NormalBoss() = delete;
 	NormalBoss(BaseEnemyData& data);
@@ -19,6 +21,7 @@ public:
 	void SetMinionManagerPtr(MinionManager* mManager);
 
 private:
+	
 	// データのセット
 	void SetData(BaseEnemyData& data) override;
 	// 当たった際の処理
@@ -26,6 +29,8 @@ private:
 
 	// 吸収処理
 	void UpdateAbsorbMinions();
+
+private:
 
 	// データ
 	NormalBossData& data_;
@@ -37,7 +42,11 @@ private:
 	// 当たったかのフラグ
 	bool isHit_ = false;
 
+	// ミニオン用
 	MinionManager* pMinionManager_ = nullptr;
 	std::vector<Minion*> absorbMinions_;
+
+	// 弾のコンテナ
+	std::array<EnemyBullet, NormalBossData::kNormalBossBulletMax> bullets_;
 
 };

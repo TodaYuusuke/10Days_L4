@@ -1,14 +1,17 @@
 ﻿#pragma once
 #include "IEnemyState.h"
+#include "../data/NormalBossData.h"
 
+class EnemyBullet;
 class NormalBossStateManager;
 
-// 敵キャラクター移動stateクラス
+// 弾幕攻撃stateクラス
 class BarrageAttackState : public IEnemyState {
 public:
 	BarrageAttackState() = delete;
-	BarrageAttackState(const float* moveSpeed, NormalBossStateManager* sManager);
+	BarrageAttackState(const BaseEnemyData* data, NormalBossStateManager* sManager, std::array<EnemyBullet, NormalBossData::kNormalBossBulletMax>* bullets);
 	~BarrageAttackState() = default;
+	void Init(const float* moveSpeed, NormalBossStateManager* sManager, std::array<EnemyBullet, NormalBossData::kNormalBossBulletMax>* bullets) {};
 
 	// 初期化処理
 	void Enter(BaseEnemy* enemy) override;
@@ -18,9 +21,21 @@ public:
 	void Exit(BaseEnemy* enemy) override;
 
 private:
+	// 弾の発射
+	void FireBullet(const Vector2& pos, const Vector2& dir);
+	// 弾の座標更新
+	void BulletUpdate();
 
 	const float* pMoveSpeed_ = nullptr;
 	NormalBossStateManager* pStateManager_ = nullptr;
-	Vector2 velocity_ = { 0.0f,0.0f };
+	std::array<EnemyBullet, NormalBossData::kNormalBossBulletMax>* pBullets_;
+	std::vector<LWP::Math::Vector2> bulletPositions_; // 弾の座標
+
+	// 発射管理
+	float fireCooldown_ = 0.0f;   // クールタイム残り時間
+	int fireCount_ = 0;           // 発射した弾数
+	LWP::Math::Vector2 dir_;
+	float nowTime_ = 0.0f;
+	const BarrageDefaultData* pBarrage_ = nullptr;
 
 };

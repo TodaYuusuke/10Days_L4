@@ -21,7 +21,11 @@ uint8_t NormalBossStateManager::Update(const uint8_t currentType) {
 		targetPosition_.y = LWP::Utility::Random::GenerateFloat(0.0f, 720.0f);
 		return StateType::ToUInt8(NormalBossStateType::Move);
 	}
+	// 以下攻撃
 	else if (currentType == StateType::ToUInt8(NormalBossStateType::Slam)) {
+		return StateType::ToUInt8(NormalBossStateType::Idle);
+	}
+	else if (currentType == StateType::ToUInt8(NormalBossStateType::Barrage)) {
 		return StateType::ToUInt8(NormalBossStateType::Idle);
 	}
 	return currentType;

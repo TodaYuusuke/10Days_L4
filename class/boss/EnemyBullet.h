@@ -9,12 +9,20 @@ public:
 	// 初期化 (生成)
 	void Initialize();
 	// 更新
-	void Update();
+	void Update(const LWP::Math::Vector2& dir);
 
+	// 弾の生成
+	void SetBullet(const LWP::Math::Vector2& pos);
+	// 生死フラグの取得
+	const bool& GetIsAlive() const { return isAlive_; }
+private:
+	// 画面制限の設定
+	void Limit();
 private:
 
+	LWP::Object::TransformQuat transform_;
 	LWP::Object::Collision2D coll2D_;
-	LWP::Primitive::SequenceSprite sprite_;
+	LWP::Primitive::NormalSprite sprite_;
 
 	bool isAlive_ = false;
 };
