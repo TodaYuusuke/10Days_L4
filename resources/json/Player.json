@@ -33,7 +33,7 @@
             2.0,
             0.0
         ],
-        "float :DragCertifiedDistance": 30.0
+        "float :DragCertifiedDistance": 15.0
     },
     "Group :Wall": {
         "Vector2 :TextureSize": [
