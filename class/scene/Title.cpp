@@ -4,6 +4,11 @@
 using namespace LWP;
 using namespace LWP::Input;
 
+Title::~Title()
+{
+	bgm_.Stop();
+}
+
 // 初期化
 void Title::Initialize() {
 
@@ -20,6 +25,10 @@ void Title::Initialize() {
 	backGround_.Initialize();
 
 	nextSprite_.Initialize();
+
+	bgm_.LoadShortPath("title.mp3");
+	bgm_.PlayLoop();
+	bgm_.SetVolume(0.1f);
 
 }
 

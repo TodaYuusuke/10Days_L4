@@ -4,6 +4,11 @@
 using namespace LWP;
 using namespace LWP::Input;
 
+TestScene::~TestScene()
+{
+	bgm_.Stop();
+}
+
 // 初期化
 void TestScene::Initialize() {
 	testModel_.LoadCube();				// 立方体と球はデフォルトで用意してある
@@ -35,6 +40,10 @@ void TestScene::Initialize() {
 
 	gameSprite_.Initialize();
 	gameSprite_.SetIsActive(false);
+
+	bgm_.LoadShortPath("game.mp3");
+	bgm_.PlayLoop();
+	bgm_.SetVolume(0.1f);
 
 }
 
